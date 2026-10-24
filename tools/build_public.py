@@ -40,6 +40,7 @@ page = ('<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n'
         '<meta property="og:image:alt" content="A Penrose-tiling mark beside the title Mathematics and AI">\n'
         '<meta name="twitter:card" content="summary_large_image">\n'
         '<meta name="twitter:image" content="https://janobloj.github.io/Maths-and-AI/og-image.png">\n'
+        '<script data-goatcounter="https://mathsai.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>\n'
         '<style>html,body{margin:0}</style>\n</head>\n<body>\n' + src + '\n</body>\n</html>\n')
 open(out, 'w').write(page)
 print(out, len(items), 'entries', 'form' if form else 'no form', len(page)//1024, 'KB')

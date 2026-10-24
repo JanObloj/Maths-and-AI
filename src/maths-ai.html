@@ -427,6 +427,7 @@ form.ed h2{margin:0;font:600 20px/1.2 var(--display);color:var(--navy)}
 <footer class="wrap">
   <p class="credits">Created and curated by <a href="https://www.maths.ox.ac.uk/people/jan.obloj" target="_blank" rel="noopener">Jan Obłój</a>, using Claude AI (mainly Opus 5.5) and ChatGPT (mainly GPT-6.1 Sol). I pay for a Claude Pro subscription. I acknowledge OpenAI for providing access to ChatGPT through its ChatGPT for Academic Researchers programme. Fact-checking by myself and AI. Humans and AI make mistakes: if you think we got something egregiously wrong, please <a href="#" id="feedback">submit feedback</a>. Anonymous feedback will not be considered. These are personal pages: they do not represent the views of the Mathematical Institute or the University of Oxford.</p>
   <span class="copy">© 2026 Jan Obłój. All rights reserved. You are welcome to link to this page and to quote short passages with credit.</span>
+  <span class="copy" id="stats-note" hidden>Visits and link clicks are counted anonymously with <a href="https://www.goatcounter.com" target="_blank" rel="noopener">GoatCounter</a>: no cookies, nothing personal.</span>
   <span id="foot-edit"><button type="button" class="linkbtn" id="edit-start" hidden>Edit this page</button></span>
 </footer>
 
@@ -1027,6 +1028,7 @@ function showView(v, push){
   const h = v==="story" ? "#"+(TL.current()||"storylines") : "#reading-room";
   try{ if(push) history.pushState(null,"",h); else if(location.hash!==h && !(v==="room" && ROOM_HASHES.has(location.hash.slice(1)))) history.replaceState(null,"",h); }catch{}
   if(v==="story") TL.show();
+  if(push) track("view/"+(v==="story"?"storylines":"reading-room"), v==="story"?"Opened Storylines":"Opened Reading room");
 }
 function openMilestone(id){ showView("story", true); TL.select(id, true); requestAnimationFrame(()=>document.querySelector(".stage").scrollIntoView({behavior:"smooth", block:"start"})); }
 $("#sw-story").onclick = ()=>{ if(state.view!=="story") showView("story", true); };
@@ -1040,8 +1042,20 @@ function route(){
 addEventListener("hashchange", route);
 addEventListener("popstate", route);
 
+// Anonymous counts for Jan (public page only): the GoatCounter script is added by the public build.
+// Every link that leaves the page is counted as an event, named after where it goes.
+function track(path, title){ try{ if(window.goatcounter && window.goatcounter.count) window.goatcounter.count({path:String(path).slice(0,500), title:String(title||"").slice(0,200), event:true}); }catch{} }
+if(window.READING_ROOM_PUBLIC){ const sn=$("#stats-note"); if(sn) sn.hidden=false; }
+function countOutbound(e){
+  const a = e.target.closest && e.target.closest("a[href]"); if(!a) return;
+  let u; try{ u = new URL(a.href, location.href); }catch{ return; }
+  if(!/^https?:$/.test(u.protocol) || u.host===location.host) return;
+  track("out/"+u.host+u.pathname+u.search, (a.textContent||"").trim().replace(/\s+/g," "));
+}
+document.addEventListener("click", countOutbound, true);
+document.addEventListener("auxclick", e=>{ if(e.button===1) countOutbound(e); }, true);
 // feedback: the address is put together only when someone clicks, so it is not in the page for harvesters to read
-$("#feedback").addEventListener("click", e=>{ e.preventDefault(); const u=["mathsai","readingroom"].join("."), d=["gmail","com"].join("."); location.href = "mailto:"+u+"\u0040"+d+"?subject="+encodeURIComponent("Feedback on Maths and AI"); });
+$("#feedback").addEventListener("click", e=>{ e.preventDefault(); track("out/feedback-email","Feedback email"); const u=["mathsai","readingroom"].join("."), d=["gmail","com"].join("."); location.href = "mailto:"+u+"\u0040"+d+"?subject="+encodeURIComponent("Feedback on Maths and AI"); });
 $("#go-propose").addEventListener("click", e=>{ e.preventDefault(); document.getElementById("propose").scrollIntoView({behavior:"smooth"}); });
 // ---------- boot ----------
 function itemsChanged(){ computeTags(); render(); renderTopic(); updateStatus(); TL.refresh(); }
