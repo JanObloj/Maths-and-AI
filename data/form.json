@@ -1,0 +1,21 @@
+{
+  "action": "https://docs.google.com/forms/d/e/1FAIpQLSdmDf6X3KgcEZeusAFPHA-s3ynIIHQYqqalgTLZSjxB3_nzpw/formResponse",
+  "fields": {
+    "url": "entry.944989428",
+    "title": "entry.1578102679",
+    "cat": "entry.1764001722",
+    "why": "entry.1621418129"
+  },
+  "catMap": {
+    "": "Not sure",
+    "declaration": "Declarations & open letters",
+    "institutional": "Institutional statements & reports",
+    "announcements": "AI lab announcements",
+    "initiative": "Community initiatives",
+    "viewpoint": "Personal viewpoints",
+    "socials": "Social media",
+    "media": "Films, interviews and podcasts",
+    "news": "News & analysis",
+    "voices": "Blogs & live resources"
+  }
+}

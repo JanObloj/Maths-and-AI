@@ -1,0 +1,1079 @@
+<title>Mathematics and AI</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<style>
+/* Layout: one masthead (title, shared opening text, a two-way switch) over two views.
+   Storylines: two parallel storylines on a horizontally scrolling stage, joined by bridges; the chosen milestone opens below.
+   Reading room: a library index with a sticky category rail on wide screens and a chip row on phones. */
+:root{
+  --bg:#f4f5f9; --surface:#ffffff; --ink:#0f1d33; --fg:#0f1d33; --muted:#5b6679; --line:#dde1ea; --navy:#002147;
+  --accent:#a26b21; --rust:#b3401a; --chip:#eef1f6; --chip-fg:#2b3d55; --warn-bg:#fbf1e3; --warn-fg:#7a4a0c;
+  --l-maths:#d9781f; --l-moments:#44526d; --l-ai:#6a4fc4; --l-respond:#0a8f7f; --proto:#b3401a;
+  --band:#eef0f7; --select:#e9e4fb;
+  --display:"Source Serif 4", Georgia, "Times New Roman", serif;
+  --body:"Figtree", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0a111e; --surface:#111a2b; --ink:#e7ecf5; --fg:#e7ecf5; --muted:#9ca8bc; --line:#24314a; --navy:#cfe0f2;
+  --accent:#e0b26a; --rust:#f08a5d; --chip:#1a2539; --chip-fg:#c9d6e4; --warn-bg:#33270f; --warn-fg:#f1c98a;
+  --l-maths:#f2a65a; --l-moments:#7f8ba3; --l-ai:#a58ef2; --l-respond:#40c8b0; --proto:#f08a5d;
+  --band:#152036; --select:#231f3d; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0a111e; --surface:#111a2b; --ink:#e7ecf5; --fg:#e7ecf5; --muted:#9ca8bc; --line:#24314a; --navy:#cfe0f2;
+  --accent:#e0b26a; --rust:#f08a5d; --chip:#1a2539; --chip-fg:#c9d6e4; --warn-bg:#33270f; --warn-fg:#f1c98a;
+  --l-maths:#f2a65a; --l-moments:#7f8ba3; --l-ai:#a58ef2; --l-respond:#40c8b0; --proto:#f08a5d;
+  --band:#152036; --select:#231f3d; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:15px/1.55 var(--body);margin:0}
+a{color:var(--navy);text-underline-offset:3px}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--l-ai);outline-offset:2px}
+.wrap{max-width:1240px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+[hidden]{display:none!important}
+
+/* top bar */
+.top{display:flex;align-items:center;gap:14px;padding-top:22px}
+.mark{width:40px;height:40px;flex-shrink:0}
+.mark-dark{display:none}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .mark-light{display:none}:root:not([data-theme="light"]) .mark-dark{display:block}}
+:root[data-theme="dark"] .mark-light{display:none}:root[data-theme="dark"] .mark-dark{display:block}
+.series{font-size:14px;color:var(--muted)}.series b{color:var(--ink);font-weight:600}
+.owner{margin-left:auto;font-size:13px;color:var(--muted);text-align:right;line-height:1.35}
+.o-short{display:none}
+.proto{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--proto);border:1px solid var(--proto);border-radius:999px;padding:2px 9px;white-space:nowrap}
+
+/* masthead: title, shared text, the switch */
+.mast{display:flex;flex-direction:column;align-items:center;text-align:center;gap:20px;padding-block:52px 0}
+.mast h1{font:400 clamp(48px,7.4vw,92px)/.95 var(--display);letter-spacing:-.02em;margin:0;text-wrap:balance}
+.mast h1 em{font-style:italic;color:var(--l-ai)}
+.t-short{display:none}
+.mast .lede{margin:0;max-width:62ch;font-size:19px;line-height:1.6}
+.switch{display:inline-flex;gap:4px;padding:5px;margin-top:8px;border-radius:999px;background:var(--surface);border:1px solid var(--line);box-shadow:0 1px 2px rgba(15,29,51,.06)}
+.switch button{border:0;border-radius:999px;padding:11px 24px;min-height:48px;background:transparent;font-weight:600;font-size:16px;display:flex;align-items:baseline;gap:8px;cursor:pointer}
+.switch button .n{font-weight:500;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.switch button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.switch button[aria-pressed="true"] .n{color:inherit;opacity:.7}
+.sub{margin:0;font-size:15px;color:var(--muted)}.sub b{color:var(--ink);font-weight:600}
+.subs{display:flex;flex-direction:column;align-items:center;gap:12px}
+.pnote{margin:0;font-size:13.5px;line-height:1.5;color:var(--muted);max-width:56ch}
+.pnote b{font-family:var(--display);font-style:italic;font-weight:400;font-size:15px;color:var(--ink)}
+footer .credits{margin:0;flex-basis:100%;max-width:90ch;line-height:1.6}
+
+/* ---------- Storylines view ---------- */
+.legend{display:grid;grid-template-columns:max-content max-content max-content;gap:8px 24px;align-items:center;margin:0;padding:0;list-style:none;font-size:13px;color:var(--muted)}
+.legend li{display:flex;align-items:center;gap:8px}
+.legend svg{flex-shrink:0}
+.legend .lg-h{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.stage{background:var(--surface);border-block:1px solid var(--line);margin-top:40px}
+.stage-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding-block:14px 6px}
+.eras{display:flex;gap:6px;flex-wrap:wrap}
+.era{border:1px solid var(--line);background:var(--chip);border-radius:999px;padding:6px 12px;font-size:13px;cursor:pointer;min-height:36px;display:inline-flex;gap:6px;align-items:baseline}
+.era small{color:var(--muted);font-size:12px;font-variant-numeric:tabular-nums}
+.era[aria-pressed="true"]{border-color:var(--ink);background:var(--ink);color:var(--bg)}
+.era[aria-pressed="true"] small{color:inherit;opacity:.75}
+.stepper{margin-left:auto;display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.step{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--surface);cursor:pointer;display:grid;place-items:center}
+.step:hover{border-color:var(--ink)}
+.step:disabled{opacity:.35;cursor:default}
+.track{position:relative;overflow-x:auto;overflow-y:hidden;scrollbar-width:thin;outline:none;cursor:grab;-webkit-overflow-scrolling:touch}
+.track.dragging{cursor:grabbing}
+.track:focus-visible{box-shadow:inset 0 0 0 3px var(--l-ai)}
+.canvas{position:relative;height:330px}
+.canvas svg.threads{position:absolute;inset:0;pointer-events:none}
+.thread{fill:none;stroke-width:3;stroke-linecap:round}
+.thread.future{stroke-dasharray:0 9;stroke-width:3.5}
+.today{stroke:var(--ink);stroke-width:1.5;stroke-opacity:.55}
+.todaylabel{font:700 11px var(--body);letter-spacing:.12em;fill:var(--ink)}
+.todaydate{font:600 12.5px var(--body);fill:var(--muted);font-variant-numeric:tabular-nums}
+.bridge{stroke-width:2.5;stroke-opacity:.55;transition:stroke-width .15s, stroke-opacity .15s}
+.bridge.on{stroke-width:4;stroke-opacity:1}
+.gapline{stroke:var(--line);stroke-width:1;stroke-dasharray:3 4}
+.gaplabel{font:600 11px var(--body);fill:var(--muted);letter-spacing:.04em}
+.yearband{fill:var(--band);opacity:.7}
+.bandlabel{font:600 11px var(--body);letter-spacing:.12em;fill:var(--muted)}
+.ms{position:absolute;top:0;height:100%;border:0;background:transparent;padding:0;cursor:pointer;border-radius:10px}
+.ms:hover{background:color-mix(in srgb,var(--band) 70%,transparent)}
+.ms[aria-current="true"]{background:var(--select)}
+.ms .node{position:absolute;left:50%;transform:translate(-50%,-50%);transition:transform .18s ease}
+.ms:hover .node{transform:translate(-50%,-50%) scale(1.25)}
+.ms[aria-current="true"] .node{transform:translate(-50%,-50%) scale(1.55)}
+.ms .lab{position:absolute;left:6px;right:6px;top:calc(100% - 92px);text-align:center}
+.ms .yr{display:block;font:600 20px/1 var(--display);font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.ms .sh{display:block;font-size:12.5px;line-height:1.3;color:var(--muted);margin-top:5px;text-wrap:balance}
+.ms[aria-current="true"] .sh{color:var(--ink);font-weight:600}
+.overview{padding-block:6px 16px}
+.overview svg{display:block;width:100%;height:46px;cursor:pointer}
+.ov-axis{stroke:var(--line);stroke-width:1}
+.ov-tick{font:500 10.5px var(--body);fill:var(--muted);font-variant-numeric:tabular-nums}
+.ov-win{fill:var(--select);stroke:var(--l-ai);stroke-width:1}
+.ov-hint{font-size:12px;color:var(--muted);margin:2px 0 0}
+.detail{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:28px 56px;padding-block:34px 18px}
+.eyebrow{display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.when{font-variant-numeric:tabular-nums}
+.detail h2{font:400 clamp(28px,3.4vw,42px)/1.1 var(--display);margin:10px 0 14px;letter-spacing:-.01em;text-wrap:balance}
+.story{font-size:17px;line-height:1.65;max-width:62ch;margin:0}
+.start h3,.more h3{font:700 12px/1 var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:4px 0 12px}
+.cards{display:grid;gap:10px}
+.card{display:block;text-decoration:none;color:inherit;border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:14px 16px;transition:border-color .15s, transform .15s}
+.card:hover{border-color:var(--ink);transform:translateY(-1px)}
+.card .k{font-size:12px;color:var(--muted)}
+.card .t{display:block;font:600 17px/1.3 var(--display);margin-top:4px}
+.card .w{display:block;font-size:13px;color:var(--muted);margin-top:6px}
+.card .go{float:right;font-size:13px;font-weight:600;color:var(--l-ai)}
+.more{padding-block:8px 24px}
+.more-list{list-style:none;margin:0;padding:0;columns:2;column-gap:40px}
+.more-list li{break-inside:avoid;padding:10px 0;border-top:1px solid var(--line)}
+.more-list a{font-weight:600;text-decoration:none}
+.more-list a:hover{text-decoration:underline}
+.more-list .m{display:block;font-size:12.5px;color:var(--muted);margin-top:2px}
+.more-empty{color:var(--muted);font-size:14px;margin:0}
+.to-room{margin-top:14px}
+.gchart{margin:22px 0 0;max-width:62ch}
+.gchart h3{font:700 12px/1 var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+.gchart svg{display:block;width:100%;height:auto;overflow:visible}
+.gbar{fill:var(--l-maths)}
+.gbar-hit{fill:transparent;cursor:default}
+.gbar.on{fill:var(--ink)}
+.gaxis{stroke:var(--line);stroke-width:1}
+.gtick{font:500 11px var(--body);fill:var(--muted);font-variant-numeric:tabular-nums}
+.gval{font:600 12px var(--body);fill:var(--ink);font-variant-numeric:tabular-nums}
+.gnote{font-size:12.5px;color:var(--muted);margin:8px 0 0}
+.gtip{position:fixed;pointer-events:none;background:var(--ink);color:var(--bg);font-size:12.5px;padding:5px 9px;border-radius:7px;transform:translate(-50%,calc(-100% - 8px));opacity:0;z-index:5;white-space:nowrap}
+.gtip.on{opacity:1}
+@keyframes draw{from{stroke-dashoffset:var(--len)}to{stroke-dashoffset:0}}
+.thread.anim{stroke-dasharray:var(--len);animation:draw 1.6s cubic-bezier(.3,.7,.2,1) both}
+
+/* ---------- Reading room view ---------- */
+.room{padding-block:36px 24px}
+.controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:22px 0 6px}
+.search{flex:1 1 260px;min-width:0;position:relative}
+.search input{width:100%;font:inherit;padding:10px 12px 10px 36px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--fg)}
+.search svg{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--muted)}
+.toggle{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--surface)}
+.toggle button{font:inherit;font-size:13px;border:0;background:none;color:var(--muted);padding:9px 12px;cursor:pointer;min-height:40px}
+.toggle button[aria-pressed="true"]{background:var(--navy);color:var(--bg)}
+.chipbtn{font:inherit;font-size:13px;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--fg);padding:8px 14px;cursor:pointer;min-height:40px}
+.chipbtn[aria-pressed="true"]{border-color:var(--rust);color:var(--rust);font-weight:600}
+.btn{font:inherit;font-size:14px;font-weight:600;border:1px solid var(--navy);background:var(--navy);color:var(--bg);border-radius:8px;padding:9px 14px;cursor:pointer;min-height:40px}
+.btn.ghost{background:none;color:var(--navy)}
+.status{font-size:13px;color:var(--muted);margin:8px 0 0;min-height:20px}
+.layout{display:grid;grid-template-columns:230px minmax(0,1fr);gap:40px;margin-top:22px}
+nav.rail{position:sticky;top:calc(env(safe-area-inset-top,0px) + 16px);align-self:start}
+nav.rail a{display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px solid var(--line);text-decoration:none;color:var(--fg);font-size:14px}
+nav.rail a span{color:var(--muted);font-variant-numeric:tabular-nums;font-size:13px}
+.rail-note{font-size:12.5px;color:var(--muted);margin-top:18px;line-height:1.5}
+.chips-nav{display:none}
+section.cat{padding:6px 0 26px;scroll-margin-top:16px}
+.cat-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;border-bottom:2px solid var(--navy);padding-bottom:8px}
+.cat-head h2{font:600 22px/1.2 var(--display);margin:0;color:var(--navy)}
+.cat-head .count{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.cat-desc{margin:8px 0 4px;font-size:14px;color:var(--muted);max-width:70ch}
+ol.items{list-style:none;margin:0;padding:0}
+.item{display:grid;grid-template-columns:96px minmax(0,1fr);gap:18px;padding:16px 0;border-bottom:1px solid var(--line)}
+.date{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;padding-top:3px}
+.item h3{margin:0;font:600 16.5px/1.35 var(--body)}
+.item h3 a{text-decoration:none}.item h3 a:hover{text-decoration:underline}
+.meta{font-size:13.5px;color:var(--muted);margin-top:2px}
+.peer{display:inline-block;margin-left:8px;padding:0 8px;border:1px solid currentColor;border-radius:999px;font-size:12px;font-weight:600;line-height:1.6;color:var(--navy);text-decoration:none;white-space:nowrap}
+a.peer:hover{text-decoration:underline}
+.note{margin:8px 0 0;font:italic 15px/1.5 var(--display);max-width:72ch;padding-left:12px;border-left:2px solid var(--accent)}
+.note .nl{display:block;font:600 11px/1.6 var(--body);font-style:normal;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+.about{margin:0;max-width:76ch;font-size:13.5px;color:var(--muted);border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:12px 14px}
+.about strong{color:var(--fg);font-weight:600}
+.about p{margin:0}.about p+p{margin-top:6px}
+.tlchip{font:inherit;font-size:12px;font-weight:600;color:var(--l-ai);background:var(--select);border:0;border-radius:999px;padding:3px 10px;cursor:pointer;min-height:26px}
+.tlchip:hover{text-decoration:underline}
+section.propose{margin-top:44px;border-top:2px solid var(--navy);padding-top:14px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;scroll-margin-top:16px}
+section.propose h2{font:600 22px/1.2 var(--display);margin:0 0 8px;color:var(--navy)}
+section.propose h3{font:600 15px/1.3 var(--body);margin:0 0 8px}
+.prop-intro{font-size:14.5px;max-width:60ch;margin:0 0 6px}
+.prop-small{font-size:13px;color:var(--muted);margin:6px 0 0;max-width:60ch}
+.agent{display:flex;gap:10px;align-items:flex-start;background:var(--warn-bg);color:var(--warn-fg);border-radius:8px;padding:10px 12px;font-size:13.5px;margin:12px 0 16px;max-width:60ch}
+.agent svg{flex-shrink:0;margin-top:2px}
+form.pf{display:grid;gap:12px;max-width:60ch}
+.mine{list-style:none;margin:0;padding:0}
+.mine li{padding:10px 0;border-bottom:1px solid var(--line);font-size:14px}
+.mine .t{font-weight:600;overflow-wrap:anywhere}
+.mine .s{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:4px;font-size:13px;color:var(--muted)}
+.st{font-size:11.5px;letter-spacing:.04em;text-transform:uppercase;font-weight:600;padding:2px 8px;border-radius:4px;background:var(--chip);color:var(--chip-fg)}
+.st.added{background:none;border:1px solid var(--navy);color:var(--navy)}
+.st.declined{background:none;border:1px solid var(--line);color:var(--muted)}
+.mine .rn{margin:4px 0 0;font-size:13.5px}
+.ok{color:var(--navy);font-size:13.5px;margin:0}
+form.pf .err:empty,form.pf .ok:empty{display:none}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.editbar{position:sticky;top:0;z-index:5;margin:16px 0 0;background:var(--warn-bg);color:var(--warn-fg);border-radius:10px;padding:12px 14px;display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:space-between}
+.editbar p{margin:0;font-size:14px;max-width:70ch}
+.editbar .err{flex-basis:100%}
+.editbar .err:empty{display:none}
+body.editmode [data-edit]{outline:1px dashed var(--accent);outline-offset:3px;border-radius:3px;cursor:text}
+body.editmode [data-edit]:focus{outline:2px solid var(--accent)}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px;align-items:center}
+.tag{font-size:11.5px;letter-spacing:.04em;text-transform:uppercase;font-weight:600;padding:3px 8px;border-radius:4px;background:var(--chip);color:var(--chip-fg)}
+.tag.ox{background:none;border:1px solid var(--rust);color:var(--rust)}
+.tag.warn{background:var(--warn-bg);color:var(--warn-fg)}
+.tag.cat{background:none;border:1px solid var(--line);color:var(--muted)}
+.tag.topic{background:var(--navy);color:var(--bg)}
+.kws{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.kw{font:inherit;font-size:12.5px;border:1px dashed var(--line);border-radius:999px;background:none;color:var(--chip-fg);padding:2px 10px;cursor:pointer;min-height:26px}
+.kw:hover{border-color:var(--accent);color:var(--fg)}
+.topic-panel{margin:18px 0 0;border-left:4px solid var(--navy);background:var(--surface);border-radius:0 10px 10px 0;padding:14px 16px;max-width:90ch}
+.topic-panel.tl{border-left-color:var(--l-ai)}
+.topic-panel h2{font:600 20px/1.2 var(--display);margin:0 0 6px;color:var(--navy)}
+.topic-panel p{margin:0;font-size:14.5px}
+.topic-panel .sub2{margin-top:8px;font-size:13px;color:var(--muted);display:flex;gap:6px 16px;flex-wrap:wrap;align-items:center}
+.kw-index{margin-top:22px}
+.kw-index h3{font:600 12px/1.4 var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 8px}
+.kw-index div{display:flex;flex-wrap:wrap;gap:6px}
+.edit-row{display:flex;gap:12px;margin-top:8px}
+.linkbtn{font:inherit;font-size:13.5px;background:none;border:0;padding:6px 0;color:var(--navy);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.linkbtn.danger{color:var(--rust)}
+.empty{padding:28px 0;color:var(--muted)}
+.empty strong{color:var(--fg)}
+footer{margin-top:28px;padding-block:18px 48px;border-top:1px solid var(--line);font-size:13px;color:var(--muted);display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 24px}
+dialog{border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--fg);padding:0;width:min(640px,calc(100vw - 32px));max-height:calc(100vh - 40px)}
+dialog::backdrop{background:rgba(5,15,30,.45)}
+form.ed{padding:22px;display:grid;gap:14px}
+form.ed h2{margin:0;font:600 20px/1.2 var(--display);color:var(--navy)}
+.field{display:grid;gap:5px}.field label{font-size:13px;font-weight:600}
+.field input,.field select,.field textarea{font:inherit;padding:9px 11px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--fg);width:100%}
+.field textarea{min-height:80px;resize:vertical}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.checks{display:flex;gap:18px;flex-wrap:wrap;font-size:14px}
+.checks label{display:flex;gap:7px;align-items:center}
+.ed-actions{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap}
+.err{color:var(--rust);font-size:13px;min-height:18px}
+.confirm{display:flex;gap:10px;align-items:center;flex-wrap:wrap;font-size:13px;margin-top:8px}
+
+@media (max-width:860px){
+  .layout{grid-template-columns:1fr;gap:8px}
+  nav.rail{display:none}
+  .chips-nav{display:flex;gap:8px;overflow-x:auto;padding:4px 0 10px;margin-top:6px}
+  .chips-nav a{flex-shrink:0;font-size:13px;border:1px solid var(--line);border-radius:999px;padding:6px 12px;text-decoration:none;color:var(--fg);background:var(--surface)}
+  .item{grid-template-columns:1fr;gap:4px}
+  .row2{grid-template-columns:1fr}
+  section.propose{grid-template-columns:1fr;gap:24px}
+  .detail{grid-template-columns:1fr}
+  .more-list{columns:1}
+  .stepper{margin-left:0}
+  .canvas{height:300px}
+  .ms .lab{top:calc(100% - 86px)}
+  .legend{grid-template-columns:auto 1fr 1fr;gap:6px 10px;font-size:12px}
+  .eras{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-inline:-4px;padding-inline:4px}
+  .era{flex-shrink:0}
+  .stage-head{padding-block:10px 4px}
+  .stage{margin-top:28px}
+}
+@media (max-width:640px){
+  .top{gap:6px 10px;padding-top:16px;flex-wrap:wrap}
+  .top .proto{order:5;margin-left:42px}
+  .series{flex:1 1 auto;min-width:0}
+  .owner{flex-shrink:0}
+  .mark{width:32px;height:32px}
+  .series{font-size:13px;line-height:1.3}
+  .series .s-rest{display:block}
+  .owner{font-size:12px}
+  .o-long{display:none}.o-short{display:inline}
+  .mast{padding-block:32px 0;gap:16px}
+  .t-long{display:none}.t-short{display:inline}
+  .mast h1{font-size:56px}
+  .mast .lede{font-size:16px;line-height:1.55}
+  .switch{display:grid;grid-template-columns:1fr 1fr;width:100%;padding:4px}
+  .switch button{justify-content:center;padding:10px 8px;min-height:46px;font-size:15px}
+  .switch button .n{display:none}
+  .sub{font-size:14px}
+  .room{padding-block:24px 16px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+</style>
+
+<header class="wrap top">
+  <img class="mark mark-light" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiI+PGRlZnM+PGNsaXBQYXRoIGlkPSJjYiI+PHJlY3QgeD0iMzAuNyIgeT0iMzAuNyIgd2lkdGg9IjQ1MC42IiBoZWlnaHQ9IjQ1MC42Ij48L3JlY3Q+PC9jbGlwUGF0aD48L2RlZnM+PGcgY2xpcC1wYXRoPSJ1cmwoI2NiKSI+PHBhdGggZD0iTS01Mi44MiwzMS42MyBMMzcuMjksMzEuNjMgTDY1LjE0LDExNy4zMyBMLTI0Ljk3LDExNy4zM1oiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzAwMjE0NyIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PHBhdGggZD0iTS01Mi44Miw0ODAuMzcgTDM3LjI5LDQ4MC4zNyBMNjUuMTQsNTY2LjA3IEwtMjQuOTcsNTY2LjA3WiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDAyMTQ3IiBzdHJva2Utb3BhY2l0eT0iMC42IiBzdHJva2Utd2lkdGg9IjEuOTgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvcGF0aD48cGF0aCBkPSJNMTQxLjc2LDE3My4wMCBMMjI2LjE5LDE3My4wMCBMMjUyLjI4LDI1My4zMCBMMTY3Ljg1LDI1My4zMFoiIGZpbGw9IiNiNzY0ZGMiIGZpbGwtb3BhY2l0eT0iMC43NiI+PC9wYXRoPjxwYXRoIGQ9Ik0yMTAuOTQsMzk0LjY3IEwzMDEuMDYsMzk0LjY3IEwzMjguOTAsNDgwLjM3IEwyMzguNzksNDgwLjM3WiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDAyMTQ3IiBzdHJva2Utb3BhY2l0eT0iMC42IiBzdHJva2Utd2lkdGg9IjEuOTgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvcGF0aD48cGF0aCBkPSJNMzc3LjY4LDE3My4wMCBMNDYyLjExLDE3My4wMCBMNDg4LjIwLDI1My4zMCBMNDAzLjc3LDI1My4zMFoiIGZpbGw9IiM5NTZhZjciIGZpbGwtb3BhY2l0eT0iMC43MSI+PC9wYXRoPjxwYXRoIGQ9Ik0zNzMuOTYsMzQxLjcwIEw0NjQuMDcsMzQxLjcwIEw0OTEuOTIsNDI3LjQwIEw0MDEuODAsNDI3LjQwWiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDAyMTQ3IiBzdHJva2Utb3BhY2l0eT0iMC42IiBzdHJva2Utd2lkdGg9IjEuOTgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvcGF0aD48cGF0aCBkPSJNLTI0Ljk3LDExNy4zMyBMNjUuMTQsMTE3LjMzIEwtNy43NiwxNzAuMzAgTC05Ny44NywxNzAuMzBaIiBmaWxsPSJub25lIiBzdHJva2U9IiMwMDIxNDciIHN0cm9rZS1vcGFjaXR5PSIwLjYiIHN0cm9rZS13aWR0aD0iMS45OCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PC9wYXRoPjxwYXRoIGQ9Ik0yMTEuODIsMTIwLjA0IEwyOTIuNzQsMTIwLjA0IEwyMjcuMjgsMTY3LjYwIEwxNDYuMzYsMTY3LjYwWiIgZmlsbD0iI2E2NjdlOSIgZmlsbC1vcGFjaXR5PSIwLjc0Ij48L3BhdGg+PHBhdGggZD0iTTIzOC43OSw0ODAuMzcgTDMyOC45MCw0ODAuMzcgTDI1Ni4wMCw1MzMuMzQgTDE2NS44OSw1MzMuMzRaIiBmaWxsPSJub25lIiBzdHJva2U9IiMwMDIxNDciIHN0cm9rZS1vcGFjaXR5PSIwLjYiIHN0cm9rZS13aWR0aD0iMS45OCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PC9wYXRoPjxwYXRoIGQ9Ik00MDEuODAsLTIxLjM0IEw0OTEuOTIsLTIxLjM0IEw0MTkuMDEsMzEuNjMgTDMyOC45MCwzMS42M1oiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzAwMjE0NyIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PHBhdGggZD0iTTQwMS44MCw0MjcuNDAgTDQ5MS45Miw0MjcuNDAgTDQxOS4wMSw0ODAuMzcgTDMyOC45MCw0ODAuMzdaIiBmaWxsPSJub25lIiBzdHJva2U9IiMwMDIxNDciIHN0cm9rZS1vcGFjaXR5PSIwLjYiIHN0cm9rZS13aWR0aD0iMS45OCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PC9wYXRoPjxwYXRoIGQ9Ik0tMjQuOTcsMzk0LjY3IEw2NS4xNCwzOTQuNjcgTC03Ljc2LDM0MS43MCBMLTk3Ljg3LDM0MS43MFoiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzAwMjE0NyIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PHBhdGggZD0iTTIxMC45NCwzOTQuNjcgTDMwMS4wNiwzOTQuNjcgTDIyOC4xNSwzNDEuNzAgTDEzOC4wNCwzNDEuNzBaIiBmaWxsPSJub25lIiBzdHJva2U9IiMwMDIxNDciIHN0cm9rZS1vcGFjaXR5PSIwLjYiIHN0cm9rZS13aWR0aD0iMS45OCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PC9wYXRoPjxwYXRoIGQ9Ik0yMzguNzksMzEuNjMgTDMyOC45MCwzMS42MyBMMjU2LjAwLC0yMS4zNCBMMTY1Ljg5LC0yMS4zNFoiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzAwMjE0NyIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PHBhdGggZD0iTTQwMS44MCw1MzMuMzQgTDQ5MS45Miw1MzMuMzQgTDQxOS4wMSw0ODAuMzcgTDMyOC45MCw0ODAuMzdaIiBmaWxsPSJub25lIiBzdHJva2U9IiMwMDIxNDciIHN0cm9rZS1vcGFjaXR5PSIwLjYiIHN0cm9rZS13aWR0aD0iMS45OCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PC9wYXRoPjxwYXRoIGQ9Ik00MDEuODAsODQuNjAgTDQ5MS45Miw4NC42MCBMNDE5LjAxLDMxLjYzIEwzMjguOTAsMzEuNjNaIiBmaWxsPSJub25lIiBzdHJva2U9IiMwMDIxNDciIHN0cm9rZS1vcGFjaXR5PSIwLjYiIHN0cm9rZS13aWR0aD0iMS45OCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PC9wYXRoPjxwYXRoIGQ9Ik0tNTIuODIsNDgwLjM3IEwzNy4yOSw0ODAuMzcgTDY1LjE0LDM5NC42NyBMLTI0Ljk3LDM5NC42N1oiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzAwMjE0NyIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PHBhdGggZD0iTS01Mi44MiwzMS42MyBMMzcuMjksMzEuNjMgTDY1LjE0LC01NC4wNyBMLTI0Ljk3LC01NC4wN1oiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzAwMjE0NyIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PHBhdGggZD0iTTE0MS43NiwzMzkuMDAgTDIyNi4xOSwzMzkuMDAgTDI1Mi4yOCwyNTguNzAgTDE2Ny44NSwyNTguNzBaIiBmaWxsPSIjOGY2YmZjIiBmaWxsLW9wYWNpdHk9IjAuNzEiPjwvcGF0aD48cGF0aCBkPSJNMjE0LjY2LDExNC42MyBMMjk5LjA5LDExNC42MyBMMzI1LjE4LDM0LjMzIEwyNDAuNzUsMzQuMzNaIiBmaWxsPSIjNzY3ZWZmIiBmaWxsLW9wYWNpdHk9IjAuNjYiPjwvcGF0aD48cGF0aCBkPSJNMzc3LjY4LDMzOS4wMCBMNDYyLjExLDMzOS4wMCBMNDg4LjIwLDI1OC43MCBMNDAzLjc3LDI1OC43MFoiIGZpbGw9IiM3Yzc4ZmYiIGZpbGwtb3BhY2l0eT0iMC42NyI+PC9wYXRoPjxwYXRoIGQ9Ik0zNzcuNjgsMTY3LjYwIEw0NjIuMTEsMTY3LjYwIEw0ODguMjAsODcuMzAgTDQwMy43Nyw4Ny4zMFoiIGZpbGw9IiM3MDgyZmYiIGZpbGwtb3BhY2l0eT0iMC42NiI+PC9wYXRoPjxwYXRoIGQ9Ik0zNzMuOTYsLTEwNy4wNCBMNDAxLjgwLC0yMS4zNCBMMzI4LjkwLDMxLjYzIEwzMDEuMDYsLTU0LjA3WiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDAyMTQ3IiBzdHJva2Utb3BhY2l0eT0iMC42IiBzdHJva2Utd2lkdGg9IjEuOTgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvcGF0aD48cGF0aCBkPSJNMTM4LjA0LC0xMDcuMDQgTDE2NS44OSwtMjEuMzQgTDkyLjk5LDMxLjYzIEw2NS4xNCwtNTQuMDdaIiBmaWxsPSJub25lIiBzdHJva2U9IiMwMDIxNDciIHN0cm9rZS1vcGFjaXR5PSIwLjYiIHN0cm9rZS13aWR0aD0iMS45OCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PC9wYXRoPjxwYXRoIGQ9Ik01NjQuODIsMzEuNjMgTDU5Mi42NiwxMTcuMzMgTDUxOS43NiwxNzAuMzAgTDQ5MS45Miw4NC42MFoiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzAwMjE0NyIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PHBhdGggZD0iTTI5OS42MywxMjEuNzEgTDMyNS43MiwyMDIuMDAgTDI1Ny40MiwyNTEuNjMgTDIzMS4zMywxNzEuMzNaIiBmaWxsPSIjZmZhMjU5IiBmaWxsLW9wYWNpdHk9IjAuOTQiPjwvcGF0aD48cGF0aCBkPSJNMTEwLjIwLDI1Ni4wMCBMMTM4LjA0LDM0MS43MCBMNjUuMTQsMzk0LjY3IEwzNy4yOSwzMDguOTdaIiBmaWxsPSJub25lIiBzdHJva2U9IiMwMDIxNDciIHN0cm9rZS1vcGFjaXR5PSIwLjYiIHN0cm9rZS13aWR0aD0iMS45OCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PC9wYXRoPjxwYXRoIGQ9Ik0zNzMuOTYsMzQxLjcwIEw0MDEuODAsNDI3LjQwIEwzMjguOTAsNDgwLjM3IEwzMDEuMDYsMzk0LjY3WiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDAyMTQ3IiBzdHJva2Utb3BhY2l0eT0iMC42IiBzdHJva2Utd2lkdGg9IjEuOTgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvcGF0aD48cGF0aCBkPSJNMjEwLjk0LDM5NC42NyBMMjM4Ljc5LDQ4MC4zNyBMMTY1Ljg5LDUzMy4zNCBMMTM4LjA0LDQ0Ny42M1oiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzAwMjE0NyIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PHBhdGggZD0iTTU2NC44Miw0ODAuMzcgTDU5Mi42Niw1NjYuMDcgTDUxOS43Niw2MTkuMDQgTDQ5MS45Miw1MzMuMzRaIiBmaWxsPSJub25lIiBzdHJva2U9IiMwMDIxNDciIHN0cm9rZS1vcGFjaXR5PSIwLjYiIHN0cm9rZS13aWR0aD0iMS45OCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PC9wYXRoPjxwYXRoIGQ9Ik0zMDEuMDYsLTU0LjA3IEwzMjguOTAsMzEuNjMgTDI1Ni4wMCwtMjEuMzQgTDIyOC4xNSwtMTA3LjA0WiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDAyMTQ3IiBzdHJva2Utb3BhY2l0eT0iMC42IiBzdHJva2Utd2lkdGg9IjEuOTgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvcGF0aD48cGF0aCBkPSJNMzcxLjY2LDE3MS45NyBMMzk2LjY2LDI0OC45MiBMMzMxLjIwLDIwMS4zNiBMMzA2LjIwLDEyNC40MVoiIGZpbGw9IiNmZjhkNWIiIGZpbGwtb3BhY2l0eT0iMC45MCI+PC9wYXRoPjxwYXRoIGQ9Ik0zNy4yOSwzMDguOTcgTDY1LjE0LDM5NC42NyBMLTcuNzYsMzQxLjcwIEwtMzUuNjEsMjU2LjAwWiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDAyMTQ3IiBzdHJva2Utb3BhY2l0eT0iMC42IiBzdHJva2Utd2lkdGg9IjEuOTgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvcGF0aD48cGF0aCBkPSJNNTY0LjgyLDMwOC45NyBMNTkyLjY2LDM5NC42NyBMNTE5Ljc2LDM0MS43MCBMNDkxLjkyLDI1Ni4wMFoiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzAwMjE0NyIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PHBhdGggZD0iTTEzOC4wNCw0NDcuNjMgTDE2NS44OSw1MzMuMzQgTDkyLjk5LDQ4MC4zNyBMNjUuMTQsMzk0LjY3WiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDAyMTQ3IiBzdHJva2Utb3BhY2l0eT0iMC42IiBzdHJva2Utd2lkdGg9IjEuOTgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvcGF0aD48cGF0aCBkPSJNMzcuMjksMzEuNjMgTDY1LjE0LDExNy4zMyBMOTIuOTksMzEuNjMgTDY1LjE0LC01NC4wN1oiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzAwMjE0NyIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PHBhdGggZD0iTTExMC4yMCwyNTYuMDAgTDEzOC4wNCwzNDEuNzAgTDE2NS44OSwyNTYuMDAgTDEzOC4wNCwxNzAuMzBaIiBmaWxsPSJub25lIiBzdHJva2U9IiMwMDIxNDciIHN0cm9rZS1vcGFjaXR5PSIwLjYiIHN0cm9rZS13aWR0aD0iMS45OCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PC9wYXRoPjxwYXRoIGQ9Ik00NjQuMDcsMTcwLjMwIEw0OTEuOTIsMjU2LjAwIEw1MTkuNzYsMTcwLjMwIEw0OTEuOTIsODQuNjBaIiBmaWxsPSJub25lIiBzdHJva2U9IiMwMDIxNDciIHN0cm9rZS1vcGFjaXR5PSIwLjYiIHN0cm9rZS13aWR0aD0iMS45OCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PC9wYXRoPjxwYXRoIGQ9Ik0zNy4yOSw0ODAuMzcgTDY1LjE0LDU2Ni4wNyBMOTIuOTksNDgwLjM3IEw2NS4xNCwzOTQuNjdaIiBmaWxsPSJub25lIiBzdHJva2U9IiMwMDIxNDciIHN0cm9rZS1vcGFjaXR5PSIwLjYiIHN0cm9rZS13aWR0aD0iMS45OCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PC9wYXRoPjxwYXRoIGQ9Ik00NjQuMDcsMzQxLjcwIEw0OTEuOTIsNDI3LjQwIEw1MTkuNzYsMzQxLjcwIEw0OTEuOTIsMjU2LjAwWiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDAyMTQ3IiBzdHJva2Utb3BhY2l0eT0iMC42IiBzdHJva2Utd2lkdGg9IjEuOTgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvcGF0aD48cGF0aCBkPSJNNjM3LjcyLDI1Ni4wMCBMNTY0LjgyLDMwOC45NyBMNDkxLjkyLDI1Ni4wMCBMNTY0LjgyLDIwMy4wM1oiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzAwMjE0NyIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PHBhdGggZD0iTTU2NC44MiwzMS42MyBMNDkxLjkyLDg0LjYwIEw0MTkuMDEsMzEuNjMgTDQ5MS45MiwtMjEuMzRaIiBmaWxsPSJub25lIiBzdHJva2U9IiMwMDIxNDciIHN0cm9rZS1vcGFjaXR5PSIwLjYiIHN0cm9rZS13aWR0aD0iMS45OCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PC9wYXRoPjxwYXRoIGQ9Ik01NjQuODIsNDgwLjM3IEw0OTEuOTIsNTMzLjM0IEw0MTkuMDEsNDgwLjM3IEw0OTEuOTIsNDI3LjQwWiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDAyMTQ3IiBzdHJva2Utb3BhY2l0eT0iMC42IiBzdHJva2Utd2lkdGg9IjEuOTgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvcGF0aD48cGF0aCBkPSJNMzk3LjIxLDI1Ni4wMCBMMzI4LjkwLDMwNS42MiBMMjYwLjYwLDI1Ni4wMCBMMzI4LjkwLDIwNi4zOFoiIGZpbGw9IiNmZmFjNTkiIGZpbGwtb3BhY2l0eT0iMC45NiI+PC9wYXRoPjxwYXRoIGQ9Ik0yMTAuOTQsMTE3LjMzIEwxMzguMDQsMTcwLjMwIEw2NS4xNCwxMTcuMzMgTDEzOC4wNCw2NC4zN1oiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzAwMjE0NyIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PHBhdGggZD0iTTIxMC45NCwzOTQuNjcgTDEzOC4wNCw0NDcuNjMgTDY1LjE0LDM5NC42NyBMMTM4LjA0LDM0MS43MFoiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzAwMjE0NyIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PHBhdGggZD0iTTExMC4yMCwyNTYuMDAgTDM3LjI5LDMwOC45NyBMLTM1LjYxLDI1Ni4wMCBMMzcuMjksMjAzLjAzWiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDAyMTQ3IiBzdHJva2Utb3BhY2l0eT0iMC42IiBzdHJva2Utd2lkdGg9IjEuOTgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvcGF0aD48cGF0aCBkPSJNNTY0LjgyLDIwMy4wMyBMNDkxLjkyLDI1Ni4wMCBMNTE5Ljc2LDE3MC4zMCBMNTkyLjY2LDExNy4zM1oiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzAwMjE0NyIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PHBhdGggZD0iTTM3MS42NiwzNDAuMDMgTDMwNi4yMCwzODcuNTkgTDMzMS4yMCwzMTAuNjQgTDM5Ni42NiwyNjMuMDhaIiBmaWxsPSIjYjM2NWRlIiBmaWxsLW9wYWNpdHk9IjAuNzYiPjwvcGF0aD48cGF0aCBkPSJNMTM4LjA0LDY0LjM3IEw2NS4xNCwxMTcuMzMgTDkyLjk5LDMxLjYzIEwxNjUuODksLTIxLjM0WiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDAyMTQ3IiBzdHJva2Utb3BhY2l0eT0iMC42IiBzdHJva2Utd2lkdGg9IjEuOTgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvcGF0aD48cGF0aCBkPSJNMzAxLjA2LDU2Ni4wNyBMMjI4LjE1LDYxOS4wNCBMMjU2LjAwLDUzMy4zNCBMMzI4LjkwLDQ4MC4zN1oiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzAwMjE0NyIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PHBhdGggZD0iTTM3LjI5LDIwMy4wMyBMLTM1LjYxLDI1Ni4wMCBMLTcuNzYsMTcwLjMwIEw2NS4xNCwxMTcuMzNaIiBmaWxsPSJub25lIiBzdHJva2U9IiMwMDIxNDciIHN0cm9rZS1vcGFjaXR5PSIwLjYiIHN0cm9rZS13aWR0aD0iMS45OCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PC9wYXRoPjxwYXRoIGQ9Ik0zNzMuOTYsNjE5LjA0IEwzMDEuMDYsNTY2LjA3IEwzMjguOTAsNDgwLjM3IEw0MDEuODAsNTMzLjM0WiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDAyMTQ3IiBzdHJva2Utb3BhY2l0eT0iMC42IiBzdHJva2Utd2lkdGg9IjEuOTgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvcGF0aD48cGF0aCBkPSJNNTY0LjgyLDQ4MC4zNyBMNDkxLjkyLDQyNy40MCBMNTE5Ljc2LDM0MS43MCBMNTkyLjY2LDM5NC42N1oiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzAwMjE0NyIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PHBhdGggZD0iTTEzOC4wNCw2MTkuMDQgTDY1LjE0LDU2Ni4wNyBMOTIuOTksNDgwLjM3IEwxNjUuODksNTMzLjM0WiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDAyMTQ3IiBzdHJva2Utb3BhY2l0eT0iMC42IiBzdHJva2Utd2lkdGg9IjEuOTgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvcGF0aD48cGF0aCBkPSJNMjk5LjYzLDM5MC4yOSBMMjMxLjMzLDM0MC42NyBMMjU3LjQyLDI2MC4zNyBMMzI1LjcyLDMxMC4wMFoiIGZpbGw9IiNjMDYzZDQiIGZpbGwtb3BhY2l0eT0iMC43NyI+PC9wYXRoPjxwYXRoIGQ9Ik0zNzIuNTQsMTY1LjkyIEwzMDQuMjMsMTE2LjMwIEwzMzAuMzIsMzYuMDAgTDM5OC42Myw4NS42M1oiIGZpbGw9IiM4ZjZiZmMiIGZpbGwtb3BhY2l0eT0iMC43MSI+PC9wYXRoPjxwYXRoIGQ9Ik01NjQuODIsMzEuNjMgTDQ5MS45MiwtMjEuMzQgTDUxOS43NiwtMTA3LjA0IEw1OTIuNjYsLTU0LjA3WiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDAyMTQ3IiBzdHJva2Utb3BhY2l0eT0iMC42IiBzdHJva2Utd2lkdGg9IjEuOTgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvcGF0aD48cGF0aCBkPSJNMTEwLjIwLDI1Ni4wMCBMMzcuMjksMjAzLjAzIEw2NS4xNCwxMTcuMzMgTDEzOC4wNCwxNzAuMzBaIiBmaWxsPSJub25lIiBzdHJva2U9IiMwMDIxNDciIHN0cm9rZS1vcGFjaXR5PSIwLjYiIHN0cm9rZS13aWR0aD0iMS45OCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PC9wYXRoPjxwYXRoIGQ9Ik0yMTAuOTQsMTE3LjMzIEwxMzguMDQsNjQuMzcgTDE2NS44OSwtMjEuMzQgTDIzOC43OSwzMS42M1oiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzAwMjE0NyIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PC9nPjxyZWN0IHg9IjMwLjciIHk9IjMwLjciIHdpZHRoPSI0NTAuNiIgaGVpZ2h0PSI0NTAuNiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDAyMTQ3IiBzdHJva2Utd2lkdGg9IjYuMTQiPjwvcmVjdD48L3N2Zz4=" alt="" aria-hidden="true">
+  <img class="mark mark-dark" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiI+PGRlZnM+PGNsaXBQYXRoIGlkPSJjYiI+PHJlY3QgeD0iMzAuNyIgeT0iMzAuNyIgd2lkdGg9IjQ1MC42IiBoZWlnaHQ9IjQ1MC42Ij48L3JlY3Q+PC9jbGlwUGF0aD48L2RlZnM+PGcgY2xpcC1wYXRoPSJ1cmwoI2NiKSI+PHBhdGggZD0iTS01Mi44MiwzMS42MyBMMzcuMjksMzEuNjMgTDY1LjE0LDExNy4zMyBMLTI0Ljk3LDExNy4zM1oiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PHBhdGggZD0iTS01Mi44Miw0ODAuMzcgTDM3LjI5LDQ4MC4zNyBMNjUuMTQsNTY2LjA3IEwtMjQuOTcsNTY2LjA3WiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utb3BhY2l0eT0iMC42IiBzdHJva2Utd2lkdGg9IjEuOTgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvcGF0aD48cGF0aCBkPSJNMTQxLjc2LDE3My4wMCBMMjI2LjE5LDE3My4wMCBMMjUyLjI4LDI1My4zMCBMMTY3Ljg1LDI1My4zMFoiIGZpbGw9IiNiNzY0ZGMiIGZpbGwtb3BhY2l0eT0iMC42MSI+PC9wYXRoPjxwYXRoIGQ9Ik0yMTAuOTQsMzk0LjY3IEwzMDEuMDYsMzk0LjY3IEwzMjguOTAsNDgwLjM3IEwyMzguNzksNDgwLjM3WiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utb3BhY2l0eT0iMC42IiBzdHJva2Utd2lkdGg9IjEuOTgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvcGF0aD48cGF0aCBkPSJNMzc3LjY4LDE3My4wMCBMNDYyLjExLDE3My4wMCBMNDg4LjIwLDI1My4zMCBMNDAzLjc3LDI1My4zMFoiIGZpbGw9IiM5NTZhZjciIGZpbGwtb3BhY2l0eT0iMC41MyI+PC9wYXRoPjxwYXRoIGQ9Ik0zNzMuOTYsMzQxLjcwIEw0NjQuMDcsMzQxLjcwIEw0OTEuOTIsNDI3LjQwIEw0MDEuODAsNDI3LjQwWiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utb3BhY2l0eT0iMC42IiBzdHJva2Utd2lkdGg9IjEuOTgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvcGF0aD48cGF0aCBkPSJNLTI0Ljk3LDExNy4zMyBMNjUuMTQsMTE3LjMzIEwtNy43NiwxNzAuMzAgTC05Ny44NywxNzAuMzBaIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS1vcGFjaXR5PSIwLjYiIHN0cm9rZS13aWR0aD0iMS45OCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PC9wYXRoPjxwYXRoIGQ9Ik0yMTEuODIsMTIwLjA0IEwyOTIuNzQsMTIwLjA0IEwyMjcuMjgsMTY3LjYwIEwxNDYuMzYsMTY3LjYwWiIgZmlsbD0iI2E2NjdlOSIgZmlsbC1vcGFjaXR5PSIwLjU3Ij48L3BhdGg+PHBhdGggZD0iTTIzOC43OSw0ODAuMzcgTDMyOC45MCw0ODAuMzcgTDI1Ni4wMCw1MzMuMzQgTDE2NS44OSw1MzMuMzRaIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS1vcGFjaXR5PSIwLjYiIHN0cm9rZS13aWR0aD0iMS45OCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PC9wYXRoPjxwYXRoIGQ9Ik00MDEuODAsLTIxLjM0IEw0OTEuOTIsLTIxLjM0IEw0MTkuMDEsMzEuNjMgTDMyOC45MCwzMS42M1oiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PHBhdGggZD0iTTQwMS44MCw0MjcuNDAgTDQ5MS45Miw0MjcuNDAgTDQxOS4wMSw0ODAuMzcgTDMyOC45MCw0ODAuMzdaIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS1vcGFjaXR5PSIwLjYiIHN0cm9rZS13aWR0aD0iMS45OCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PC9wYXRoPjxwYXRoIGQ9Ik0tMjQuOTcsMzk0LjY3IEw2NS4xNCwzOTQuNjcgTC03Ljc2LDM0MS43MCBMLTk3Ljg3LDM0MS43MFoiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PHBhdGggZD0iTTIxMC45NCwzOTQuNjcgTDMwMS4wNiwzOTQuNjcgTDIyOC4xNSwzNDEuNzAgTDEzOC4wNCwzNDEuNzBaIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS1vcGFjaXR5PSIwLjYiIHN0cm9rZS13aWR0aD0iMS45OCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PC9wYXRoPjxwYXRoIGQ9Ik0yMzguNzksMzEuNjMgTDMyOC45MCwzMS42MyBMMjU2LjAwLC0yMS4zNCBMMTY1Ljg5LC0yMS4zNFoiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PHBhdGggZD0iTTQwMS44MCw1MzMuMzQgTDQ5MS45Miw1MzMuMzQgTDQxOS4wMSw0ODAuMzcgTDMyOC45MCw0ODAuMzdaIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS1vcGFjaXR5PSIwLjYiIHN0cm9rZS13aWR0aD0iMS45OCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PC9wYXRoPjxwYXRoIGQ9Ik00MDEuODAsODQuNjAgTDQ5MS45Miw4NC42MCBMNDE5LjAxLDMxLjYzIEwzMjguOTAsMzEuNjNaIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS1vcGFjaXR5PSIwLjYiIHN0cm9rZS13aWR0aD0iMS45OCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PC9wYXRoPjxwYXRoIGQ9Ik0tNTIuODIsNDgwLjM3IEwzNy4yOSw0ODAuMzcgTDY1LjE0LDM5NC42NyBMLTI0Ljk3LDM5NC42N1oiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PHBhdGggZD0iTS01Mi44MiwzMS42MyBMMzcuMjksMzEuNjMgTDY1LjE0LC01NC4wNyBMLTI0Ljk3LC01NC4wN1oiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PHBhdGggZD0iTTE0MS43NiwzMzkuMDAgTDIyNi4xOSwzMzkuMDAgTDI1Mi4yOCwyNTguNzAgTDE2Ny44NSwyNTguNzBaIiBmaWxsPSIjOGY2YmZjIiBmaWxsLW9wYWNpdHk9IjAuNTIiPjwvcGF0aD48cGF0aCBkPSJNMjE0LjY2LDExNC42MyBMMjk5LjA5LDExNC42MyBMMzI1LjE4LDM0LjMzIEwyNDAuNzUsMzQuMzNaIiBmaWxsPSIjNzY3ZWZmIiBmaWxsLW9wYWNpdHk9IjAuNDUiPjwvcGF0aD48cGF0aCBkPSJNMzc3LjY4LDMzOS4wMCBMNDYyLjExLDMzOS4wMCBMNDg4LjIwLDI1OC43MCBMNDAzLjc3LDI1OC43MFoiIGZpbGw9IiM3Yzc4ZmYiIGZpbGwtb3BhY2l0eT0iMC40NyI+PC9wYXRoPjxwYXRoIGQ9Ik0zNzcuNjgsMTY3LjYwIEw0NjIuMTEsMTY3LjYwIEw0ODguMjAsODcuMzAgTDQwMy43Nyw4Ny4zMFoiIGZpbGw9IiM3MDgyZmYiIGZpbGwtb3BhY2l0eT0iMC40NCI+PC9wYXRoPjxwYXRoIGQ9Ik0zNzMuOTYsLTEwNy4wNCBMNDAxLjgwLC0yMS4zNCBMMzI4LjkwLDMxLjYzIEwzMDEuMDYsLTU0LjA3WiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utb3BhY2l0eT0iMC42IiBzdHJva2Utd2lkdGg9IjEuOTgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvcGF0aD48cGF0aCBkPSJNMTM4LjA0LC0xMDcuMDQgTDE2NS44OSwtMjEuMzQgTDkyLjk5LDMxLjYzIEw2NS4xNCwtNTQuMDdaIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS1vcGFjaXR5PSIwLjYiIHN0cm9rZS13aWR0aD0iMS45OCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PC9wYXRoPjxwYXRoIGQ9Ik01NjQuODIsMzEuNjMgTDU5Mi42NiwxMTcuMzMgTDUxOS43NiwxNzAuMzAgTDQ5MS45Miw4NC42MFoiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PHBhdGggZD0iTTI5OS42MywxMjEuNzEgTDMyNS43MiwyMDIuMDAgTDI1Ny40MiwyNTEuNjMgTDIzMS4zMywxNzEuMzNaIiBmaWxsPSIjZmZhMjU5IiBmaWxsLW9wYWNpdHk9IjAuOTAiPjwvcGF0aD48cGF0aCBkPSJNMTEwLjIwLDI1Ni4wMCBMMTM4LjA0LDM0MS43MCBMNjUuMTQsMzk0LjY3IEwzNy4yOSwzMDguOTdaIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS1vcGFjaXR5PSIwLjYiIHN0cm9rZS13aWR0aD0iMS45OCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PC9wYXRoPjxwYXRoIGQ9Ik0zNzMuOTYsMzQxLjcwIEw0MDEuODAsNDI3LjQwIEwzMjguOTAsNDgwLjM3IEwzMDEuMDYsMzk0LjY3WiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utb3BhY2l0eT0iMC42IiBzdHJva2Utd2lkdGg9IjEuOTgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvcGF0aD48cGF0aCBkPSJNMjEwLjk0LDM5NC42NyBMMjM4Ljc5LDQ4MC4zNyBMMTY1Ljg5LDUzMy4zNCBMMTM4LjA0LDQ0Ny42M1oiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PHBhdGggZD0iTTU2NC44Miw0ODAuMzcgTDU5Mi42Niw1NjYuMDcgTDUxOS43Niw2MTkuMDQgTDQ5MS45Miw1MzMuMzRaIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS1vcGFjaXR5PSIwLjYiIHN0cm9rZS13aWR0aD0iMS45OCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PC9wYXRoPjxwYXRoIGQ9Ik0zMDEuMDYsLTU0LjA3IEwzMjguOTAsMzEuNjMgTDI1Ni4wMCwtMjEuMzQgTDIyOC4xNSwtMTA3LjA0WiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utb3BhY2l0eT0iMC42IiBzdHJva2Utd2lkdGg9IjEuOTgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvcGF0aD48cGF0aCBkPSJNMzcxLjY2LDE3MS45NyBMMzk2LjY2LDI0OC45MiBMMzMxLjIwLDIwMS4zNiBMMzA2LjIwLDEyNC40MVoiIGZpbGw9IiNmZjhkNWIiIGZpbGwtb3BhY2l0eT0iMC44NSI+PC9wYXRoPjxwYXRoIGQ9Ik0zNy4yOSwzMDguOTcgTDY1LjE0LDM5NC42NyBMLTcuNzYsMzQxLjcwIEwtMzUuNjEsMjU2LjAwWiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utb3BhY2l0eT0iMC42IiBzdHJva2Utd2lkdGg9IjEuOTgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvcGF0aD48cGF0aCBkPSJNNTY0LjgyLDMwOC45NyBMNTkyLjY2LDM5NC42NyBMNTE5Ljc2LDM0MS43MCBMNDkxLjkyLDI1Ni4wMFoiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PHBhdGggZD0iTTEzOC4wNCw0NDcuNjMgTDE2NS44OSw1MzMuMzQgTDkyLjk5LDQ4MC4zNyBMNjUuMTQsMzk0LjY3WiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utb3BhY2l0eT0iMC42IiBzdHJva2Utd2lkdGg9IjEuOTgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvcGF0aD48cGF0aCBkPSJNMzcuMjksMzEuNjMgTDY1LjE0LDExNy4zMyBMOTIuOTksMzEuNjMgTDY1LjE0LC01NC4wN1oiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PHBhdGggZD0iTTExMC4yMCwyNTYuMDAgTDEzOC4wNCwzNDEuNzAgTDE2NS44OSwyNTYuMDAgTDEzOC4wNCwxNzAuMzBaIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS1vcGFjaXR5PSIwLjYiIHN0cm9rZS13aWR0aD0iMS45OCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PC9wYXRoPjxwYXRoIGQ9Ik00NjQuMDcsMTcwLjMwIEw0OTEuOTIsMjU2LjAwIEw1MTkuNzYsMTcwLjMwIEw0OTEuOTIsODQuNjBaIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS1vcGFjaXR5PSIwLjYiIHN0cm9rZS13aWR0aD0iMS45OCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PC9wYXRoPjxwYXRoIGQ9Ik0zNy4yOSw0ODAuMzcgTDY1LjE0LDU2Ni4wNyBMOTIuOTksNDgwLjM3IEw2NS4xNCwzOTQuNjdaIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS1vcGFjaXR5PSIwLjYiIHN0cm9rZS13aWR0aD0iMS45OCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PC9wYXRoPjxwYXRoIGQ9Ik00NjQuMDcsMzQxLjcwIEw0OTEuOTIsNDI3LjQwIEw1MTkuNzYsMzQxLjcwIEw0OTEuOTIsMjU2LjAwWiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utb3BhY2l0eT0iMC42IiBzdHJva2Utd2lkdGg9IjEuOTgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvcGF0aD48cGF0aCBkPSJNNjM3LjcyLDI1Ni4wMCBMNTY0LjgyLDMwOC45NyBMNDkxLjkyLDI1Ni4wMCBMNTY0LjgyLDIwMy4wM1oiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PHBhdGggZD0iTTU2NC44MiwzMS42MyBMNDkxLjkyLDg0LjYwIEw0MTkuMDEsMzEuNjMgTDQ5MS45MiwtMjEuMzRaIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS1vcGFjaXR5PSIwLjYiIHN0cm9rZS13aWR0aD0iMS45OCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PC9wYXRoPjxwYXRoIGQ9Ik01NjQuODIsNDgwLjM3IEw0OTEuOTIsNTMzLjM0IEw0MTkuMDEsNDgwLjM3IEw0OTEuOTIsNDI3LjQwWiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utb3BhY2l0eT0iMC42IiBzdHJva2Utd2lkdGg9IjEuOTgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvcGF0aD48cGF0aCBkPSJNMzk3LjIxLDI1Ni4wMCBMMzI4LjkwLDMwNS42MiBMMjYwLjYwLDI1Ni4wMCBMMzI4LjkwLDIwNi4zOFoiIGZpbGw9IiNmZmFjNTkiIGZpbGwtb3BhY2l0eT0iMC45MyI+PC9wYXRoPjxwYXRoIGQ9Ik0yMTAuOTQsMTE3LjMzIEwxMzguMDQsMTcwLjMwIEw2NS4xNCwxMTcuMzMgTDEzOC4wNCw2NC4zN1oiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PHBhdGggZD0iTTIxMC45NCwzOTQuNjcgTDEzOC4wNCw0NDcuNjMgTDY1LjE0LDM5NC42NyBMMTM4LjA0LDM0MS43MFoiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PHBhdGggZD0iTTExMC4yMCwyNTYuMDAgTDM3LjI5LDMwOC45NyBMLTM1LjYxLDI1Ni4wMCBMMzcuMjksMjAzLjAzWiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utb3BhY2l0eT0iMC42IiBzdHJva2Utd2lkdGg9IjEuOTgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvcGF0aD48cGF0aCBkPSJNNTY0LjgyLDIwMy4wMyBMNDkxLjkyLDI1Ni4wMCBMNTE5Ljc2LDE3MC4zMCBMNTkyLjY2LDExNy4zM1oiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PHBhdGggZD0iTTM3MS42NiwzNDAuMDMgTDMwNi4yMCwzODcuNTkgTDMzMS4yMCwzMTAuNjQgTDM5Ni42NiwyNjMuMDhaIiBmaWxsPSIjYjM2NWRlIiBmaWxsLW9wYWNpdHk9IjAuNjAiPjwvcGF0aD48cGF0aCBkPSJNMTM4LjA0LDY0LjM3IEw2NS4xNCwxMTcuMzMgTDkyLjk5LDMxLjYzIEwxNjUuODksLTIxLjM0WiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utb3BhY2l0eT0iMC42IiBzdHJva2Utd2lkdGg9IjEuOTgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvcGF0aD48cGF0aCBkPSJNMzAxLjA2LDU2Ni4wNyBMMjI4LjE1LDYxOS4wNCBMMjU2LjAwLDUzMy4zNCBMMzI4LjkwLDQ4MC4zN1oiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PHBhdGggZD0iTTM3LjI5LDIwMy4wMyBMLTM1LjYxLDI1Ni4wMCBMLTcuNzYsMTcwLjMwIEw2NS4xNCwxMTcuMzNaIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS1vcGFjaXR5PSIwLjYiIHN0cm9rZS13aWR0aD0iMS45OCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PC9wYXRoPjxwYXRoIGQ9Ik0zNzMuOTYsNjE5LjA0IEwzMDEuMDYsNTY2LjA3IEwzMjguOTAsNDgwLjM3IEw0MDEuODAsNTMzLjM0WiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utb3BhY2l0eT0iMC42IiBzdHJva2Utd2lkdGg9IjEuOTgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvcGF0aD48cGF0aCBkPSJNNTY0LjgyLDQ4MC4zNyBMNDkxLjkyLDQyNy40MCBMNTE5Ljc2LDM0MS43MCBMNTkyLjY2LDM5NC42N1oiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PHBhdGggZD0iTTEzOC4wNCw2MTkuMDQgTDY1LjE0LDU2Ni4wNyBMOTIuOTksNDgwLjM3IEwxNjUuODksNTMzLjM0WiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utb3BhY2l0eT0iMC42IiBzdHJva2Utd2lkdGg9IjEuOTgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvcGF0aD48cGF0aCBkPSJNMjk5LjYzLDM5MC4yOSBMMjMxLjMzLDM0MC42NyBMMjU3LjQyLDI2MC4zNyBMMzI1LjcyLDMxMC4wMFoiIGZpbGw9IiNjMDYzZDQiIGZpbGwtb3BhY2l0eT0iMC42MyI+PC9wYXRoPjxwYXRoIGQ9Ik0zNzIuNTQsMTY1LjkyIEwzMDQuMjMsMTE2LjMwIEwzMzAuMzIsMzYuMDAgTDM5OC42Myw4NS42M1oiIGZpbGw9IiM4ZjZiZmMiIGZpbGwtb3BhY2l0eT0iMC41MiI+PC9wYXRoPjxwYXRoIGQ9Ik01NjQuODIsMzEuNjMgTDQ5MS45MiwtMjEuMzQgTDUxOS43NiwtMTA3LjA0IEw1OTIuNjYsLTU0LjA3WiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utb3BhY2l0eT0iMC42IiBzdHJva2Utd2lkdGg9IjEuOTgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvcGF0aD48cGF0aCBkPSJNMTEwLjIwLDI1Ni4wMCBMMzcuMjksMjAzLjAzIEw2NS4xNCwxMTcuMzMgTDEzOC4wNCwxNzAuMzBaIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS1vcGFjaXR5PSIwLjYiIHN0cm9rZS13aWR0aD0iMS45OCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PC9wYXRoPjxwYXRoIGQ9Ik0yMTAuOTQsMTE3LjMzIEwxMzguMDQsNjQuMzcgTDE2NS44OSwtMjEuMzQgTDIzOC43OSwzMS42M1oiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PC9nPjxyZWN0IHg9IjMwLjciIHk9IjMwLjciIHdpZHRoPSI0NTAuNiIgaGVpZ2h0PSI0NTAuNiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjYuMTQiPjwvcmVjdD48L3N2Zz4=" alt="" aria-hidden="true">
+  <span class="series"><b>Oxford Mathematics</b> <span class="s-rest">in conversation on AI</span></span>
+  <!--PROTO-->
+  <span class="owner"><span class="o-long">© <a href="https://www.maths.ox.ac.uk/people/jan.obloj" target="_blank" rel="noopener">Jan Obłój</a> · personal page, not an official University site</span><span class="o-short">© <a href="https://www.maths.ox.ac.uk/people/jan.obloj" target="_blank" rel="noopener">Jan Obłój</a><br>personal page</span></span>
+</header>
+
+<div class="wrap">
+  <div class="editbar" id="editbar" hidden role="region" aria-label="Page editing">
+    <p><strong>Editing the page.</strong> Click any outlined text to change it. Entries show Edit and Remove links. Nothing is saved until you press Save.</p>
+    <div class="ed-actions">
+      <button type="button" class="btn ghost" id="add">Add a resource</button>
+      <button type="button" class="btn ghost" id="edit-cancel">Cancel</button>
+      <button type="button" class="btn" id="edit-save">Save changes</button>
+    </div>
+    <p class="err" id="edit-err" role="alert"></p>
+  </div>
+</div>
+
+<section class="wrap mast" aria-labelledby="mast-h">
+  <h1 id="mast-h"><span class="t-long">Mathematics <em>and</em> AI</span><span class="t-short" aria-hidden="true">Maths <em>&amp;</em> AI</span></h1>
+  <p class="lede" data-edit="lede1">Mathematics made, and is making, modern AI possible. AI, in turn, is revolutionising mathematics. The two storylines are intertwined. The next chapters need critical judgement, conversation across communities and more mathematics.</p>
+  <div class="switch" role="group" aria-label="Choose a view">
+    <button type="button" id="sw-story" aria-pressed="true" aria-controls="view-story">Storylines <span class="n" id="n-ms"></span></button>
+    <button type="button" id="sw-room" aria-pressed="false" aria-controls="view-room">Reading room <span class="n" id="n-room"></span></button>
+  </div>
+  <div class="subs" id="sub-story">
+    <p class="sub"><b>Understanding the history:</b> 90 years. <span id="sub-ms-n">40</span> milestones. From Turing to today.</p>
+    <p class="pnote"><b>A personal perspective.</b> Have I missed something? <a href="https://forms.gle/HHT913Cqg3g2h9Bt9" target="_blank" rel="noopener">Propose a milestone</a>.</p>
+  </div>
+  <div class="subs" id="sub-room" hidden>
+    <p class="sub"><b>Hearing diverse views:</b> statements, letters, essays, films and more.</p>
+    <p class="pnote"><b>A personal reading list.</b> Know something that belongs here? <a href="#propose" id="go-propose">Propose a resource</a>.</p>
+  </div>
+</section>
+
+<!-- ===== Storylines ===== -->
+<div id="view-story">
+  <section class="stage" aria-label="Timeline">
+    <div class="wrap">
+      <div class="stage-head">
+        <ul class="legend" id="legend" aria-label="Key"></ul>
+      </div>
+      <div class="stage-head">
+        <div class="eras" id="eras" role="group" aria-label="Jump to a period"></div>
+        <div class="stepper">
+          <button type="button" class="step" id="prev" aria-label="Previous milestone"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3L5 8l5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <span id="count" aria-live="polite"></span>
+          <button type="button" class="step" id="next" aria-label="Next milestone"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <div class="track" id="track" tabindex="0" aria-label="Milestones, scroll sideways or use the arrow keys">
+      <div class="canvas" id="canvas"></div>
+    </div>
+    <div class="wrap overview">
+      <svg id="ov" role="img" aria-label="Overview of the whole timeline from 1936 to 2026, at true scale"></svg>
+      <p class="ov-hint">At true scale: ninety years of ideas, then 2026. Click to move along the timeline.</p>
+    </div>
+  </section>
+  <div class="gtip" id="gtip" aria-hidden="true"></div>
+  <div class="wrap">
+    <article class="detail" id="detail" aria-live="polite"></article>
+    <section class="more" id="more"></section>
+  </div>
+</div>
+
+<!-- ===== Reading room ===== -->
+<div id="view-room" class="wrap room" hidden>
+
+  <div class="controls">
+    <div class="search">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
+      <input id="q" type="search" placeholder="Search titles, people, notes" aria-label="Search the reading room">
+    </div>
+    <div class="toggle" role="group" aria-label="Arrange by">
+      <button type="button" id="by-cat" aria-pressed="true">By category</button>
+      <button type="button" id="by-date" aria-pressed="false">Newest first</button>
+      <button type="button" id="by-new" aria-pressed="false">Recently added</button>
+    </div>
+    <span id="topic-btns" style="display:contents"></span>
+    <button type="button" class="chipbtn" id="ox" aria-pressed="false">Oxford</button>
+    <button type="button" class="btn ghost" id="copy">Copy list</button>
+    <a class="btn ghost" href="#propose" style="text-decoration:none;display:inline-flex;align-items:center">Propose a resource</a>
+  </div>
+  <div id="topic-panel"></div>
+  <p class="status" id="status" role="status" aria-live="polite">Loading the reading room…</p>
+  <nav class="chips-nav" id="chips" aria-label="Jump to category"></nav>
+
+  <div class="layout">
+    <nav class="rail" id="rail" aria-label="Categories"></nav>
+    <main id="list">
+      <div class="empty"><strong>The reading room is loading.</strong> Declarations, statements, viewpoints, films and voices to follow will appear here.</div>
+    </main>
+  </div>
+
+  <section class="propose" id="propose" aria-labelledby="prop-h">
+    <div>
+      <h2 id="prop-h" data-edit="prop-title">Propose a resource</h2>
+      <p class="prop-intro" data-edit="prop-intro">A statement, essay, film, podcast or post that belongs here? Send the link with a line on why it matters.</p>
+      <div class="agent">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v5M12 16h.01"></path></svg>
+        <span><strong>Reviewed by an AI agent.</strong> <span data-edit="prop-agent">Because of time constraints, proposals are reviewed by Jan’s AI agent (Claude), normally within a day. It opens the link, checks what it says and looks for duplicates. Jan decides what is added.</span></span>
+      </div>
+      <form class="pf" id="pform" novalidate>
+        <div class="field"><label for="p-url">Link</label><input id="p-url" type="url" required placeholder="https://" maxlength="600"></div>
+        <div class="field"><label for="p-title">Title <span style="font-weight:400;color:var(--muted)">(optional)</span></label><input id="p-title" maxlength="300"></div>
+        <div class="field"><label for="p-cat">Where it might go <span style="font-weight:400;color:var(--muted)">(optional)</span></label><select id="p-cat"><option value="">Not sure</option></select></div>
+        <div class="field"><label for="p-why">Why it matters <span style="font-weight:400;color:var(--muted)">(optional)</span></label><textarea id="p-why" maxlength="600" placeholder="One or two sentences"></textarea></div>
+        <div class="hp" aria-hidden="true"><label for="p-web">Leave this empty</label><input id="p-web" tabindex="-1" autocomplete="off"></div>
+        <p class="err" id="p-err" role="alert"></p>
+        <div class="ed-actions" style="justify-content:flex-start"><button type="submit" class="btn" id="p-send">Send proposal</button></div>
+        <p class="ok" id="p-ok" role="status" aria-live="polite"></p>
+      </form>
+      <p class="prop-small" id="p-access" hidden></p>
+    </div>
+    <div id="mine-col">
+      <h3>Your proposals</h3>
+      <ul class="mine" id="mine"><li style="color:var(--muted)">Nothing sent yet.</li></ul>
+      <p class="prop-small">Only you and the page’s editors can see your proposals.</p>
+    </div>
+  </section>
+</div>
+
+<footer class="wrap">
+  <p class="credits">Created and curated by <a href="https://www.maths.ox.ac.uk/people/jan.obloj" target="_blank" rel="noopener">Jan Obłój</a>, using Claude AI (mainly Opus 5.5) and ChatGPT (mainly GPT-6.1 Sol). I pay for a Claude Pro subscription. I acknowledge OpenAI for providing access to ChatGPT through its ChatGPT for Academic Researchers programme. Fact-checking by myself and AI. Humans and AI make mistakes: if you think we got something egregiously wrong, please <a href="#" id="feedback">submit feedback</a>. Anonymous feedback will not be considered. These are personal pages: they do not represent the views of the Mathematical Institute or the University of Oxford.</p>
+  <span class="copy">© 2026 Jan Obłój. All rights reserved. You are welcome to link to this page and to quote short passages with credit.</span>
+  <span id="foot-edit"><button type="button" class="linkbtn" id="edit-start" hidden>Edit this page</button></span>
+</footer>
+
+<dialog id="dlg" aria-labelledby="dlg-title">
+  <form class="ed" id="form" method="dialog">
+    <h2 id="dlg-title">Add a resource</h2>
+    <div class="field"><label for="f-title">Title</label><input id="f-title" required maxlength="300"></div>
+    <div class="field"><label for="f-url">Link</label><input id="f-url" type="url" required placeholder="https://"></div>
+    <div class="row2">
+      <div class="field"><label for="f-cat">Category</label><select id="f-cat"></select></div>
+      <div class="field"><label for="f-kind">Kind</label><input id="f-kind" placeholder="Open letter, column, podcast…" maxlength="60"></div>
+    </div>
+    <div class="row2">
+      <div class="field"><label for="f-who">Who</label><input id="f-who" placeholder="Author, body or outlet" maxlength="200"></div>
+      <div class="field"><label for="f-date">Date</label><input id="f-date" type="date"></div>
+    </div>
+    <div class="field"><label for="f-note">Curator’s note</label><textarea id="f-note" maxlength="800" placeholder="One or two sentences"></textarea></div>
+    <div class="field"><label for="f-kw">Keywords <span style="font-weight:400;color:var(--muted)">(comma-separated: areas, problems, methods)</span></label><input id="f-kw" maxlength="300" placeholder="Number theory, Riemann hypothesis"></div>
+    <div class="checks" id="f-topics"></div>
+    <div class="checks">
+      <label><input type="checkbox" id="f-ox"> Oxford connection</label>
+      <label><input type="checkbox" id="f-checked" checked> Link opened and checked</label>
+    </div>
+    <p class="err" id="f-err" role="alert"></p>
+    <div class="ed-actions">
+      <button type="button" class="btn ghost" id="f-cancel">Cancel</button>
+      <button type="submit" class="btn" id="f-save">Save</button>
+    </div>
+  </form>
+</dialog>
+
+<script>
+const CATS = [
+  {id:"declaration", name:"Declarations & open letters", desc:"Collective, signed texts: declarations, open letters and petitions."},
+  {id:"institutional", name:"Institutional statements & reports", desc:"Official outputs from learned societies, advisory bodies, institutes, funders and universities."},
+  {id:"announcements", name:"AI lab announcements", desc:"What the frontier labs themselves have announced: results, releases and commitments. Best read alongside the reactions."},
+  {id:"initiative", name:"Community initiatives", desc:"Things mathematicians are building in response: journals, projects, challenges."},
+  {id:"viewpoint", name:"Personal viewpoints", desc:"Essays, columns, guest posts, personal statements and collected reactions from individuals."},
+  {id:"socials", name:"Social posts", desc:"Posts on X, Mastodon, LinkedIn and elsewhere, including from mathematicians at the AI labs and members of the Advisory Group on Mathematics and AI that advises OpenAI."},
+  {id:"media", name:"Films, interviews & podcasts", desc:"Watch or listen: interviews, lectures, documentaries and podcasts."},
+  {id:"news", name:"News & analysis", desc:"Press coverage and analysis."},
+  {id:"voices", name:"Blogs & live resources", desc:"Ongoing blogs, feeds and continually updated records worth checking regularly."}
+];
+const TOPICS = [
+  {id:"big-dump", name:"The Big Dump", title:"The Big Dump: OpenAI’s 6 October release",
+   desc:"On 6 October 2026 OpenAI posted 722 manuscripts from an internal model, grouped into 372 families of results across mathematics and theoretical computer science. This view gathers what responds to it: the headline papers, the human work that checks and builds on them, expert readings of the mathematics, and the statements and reactions."}
+];
+const TL_DATA = {"milestones": [{"id": "turing-1936", "date": "1936", "lane": "maths", "short": "Computation defined", "title": "Turing defines what a machine can compute", "story": "Alan Turing's paper “On Computable Numbers” describes an imaginary machine that can carry out any calculation that can be written as a step-by-step procedure, and proves that some well-posed problems, such as deciding whether a given statement of first-order logic is provable, cannot be solved by any such procedure. His machines, including a universal one that can imitate all the others, became a foundation of theoretical computer science and remain the standard account of what any computer, or any AI system, can in principle compute.", "start": [{"title": "Turing machine", "url": "https://en.wikipedia.org/wiki/Turing_machine", "who": "Wikipedia", "kind": "Explainer"}]}, {"id": "neuron-1943", "date": "1943", "lane": "maths", "short": "A mathematical neuron", "title": "A neuron, written as mathematics", "story": "Warren McCulloch and Walter Pitts model a brain cell as a simple logical unit that fires when its inputs pass a threshold, and show that networks of such units can carry out any logical operation. Their idealised neuron is the ancestor of the units in today's neural networks.", "start": [{"title": "Artificial neuron", "url": "https://en.wikipedia.org/wiki/Artificial_neuron", "who": "Wikipedia", "kind": "Explainer"}]}, {"id": "shannon-1948", "date": "1948", "lane": "maths", "short": "Information theory", "title": "Shannon turns information into mathematics", "story": "Claude Shannon's “A Mathematical Theory of Communication” measures information in bits and treats language as a source of probabilities. In one experiment he generates English-like text by choosing each word according to how often it follows the previous one: an early precursor of the next-token prediction on which today's chatbots are built, though they condition on far longer context.", "start": [{"title": "A Mathematical Theory of Communication", "url": "https://en.wikipedia.org/wiki/A_Mathematical_Theory_of_Communication", "who": "Wikipedia", "kind": "Explainer"}]}, {"id": "turing-1950", "date": "1950", "lane": "moments", "short": "“Can machines think?”", "title": "Turing asks: can machines think?", "story": "In “Computing Machinery and Intelligence” Turing replaces the question with a test, the imitation game: can a machine hold a typed conversation that a person cannot tell apart from a human's? The paper anticipates many of the questions and objections that will occupy the field about to be named.", "start": [{"title": "Computing Machinery and Intelligence", "url": "https://en.wikipedia.org/wiki/Computing_Machinery_and_Intelligence", "who": "Wikipedia", "kind": "Explainer"}]}, {"id": "dartmouth-1956", "date": "1956", "lane": "moments", "short": "AI gets its name", "title": "Artificial intelligence gets its name", "story": "A summer workshop at Dartmouth College launches “artificial intelligence” as a field. John McCarthy coined the name in the 1955 proposal he wrote with Marvin Minsky, Nathaniel Rochester and Claude Shannon. The proposal rests on the conjecture that “every aspect of learning or any other feature of intelligence can in principle be so precisely described that a machine can be made to simulate it”.", "start": [{"title": "Dartmouth workshop", "url": "https://en.wikipedia.org/wiki/Dartmouth_workshop", "who": "Wikipedia", "kind": "Explainer"}]}, {"id": "logic-1956", "date": "1956", "lane": "ai", "short": "A machine proves theorems", "title": "A program proves theorems from Principia", "story": "The Logic Theorist, by Allen Newell, Herbert Simon and Cliff Shaw, proves 38 of the first 52 theorems in chapter 2 of Whitehead and Russell's Principia Mathematica, one of them more elegantly than the original. Often described as the first artificial intelligence program, it made mathematics one of AI's first proving grounds.", "start": [{"title": "Logic Theorist", "url": "https://en.wikipedia.org/wiki/Logic_Theorist", "who": "Wikipedia", "kind": "Explainer"}]}, {"id": "perceptron-1958", "date": "1958", "lane": "maths", "short": "The perceptron", "title": "The perceptron learns from examples", "story": "Frank Rosenblatt's perceptron learns to sort simple images by adjusting numerical weights after each mistake, making it one of the first neural networks trained from examples. Minsky and Papert's 1969 mathematical analysis of its limits is often blamed for a decline in neural-network research in the 1970s, although historians debate how large its role was.", "start": [{"title": "Perceptron", "url": "https://en.wikipedia.org/wiki/Perceptron", "who": "Wikipedia", "kind": "Explainer"}]}, {"id": "automath-1967", "date": "1967", "lane": "ai", "short": "Automath", "title": "A computer checks mathematical proofs", "story": "Nicolaas de Bruijn begins Automath, a formal language in which mathematics can be written precisely enough for a computer to check every step. His doctoral student Bert van Benthem Jutting translates the whole of Landau's textbook Foundations of Analysis into Automath; the computer finishes checking it in 1975. Automath is a forerunner of today's proof assistants, such as Lean.", "start": [{"title": "Automath", "url": "https://en.wikipedia.org/wiki/Automath", "who": "Wikipedia", "kind": "Explainer"}]}, {"id": "autodiff-1970", "date": "1970", "lane": "maths", "short": "Automatic differentiation", "title": "Differentiating a computation", "story": "In his master's thesis at the University of Helsinki, written to study rounding errors, Seppo Linnainmaa describes what is now called reverse-mode automatic differentiation. For a program with a single numerical output, it computes the derivatives of that output with respect to all of its inputs at a small constant multiple of the cost of running the program once. Backpropagation, later applied to neural networks by Paul Werbos and by David Rumelhart, Geoffrey Hinton and Ronald Williams, is a special case.", "start": [{"title": "Automatic differentiation", "url": "https://en.wikipedia.org/wiki/Automatic_differentiation", "who": "Wikipedia", "kind": "Explainer"}]}, {"id": "fourcolour-1976", "date": "1976", "lane": "ai", "short": "Four colour theorem", "title": "A proof too long to check by hand", "story": "Kenneth Appel and Wolfgang Haken prove the four colour theorem by reducing it to nearly two thousand configurations, each checked by computer, with programming by John Koch. Mathematicians argue for years about whether a proof too long for any person to check in full by hand should count. This is exhaustive computation, not AI.", "start": [{"title": "Four color theorem", "url": "https://en.wikipedia.org/wiki/Four_color_theorem", "who": "Wikipedia", "kind": "Explainer"}]}, {"id": "hopfield-1982", "date": "1982", "lane": "maths", "short": "Hopfield networks", "title": "Memory as physics", "story": "John Hopfield shows that a network of simple units can store memories as low-energy states, borrowing mathematics from the physics of magnetic materials: a partial or noisy pattern can settle into a stored pattern. In 1985 David Ackley, Geoffrey Hinton and Terrence Sejnowski extend the idea to the Boltzmann machine, which learns from data. Hopfield and Hinton share the 2024 Nobel Prize in Physics.", "start": [{"title": "Hopfield network", "url": "https://en.wikipedia.org/wiki/Hopfield_network", "who": "Wikipedia", "kind": "Explainer"}, {"title": "The Nobel Prize in Physics 2024: popular science background", "url": "https://www.nobelprize.org/prizes/physics/2024/popular-information/", "who": "Nobel Prize", "kind": "Explainer"}]}, {"id": "pac-1984", "date": "1984", "lane": "maths", "short": "What can be learned?", "title": "A theory of what can be learned", "story": "Leslie Valiant's “A Theory of the Learnable” defines probably approximately correct (PAC) learning: a precise mathematical account of what it means for a machine to learn a concept from examples, and of how many examples and how much computation it needs. It gives rise to the field of computational learning theory and is among the contributions cited in Valiant's 2010 Turing Award.", "start": [{"title": "Probably approximately correct learning", "url": "https://en.wikipedia.org/wiki/Probably_approximately_correct_learning", "who": "Wikipedia", "kind": "Explainer"}]}, {"id": "backprop-1986", "date": "1986", "lane": "maths", "short": "Backpropagation", "title": "Learning with the chain rule", "story": "David Rumelhart, Geoffrey Hinton and Ronald Williams show in Nature how networks with hidden layers can learn useful internal representations by backpropagation: the chain rule of calculus applied layer by layer to work out how each weight should change. The method had earlier roots, but this paper made it widely known, and it remains at the heart of how neural networks are trained.", "start": [{"title": "Backpropagation", "url": "https://en.wikipedia.org/wiki/Backpropagation", "who": "Wikipedia", "kind": "Explainer"}]}, {"id": "uat-1989", "date": "1989", "lane": "maths", "short": "Universal approximation", "title": "Neural networks can approximate any continuous function", "story": "George Cybenko, Ken-Ichi Funahashi, and Kurt Hornik with Maxwell Stinchcombe and Halbert White, prove at about the same time versions of the universal approximation theorem: a network with a single hidden layer of suitable nonlinear units, given enough of them, can approximate any continuous function on a closed, bounded region as closely as you like. It shows that neural networks are expressive enough in principle, though not how large they must be or how to train them.", "start": [{"title": "Universal approximation theorem", "url": "https://en.wikipedia.org/wiki/Universal_approximation_theorem", "who": "Wikipedia", "kind": "Explainer"}]}, {"id": "deepblue-1997", "date": "1997-05", "lane": "moments", "short": "Deep Blue beats Kasparov", "title": "Deep Blue beats the world chess champion", "story": "IBM's Deep Blue beats Garry Kasparov 3½–2½ in a six-game match in New York. It searches typically 100 to 200 million positions a second, guided by an evaluation function largely tuned by hand rather than learned. It is the first time a reigning world champion loses a match to a computer under standard time controls.", "start": [{"title": "Deep Blue versus Garry Kasparov", "url": "https://en.wikipedia.org/wiki/Deep_Blue_versus_Garry_Kasparov", "who": "Wikipedia", "kind": "Explainer"}]}, {"id": "kepler-1998", "date": "1998", "lane": "ai", "short": "Kepler conjecture", "title": "Kepler's conjecture, settled by computer", "story": "Thomas Hales, with his student Samuel Ferguson, announces a computer-assisted proof that no packing of equal spheres is denser than the greengrocer's way of stacking oranges. Referees could not verify all the computer calculations, so Hales led the Flyspeck project, which completed a fully machine-checked proof in 2014.", "start": [{"title": "Kepler conjecture", "url": "https://en.wikipedia.org/wiki/Kepler_conjecture", "who": "Wikipedia", "kind": "Explainer"}]}, {"id": "cs-2006", "date": "2006", "lane": "maths", "short": "Compressed sensing", "title": "Recovering more from less", "story": "Emmanuel Candès, Justin Romberg and Terence Tao, and independently David Donoho, show that a sparse signal can be recovered exactly, with high probability, from far fewer measurements than generic reconstruction would require, by solving a convex optimisation problem. Compressed sensing is now used to shorten some MRI scans, and its ideas on sparsity and random measurement have become part of the mathematics of high-dimensional data.", "start": [{"title": "Compressed sensing", "url": "https://en.wikipedia.org/wiki/Compressed_sensing", "who": "Wikipedia", "kind": "Explainer"}]}, {"id": "dbn-2006", "date": "2006-07", "lane": "maths", "short": "Deep networks revived", "title": "Layer-by-layer pretraining revives deep networks", "story": "Geoffrey Hinton, Simon Osindero and Yee-Whye Teh show how to train a deep “belief net” one layer at a time, each layer learning to model the activity of the layer below. With Hinton and Ruslan Salakhutdinov's paper in Science the same year, the work revives interest in deep neural networks after a period in which many researchers had favoured other methods, and helps popularise the term “deep learning”.", "start": [{"title": "Deep belief network", "url": "https://en.wikipedia.org/wiki/Deep_belief_network", "who": "Wikipedia", "kind": "Explainer"}]}, {"id": "alexnet-2012", "date": "2012", "lane": "moments", "short": "Deep learning takes off", "title": "Deep learning takes off", "story": "AlexNet, a deep neural network built by Alex Krizhevsky, Ilya Sutskever and Geoffrey Hinton and trained on graphics chips, wins the ImageNet image-recognition contest by a wide margin. Following early successes in speech recognition, it persuades much of the computer-vision community, and within a few years deep learning is in wide use, from image search to machine translation.", "start": [{"title": "AlexNet", "url": "https://en.wikipedia.org/wiki/AlexNet", "who": "Wikipedia", "kind": "Explainer"}]}, {"id": "alphago-2016", "date": "2016-03", "lane": "moments", "short": "AlphaGo beats Lee Sedol", "title": "AlphaGo beats Lee Sedol", "story": "DeepMind's AlphaGo, which learned from human games and then from playing itself, beats Lee Sedol, one of the strongest Go players of his era, 4–1 in Seoul. Its 37th move in game two, which AlphaGo estimated a human would play only once in ten thousand times, became a symbol of machine creativity.", "start": [{"title": "AlphaGo versus Lee Sedol", "url": "https://en.wikipedia.org/wiki/AlphaGo_versus_Lee_Sedol", "who": "Wikipedia", "kind": "Explainer"}]}, {"id": "transformer-2017", "date": "2017-06", "lane": "maths", "short": "Attention Is All You Need", "title": "“Attention Is All You Need”", "story": "Eight researchers working at Google introduce the transformer. Its core, attention, is built from linear algebra: each token (a word or piece of a word) is mapped to query, key and value vectors; queries are compared with keys by dot products, a softmax turns the scores into weights, and the token's new representation is the weighted average of the values. It is the architecture behind most of today's leading large language models.", "start": [{"title": "Attention Is All You Need", "url": "https://arxiv.org/abs/1706.03762", "who": "Vaswani et al.", "kind": "Paper"}, {"title": "Transformer (deep learning architecture)", "url": "https://en.wikipedia.org/wiki/Transformer_(deep_learning_architecture)", "who": "Wikipedia", "kind": "Explainer"}]}, {"id": "intuition-2021", "date": "2021-12", "lane": "ai", "short": "AI guides intuition", "title": "Machine learning guides mathematicians' intuition", "story": "DeepMind works with mathematicians, including Oxford's Marc Lackenby and András Juhász in knot theory and Geordie Williamson of the University of Sydney in representation theory, using machine learning to spot patterns that guide human intuition. The collaboration, published in Nature, leads to a new theorem in knot theory, proved by people, and a new conjecture in representation theory.", "start": [{"title": "Machine Learning Becomes a Mathematical Collaborator", "url": "https://www.quantamagazine.org/deepmind-machine-learning-becomes-a-mathematical-collaborator-20220215/", "who": "Kelsey Houston-Edwards, Quanta Magazine", "kind": "Feature"}, {"title": "Advancing mathematics by guiding human intuition with AI", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8636249", "who": "Davies et al., Nature", "kind": "Paper"}]}, {"id": "chatgpt-2022", "date": "2022-11", "lane": "moments", "short": "ChatGPT", "title": "ChatGPT brings language models to everyone", "story": "OpenAI releases ChatGPT, which, by OpenAI's count, passes a million users in five days; analysts estimated 100 million monthly users within two months. Conversations with a large language model become an everyday experience for millions, and questions about what these systems understand, including mathematics, move from labs to classrooms.", "start": [{"title": "ChatGPT", "url": "https://en.wikipedia.org/wiki/ChatGPT", "who": "Wikipedia", "kind": "Explainer"}]}, {"id": "funsearch-2023", "date": "2023-12", "lane": "ai", "short": "FunSearch", "title": "A language model makes a discovery", "story": "Google DeepMind's FunSearch pairs a language model with an automatic evaluator that scores the programs it writes. It finds a cap set of 512 points in eight dimensions over the field with three elements (points of F₃⁸, no three on a line), beating the previous best of 496, and improves the lower bound on how fast the largest cap sets grow with the dimension. These are among the first new results on an open problem from a system built on a language model.", "start": [{"title": "Mathematical discoveries from program search with large language models", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10794145", "who": "Romera-Paredes et al., Nature", "kind": "Paper"}]}, {"id": "imo-2024", "date": "2024-07", "lane": "ai", "short": "Olympiad silver", "title": "Silver at the International Mathematical Olympiad", "story": "Google DeepMind's AlphaProof and AlphaGeometry 2 solve four of the six problems at the International Mathematical Olympiad, scoring 28 of 42, a silver-medal standard. The problems were first translated by hand into formal language (Lean, for AlphaProof), and some took up to three days, far beyond the contest's time limits. AlphaProof's proofs, written in Lean, can be checked by computer.", "start": [{"title": "AI achieves silver-medal standard solving International Mathematical Olympiad problems", "url": "https://deepmind.google/discover/blog/ai-solves-imo-problems-at-silver-medal-level/", "who": "Google DeepMind", "kind": "Announcement"}, {"title": "AI Reaches Silver-Medal Level at This Year’s Math Olympiad", "url": "https://www.scientificamerican.com/article/ai-reaches-silver-medal-level-at-this-years-math-olympiad/", "who": "Scientific American", "kind": "News"}]}, {"id": "imo-2025", "date": "2025-07", "lane": "ai", "short": "Olympiad gold", "title": "Gold at the International Mathematical Olympiad", "story": "A year later, experimental models from Google DeepMind and OpenAI each solve five of the six problems, a gold-medal standard, writing their proofs in ordinary language within the competition's time limits. Google DeepMind's result was certified by the Olympiad's coordinators; OpenAI's was graded by former medallists.", "start": [{"title": "Advanced version of Gemini with Deep Think officially achieves gold-medal standard at the International Mathematical Olympiad", "url": "https://deepmind.google/discover/blog/advanced-version-of-gemini-with-deep-think-officially-achieves-gold-medal-standard-at-the-international-mathematical-olympiad/", "who": "Google DeepMind", "kind": "Announcement"}]}, {"id": "tdgammon-1992", "date": "1992", "lane": "maths", "short": "Learning from reward", "title": "Learning from reward", "story": "Gerald Tesauro's TD-Gammon, at IBM, teaches itself backgammon by playing against itself. It uses Richard Sutton's temporal-difference learning, which nudges its evaluation of each position towards its evaluation of the next, a method grounded in Richard Bellman's dynamic programming. By 1993 it plays close to the level of the world's best players. Self-play reinforcement learning, combined with deep networks and tree search, later becomes central to DeepMind's AlphaGo and its successors.", "start": [{"title": "TD-Gammon", "url": "https://en.wikipedia.org/wiki/TD-Gammon", "who": "Wikipedia", "kind": "Explainer"}, {"title": "Temporal Difference Learning and TD-Gammon", "url": "https://bkgm.com/articles/tesauro/tdl.html", "who": "Gerald Tesauro, Communications of the ACM (1995)", "kind": "Article"}]}, {"id": "svm-1995", "date": "1995", "lane": "maths", "short": "Support vector machines", "title": "Learning with the widest margin", "story": "Corinna Cortes and Vladimir Vapnik publish “Support-vector networks”, extending to overlapping classes a maximum-margin method Vapnik had developed with Bernhard Boser and Isabelle Guyon. It rests on the statistical learning theory Vapnik and Alexey Chervonenkis developed from the 1960s, which bounds how well a rule learned from examples carries over to new data. The “kernel trick” lets it find a flat boundary in a very high-dimensional feature space, which can act as a curved one in the original data, without computing in that space directly. Support vector machines become one of the most widely used learning methods of the late 1990s and 2000s.", "start": [{"title": "Support vector machine", "url": "https://en.wikipedia.org/wiki/Support_vector_machine", "who": "Wikipedia", "kind": "Explainer"}, {"title": "Support-vector networks", "url": "https://link.springer.com/doi/10.1007/BF00994018", "who": "Cortes and Vapnik, Machine Learning (1995)", "kind": "Paper"}]}, {"id": "diffusion-2020", "date": "2020", "lane": "maths", "short": "Diffusion models", "title": "Generating images by reversing noise", "story": "Jonathan Ho, Ajay Jain and Pieter Abbeel, building on work by Jascha Sohl-Dickstein and colleagues in 2015, show that diffusion models can generate high-quality images by learning to undo the gradual addition of noise. Later that year Yang Song and colleagues recast the method as a stochastic differential equation run backwards in time, drawing on a 1982 result of Brian Anderson. Diffusion now underlies many of today's AI image and video generators.", "start": [{"title": "Diffusion model", "url": "https://en.wikipedia.org/wiki/Diffusion_model", "who": "Wikipedia", "kind": "Explainer"}, {"title": "Score-Based Generative Modeling through Stochastic Differential Equations", "url": "https://arxiv.org/abs/2011.13456", "who": "Song et al., ICLR 2021", "kind": "Paper"}]}, {"id": "growth-2025", "date": "2025-12", "lane": "maths", "short": "A field of 26,000", "chart": "neurips", "title": "Thousands keep building AI", "story": "Behind every headline is a vast and growing research community. NeurIPS, the largest conference on machine learning, accepted about 90 papers at its first meeting in 1987. In December 2025 it accepted 5,290 of 21,575 submissions, and about 26,000 people registered, most of them in San Diego, with a smaller second venue in Mexico City. Together with ICML and ICLR, the three leading machine-learning conferences accepted more than 12,000 papers in 2025, from about 45,000 submissions. Much of the work rests on mathematics: optimisation, probability and statistics, linear algebra and the theory of learning.", "start": [{"title": "NeurIPS 2025 fact sheet", "url": "https://media.neurips.cc/Conferences/NeurIPS2025/press/NeurIPS2025-Fact_Sheet.pdf", "who": "NeurIPS", "kind": "Data"}, {"title": "NeurIPS statistics", "url": "https://papercopilot.com/statistics/nips-statistics/", "who": "Paper Copilot", "kind": "Data"}]}, {"id": "gan-2014", "date": "2014-06", "lane": "maths", "short": "GANs", "title": "Two networks play a game", "story": "Ian Goodfellow and colleagues introduce generative adversarial networks: a generator produces samples while a discriminator tries to tell them from real data, and the two are trained against each other in a minimax game. The paper proves that, if both players could be arbitrary functions, the game's unique solution is the one in which the generator reproduces the data distribution exactly. Over the next few years GANs produce increasingly realistic images, including convincing synthetic faces.", "start": [{"title": "Generative adversarial network", "url": "https://en.wikipedia.org/wiki/Generative_adversarial_network", "who": "Wikipedia", "kind": "Explainer"}, {"title": "Generative Adversarial Networks", "url": "https://arxiv.org/abs/1406.2661", "who": "Goodfellow et al., arXiv (2014)", "kind": "Paper"}]}, {"id": "unit-distance", "date": "2026-05-20", "lane": "ai", "short": "Erdős conjecture falls", "title": "An AI disproves a famous Erdős conjecture", "story": "An internal OpenAI model disproves Paul Erdős's 1946 conjecture on how many pairs of points in the plane can be exactly one unit apart, with a construction giving more pairs than the conjectured bound; the exact maximum remains open. Outside mathematicians check it, and OpenAI presents it as the first prominent open problem solved autonomously by AI. A day later Google DeepMind reports AlphaProof Nexus solving open Erdős problems in Lean.", "start": [{"entry": "openai-unit-distance"}, {"title": "OpenAI announces AI’s biggest math breakthrough yet", "url": "https://www.scientificamerican.com/article/ai-just-solved-an-80-year-old-erdos-problem-and-mathematicians-are-amazed/", "who": "Scientific American", "kind": "News"}], "tag": {"ids": ["gowers-x-unit-distance", "deepmind-alphaproof-nexus", "kohli-x", "erdos-wiki"], "keywords": ["Erdős problems"]}}, {"id": "leiden", "date": "2026-06-02", "lane": "respond", "short": "Leiden Declaration", "title": "Researchers set out principles", "story": "Sixteen researchers publish the Leiden Declaration on AI and mathematics: AI use should be disclosed, authors stay responsible for their results, and the community should avoid dependence on proprietary AI. The International Mathematical Union endorses it.", "start": [{"entry": "leiden-declaration"}], "tag": {"ids": ["imu-leiden", "ems-leiden", "oxford-leiden"]}}, {"id": "summer-results", "date": "2026-08", "lane": "ai", "short": "Labs race for results", "title": "The labs race for results", "story": "OpenAI announces ten advances on long-open problems from an internal version of its next model, Astra (1 August). Anthropic reports that an unreleased Claude model raised the proven lower bound for the proportion of nontrivial zeta zeros on the critical line from 41.6% to 67.2% (10 August). Mathematics has become a showcase for the frontier labs.", "start": [{"entry": "openai-ten-advances"}, {"entry": "anthropic-riemann-zeta"}], "tag": {"ids": ["verge-takeover"]}}, {"id": "fermat", "date": "2026-09-04", "lane": "ai", "short": "Fermat, checked by computer", "title": "Fermat's Last Theorem, checked by computer", "story": "Anthropic's Claude produces a complete proof of Fermat's Last Theorem in the Lean proof assistant in eleven largely autonomous days. Kevin Buzzard, who leads the human formalisation project, treats it as a demonstration of what machines can now check, while noting that mathematically it “tells us essentially nothing” new.", "start": [{"entry": "anthropic-flt"}, {"entry": "buzzard-flt"}], "tag": {"keywords": ["Fermat’s Last Theorem"]}}, {"id": "navier-stokes", "date": "2026-09-08", "lane": "ai", "short": "Navier–Stokes claim", "title": "A Millennium Prize problem, and a race for credit", "story": "OpenAI claims a solution to the Navier–Stokes problem, finite-time blow-up with a smooth external force, one of the seven Millennium Prize problems, after an 88-hour run of AI agents. About twelve hours earlier, Tristan Buckmaster and Levent Alpöge had made public related blow-up results for the Euler and Boussinesq equations, obtained with AI tools in August. On 11 September the Clay Institute says the problem has “apparently been settled”, with a deliberately unhurried evaluation to follow; emotional statements on all sides testify to the strain of humans racing AI agents.", "start": [{"entry": "clay-navier-stokes"}, {"entry": "wiki-ns-controversy"}], "tag": {"keywords": ["Navier–Stokes"]}}, {"id": "pushback", "date": "2026-09-11", "lane": "respond", "short": "Fields Medallists object", "title": "Fields Medallists and Fellows push back", "story": "Twenty-five Fields Medallists (28 by late October) warn that the goals of AI companies and of mathematicians are “severely misaligned” (11 September). Five days later, 42 mathematician Fellows and Foreign Members of the Royal Society urge its President to treat the wider risks of AI as an emergency. Other open letters concern a student-run AI “Mathathon” at Caltech (10 September) and are addressed to the European Mathematical Society (30 September).", "start": [{"entry": "severe-misalignment"}, {"entry": "rs-letter"}], "tag": {"ids": ["green-rs-guest-post", "the-rs-letter", "gowers-x-rs-letter", "mathathon-letter", "ems-letter", "duminil-copin-smf"]}}, {"id": "agmai", "date": "2026-09-21", "lane": "respond", "short": "Advisory group formed", "title": "An advisory group for responsible release", "story": "Nine mathematicians, including Oxford's Ulrike Tillmann, form an independent Advisory Group on Mathematics and AI, hosted by the Institute for Advanced Study, after OpenAI approached some of them; its first task is advising OpenAI. On 29 September they publish norms for how AI labs should release mathematical results.", "start": [{"entry": "agmai"}], "tag": {"ids": ["openai-agmai", "gowers-x-agmai"]}}, {"id": "big-dump", "date": "2026-10-06", "lane": "ai", "short": "The Big Dump", "title": "The Big Dump", "story": "OpenAI posts 722 manuscripts from an internal model claiming results, grouped into 372 families, from the quasi-Riemann hypothesis to the Unique Games Conjecture. Three are withdrawn the next day after errors are found, and 14 others have since been repaired. Mathematicians are still working out which results hold and what they mean.", "start": [{"entry": "nature-700"}, {"entry": "quanta-quasi-rh"}], "tag": {"topics": ["big-dump"]}}, {"id": "simons", "date": "2026-10-15", "lane": "respond", "short": "$15M for the community", "title": "Significant resources for the community response", "story": "The Simons Foundation, Anthropic and OpenAI commit $15 million in funding and resources to help mathematicians evaluate AI-assisted results, adopt the tools and set shared standards, including targeted grants to Math+AI institutes.", "start": [{"entry": "simons-15m"}]}], "lanes": [{"id": "maths", "name": "Mathematics builds AI", "desc": "The mathematical ideas that made AI possible"}, {"id": "moments", "name": "AI milestones", "desc": "Moments when AI changed what people thought machines could do"}, {"id": "ai", "name": "AI does Mathematics", "desc": "Machines proving, checking and discovering results"}, {"id": "respond", "name": "Community response", "desc": "Statements, principles and new institutions"}], "eras": [{"id": "foundations", "name": "Foundations", "range": "1936–1958", "first": "turing-1936"}, {"id": "machines", "name": "Machines and proofs", "range": "1967–1998", "first": "automath-1967"}, {"id": "deep", "name": "Deep learning", "range": "2006–2025", "first": "cs-2006"}, {"id": "y2026", "name": "2026", "range": "", "first": "unit-distance"}], "neurips": {"1987": 90, "1988": 94, "1989": 101, "1990": 143, "1991": 144, "1992": 127, "1993": 158, "1994": 140, "1995": 152, "1996": 152, "1997": 150, "1998": 151, "1999": 150, "2000": 152, "2001": 197, "2002": 207, "2003": 198, "2004": 207, "2005": 207, "2006": 204, "2007": 217, "2008": 250, "2009": 262, "2010": 292, "2011": 306, "2012": 370, "2013": 360, "2014": 411, "2015": 403, "2016": 568, "2017": 679, "2018": 1009, "2019": 1427, "2020": 1899, "2021": 2334, "2022": 2671, "2023": 3218, "2024": 4035, "2025": 5290}};   // the storylines: milestones, lanes, periods, and the rules that link reading-room entries to them
+const topicById = Object.fromEntries(TOPICS.map(t=>[t.id,t]));
+const catName = Object.fromEntries(CATS.map(c=>[c.id,c.name]));
+const $ = s => document.querySelector(s);
+const state = {items:[], q:"", byDate:false, byNew:false, ox:false, topic:null, milestone:null, canEdit:false, editing:null, confirmId:null, editMode:false, draft:{}, saved:{}, view:"story"};
+const PUBLIC = window.READING_ROOM_PUBLIC || null;   // set only in the exported public copy
+const DEFAULTS = {};
+document.querySelectorAll("[data-edit]").forEach(n=>{ DEFAULTS[n.dataset.edit] = n.textContent; });
+function txt(key, def){ const v = state.draft[key] ?? state.saved[key]; return (typeof v==="string" && v.trim()) ? v : def; }
+function editableAttrs(key){ return state.editMode ? {"data-edit":key, contenteditable:"plaintext-only", spellcheck:"true"} : {"data-edit":key}; }
+const catLabel = id => { const c = CATS.find(c=>c.id===id); return c ? txt("cat."+id+".name", c.name) : "Other"; };
+const OWNER_NAME = "Jan Obłój", OWNER_HOME = "https://www.maths.ox.ac.uk/people/jan.obloj";
+function setLinked(n, text){
+  n.replaceChildren();
+  text.split(OWNER_NAME).forEach((part,i)=>{
+    if(i) n.append(el("a",{href:OWNER_HOME,target:"_blank",rel:"noopener",text:OWNER_NAME}));
+    if(part) n.append(document.createTextNode(part));
+  });
+}
+function applyStatic(){
+  document.querySelectorAll("[data-edit]").forEach(n=>{
+    const k = n.dataset.edit; if(!(k in DEFAULTS)) return;
+    if(document.activeElement!==n){ const v = txt(k, DEFAULTS[k]); if(state.editMode) n.textContent = v; else setLinked(n, v); }
+    if(state.editMode) n.setAttribute("contenteditable","plaintext-only"); else n.removeAttribute("contenteditable");
+  });
+}
+document.addEventListener("input", e=>{ const n=e.target.closest && e.target.closest("[data-edit]"); if(state.editMode && n) state.draft[n.dataset.edit] = n.textContent.replace(/\s+/g," ").trim().slice(0,1500); });
+document.addEventListener("keydown", e=>{ if(state.editMode && e.key==="Enter" && e.target.closest && e.target.closest("[data-edit]")){ e.preventDefault(); e.target.blur(); } });
+const kwOf = it => Array.isArray(it.keywords) ? it.keywords.filter(k=>typeof k==="string" && k.trim()) : [];
+const topicsOf = it => Array.isArray(it.topics) ? it.topics.filter(t=>topicById[t]) : [];
+function setQuery(q){ state.q = q; $("#q").value = q; render(); updateStatus(); $("#q").scrollIntoView({block:"center"}); }
+let db = null;
+
+function fmtDate(d){
+  if(!d) return "Undated";
+  const m = /^(\d{4})-(\d{2})(?:-(\d{2}))?$/.exec(d); if(!m) return d;
+  const mon = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][+m[2]-1];
+  return (m[3] ? (+m[3])+" " : "") + mon + " " + m[1];
+}
+function el(tag, attrs={}, ...kids){
+  const n = document.createElement(tag);
+  for(const [k,v] of Object.entries(attrs)){ if(v==null||v===false) continue;
+    if(k==="class") n.className=v; else if(k==="text") n.textContent=v; else n.setAttribute(k, v===true?"":v); }
+  for(const k of kids){ if(k!=null) n.append(k); }
+  return n;
+}
+function safeUrl(u){ try{ const x=new URL(u); return (x.protocol==="https:"||x.protocol==="http:")?x.href:null; }catch{ return null; } }
+
+// ---------- links between the two views: which reading-room entries belong to which milestone ----------
+const MILESTONES = [...TL_DATA.milestones].sort((a,b)=>a.date.localeCompare(b.date));
+const msById = Object.fromEntries(MILESTONES.map(m=>[m.id,m]));
+let TAGS = {}, BY_ENTRY = {};
+function computeTags(){
+  TAGS = {}; BY_ENTRY = {};
+  const ids = new Set(state.items.map(i=>i.id));
+  MILESTONES.forEach(m=>{
+    const t = m.tag || {}, set = new Set((t.ids||[]).filter(id=>ids.has(id)));
+    (m.start||[]).forEach(s=>{ if(s.entry && ids.has(s.entry)) set.add(s.entry); });
+    state.items.forEach(it=>{
+      if((t.keywords||[]).some(k=>kwOf(it).includes(k))) set.add(it.id);
+      if((t.topics||[]).some(k=>topicsOf(it).includes(k))) set.add(it.id);
+    });
+    TAGS[m.id] = set;
+    set.forEach(id=>{ (BY_ENTRY[id] = BY_ENTRY[id] || []).push(m.id); });
+  });
+}
+
+// ---------- Reading room ----------
+function filtered(){
+  const q = state.q.trim().toLowerCase();
+  return state.items.filter(it=>{
+    if(state.ox && !it.oxford) return false;
+    if(state.topic && !topicsOf(it).includes(state.topic)) return false;
+    if(state.milestone && !(TAGS[state.milestone] && TAGS[state.milestone].has(it.id))) return false;
+    if(!q) return true;
+    return [it.title,it.who,it.kind,it.note,it.peer&&it.peer.venue?"peer-reviewed peer reviewed "+it.peer.venue:"",catName[it.cat],...kwOf(it),...topicsOf(it).map(t=>topicById[t].name)].join(" ").toLowerCase().includes(q);
+  });
+}
+const byDateDesc = (a,b)=> (b.date||"").localeCompare(a.date||"") || (a.title||"").localeCompare(b.title||"");
+
+// "Peer-reviewed" is shown only when the curator has seen the published version (it.peer = {venue, url, date}).
+// No tag claims nothing either way.
+function peerNode(it){
+  const p = it.peer; if(!p || !p.venue) return null;
+  const u = safeUrl(p.url||""), t = "✓ Peer-reviewed · " + p.venue;
+  const title = "Published in " + p.venue + (p.date ? " on " + fmtDate(p.date) : "") + " after peer review";
+  return u ? el("a",{class:"peer",href:u,target:"_blank",rel:"noopener",title,text:t}) : el("span",{class:"peer",title,text:t});
+}
+function itemNode(it, showCat){
+  const url = safeUrl(it.url);
+  const h = el("h3", {}, url ? el("a",{href:url,target:"_blank",rel:"noopener",text:it.title}) : document.createTextNode(it.title||"Untitled"));
+  const meta = [it.who, it.kind].filter(Boolean).join(" · ");
+  const tags = el("div",{class:"tags"});
+  if(showCat) tags.append(el("span",{class:"tag cat",text:catLabel(it.cat)}));
+  topicsOf(it).forEach(t=>tags.append(el("span",{class:"tag topic",text:topicById[t].name})));
+  if(it.oxford) tags.append(el("span",{class:"tag ox",text:"Oxford"}));
+  if(it.checked===false) tags.append(el("span",{class:"tag warn",text:"Link to check"}));
+  (BY_ENTRY[it.id]||[]).slice(0,2).forEach(mid=>{ const m=msById[mid]; if(!m) return;
+    const b=el("button",{type:"button",class:"tlchip",title:"Open this milestone in the storylines",text:"On the timeline: "+m.short}); b.onclick=()=>openMilestone(mid); tags.append(b); });
+  const kws = kwOf(it);
+  const kwRow = kws.length ? el("div",{class:"kws","aria-label":"Keywords"}) : null;
+  kws.forEach(k=>{ const b=el("button",{type:"button",class:"kw",text:k,title:"Show entries about "+k}); b.onclick=()=>setQuery(k); kwRow.append(b); });
+  const body = el("div",{}, h, (meta || it.peer) ? el("div",{class:"meta"}, document.createTextNode(meta), peerNode(it)) : null, it.note ? el("p",{class:"note"}, el("span",{class:"nl",text:"Curator’s note"}), document.createTextNode(it.note)) : null, kwRow, tags.childElementCount ? tags : null);
+  if(state.canEdit && state.editMode){
+    if(state.confirmId===it.id){
+      const yes = el("button",{type:"button",class:"linkbtn danger",text:"Yes, remove it"}); yes.onclick=()=>removeItem(it.id);
+      const no = el("button",{type:"button",class:"linkbtn",text:"Keep it"}); no.onclick=()=>{state.confirmId=null;render();};
+      body.append(el("div",{class:"confirm"}, document.createTextNode("Remove this entry for everyone?"), yes, no));
+    } else {
+      const e = el("button",{type:"button",class:"linkbtn",text:"Edit"}); e.onclick=()=>openEditor(it);
+      const d = el("button",{type:"button",class:"linkbtn danger",text:"Remove"}); d.onclick=()=>{state.confirmId=it.id;render();};
+      body.append(el("div",{class:"edit-row"}, e, d));
+    }
+  }
+  return el("li",{class:"item"}, el("div",{class:"date",text:fmtDate(it.date)}), body);
+}
+
+function render(){
+  const items = filtered();
+  const list = $("#list"); list.replaceChildren();
+  const rail = $("#rail"); rail.replaceChildren();
+  const chips = $("#chips"); chips.replaceChildren();
+  if(!state.items.length){ return; }
+  if(!items.length){
+    list.append(el("div",{class:"empty"}, el("strong",{text:"Nothing matches."}), document.createTextNode(" Try another word, or turn off the filters.")));
+  }
+  if(state.byNew){
+    const withAdded = items.filter(i=>i.added).sort((a,b)=>(b.added||"").localeCompare(a.added||"") || byDateDesc(a,b));
+    const days = []; withAdded.forEach(it=>{ const d = it.added.slice(0,10); let g = days.find(x=>x.d===d); if(!g){ g={d,its:[]}; days.push(g); } g.its.push(it); });
+    days.slice(0,30).forEach((g,ix)=>{
+      const ol = el("ol",{class:"items"}); g.its.forEach(it=>ol.append(itemNode(it,true)));
+      list.append(el("section",{class:"cat"}, el("div",{class:"cat-head"}, el("h2",{text:(ix===0?"Latest additions · ":"Added ")+fmtDate(g.d)}), el("span",{class:"count",text:g.its.length+(g.its.length===1?" entry":" entries")})), ol));
+    });
+    if(!withAdded.length) list.append(el("div",{class:"empty"}, el("strong",{text:"Nothing to show."})));
+  } else if(state.byDate){
+    const ol = el("ol",{class:"items"}); [...items].sort(byDateDesc).forEach(it=>ol.append(itemNode(it,true)));
+    if(items.length) list.append(el("section",{class:"cat"}, el("div",{class:"cat-head"}, el("h2",{text:"Newest first"}), el("span",{class:"count",text:items.length+" entries"})), ol));
+  } else {
+    for(const c of CATS){
+      const its = items.filter(i=>i.cat===c.id).sort(byDateDesc);
+      const nm = catLabel(c.id), ds = txt("cat."+c.id+".desc", c.desc);
+      if(!its.length && (PUBLIC || !state.editMode)) { if(!PUBLIC) rail.append(el("a",{href:"#"+c.id}, document.createTextNode(nm), el("span",{text:"0"}))); continue; }
+      rail.append(el("a",{href:"#"+c.id}, document.createTextNode(nm), el("span",{text:String(its.length)})));
+      chips.append(el("a",{href:"#"+c.id,text:nm}));
+      const ol = el("ol",{class:"items"}); its.forEach(it=>ol.append(itemNode(it,false)));
+      list.append(el("section",{class:"cat",id:c.id}, el("div",{class:"cat-head"}, el("h2",{...editableAttrs("cat."+c.id+".name"),text:nm}), el("span",{class:"count",text:its.length+(its.length===1?" entry":" entries")})), el("p",{class:"cat-desc",...editableAttrs("cat."+c.id+".desc"),text:ds}), ol));
+    }
+    const other = items.filter(i=>!catName[i.cat]);
+    if(other.length){ const ol=el("ol",{class:"items"}); other.sort(byDateDesc).forEach(it=>ol.append(itemNode(it,true))); list.append(el("section",{class:"cat",id:"other"}, el("div",{class:"cat-head"}, el("h2",{text:"Uncategorised"})), ol)); }
+  }
+  const pool = state.items.filter(it=>(!state.ox||it.oxford) && (!state.topic||topicsOf(it).includes(state.topic)));
+  const counts = {}; pool.forEach(it=>kwOf(it).forEach(k=>{ counts[k]=(counts[k]||0)+1; }));
+  const top = Object.entries(counts).sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0])).slice(0,30);
+  if(top.length){
+    const box = el("div",{});
+    top.forEach(([k,n])=>{ const b=el("button",{type:"button",class:"kw",text:k+" · "+n,"aria-pressed":String(state.q.toLowerCase()===k.toLowerCase())}); b.onclick=()=>setQuery(state.q.toLowerCase()===k.toLowerCase()?"":k); box.append(b); });
+    rail.append(el("div",{class:"kw-index"}, el("h3",{text:"Maths keywords"}), box));
+  }
+  rail.append(el("p",{class:"rail-note",text: "Something missing? Propose it at the foot of the page."}));
+}
+
+function renderTopic(){
+  const p = $("#topic-panel"); p.replaceChildren();
+  TOPICS.forEach(t=>{ const b=document.getElementById("tb-"+t.id); if(b) b.setAttribute("aria-pressed", String(state.topic===t.id)); });
+  if(state.milestone && msById[state.milestone]){
+    const m = msById[state.milestone], n = (TAGS[m.id]||new Set()).size;
+    const back = el("button",{type:"button",class:"linkbtn",text:"Back to this milestone"}); back.onclick=()=>openMilestone(m.id);
+    const clear = el("button",{type:"button",class:"linkbtn",text:"Show everything"}); clear.onclick=()=>{ state.milestone=null; renderTopic(); render(); updateStatus(); };
+    p.append(el("section",{class:"topic-panel tl","aria-live":"polite"}, el("h2",{text:"On the timeline · "+fmtDate(m.date.length===4?m.date+"-01":m.date).replace(/^Jan (\d{4})$/,"$1")+": "+m.title}),
+      el("p",{text:n+(n===1?" entry is":" entries are")+" linked to this milestone of the storylines."}),
+      el("div",{class:"sub2"}, back, clear)));
+    return;
+  }
+  if(!state.topic) return;
+  const t = topicById[state.topic];
+  const n = state.items.filter(it=>topicsOf(it).includes(t.id)).length;
+  const clear = el("button",{type:"button",class:"linkbtn",text:"Show everything"}); clear.onclick=()=>{ state.topic=null; renderTopic(); render(); updateStatus(); };
+  p.append(el("section",{class:"topic-panel","aria-live":"polite"}, el("h2",{...editableAttrs("topic."+t.id+".title"),text:txt("topic."+t.id+".title",t.title)}), el("p",{...editableAttrs("topic."+t.id+".desc"),text:txt("topic."+t.id+".desc",t.desc)}),
+    el("p",{class:"sub2"}, document.createTextNode(n+" entries in this topic. Try a keyword in the side bar to follow one area of mathematics. "), clear)));
+}
+TOPICS.forEach(t=>{
+  const b = el("button",{type:"button",class:"chipbtn",id:"tb-"+t.id,"aria-pressed":"false",text:t.name,title:t.title});
+  b.onclick=()=>{ state.topic = state.topic===t.id ? null : t.id; state.milestone=null; renderTopic(); render(); updateStatus(); };
+  $("#topic-btns").append(b);
+});
+function setStatus(t){ $("#status").textContent = t; }
+function updateStatus(){
+  const n = state.items.length, f = filtered().length;
+  const latest = state.items.map(i=>i.added||"").sort().pop();
+  setStatus(n ? `${f===n ? n : f+" of "+n} entries${latest ? " · last addition "+fmtDate(latest.slice(0,10)) : ""}` : "No entries yet.");
+  $("#n-room").textContent = n ? n+" entries" : "";
+}
+
+$("#q").addEventListener("input", e=>{ state.q=e.target.value; render(); updateStatus(); });
+function setArrange(v){ state.byDate = v==="date"; state.byNew = v==="new";
+  [["by-cat","cat"],["by-date","date"],["by-new","new"]].forEach(([id,k])=>$("#"+id).setAttribute("aria-pressed",String(v===k))); render(); }
+$("#by-cat").onclick=()=>setArrange("cat");
+$("#by-date").onclick=()=>setArrange("date");
+$("#by-new").onclick=()=>setArrange("new");
+$("#ox").onclick=()=>{ state.ox=!state.ox; $("#ox").setAttribute("aria-pressed",String(state.ox)); render(); updateStatus(); };
+$("#copy").onclick=async()=>{
+  const items = filtered();
+  const lines = [];
+  for(const c of CATS){ const its=items.filter(i=>i.cat===c.id).sort(byDateDesc); if(!its.length) continue;
+    lines.push("## "+c.name); its.forEach(i=>lines.push(`- ${i.title} (${[i.who,fmtDate(i.date)].filter(Boolean).join(", ")}): ${i.url}`)); lines.push(""); }
+  const text = lines.join("\n");
+  try{ await navigator.clipboard.writeText(text); setStatus("Copied "+items.length+" entries as a list."); }
+  catch{ setStatus("Copying isn’t available here. Select the entries on the page instead."); }
+};
+
+// editor
+const CAT_SELECT = $("#f-cat"); CATS.forEach(c=>CAT_SELECT.append(el("option",{value:c.id,text:c.name})));
+TOPICS.forEach(t=>$("#f-topics").append(el("label",{}, el("input",{type:"checkbox",id:"ft-"+t.id}), document.createTextNode(" Topic: "+t.title))));
+function openEditor(it){
+  state.editing = it ? it.id : null;
+  $("#dlg-title").textContent = it ? "Edit resource" : "Add a resource";
+  $("#f-title").value = it?.title||""; $("#f-url").value = it?.url||""; $("#f-cat").value = it?.cat||"viewpoint";
+  $("#f-kind").value = it?.kind||""; $("#f-who").value = it?.who||""; $("#f-date").value = /^\d{4}-\d{2}-\d{2}$/.test(it?.date||"") ? it.date : "";
+  $("#f-note").value = it?.note||""; $("#f-kw").value = it ? kwOf(it).join(", ") : "";
+  TOPICS.forEach(t=>{ $("#ft-"+t.id).checked = it ? topicsOf(it).includes(t.id) : state.topic===t.id; });
+  $("#f-ox").checked = !!it?.oxford; $("#f-checked").checked = it ? it.checked!==false : true;
+  $("#f-err").textContent = ""; $("#dlg").showModal(); $("#f-title").focus();
+}
+$("#add").onclick=()=>{ showView("room"); openEditor(null); };
+$("#f-cancel").onclick=()=>$("#dlg").close();
+$("#form").addEventListener("submit", async e=>{
+  e.preventDefault();
+  if(!db){ $("#f-err").textContent="Saving isn’t available in this view."; return; }
+  const url = safeUrl($("#f-url").value.trim());
+  if(!url){ $("#f-err").textContent="Enter a full link starting with https://"; return; }
+  const title = $("#f-title").value.trim(); if(!title){ $("#f-err").textContent="Add a title."; return; }
+  const prev = state.items.find(i=>i.id===state.editing);
+  const doc = { title, url, cat:$("#f-cat").value, kind:$("#f-kind").value.trim(), who:$("#f-who").value.trim(),
+    date:$("#f-date").value || (prev?.date && !/^\d{4}-\d{2}-\d{2}$/.test(prev.date) ? prev.date : ""),
+    note:$("#f-note").value.trim(), oxford:$("#f-ox").checked, checked:$("#f-checked").checked,
+    keywords: [...new Set($("#f-kw").value.split(",").map(s=>s.trim()).filter(Boolean))].slice(0,12),
+    topics: TOPICS.filter(t=>$("#ft-"+t.id).checked).map(t=>t.id),
+    ...(prev?.peer ? {peer: prev.peer} : {}),
+    added: prev?.added || new Date().toISOString() };
+  $("#f-save").disabled = true;
+  try{
+    if(state.editing) await db.collection("resources").doc(state.editing).set(doc);
+    else await db.collection("resources").add(doc);
+    $("#dlg").close(); setStatus(state.editing ? "Saved your changes." : "Added “"+title+"”.");
+  }catch(err){
+    $("#f-err").textContent = err && err.code==="quota_exceeded" ? "The reading room is full. Remove old entries first." : "Couldn’t save. Check your connection and try again.";
+  }finally{ $("#f-save").disabled = false; }
+});
+async function removeItem(id){
+  try{ await db.collection("resources").doc(id).delete(); state.confirmId=null; setStatus("Removed."); }
+  catch{ setStatus("Couldn’t remove it. Try again."); }
+}
+
+// proposals: each viewer writes only proposals/<their id>; editors read all (see capabilities rules)
+const prop = {uid:null, items:[], busy:false, ready:false};
+const P_CAT = $("#p-cat"); CATS.forEach(c=>P_CAT.append(el("option",{value:c.id,text:c.name})));
+const ST = {pending:["Pending review",""], added:["Added","added"], declined:["Not added","declined"]};
+function renderMine(){
+  const ul = $("#mine"); ul.replaceChildren();
+  if(!prop.items.length){ ul.append(el("li",{style:"color:var(--muted)",text: prop.uid ? "Nothing sent yet." : "Your proposals will appear here once you can send them."})); return; }
+  [...prop.items].sort((a,b)=>(b.submittedAt||"").localeCompare(a.submittedAt||"")).forEach(p=>{
+    const st = ST[p.status] || ST.pending;
+    const url = safeUrl(p.url);
+    const t = el("div",{class:"t"}, url ? el("a",{href:url,target:"_blank",rel:"noopener",text:p.title||p.url}) : document.createTextNode(p.title||p.url||""));
+    const s = el("div",{class:"s"}, el("span",{class:"st "+st[1],text:st[0]}), document.createTextNode("Sent "+fmtDate((p.submittedAt||"").slice(0,10))));
+    ul.append(el("li",{}, t, s, p.reviewNote ? el("p",{class:"rn",text:p.reviewNote}) : null));
+  });
+}
+function noAccess(msg){
+  $("#pform").hidden = true;
+  const a = $("#p-access"); a.hidden = false; a.textContent = msg;
+}
+async function sendPublic(item){
+  const f = PUBLIC.form; const fd = new FormData();
+  fd.append(f.fields.url, item.url); fd.append(f.fields.title, item.title);
+  fd.append(f.fields.cat, (f.catMap && f.catMap[item.cat||""]) || (item.cat ? catLabel(item.cat) : "Not sure")); fd.append(f.fields.why, item.why);
+  await fetch(f.action, {method:"POST", mode:"no-cors", body:new URLSearchParams(fd)});
+}
+$("#pform").addEventListener("submit", async e=>{
+  e.preventDefault();
+  $("#p-err").textContent = ""; $("#p-ok").textContent = "";
+  if($("#p-web").value) return;   // spam trap
+  if(prop.busy) return;
+  const url = safeUrl($("#p-url").value.trim());
+  if(!url){ $("#p-err").textContent = "Enter a full link starting with https://"; $("#p-url").focus(); return; }
+  if(prop.items.some(p=>p.url===url)){ $("#p-err").textContent = "You’ve already proposed this link."; return; }
+  const live = state.items.find(i=>i.url===url);
+  if(live){ $("#p-err").textContent = "That link is already in the reading room: “"+live.title+"”."; return; }
+  if(prop.items.length >= 40){ $("#p-err").textContent = "You’ve reached the limit of 40 proposals. Thank you!"; return; }
+  const item = { id: "p"+Date.now().toString(36)+Math.random().toString(36).slice(2,6), url,
+    title:$("#p-title").value.trim(), why:$("#p-why").value.trim(), cat:$("#p-cat").value,
+    submittedAt:new Date().toISOString(), status:"pending", reviewNote:"" };
+  prop.busy = true; $("#p-send").disabled = true;
+  try{
+    if(PUBLIC){
+      if(!PUBLIC.form){ $("#p-err").textContent = "Proposals are not open yet."; return; }
+      await sendPublic(item); prop.items.push(item);
+    } else {
+      if(!db || !prop.uid || !prop.ready){ $("#p-err").textContent = "Proposals aren’t available in this view."; return; }
+      await db.doc("proposals/"+prop.uid).set({ items:[...prop.items, item], updated:item.submittedAt });
+    }
+    $("#pform").reset(); $("#p-ok").textContent = PUBLIC ? "Thank you. Your proposal is in the queue; accepted items appear on this page, usually within a day." : "Thank you. Your proposal is in the queue for review.";
+  }catch(err){
+    if(!PUBLIC && err && err.code==="invalid_argument") noAccess("Your access to this page doesn’t include sending proposals. Ask Jan for Contributor access, then reload the page.");
+    else $("#p-err").textContent = "Couldn’t send it. Check your connection and try again.";
+  }finally{ prop.busy = false; $("#p-send").disabled = false; }
+});
+
+// page editing (owner and editors)
+function setEditMode(on){
+  state.editMode = on; document.body.classList.toggle("editmode", on);
+  $("#editbar").hidden = !on; $("#edit-start").hidden = on || !state.canEdit; $("#edit-err").textContent = "";
+  if(!on){ state.draft = {}; state.confirmId = null; }
+  applyStatic(); render(); renderTopic();
+  if(on) $("#editbar").scrollIntoView({block:"nearest"});
+}
+$("#edit-start").onclick = ()=>setEditMode(true);
+$("#edit-cancel").onclick = ()=>setEditMode(false);
+$("#edit-save").onclick = async ()=>{
+  if(!db){ $("#edit-err").textContent = "Saving isn’t available in this view."; return; }
+  if(document.activeElement && document.activeElement.blur) document.activeElement.blur();
+  const keys = Object.keys(state.draft);
+  if(!keys.length){ setEditMode(false); return; }
+  const next = {...state.saved};
+  keys.forEach(k=>{ const v = state.draft[k]; const def = k in DEFAULTS ? DEFAULTS[k] : null; if(!v || v===def) delete next[k]; else next[k] = v; });
+  $("#edit-save").disabled = true;
+  try{ await db.doc("site/text").set({...next, _updated:new Date().toISOString()}); state.saved = next; setEditMode(false); setStatus("Page text saved."); }
+  catch{ $("#edit-err").textContent = "Couldn’t save. Check your connection and try again."; }
+  finally{ $("#edit-save").disabled = false; }
+};
+
+// ---------- Storylines ----------
+const TL = (()=>{
+  const NS = "http://www.w3.org/2000/svg";
+  const sv = (tag, attrs={}) => { const n=document.createElementNS(NS,tag); for(const [k,v] of Object.entries(attrs)) n.setAttribute(k,v); return n; };
+  const LANES = TL_DATA.lanes, ERAS = TL_DATA.eras, MS = MILESTONES;
+  const NEU = Object.entries(TL_DATA.neurips).map(([y,n])=>[+y,n]).sort((a,b)=>a[0]-b[0]);
+  const NMAX = NEU[NEU.length-1][1];
+  const laneIx = Object.fromEntries(LANES.map((l,i)=>[l.id,i]));
+  const MON = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  const yearOf = d => { const m=/^(\d{4})(?:-(\d{2}))?(?:-(\d{2}))?/.exec(d); return +m[1] + (m[2]? (+m[2]-1)/12 : .5) + (m[3]? (+m[3]-1)/365 : 0); };
+  const fmt = d => { const m=/^(\d{4})(?:-(\d{2}))?(?:-(\d{2}))?/.exec(d); if(!m) return d; return (m[3]? (+m[3])+" ":"") + (m[2]? MON[+m[2]-1]+" ":"") + m[1]; };
+  const shortDate = d => { const m=/^(\d{4})(?:-(\d{2}))?(?:-(\d{2}))?/.exec(d); if(m[1]==="2026" && m[2]) return (m[3]? (+m[3])+" ":"") + MON[+m[2]-1]; return m[1]; };
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const THREADS = ["maths","ai"], isThread = id => THREADS.includes(id);
+  const entry = id => state.items.find(i=>i.id===id);
+
+  // one shape per role: diamonds on the two storylines, dots on the bridges; colour tells them apart
+  function shape(lane, size=1){
+    const s = sv("svg",{width:30,height:30,viewBox:"-15 -15 30 30","aria-hidden":"true"});
+    const col = `var(--l-${lane})`;
+    s.append(isThread(lane) ? sv("polygon",{points:`0,${-10.5*size} ${7.6*size},0 0,${10.5*size} ${-7.6*size},0`,fill:col}) : sv("circle",{r:6.5*size,fill:col}));
+    return s;
+  }
+  function legendIcon(lane){
+    const s = sv("svg",{width:30,height:22,viewBox:"-15 -11 30 22","aria-hidden":"true"});
+    if(isThread(lane)) s.append(sv("line",{x1:-14,y1:0,x2:14,y2:0,stroke:`var(--l-${lane})`,"stroke-width":2.5,"stroke-opacity":.7}));
+    else s.append(sv("line",{x1:0,y1:-10,x2:0,y2:10,stroke:`var(--l-${lane})`,"stroke-width":2.5}));
+    const sh = shape(lane,.62); sh.setAttribute("x",-15); sh.setAttribute("y",-15); sh.setAttribute("width",30); sh.setAttribute("height",30); s.append(sh); return s;
+  }
+  [["Storylines",THREADS],["Bridges",["moments","respond"]]].forEach(([g,ids])=>{
+    $("#legend").append(el("li",{class:"lg-h",text:g}));
+    ids.forEach(id=>{ const l=LANES[laneIx[id]]; $("#legend").append(el("li",{title:l.desc}, legendIcon(id), document.createTextNode(l.name))); });
+  });
+  ERAS.forEach(e=>{ const b=el("button",{type:"button",class:"era","data-first":e.first,"aria-pressed":"false"}, document.createTextNode(e.name+(e.range?" ":"")), e.range ? el("small",{text:e.range}) : null); b.onclick=()=>select(e.first,true); $("#eras").append(b); });
+
+  // geometry: two parallel storylines, joined by bridges
+  let COL, GAP, W, xs=[], H, TX, drawn=false;
+  const TOP_Y = 70, BOT_Y = 190;
+  const nodeY = lane => lane==="maths" ? TOP_Y : lane==="ai" ? BOT_Y : (TOP_Y+BOT_Y)/2;
+  function layout(){
+    const narrow = innerWidth < 820;
+    COL = narrow ? 112 : 136; GAP = narrow ? 56 : 84; H = narrow ? 300 : 330;
+    xs = []; let x = narrow ? 40 : 90; let prev = null; const gaps=[];
+    MS.forEach(m=>{
+      const y = yearOf(m.date);
+      if(prev!==null && y - prev >= 8){ gaps.push({x:x - COL/2 + GAP/2, years:Math.round(y-prev)}); x += GAP; }
+      xs.push(x); x += COL; prev = y;
+    });
+    TX = xs[xs.length-1] + COL/2 + 44;
+    W = TX + (narrow ? 110 : 230);
+    return gaps;
+  }
+  function draw(animate){
+    const gaps = layout(); drawn = true;
+    const c = $("#canvas"); c.replaceChildren(); c.style.width = W+"px"; c.style.height = H+"px";
+    const svg = sv("svg",{class:"threads",width:W,height:H,viewBox:`0 0 ${W} ${H}`});
+    const i26 = MS.findIndex(m=>m.date.startsWith("2026"));
+    if(i26>=0){ const bx = xs[i26]-COL/2-10; svg.append(sv("rect",{class:"yearband",x:bx,y:0,width:W-bx,height:H})); const t=sv("text",{class:"bandlabel",x:bx+14,y:22}); t.textContent="2026"; svg.append(t); }
+    gaps.forEach(g=>{ svg.append(sv("line",{class:"gapline",x1:g.x,y1:30,x2:g.x,y2:H-80})); const t=sv("text",{class:"gaplabel",x:g.x,y:22,"text-anchor":"middle"}); t.textContent=g.years+" years"; svg.append(t); });
+    MS.forEach((m,i)=>{ if(isThread(m.lane)) return;
+      svg.append(sv("line",{class:"bridge",id:"br-"+m.id,x1:xs[i],y1:TOP_Y,x2:xs[i],y2:BOT_Y,stroke:`var(--l-${m.lane})`})); });
+    THREADS.forEach((id,k)=>{
+      const y = id==="maths" ? TOP_Y : BOT_Y;
+      const p = sv("path",{class:"thread",d:`M0,${y}L${TX},${y}`,stroke:`var(--l-${id})`,"stroke-opacity":.7});
+      svg.append(p);
+      svg.append(sv("path",{class:"thread future",d:`M${TX+8},${y}L${W-16},${y}`,stroke:`var(--l-${id})`,"stroke-opacity":.7}));
+      if(animate && !reduce){ const len = Math.ceil(W*1.05); p.style.setProperty("--len",len); p.classList.add("anim"); p.style.animationDelay = (k*0.15)+"s"; }
+    });
+    // today: the story so far ends here; both storylines carry on, dotted
+    svg.append(sv("line",{class:"today",x1:TX,y1:34,x2:TX,y2:H-100}));
+    const tt=sv("text",{class:"todaylabel",x:TX,y:22,"text-anchor":"middle"}); tt.textContent="TODAY"; svg.append(tt);
+    const td=sv("text",{class:"todaydate",x:TX,y:H-80,"text-anchor":"middle"}); td.textContent=new Date().toLocaleDateString("en-GB",{day:"numeric",month:"short"}); svg.append(td);
+    c.append(svg);
+    MS.forEach((m,i)=>{
+      const node = shape(m.lane); node.classList.add("node"); node.style.top = nodeY(m.lane)+"px";
+      const lab = el("span",{class:"lab"}, el("span",{class:"yr",text:shortDate(m.date)}), el("span",{class:"sh",text:m.short}));
+      const b = el("button",{type:"button",class:"ms",id:"ms-"+m.id,"aria-label":`${fmt(m.date)}: ${m.title}`,"aria-current":"false"}, node, lab);
+      b.style.left = (xs[i]-COL/2+4)+"px"; b.style.width = (COL-8)+"px";
+      b.onclick = ()=>{ if(!dragMoved) select(m.id,true); };
+      c.append(b);
+    });
+    drawOverview();
+    markSelected();
+  }
+  const Y0 = 1932, Y1 = 2027.2;
+  function drawOverview(){
+    const o = $("#ov"); o.replaceChildren();
+    const w = o.clientWidth || 800, h = 46, pad = 8;
+    o.setAttribute("viewBox",`0 0 ${w} ${h}`);
+    const X = y => pad + (y-Y0)/(Y1-Y0)*(w-2*pad);
+    o.append(sv("rect",{class:"ov-win",id:"ov-win",x:0,y:3,width:0,height:26,rx:6}));
+    o.append(sv("line",{class:"ov-axis",x1:pad,y1:16,x2:w-pad,y2:16}));
+    for(let y=1940;y<=2020;y+=10){ const t=sv("text",{class:"ov-tick",x:X(y),y:43,"text-anchor":"middle"}); t.textContent = (w<500 && y%20) ? "" : y; o.append(t); o.append(sv("line",{class:"ov-axis",x1:X(y),y1:12,x2:X(y),y2:20})); }
+    MS.forEach(m=>{ const row = {maths:7,moments:13,respond:13,ai:19}[m.lane]; o.append(sv("circle",{cx:X(yearOf(m.date)),cy:row-3,r:2.6,fill:`var(--l-${m.lane})`})); });
+    o.onclick = e=>{ const r=o.getBoundingClientRect(); const yr = Y0 + ((e.clientX-r.left)/r.width*w - pad)/(w-2*pad)*(Y1-Y0); let best=0,bd=1e9; MS.forEach((m,i)=>{ const d=Math.abs(yearOf(m.date)-yr); if(d<bd){bd=d;best=i;} }); select(MS[best].id,true); };
+    o._X = X;
+    syncOverview();
+  }
+  function syncOverview(){
+    const o=$("#ov"), win=$("#ov-win"); if(!o||!win||!o._X) return;
+    const t=$("#track"); const left=t.scrollLeft, right=left+t.clientWidth;
+    const vis = MS.map((m,i)=>[i,xs[i]]).filter(([,x])=>x>=left && x<=right).map(([i])=>yearOf(MS[i].date));
+    if(!vis.length) return;
+    const a = o._X(Math.min(...vis)), b = o._X(Math.max(...vis));
+    win.setAttribute("x", a-6); win.setAttribute("width", Math.max(12, b-a+12));
+  }
+
+  let cur = -1;
+  function select(id, scroll){
+    const i = MS.findIndex(m=>m.id===id); if(i<0) return;
+    cur = i; markSelected(); renderDetail(MS[i]);
+    if(scroll && drawn) centre(i, true);
+    if(state.view==="story"){ try{ history.replaceState(null,"","#"+MS[i].id); }catch{} }
+  }
+  function markSelected(){
+    document.querySelectorAll(".ms").forEach(b=>b.setAttribute("aria-current", String(b.id==="ms-"+(MS[cur]||{}).id)));
+    document.querySelectorAll(".bridge").forEach(l=>l.classList.toggle("on", l.id==="br-"+(MS[cur]||{}).id));
+    $("#count").textContent = cur>=0 ? `${cur+1} of ${MS.length}` : "";
+    $("#prev").disabled = cur<=0; $("#next").disabled = cur>=MS.length-1;
+    const era = [...ERAS].reverse().find(e=> MS.findIndex(m=>m.id===e.first) <= cur);
+    document.querySelectorAll(".era").forEach(b=>b.setAttribute("aria-pressed", String(era && b.dataset.first===era.first)));
+  }
+  function centre(i, smooth){
+    const t=$("#track"); const target = xs[i] - t.clientWidth/2;
+    t.scrollTo({left:Math.max(0,target), behavior: (smooth && !reduce) ? "smooth" : "auto"});
+  }
+  function cardFor(s){
+    const e = s.entry ? entry(s.entry) : s; if(!e) return null;
+    const url = safeUrl(e.url); if(!url) return null;
+    const pay = /paywall/i.test((e.kind||"")+" "+(e.note||""));
+    return el("a",{class:"card",href:url,target:"_blank",rel:"noopener"},
+      el("span",{class:"go",text:"Open ↗"}),
+      el("span",{class:"k",text:[e.kind, e.date? fmt(e.date):null, e.peer&&e.peer.venue? "✓ peer-reviewed, "+e.peer.venue : null, pay?"may be paywalled":null].filter(Boolean).join(" · ")}),
+      el("span",{class:"t",text:e.title}),
+      el("span",{class:"w",text:e.who||""}));
+  }
+  function growthChart(){
+    const w=560, h=190, padL=8, padR=8, padT=24, padB=24, y0=1987, y1=2025, n=y1-y0+1;
+    const bw=(w-padL-padR)/n, Y = v => padT + (h-padT-padB)*(1 - v/NMAX);
+    const s = sv("svg",{viewBox:`0 0 ${w} ${h}`,role:"img","aria-label":"Bar chart: papers accepted at NeurIPS rose from 90 in 1987 to 5,290 in 2025."});
+    s.append(sv("line",{class:"gaxis",x1:padL,y1:h-padB,x2:w-padR,y2:h-padB}));
+    const tip=$("#gtip");
+    NEU.forEach(([yy,v])=>{
+      const x=padL+(yy-y0)*bw, top=Y(v), r=Math.min(2,bw/2-1);
+      const hit=sv("rect",{class:"gbar-hit",x:x,y:padT,width:bw,height:h-padB-padT});
+      const bar=sv("path",{class:"gbar",d:`M${x+1},${h-padB} V${top+r} q0,-${r} ${r},-${r} H${x+bw-1-r} q${r},0 ${r},${r} V${h-padB} Z`});
+      hit.addEventListener("pointerenter",()=>{ bar.classList.add("on"); tip.textContent=`${yy}: ${v.toLocaleString("en-GB")} papers`; tip.classList.add("on"); });
+      hit.addEventListener("pointermove",e=>{ tip.style.left=e.clientX+"px"; tip.style.top=e.clientY+"px"; });
+      hit.addEventListener("pointerleave",()=>{ bar.classList.remove("on"); tip.classList.remove("on"); });
+      s.append(hit,bar);
+    });
+    [[1987,"1987"],[2000,"2000"],[2010,"2010"],[2025,"2025"]].forEach(([yy,t])=>{ const tx=sv("text",{class:"gtick",x:padL+(yy-y0+.5)*bw,y:h-6,"text-anchor":"middle"}); tx.textContent=t; s.append(tx); });
+    const a=sv("text",{class:"gval",x:padL+.5*bw,y:Y(90)-6,"text-anchor":"start"}); a.textContent="90"; s.append(a);
+    const b=sv("text",{class:"gval",x:padL+(n-.5)*bw,y:Y(NMAX)-6,"text-anchor":"end"}); b.textContent=NMAX.toLocaleString("en-GB"); s.append(b);
+    return el("figure",{class:"gchart"}, el("h3",{text:"Papers accepted at NeurIPS, 1987–2025"}), s,
+      el("p",{class:"gnote",text:"Main-track papers. Sources: Paper Copilot and the official proceedings (1987–2024), and the NeurIPS 2025 fact sheet. Counts can differ slightly between sources."}));
+  }
+  function renderDetail(m){
+    const lane = LANES[laneIx[m.lane]];
+    const d = $("#detail"); d.replaceChildren();
+    const left = el("div",{},
+      el("div",{class:"eyebrow"}, shape(m.lane,.7), el("span",{text:lane.name}), el("span",{text:"·"}), el("span",{class:"when",text:fmt(m.date)})),
+      el("h2",{text:m.title}),
+      el("p",{class:"story",text:m.story}),
+      m.chart==="neurips" ? growthChart() : null);
+    const cards = el("div",{class:"cards"}); (m.start||[]).map(cardFor).filter(Boolean).forEach(c=>cards.append(c));
+    d.append(left, el("div",{class:"start"}, el("h3",{text:"Start here"}), cards));
+    renderMore(m);
+  }
+  function renderMore(m){
+    const sec = $("#more"); sec.replaceChildren();
+    const startIds = new Set((m.start||[]).filter(s=>s.entry).map(s=>s.entry));
+    const all = [...(TAGS[m.id]||[])].map(entry).filter(Boolean);
+    const ids = all.filter(e=>!startIds.has(e.id)).sort(byDateDesc);
+    if(!ids.length){
+      if(m.date < "2026") sec.append(el("h3",{text:"In the reading room"}), el("p",{class:"more-empty",text:"The reading room covers what has happened since AI arrived in research mathematics. For this part of the story, start with the pieces above."}));
+      return;
+    }
+    const list = el("ul",{class:"more-list"});
+    ids.slice(0,8).forEach(e=>{ const u=safeUrl(e.url); list.append(el("li",{}, u? el("a",{href:u,target:"_blank",rel:"noopener",text:e.title}) : document.createTextNode(e.title), el("span",{class:"m",text:[e.who, e.kind, e.date?fmt(e.date):null].filter(Boolean).join(" · ")}))); });
+    sec.append(el("h3",{text:`In the reading room · ${all.length} ${all.length===1?"entry":"entries"}`}), list);
+    const go = el("button",{type:"button",class:"linkbtn to-room",text: all.length>ids.slice(0,8).length ? `See all ${all.length} in the reading room →` : "Open these in the reading room →"});
+    go.onclick = ()=>{ state.milestone = m.id; state.topic = null; state.q = ""; $("#q").value = ""; showView("room", true); renderTopic(); render(); updateStatus(); window.scrollTo({top: $("#view-room").offsetTop - 8, behavior: reduce ? "auto" : "smooth"}); };
+    sec.append(go);
+  }
+  // controls
+  $("#prev").onclick = ()=> cur>0 && select(MS[cur-1].id,true);
+  $("#next").onclick = ()=> cur<MS.length-1 && select(MS[cur+1].id,true);
+  $("#track").addEventListener("keydown", e=>{
+    if(e.key==="ArrowRight"){ e.preventDefault(); $("#next").click(); }
+    else if(e.key==="ArrowLeft"){ e.preventDefault(); $("#prev").click(); }
+    else if(e.key==="Home"){ e.preventDefault(); select(MS[0].id,true); }
+    else if(e.key==="End"){ e.preventDefault(); select(MS[MS.length-1].id,true); }
+  });
+  $("#track").addEventListener("scroll", ()=>requestAnimationFrame(syncOverview), {passive:true});
+  let dragX=null, dragLeft=0, dragMoved=false;
+  $("#track").addEventListener("pointerdown", e=>{ if(e.pointerType!=="mouse") return; dragX=e.clientX; dragLeft=$("#track").scrollLeft; dragMoved=false; });
+  addEventListener("pointermove", e=>{ if(dragX===null) return; const dx=e.clientX-dragX; if(Math.abs(dx)>4){ dragMoved=true; $("#track").classList.add("dragging"); } $("#track").scrollLeft = dragLeft - dx; });
+  addEventListener("pointerup", ()=>{ dragX=null; $("#track").classList.remove("dragging"); setTimeout(()=>dragMoved=false,0); });
+  let rt; addEventListener("resize", ()=>{ clearTimeout(rt); rt=setTimeout(()=>{ if(state.view!=="story") { drawn=false; return; } draw(false); if(cur>=0) centre(cur,false); },120); });
+  $("#n-ms").textContent = MS.length+" milestones"; $("#sub-ms-n").textContent = MS.length;
+  return {
+    MS,
+    show(){ const first = !drawn; draw(first); if(cur<0) select("big-dump", false); requestAnimationFrame(()=>{ centre(cur,false); syncOverview(); }); },
+    select, refresh(){ if(cur>=0) renderDetail(MS[cur]); },
+    current(){ return MS[cur] ? MS[cur].id : null; }
+  };
+})();
+
+// ---------- switching views ----------
+const ROOM_HASHES = new Set(["reading-room","propose","other",...CATS.map(c=>c.id)]);
+function showView(v, push){
+  state.view = v;
+  $("#view-story").hidden = v!=="story"; $("#view-room").hidden = v!=="room";
+  $("#sub-story").hidden = v!=="story"; $("#sub-room").hidden = v!=="room";
+  $("#sw-story").setAttribute("aria-pressed", String(v==="story")); $("#sw-room").setAttribute("aria-pressed", String(v==="room"));
+  const h = v==="story" ? "#"+(TL.current()||"storylines") : "#reading-room";
+  try{ if(push) history.pushState(null,"",h); else if(location.hash!==h && !(v==="room" && ROOM_HASHES.has(location.hash.slice(1)))) history.replaceState(null,"",h); }catch{}
+  if(v==="story") TL.show();
+}
+function openMilestone(id){ showView("story", true); TL.select(id, true); requestAnimationFrame(()=>document.querySelector(".stage").scrollIntoView({behavior:"smooth", block:"start"})); }
+$("#sw-story").onclick = ()=>{ if(state.view!=="story") showView("story", true); };
+$("#sw-room").onclick = ()=>{ if(state.view!=="room") showView("room", true); };
+function route(){
+  const h = decodeURIComponent((location.hash||"").slice(1));
+  if(msById[h]){ if(state.view!=="story") showView("story"); TL.select(h, true); }
+  else if(ROOM_HASHES.has(h)){ if(state.view!=="room") showView("room"); if(h!=="reading-room") requestAnimationFrame(()=>{ const t=document.getElementById(h); if(t) t.scrollIntoView(); }); }
+  else if(h==="storylines" && state.view!=="story") showView("story");
+}
+addEventListener("hashchange", route);
+addEventListener("popstate", route);
+
+// feedback: the address is put together only when someone clicks, so it is not in the page for harvesters to read
+$("#feedback").addEventListener("click", e=>{ e.preventDefault(); const u=["mathsai","readingroom"].join("."), d=["gmail","com"].join("."); location.href = "mailto:"+u+"\u0040"+d+"?subject="+encodeURIComponent("Feedback on Maths and AI"); });
+$("#go-propose").addEventListener("click", e=>{ e.preventDefault(); document.getElementById("propose").scrollIntoView({behavior:"smooth"}); });
+// ---------- boot ----------
+function itemsChanged(){ computeTags(); render(); renderTopic(); updateStatus(); TL.refresh(); }
+(async()=>{
+  const h0 = decodeURIComponent((location.hash||"").slice(1));
+  if(ROOM_HASHES.has(h0)) showView("room"); else { showView("story"); TL.select(msById[h0] ? h0 : "big-dump", false); }
+  if(ROOM_HASHES.has(h0) && h0!=="reading-room") setTimeout(()=>{ const t=document.getElementById(h0); if(t) t.scrollIntoView(); }, 50);
+  if(PUBLIC){
+    state.saved = PUBLIC.text || {};
+    state.items = (PUBLIC.items||[]).map(d=>({...d}));
+    $("#mine-col").hidden = true;
+    if(!PUBLIC.form) noAccess("Proposals open soon.");
+    applyStatic(); itemsChanged();
+    if(PUBLIC.generated) setStatus($("#status").textContent + " · page updated " + fmtDate(PUBLIC.generated.slice(0,10)));
+    return;
+  }
+  const claude = window.claude;
+  if(!claude || !claude.use){ setStatus("Open this page in Claude to see the reading room."); noAccess("Open this page in Claude, signed in, to send a proposal."); return; }
+  const userP = claude.use("user");
+  userP.then(async u=>{
+    const can = u ? await u.canEdit() : false;
+    state.canEdit = !!can; $("#edit-start").hidden = !can || state.editMode;
+    render();
+  });
+  db = await claude.use("db");
+  const u = await userP;
+  prop.uid = u ? await u.id() : null;
+  if(!db || !prop.uid){ noAccess("Sign in to Claude to send a proposal. If you are signed in and still see this, ask Jan for Contributor access."); renderMine(); }
+  else {
+    db.doc("proposals/"+prop.uid).onSnapshot(snap=>{
+      prop.items = snap.exists ? (snap.data().items||[]) : [];
+      prop.ready = true; renderMine();
+    }, ()=>{ prop.ready = true; renderMine(); });
+  }
+  if(!db){ setStatus("The reading room couldn’t load in this view."); $("#list").replaceChildren(el("div",{class:"empty"}, el("strong",{text:"Entries aren’t available here."}), document.createTextNode(" Open the page in Claude, signed in to your organisation."))); return; }
+  db.doc("site/text").onSnapshot(snap=>{
+    const d = snap.exists ? {...snap.data()} : {}; delete d._updated; state.saved = d;
+    applyStatic(); if(state.items.length) render(); renderTopic();
+  }, ()=>{});
+  db.collection("resources").onSnapshot(snap=>{
+    state.items = snap.docs.filter(d=>d.exists).map(d=>({id:d.id, ...d.data()}));
+    if(!state.items.length){
+      $("#list").replaceChildren(el("div",{class:"empty"}, el("strong",{text:"No entries yet."}), document.createTextNode(" Entries will appear here once they are added.")));
+      updateStatus();
+    } else itemsChanged();
+  }, err=>{ setStatus("Lost connection to the reading room. Reload the page to reconnect."); });
+})();
+</script>

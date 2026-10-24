@@ -1,0 +1,15 @@
+{
+  "added": "2026-10-22T00:05:00Z",
+  "cat": "viewpoint",
+  "checked": true,
+  "date": "2026-10-08",
+  "kind": "Essay",
+  "note": "Calls the moment a historic turning point, suggests using AI to correct existing work, and argues for free, open-source models as shared research infrastructure, like arXiv. Translated from his September blog post.",
+  "oxford": false,
+  "title": "Free Thoughts on Artificial Intelligence",
+  "topics": [
+    "big-dump"
+  ],
+  "url": "https://proofsandprompts.com/2026/10/08/free-thoughts-on-artificial-intelligence/",
+  "who": "Djalil Chafaï (Paris Dauphine and ENS)"
+}

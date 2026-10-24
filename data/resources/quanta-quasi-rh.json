@@ -1,0 +1,20 @@
+{
+  "added": "2026-10-22T15:30:00Z",
+  "cat": "news",
+  "checked": true,
+  "date": "2026-10-19",
+  "keywords": [
+    "Number theory",
+    "Riemann hypothesis",
+    "Zeta function"
+  ],
+  "kind": "Feature",
+  "note": "The best account of the release’s headline result: what the quasi-Riemann hypothesis says, why it matters for the primes, and how number theorists (Radziwiłł, Dunn, Sarnak, Lichtman, Bloom, Sawin) judge the proof and its poor write-up. Sarnak is teaching a course on it before calling it a theorem.",
+  "oxford": false,
+  "title": "AI Proved the Quasi-Riemann Hypothesis. What Happens Now?",
+  "topics": [
+    "big-dump"
+  ],
+  "url": "https://www.quantamagazine.org/ai-proved-the-quasi-riemann-hypothesis-what-happens-now-20261019/",
+  "who": "Konstantin Kakaes, Quanta Magazine"
+}

@@ -1,0 +1,19 @@
+{
+  "added": "2026-10-21T22:50:00Z",
+  "cat": "initiative",
+  "checked": true,
+  "date": "2026-10-20",
+  "keywords": [
+    "Number theory",
+    "Siegel zeros"
+  ],
+  "kind": "Challenge",
+  "note": "Invites readers to use AI tools collaboratively to test and compare arguments that rule out Siegel zeroes: Math 2.0 in practice.",
+  "oxford": false,
+  "title": "An experimental AI-math challenge: using tenth discriminant bounds to explore arguments ruling out Siegel zeroes",
+  "topics": [
+    "big-dump"
+  ],
+  "url": "https://terrytao.wordpress.com/2026/10/20/an-experimental-ai-math-challenge-using-tenth-discriminant-bounds-to-explore-arguments-ruling-out-siegel-zeroes/",
+  "who": "Terence Tao"
+}

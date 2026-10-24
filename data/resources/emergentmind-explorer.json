@@ -1,0 +1,16 @@
+{
+  "added": "2026-10-22T15:30:00Z",
+  "cat": "voices",
+  "checked": true,
+  "date": "",
+  "keywords": [],
+  "kind": "Searchable tracker",
+  "note": "An independent, searchable map of the 372 result families across 17 areas, from theoretical computer science and combinatorics to operator algebras, with links to each PDF, its Lean status and public reactions. Its classifications are AI-generated and may contain errors: a way in, not a verification.",
+  "oxford": false,
+  "title": "OpenAI Math Explorer",
+  "topics": [
+    "big-dump"
+  ],
+  "url": "https://www.emergentmind.com/openai-math-explorer",
+  "who": "Emergent Mind (independent)"
+}

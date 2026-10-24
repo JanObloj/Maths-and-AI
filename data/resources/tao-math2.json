@@ -1,0 +1,19 @@
+{
+  "added": "2026-10-21T22:50:00Z",
+  "cat": "viewpoint",
+  "checked": true,
+  "date": "2026-10-10",
+  "keywords": [
+    "Mathematical culture",
+    "Exposition"
+  ],
+  "kind": "Lecture slides and blog post",
+  "note": "Slides from Tao’s Caltech lecture (given 9 October, posted 10 October): from proof scarcity to proof abundance, and a vision that values exposition, formal libraries, experimentation and community over raw problem-solving.",
+  "oxford": false,
+  "title": "Math 2.0",
+  "topics": [
+    "big-dump"
+  ],
+  "url": "https://terrytao.wordpress.com/2026/10/10/math-2-0/",
+  "who": "Terence Tao"
+}

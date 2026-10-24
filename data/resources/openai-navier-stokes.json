@@ -1,0 +1,19 @@
+{
+  "added": "2026-10-22T08:00:00Z",
+  "cat": "announcements",
+  "checked": true,
+  "date": "2026-09-08",
+  "keywords": [
+    "PDE",
+    "Navier–Stokes",
+    "Fluid dynamics",
+    "Credit and authorship"
+  ],
+  "kind": "Company announcement",
+  "note": "OpenAI’s claim of finite-time blow-up for the three-dimensional incompressible Navier–Stokes equations with a smooth external force, from an 88-hour run of about 10,000 agents, with a 166-page paper and Lean files; it says it will not seek the Clay prize. Priority and credit are disputed: see Buckmaster’s statement, the posts under Social posts and the Clay Institute’s response.",
+  "oxford": false,
+  "title": "On the Navier–Stokes Millennium Prize Problem (OpenAI announcement and paper)",
+  "topics": [],
+  "url": "https://openai.com/index/navier-stokes-solution/",
+  "who": "OpenAI"
+}

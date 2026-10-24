@@ -1,0 +1,19 @@
+{
+  "added": "2026-10-22T15:30:00Z",
+  "cat": "news",
+  "checked": true,
+  "date": "2026-10-07",
+  "keywords": [
+    "Complexity theory",
+    "Unique Games"
+  ],
+  "kind": "Feature",
+  "note": "How Dor Minzer and his students rushed out a major related result as rumours of an AI proof spread: the human side of the release, with comment from Ryan O’Donnell and Mark Braverman.",
+  "oxford": false,
+  "title": "As AI Closed In on ‘Unique Games’ Proof, Researchers Raced to Beat the Machines",
+  "topics": [
+    "big-dump"
+  ],
+  "url": "https://www.quantamagazine.org/as-ai-closed-in-on-unique-games-proof-researchers-raced-to-beat-the-machines-20261007/",
+  "who": "Ben Brubaker, Quanta Magazine"
+}

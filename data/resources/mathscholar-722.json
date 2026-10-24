@@ -1,0 +1,18 @@
+{
+  "added": "2026-10-22T15:30:00Z",
+  "cat": "news",
+  "checked": true,
+  "date": "2026-10-07",
+  "keywords": [
+    "Number theory"
+  ],
+  "kind": "Blog post",
+  "note": "An accessible list of headline claims: quasi-Riemann, irrationality of Catalan’s constant, Hilbert’s tenth problem over the rationals, modularity of elliptic curves over imaginary quadratic fields and more. Updated 21 October. Check counts against the repository.",
+  "oxford": false,
+  "title": "OpenAI stuns mathematicians with 722 new papers",
+  "topics": [
+    "big-dump"
+  ],
+  "url": "https://mathscholar.org/2026/10/openai-stuns-mathematicians-with-722-new-papers/",
+  "who": "David H. Bailey, Math Scholar"
+}

@@ -1,0 +1,21 @@
+{
+  "added": "2026-10-22T00:05:00Z",
+  "cat": "viewpoint",
+  "checked": true,
+  "date": "2026-10-08",
+  "keywords": [
+    "Number theory",
+    "Siegel zeros",
+    "Dirichlet L-functions",
+    "Additive combinatorics"
+  ],
+  "kind": "Personal reaction",
+  "note": "Green found the claimed zero-free region for Dirichlet L-functions, and a short proof ruling out Siegel zeros, shocking. Many central problems in additive combinatorics fell, including about three quarters of the aims of an ERC Advanced Grant awarded in June. He judges the work of understanding the solutions to be significant and worthwhile. Scroll to his entry on the page.",
+  "oxford": true,
+  "title": "Ben Green’s reaction to the October release (in “100+ reactions to 100+ solutions”)",
+  "topics": [
+    "big-dump"
+  ],
+  "url": "https://proofsandprompts.com/2026/10/08/100-reactions-to-100-solutions/",
+  "who": "Ben Green"
+}

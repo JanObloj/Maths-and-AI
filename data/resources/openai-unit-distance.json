@@ -1,0 +1,17 @@
+{
+  "added": "2026-10-22T08:00:00Z",
+  "cat": "announcements",
+  "checked": true,
+  "date": "2026-05-20",
+  "keywords": [
+    "Combinatorics",
+    "Discrete geometry",
+    "Erdős problems"
+  ],
+  "kind": "Company announcement",
+  "note": "An internal reasoning model disproved the conjectured upper bound in Erdős’s 1946 unit distance problem with a stronger construction; the proof was checked by external mathematicians, with comment from Noga Alon and Tim Gowers. The same day Will Sawin posted an explicit lower bound (arXiv:2605.20579). The exact maximum remains open.",
+  "oxford": false,
+  "title": "An OpenAI model has disproved a central conjecture in discrete geometry",
+  "url": "https://openai.com/index/model-disproves-discrete-geometry-conjecture/",
+  "who": "OpenAI"
+}

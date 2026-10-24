@@ -1,0 +1,19 @@
+{
+  "added": "2026-10-22T08:00:00Z",
+  "cat": "announcements",
+  "checked": true,
+  "date": "2026-08-01",
+  "keywords": [
+    "Operator algebras",
+    "Group theory",
+    "Sphere packing",
+    "Erdős problems",
+    "Lean"
+  ],
+  "kind": "Company announcement",
+  "note": "Ten results on long-open problems from an internal model codenamed Astra, formalised in Lean, including a disproof of Connes’s rigidity conjecture and new sphere-packing bounds. Humans prepared the manuscripts and take responsibility for correctness.",
+  "oxford": false,
+  "title": "Ten advances in mathematics and theoretical computer science",
+  "url": "https://openai.com/index/ten-advances-in-mathematics/",
+  "who": "OpenAI"
+}

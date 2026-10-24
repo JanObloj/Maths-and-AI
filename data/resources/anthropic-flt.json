@@ -1,0 +1,18 @@
+{
+  "added": "2026-10-22T08:00:00Z",
+  "cat": "announcements",
+  "checked": true,
+  "date": "2026-09-04",
+  "keywords": [
+    "Number theory",
+    "Fermat’s Last Theorem",
+    "Lean",
+    "Formal verification"
+  ],
+  "kind": "Company announcement",
+  "note": "Claude produced a complete Lean proof of Fermat’s Last Theorem in 11 largely autonomous days, about 13 million lines, following the Darmon–Diamond–Taylor account. Read with Kevin Buzzard’s response.",
+  "oxford": false,
+  "title": "Formalizing Fermat’s Last Theorem",
+  "url": "https://www.anthropic.com/news/formalizing-fermats-last-theorem",
+  "who": "Anthropic"
+}

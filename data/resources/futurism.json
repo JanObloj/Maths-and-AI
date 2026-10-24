@@ -1,0 +1,15 @@
+{
+  "added": "2026-10-21T22:50:00Z",
+  "cat": "news",
+  "checked": true,
+  "date": "2026-10-09",
+  "kind": "News",
+  "note": "Coverage of the Association for Human Mathematics statement and the advisory group row.",
+  "oxford": false,
+  "title": "Mathematicians react with fury as OpenAI releases hundreds of new AI-generated proofs",
+  "topics": [
+    "big-dump"
+  ],
+  "url": "https://futurism.com/artificial-intelligence/mathematicians-openai-furious",
+  "who": "Frank Landymore, Futurism"
+}

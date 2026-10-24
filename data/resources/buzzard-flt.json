@@ -1,0 +1,18 @@
+{
+  "added": "2026-10-22T08:00:00Z",
+  "cat": "viewpoint",
+  "checked": true,
+  "date": "2026-09-04",
+  "keywords": [
+    "Number theory",
+    "Fermat’s Last Theorem",
+    "Lean",
+    "Formal verification"
+  ],
+  "kind": "Blog post",
+  "note": "The leader of the community FLT formalisation congratulates Anthropic but finds the result mathematically uninformative, since it follows the 1995 route; he sees it as a sign of what autoformalisation can now do for checking research and peer review.",
+  "oxford": false,
+  "title": "FLT: Anthropic has beaten me to it",
+  "url": "https://xenaproject.wordpress.com/2026/09/04/flt-anthropic-has-beaten-me-to-it/",
+  "who": "Kevin Buzzard (Imperial College London)"
+}

@@ -1,0 +1,19 @@
+{
+  "added": "2026-10-21T22:50:00Z",
+  "cat": "viewpoint",
+  "checked": true,
+  "date": "2026-10-09",
+  "keywords": [
+    "Lean",
+    "Formal verification"
+  ],
+  "kind": "Essay",
+  "note": "What formal verification does and does not guarantee, including recent Lean soundness bugs and the need for human audit of AI-produced formal work.",
+  "oxford": false,
+  "title": "What mathematicians should know about the Lean Theorem Prover: questions of reliability and AI",
+  "topics": [
+    "big-dump"
+  ],
+  "url": "https://terrytao.wordpress.com/2026/10/09/what-mathematicians-should-know-about-the-lean-theorem-proverquestions-of-reliability-and-ai/",
+  "who": "Thomas Hales (guest post on Tao’s blog)"
+}

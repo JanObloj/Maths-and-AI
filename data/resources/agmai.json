@@ -1,0 +1,15 @@
+{
+  "added": "2026-10-21T22:50:00Z",
+  "cat": "institutional",
+  "checked": true,
+  "date": "2026-10-06",
+  "kind": "Advisory body",
+  "note": "Nine mathematicians, including Oxford’s Ulrike Tillmann. Guidelines for responsible release of AI-generated mathematics (29 Sept, from 600+ survey responses) and a statement on OpenAI’s 6 October release.",
+  "oxford": true,
+  "title": "Advisory Group on Mathematics and AI: guidelines and statements",
+  "topics": [
+    "big-dump"
+  ],
+  "url": "https://agmai.org/",
+  "who": "AGMAI, hosted at the Institute for Advanced Study"
+}

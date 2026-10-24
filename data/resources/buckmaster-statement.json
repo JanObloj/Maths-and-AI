@@ -1,0 +1,18 @@
+{
+  "added": "2026-10-22T08:00:00Z",
+  "cat": "viewpoint",
+  "checked": true,
+  "date": "2026-09-07",
+  "keywords": [
+    "PDE",
+    "Euler equations",
+    "Navier–Stokes",
+    "Credit and authorship"
+  ],
+  "kind": "Personal statement",
+  "note": "Buckmaster’s account of the AI-assisted blowup results he and Alpöge obtained, and of the September exchange with OpenAI over how results would be released. OpenAI disputes parts of this account.",
+  "oxford": false,
+  "title": "Statement on the forced blowup results and OpenAI’s Navier–Stokes claim",
+  "url": "https://cims.nyu.edu/~tristanb/statement.pdf",
+  "who": "Tristan Buckmaster (NYU), on work with Levent Alpöge"
+}

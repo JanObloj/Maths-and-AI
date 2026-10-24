@@ -1,0 +1,18 @@
+{
+  "added": "2026-10-23T20:40:00Z",
+  "cat": "voices",
+  "checked": true,
+  "date": "",
+  "keywords": [
+    "Formal verification",
+    "Lean",
+    "Erdős problems"
+  ],
+  "kind": "Timeline",
+  "note": "A detailed, evidence-graded timeline of AI and mathematics, from 1955 to now, with each event graded for significance and strength of evidence and linked to primary sources. Aimed at specialists: many entries are benchmarks and tools.",
+  "oxford": false,
+  "title": "AI4Math Chronicle: major milestones in AI for mathematics",
+  "topics": [],
+  "url": "https://charlie-wang-03.github.io/ai4math-chronicle/en/",
+  "who": "Charlie Wang (independent; open source on GitHub)"
+}

@@ -1,0 +1,15 @@
+{
+  "added": "2026-10-21T22:50:00Z",
+  "cat": "announcements",
+  "checked": true,
+  "date": "2026-10-06",
+  "kind": "Repository",
+  "note": "The manuscripts themselves, grouped into 372 result families (a family is a group of related claims, not a count of accepted theorems); 719 listed after three withdrawals. The history file also records repairs to 14 other manuscripts.",
+  "oxford": false,
+  "title": "openai/math repository",
+  "topics": [
+    "big-dump"
+  ],
+  "url": "https://github.com/openai/math",
+  "who": "OpenAI"
+}

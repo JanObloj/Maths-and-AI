@@ -1,0 +1,20 @@
+{
+  "added": "2026-10-22T00:05:00Z",
+  "cat": "initiative",
+  "checked": true,
+  "date": "2026-10-19",
+  "keywords": [
+    "Number theory",
+    "Siegel zeros",
+    "Dirichlet L-functions"
+  ],
+  "kind": "Expository sketch",
+  "note": "Tao explains the claimed AI-produced proof that rules out Siegel zeroes, following Ben Green’s simpler formulation and his key bound. A model of mathematicians digesting an AI result.",
+  "oxford": true,
+  "title": "A sketch of the proof of non-existence of Siegel zeroes",
+  "topics": [
+    "big-dump"
+  ],
+  "url": "https://terrytao.wordpress.com/2026/10/19/a-sketch-of-the-proof-of-non-existence-of-siegel-zeroes/",
+  "who": "Terence Tao, building on Ben Green’s write-up"
+}

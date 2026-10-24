@@ -1,0 +1,15 @@
+{
+  "added": "2026-10-21T22:50:00Z",
+  "cat": "news",
+  "checked": true,
+  "date": "2026-10-07",
+  "kind": "News",
+  "note": "The main news account of the release and reactions, including Ursula Martin’s comment. Updated 9 and 12 October; paywalled.",
+  "oxford": true,
+  "title": "OpenAI posts 700 maths preprints online: mathematicians are up in arms",
+  "topics": [
+    "big-dump"
+  ],
+  "url": "https://www.nature.com/articles/d41586-026-03196-8",
+  "who": "Davide Castelvecchi, Nature"
+}

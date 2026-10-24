@@ -1,0 +1,20 @@
+{
+  "added": "2026-10-23T06:30:00Z",
+  "cat": "viewpoint",
+  "checked": true,
+  "date": "2026-10-21",
+  "keywords": [
+    "Credit and authorship",
+    "Early-career researchers",
+    "Mathematical culture"
+  ],
+  "kind": "Guest post",
+  "note": "Buckmaster argues that even a machine-verified proof of a major conjecture leaves open why it is true, and calls for protecting researchers’ unpublished work from AI companies through data agreements, opt-in training and open-weight models. He also proposes credit systems that reward understanding and exposition rather than priority.",
+  "oxford": false,
+  "title": "Mathematics is a subject for the young",
+  "topics": [
+    "big-dump"
+  ],
+  "url": "https://terrytao.wordpress.com/2026/10/21/mathematics-is-a-subject-for-the-young/",
+  "who": "Tristan Buckmaster (NYU), guest post on Terence Tao’s blog"
+}

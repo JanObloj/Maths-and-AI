@@ -1,0 +1,18 @@
+{
+  "added": "2026-10-21T22:50:00Z",
+  "cat": "announcements",
+  "checked": true,
+  "date": "2026-10-06",
+  "keywords": [
+    "Lean"
+  ],
+  "kind": "Company announcement",
+  "note": "OpenAI’s announcement of the 722 manuscripts from an unnamed internal model, with partial Lean formalisations. Updated 15 October.",
+  "oxford": false,
+  "title": "Sharing AI progress in mathematics",
+  "topics": [
+    "big-dump"
+  ],
+  "url": "https://openai.com/index/sharing-ai-progress-in-mathematics/",
+  "who": "OpenAI"
+}

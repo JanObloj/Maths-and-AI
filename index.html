@@ -1,0 +1,1104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="How mathematics made modern AI possible and how AI is revolutionising mathematics: two intertwined storylines from Turing to today, and a reading room of statements, letters, essays, films and more. A personal page by Jan Obłój.">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mathematics and AI">
+<meta property="og:title" content="Mathematics and AI">
+<meta property="og:description" content="How mathematics made modern AI possible and how AI is revolutionising mathematics: two intertwined storylines from Turing to today, and a reading room of statements, letters, essays, films and more. A personal page by Jan Obłój.">
+<meta property="og:url" content="https://janobloj.github.io/Maths-and-AI/">
+<meta property="og:image" content="https://janobloj.github.io/Maths-and-AI/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A Penrose-tiling mark beside the title Mathematics and AI">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://janobloj.github.io/Maths-and-AI/og-image.png">
+<style>html,body{margin:0}</style>
+</head>
+<body>
+<title>Mathematics and AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<style>
+/* Layout: one masthead (title, shared opening text, a two-way switch) over two views.
+   Storylines: two parallel storylines on a horizontally scrolling stage, joined by bridges; the chosen milestone opens below.
+   Reading room: a library index with a sticky category rail on wide screens and a chip row on phones. */
+:root{
+  --bg:#f4f5f9; --surface:#ffffff; --ink:#0f1d33; --fg:#0f1d33; --muted:#5b6679; --line:#dde1ea; --navy:#002147;
+  --accent:#a26b21; --rust:#b3401a; --chip:#eef1f6; --chip-fg:#2b3d55; --warn-bg:#fbf1e3; --warn-fg:#7a4a0c;
+  --l-maths:#d9781f; --l-moments:#44526d; --l-ai:#6a4fc4; --l-respond:#0a8f7f; --proto:#b3401a;
+  --band:#eef0f7; --select:#e9e4fb;
+  --display:"Source Serif 4", Georgia, "Times New Roman", serif;
+  --body:"Figtree", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0a111e; --surface:#111a2b; --ink:#e7ecf5; --fg:#e7ecf5; --muted:#9ca8bc; --line:#24314a; --navy:#cfe0f2;
+  --accent:#e0b26a; --rust:#f08a5d; --chip:#1a2539; --chip-fg:#c9d6e4; --warn-bg:#33270f; --warn-fg:#f1c98a;
+  --l-maths:#f2a65a; --l-moments:#7f8ba3; --l-ai:#a58ef2; --l-respond:#40c8b0; --proto:#f08a5d;
+  --band:#152036; --select:#231f3d; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0a111e; --surface:#111a2b; --ink:#e7ecf5; --fg:#e7ecf5; --muted:#9ca8bc; --line:#24314a; --navy:#cfe0f2;
+  --accent:#e0b26a; --rust:#f08a5d; --chip:#1a2539; --chip-fg:#c9d6e4; --warn-bg:#33270f; --warn-fg:#f1c98a;
+  --l-maths:#f2a65a; --l-moments:#7f8ba3; --l-ai:#a58ef2; --l-respond:#40c8b0; --proto:#f08a5d;
+  --band:#152036; --select:#231f3d; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:15px/1.55 var(--body);margin:0}
+a{color:var(--navy);text-underline-offset:3px}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--l-ai);outline-offset:2px}
+.wrap{max-width:1240px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+[hidden]{display:none!important}
+
+/* top bar */
+.top{display:flex;align-items:center;gap:14px;padding-top:22px}
+.mark{width:40px;height:40px;flex-shrink:0}
+.mark-dark{display:none}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .mark-light{display:none}:root:not([data-theme="light"]) .mark-dark{display:block}}
+:root[data-theme="dark"] .mark-light{display:none}:root[data-theme="dark"] .mark-dark{display:block}
+.series{font-size:14px;color:var(--muted)}.series b{color:var(--ink);font-weight:600}
+.owner{margin-left:auto;font-size:13px;color:var(--muted);text-align:right;line-height:1.35}
+.o-short{display:none}
+.proto{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--proto);border:1px solid var(--proto);border-radius:999px;padding:2px 9px;white-space:nowrap}
+
+/* masthead: title, shared text, the switch */
+.mast{display:flex;flex-direction:column;align-items:center;text-align:center;gap:20px;padding-block:52px 0}
+.mast h1{font:400 clamp(48px,7.4vw,92px)/.95 var(--display);letter-spacing:-.02em;margin:0;text-wrap:balance}
+.mast h1 em{font-style:italic;color:var(--l-ai)}
+.t-short{display:none}
+.mast .lede{margin:0;max-width:62ch;font-size:19px;line-height:1.6}
+.switch{display:inline-flex;gap:4px;padding:5px;margin-top:8px;border-radius:999px;background:var(--surface);border:1px solid var(--line);box-shadow:0 1px 2px rgba(15,29,51,.06)}
+.switch button{border:0;border-radius:999px;padding:11px 24px;min-height:48px;background:transparent;font-weight:600;font-size:16px;display:flex;align-items:baseline;gap:8px;cursor:pointer}
+.switch button .n{font-weight:500;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.switch button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.switch button[aria-pressed="true"] .n{color:inherit;opacity:.7}
+.sub{margin:0;font-size:15px;color:var(--muted)}.sub b{color:var(--ink);font-weight:600}
+.subs{display:flex;flex-direction:column;align-items:center;gap:12px}
+.pnote{margin:0;font-size:13.5px;line-height:1.5;color:var(--muted);max-width:56ch}
+.pnote b{font-family:var(--display);font-style:italic;font-weight:400;font-size:15px;color:var(--ink)}
+footer .credits{margin:0;flex-basis:100%;max-width:90ch;line-height:1.6}
+
+/* ---------- Storylines view ---------- */
+.legend{display:grid;grid-template-columns:max-content max-content max-content;gap:8px 24px;align-items:center;margin:0;padding:0;list-style:none;font-size:13px;color:var(--muted)}
+.legend li{display:flex;align-items:center;gap:8px}
+.legend svg{flex-shrink:0}
+.legend .lg-h{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.stage{background:var(--surface);border-block:1px solid var(--line);margin-top:40px}
+.stage-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding-block:14px 6px}
+.eras{display:flex;gap:6px;flex-wrap:wrap}
+.era{border:1px solid var(--line);background:var(--chip);border-radius:999px;padding:6px 12px;font-size:13px;cursor:pointer;min-height:36px;display:inline-flex;gap:6px;align-items:baseline}
+.era small{color:var(--muted);font-size:12px;font-variant-numeric:tabular-nums}
+.era[aria-pressed="true"]{border-color:var(--ink);background:var(--ink);color:var(--bg)}
+.era[aria-pressed="true"] small{color:inherit;opacity:.75}
+.stepper{margin-left:auto;display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.step{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--surface);cursor:pointer;display:grid;place-items:center}
+.step:hover{border-color:var(--ink)}
+.step:disabled{opacity:.35;cursor:default}
+.track{position:relative;overflow-x:auto;overflow-y:hidden;scrollbar-width:thin;outline:none;cursor:grab;-webkit-overflow-scrolling:touch}
+.track.dragging{cursor:grabbing}
+.track:focus-visible{box-shadow:inset 0 0 0 3px var(--l-ai)}
+.canvas{position:relative;height:330px}
+.canvas svg.threads{position:absolute;inset:0;pointer-events:none}
+.thread{fill:none;stroke-width:3;stroke-linecap:round}
+.thread.future{stroke-dasharray:0 9;stroke-width:3.5}
+.today{stroke:var(--ink);stroke-width:1.5;stroke-opacity:.55}
+.todaylabel{font:700 11px var(--body);letter-spacing:.12em;fill:var(--ink)}
+.todaydate{font:600 12.5px var(--body);fill:var(--muted);font-variant-numeric:tabular-nums}
+.bridge{stroke-width:2.5;stroke-opacity:.55;transition:stroke-width .15s, stroke-opacity .15s}
+.bridge.on{stroke-width:4;stroke-opacity:1}
+.gapline{stroke:var(--line);stroke-width:1;stroke-dasharray:3 4}
+.gaplabel{font:600 11px var(--body);fill:var(--muted);letter-spacing:.04em}
+.yearband{fill:var(--band);opacity:.7}
+.bandlabel{font:600 11px var(--body);letter-spacing:.12em;fill:var(--muted)}
+.ms{position:absolute;top:0;height:100%;border:0;background:transparent;padding:0;cursor:pointer;border-radius:10px}
+.ms:hover{background:color-mix(in srgb,var(--band) 70%,transparent)}
+.ms[aria-current="true"]{background:var(--select)}
+.ms .node{position:absolute;left:50%;transform:translate(-50%,-50%);transition:transform .18s ease}
+.ms:hover .node{transform:translate(-50%,-50%) scale(1.25)}
+.ms[aria-current="true"] .node{transform:translate(-50%,-50%) scale(1.55)}
+.ms .lab{position:absolute;left:6px;right:6px;top:calc(100% - 92px);text-align:center}
+.ms .yr{display:block;font:600 20px/1 var(--display);font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.ms .sh{display:block;font-size:12.5px;line-height:1.3;color:var(--muted);margin-top:5px;text-wrap:balance}
+.ms[aria-current="true"] .sh{color:var(--ink);font-weight:600}
+.overview{padding-block:6px 16px}
+.overview svg{display:block;width:100%;height:46px;cursor:pointer}
+.ov-axis{stroke:var(--line);stroke-width:1}
+.ov-tick{font:500 10.5px var(--body);fill:var(--muted);font-variant-numeric:tabular-nums}
+.ov-win{fill:var(--select);stroke:var(--l-ai);stroke-width:1}
+.ov-hint{font-size:12px;color:var(--muted);margin:2px 0 0}
+.detail{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:28px 56px;padding-block:34px 18px}
+.eyebrow{display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.when{font-variant-numeric:tabular-nums}
+.detail h2{font:400 clamp(28px,3.4vw,42px)/1.1 var(--display);margin:10px 0 14px;letter-spacing:-.01em;text-wrap:balance}
+.story{font-size:17px;line-height:1.65;max-width:62ch;margin:0}
+.start h3,.more h3{font:700 12px/1 var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:4px 0 12px}
+.cards{display:grid;gap:10px}
+.card{display:block;text-decoration:none;color:inherit;border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:14px 16px;transition:border-color .15s, transform .15s}
+.card:hover{border-color:var(--ink);transform:translateY(-1px)}
+.card .k{font-size:12px;color:var(--muted)}
+.card .t{display:block;font:600 17px/1.3 var(--display);margin-top:4px}
+.card .w{display:block;font-size:13px;color:var(--muted);margin-top:6px}
+.card .go{float:right;font-size:13px;font-weight:600;color:var(--l-ai)}
+.more{padding-block:8px 24px}
+.more-list{list-style:none;margin:0;padding:0;columns:2;column-gap:40px}
+.more-list li{break-inside:avoid;padding:10px 0;border-top:1px solid var(--line)}
+.more-list a{font-weight:600;text-decoration:none}
+.more-list a:hover{text-decoration:underline}
+.more-list .m{display:block;font-size:12.5px;color:var(--muted);margin-top:2px}
+.more-empty{color:var(--muted);font-size:14px;margin:0}
+.to-room{margin-top:14px}
+.gchart{margin:22px 0 0;max-width:62ch}
+.gchart h3{font:700 12px/1 var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+.gchart svg{display:block;width:100%;height:auto;overflow:visible}
+.gbar{fill:var(--l-maths)}
+.gbar-hit{fill:transparent;cursor:default}
+.gbar.on{fill:var(--ink)}
+.gaxis{stroke:var(--line);stroke-width:1}
+.gtick{font:500 11px var(--body);fill:var(--muted);font-variant-numeric:tabular-nums}
+.gval{font:600 12px var(--body);fill:var(--ink);font-variant-numeric:tabular-nums}
+.gnote{font-size:12.5px;color:var(--muted);margin:8px 0 0}
+.gtip{position:fixed;pointer-events:none;background:var(--ink);color:var(--bg);font-size:12.5px;padding:5px 9px;border-radius:7px;transform:translate(-50%,calc(-100% - 8px));opacity:0;z-index:5;white-space:nowrap}
+.gtip.on{opacity:1}
+@keyframes draw{from{stroke-dashoffset:var(--len)}to{stroke-dashoffset:0}}
+.thread.anim{stroke-dasharray:var(--len);animation:draw 1.6s cubic-bezier(.3,.7,.2,1) both}
+
+/* ---------- Reading room view ---------- */
+.room{padding-block:36px 24px}
+.controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:22px 0 6px}
+.search{flex:1 1 260px;min-width:0;position:relative}
+.search input{width:100%;font:inherit;padding:10px 12px 10px 36px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--fg)}
+.search svg{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--muted)}
+.toggle{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--surface)}
+.toggle button{font:inherit;font-size:13px;border:0;background:none;color:var(--muted);padding:9px 12px;cursor:pointer;min-height:40px}
+.toggle button[aria-pressed="true"]{background:var(--navy);color:var(--bg)}
+.chipbtn{font:inherit;font-size:13px;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--fg);padding:8px 14px;cursor:pointer;min-height:40px}
+.chipbtn[aria-pressed="true"]{border-color:var(--rust);color:var(--rust);font-weight:600}
+.btn{font:inherit;font-size:14px;font-weight:600;border:1px solid var(--navy);background:var(--navy);color:var(--bg);border-radius:8px;padding:9px 14px;cursor:pointer;min-height:40px}
+.btn.ghost{background:none;color:var(--navy)}
+.status{font-size:13px;color:var(--muted);margin:8px 0 0;min-height:20px}
+.layout{display:grid;grid-template-columns:230px minmax(0,1fr);gap:40px;margin-top:22px}
+nav.rail{position:sticky;top:calc(env(safe-area-inset-top,0px) + 16px);align-self:start}
+nav.rail a{display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px solid var(--line);text-decoration:none;color:var(--fg);font-size:14px}
+nav.rail a span{color:var(--muted);font-variant-numeric:tabular-nums;font-size:13px}
+.rail-note{font-size:12.5px;color:var(--muted);margin-top:18px;line-height:1.5}
+.chips-nav{display:none}
+section.cat{padding:6px 0 26px;scroll-margin-top:16px}
+.cat-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;border-bottom:2px solid var(--navy);padding-bottom:8px}
+.cat-head h2{font:600 22px/1.2 var(--display);margin:0;color:var(--navy)}
+.cat-head .count{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.cat-desc{margin:8px 0 4px;font-size:14px;color:var(--muted);max-width:70ch}
+ol.items{list-style:none;margin:0;padding:0}
+.item{display:grid;grid-template-columns:96px minmax(0,1fr);gap:18px;padding:16px 0;border-bottom:1px solid var(--line)}
+.date{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;padding-top:3px}
+.item h3{margin:0;font:600 16.5px/1.35 var(--body)}
+.item h3 a{text-decoration:none}.item h3 a:hover{text-decoration:underline}
+.meta{font-size:13.5px;color:var(--muted);margin-top:2px}
+.peer{display:inline-block;margin-left:8px;padding:0 8px;border:1px solid currentColor;border-radius:999px;font-size:12px;font-weight:600;line-height:1.6;color:var(--navy);text-decoration:none;white-space:nowrap}
+a.peer:hover{text-decoration:underline}
+.note{margin:8px 0 0;font:italic 15px/1.5 var(--display);max-width:72ch;padding-left:12px;border-left:2px solid var(--accent)}
+.note .nl{display:block;font:600 11px/1.6 var(--body);font-style:normal;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+.about{margin:0;max-width:76ch;font-size:13.5px;color:var(--muted);border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:12px 14px}
+.about strong{color:var(--fg);font-weight:600}
+.about p{margin:0}.about p+p{margin-top:6px}
+.tlchip{font:inherit;font-size:12px;font-weight:600;color:var(--l-ai);background:var(--select);border:0;border-radius:999px;padding:3px 10px;cursor:pointer;min-height:26px}
+.tlchip:hover{text-decoration:underline}
+section.propose{margin-top:44px;border-top:2px solid var(--navy);padding-top:14px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;scroll-margin-top:16px}
+section.propose h2{font:600 22px/1.2 var(--display);margin:0 0 8px;color:var(--navy)}
+section.propose h3{font:600 15px/1.3 var(--body);margin:0 0 8px}
+.prop-intro{font-size:14.5px;max-width:60ch;margin:0 0 6px}
+.prop-small{font-size:13px;color:var(--muted);margin:6px 0 0;max-width:60ch}
+.agent{display:flex;gap:10px;align-items:flex-start;background:var(--warn-bg);color:var(--warn-fg);border-radius:8px;padding:10px 12px;font-size:13.5px;margin:12px 0 16px;max-width:60ch}
+.agent svg{flex-shrink:0;margin-top:2px}
+form.pf{display:grid;gap:12px;max-width:60ch}
+.mine{list-style:none;margin:0;padding:0}
+.mine li{padding:10px 0;border-bottom:1px solid var(--line);font-size:14px}
+.mine .t{font-weight:600;overflow-wrap:anywhere}
+.mine .s{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:4px;font-size:13px;color:var(--muted)}
+.st{font-size:11.5px;letter-spacing:.04em;text-transform:uppercase;font-weight:600;padding:2px 8px;border-radius:4px;background:var(--chip);color:var(--chip-fg)}
+.st.added{background:none;border:1px solid var(--navy);color:var(--navy)}
+.st.declined{background:none;border:1px solid var(--line);color:var(--muted)}
+.mine .rn{margin:4px 0 0;font-size:13.5px}
+.ok{color:var(--navy);font-size:13.5px;margin:0}
+form.pf .err:empty,form.pf .ok:empty{display:none}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.editbar{position:sticky;top:0;z-index:5;margin:16px 0 0;background:var(--warn-bg);color:var(--warn-fg);border-radius:10px;padding:12px 14px;display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:space-between}
+.editbar p{margin:0;font-size:14px;max-width:70ch}
+.editbar .err{flex-basis:100%}
+.editbar .err:empty{display:none}
+body.editmode [data-edit]{outline:1px dashed var(--accent);outline-offset:3px;border-radius:3px;cursor:text}
+body.editmode [data-edit]:focus{outline:2px solid var(--accent)}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px;align-items:center}
+.tag{font-size:11.5px;letter-spacing:.04em;text-transform:uppercase;font-weight:600;padding:3px 8px;border-radius:4px;background:var(--chip);color:var(--chip-fg)}
+.tag.ox{background:none;border:1px solid var(--rust);color:var(--rust)}
+.tag.warn{background:var(--warn-bg);color:var(--warn-fg)}
+.tag.cat{background:none;border:1px solid var(--line);color:var(--muted)}
+.tag.topic{background:var(--navy);color:var(--bg)}
+.kws{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.kw{font:inherit;font-size:12.5px;border:1px dashed var(--line);border-radius:999px;background:none;color:var(--chip-fg);padding:2px 10px;cursor:pointer;min-height:26px}
+.kw:hover{border-color:var(--accent);color:var(--fg)}
+.topic-panel{margin:18px 0 0;border-left:4px solid var(--navy);background:var(--surface);border-radius:0 10px 10px 0;padding:14px 16px;max-width:90ch}
+.topic-panel.tl{border-left-color:var(--l-ai)}
+.topic-panel h2{font:600 20px/1.2 var(--display);margin:0 0 6px;color:var(--navy)}
+.topic-panel p{margin:0;font-size:14.5px}
+.topic-panel .sub2{margin-top:8px;font-size:13px;color:var(--muted);display:flex;gap:6px 16px;flex-wrap:wrap;align-items:center}
+.kw-index{margin-top:22px}
+.kw-index h3{font:600 12px/1.4 var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 8px}
+.kw-index div{display:flex;flex-wrap:wrap;gap:6px}
+.edit-row{display:flex;gap:12px;margin-top:8px}
+.linkbtn{font:inherit;font-size:13.5px;background:none;border:0;padding:6px 0;color:var(--navy);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.linkbtn.danger{color:var(--rust)}
+.empty{padding:28px 0;color:var(--muted)}
+.empty strong{color:var(--fg)}
+footer{margin-top:28px;padding-block:18px 48px;border-top:1px solid var(--line);font-size:13px;color:var(--muted);display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 24px}
+dialog{border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--fg);padding:0;width:min(640px,calc(100vw - 32px));max-height:calc(100vh - 40px)}
+dialog::backdrop{background:rgba(5,15,30,.45)}
+form.ed{padding:22px;display:grid;gap:14px}
+form.ed h2{margin:0;font:600 20px/1.2 var(--display);color:var(--navy)}
+.field{display:grid;gap:5px}.field label{font-size:13px;font-weight:600}
+.field input,.field select,.field textarea{font:inherit;padding:9px 11px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--fg);width:100%}
+.field textarea{min-height:80px;resize:vertical}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.checks{display:flex;gap:18px;flex-wrap:wrap;font-size:14px}
+.checks label{display:flex;gap:7px;align-items:center}
+.ed-actions{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap}
+.err{color:var(--rust);font-size:13px;min-height:18px}
+.confirm{display:flex;gap:10px;align-items:center;flex-wrap:wrap;font-size:13px;margin-top:8px}
+
+@media (max-width:860px){
+  .layout{grid-template-columns:1fr;gap:8px}
+  nav.rail{display:none}
+  .chips-nav{display:flex;gap:8px;overflow-x:auto;padding:4px 0 10px;margin-top:6px}
+  .chips-nav a{flex-shrink:0;font-size:13px;border:1px solid var(--line);border-radius:999px;padding:6px 12px;text-decoration:none;color:var(--fg);background:var(--surface)}
+  .item{grid-template-columns:1fr;gap:4px}
+  .row2{grid-template-columns:1fr}
+  section.propose{grid-template-columns:1fr;gap:24px}
+  .detail{grid-template-columns:1fr}
+  .more-list{columns:1}
+  .stepper{margin-left:0}
+  .canvas{height:300px}
+  .ms .lab{top:calc(100% - 86px)}
+  .legend{grid-template-columns:auto 1fr 1fr;gap:6px 10px;font-size:12px}
+  .eras{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-inline:-4px;padding-inline:4px}
+  .era{flex-shrink:0}
+  .stage-head{padding-block:10px 4px}
+  .stage{margin-top:28px}
+}
+@media (max-width:640px){
+  .top{gap:6px 10px;padding-top:16px;flex-wrap:wrap}
+  .top .proto{order:5;margin-left:42px}
+  .series{flex:1 1 auto;min-width:0}
+  .owner{flex-shrink:0}
+  .mark{width:32px;height:32px}
+  .series{font-size:13px;line-height:1.3}
+  .series .s-rest{display:block}
+  .owner{font-size:12px}
+  .o-long{display:none}.o-short{display:inline}
+  .mast{padding-block:32px 0;gap:16px}
+  .t-long{display:none}.t-short{display:inline}
+  .mast h1{font-size:56px}
+  .mast .lede{font-size:16px;line-height:1.55}
+  .switch{display:grid;grid-template-columns:1fr 1fr;width:100%;padding:4px}
+  .switch button{justify-content:center;padding:10px 8px;min-height:46px;font-size:15px}
+  .switch button .n{display:none}
+  .sub{font-size:14px}
+  .room{padding-block:24px 16px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+</style>
+
+<header class="wrap top">
+  <img class="mark mark-light" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiI+PGRlZnM+PGNsaXBQYXRoIGlkPSJjYiI+PHJlY3QgeD0iMzAuNyIgeT0iMzAuNyIgd2lkdGg9IjQ1MC42IiBoZWlnaHQ9IjQ1MC42Ij48L3JlY3Q+PC9jbGlwUGF0aD48L2RlZnM+PGcgY2xpcC1wYXRoPSJ1cmwoI2NiKSI+PHBhdGggZD0iTS01Mi44MiwzMS42MyBMMzcuMjksMzEuNjMgTDY1LjE0LDExNy4zMyBMLTI0Ljk3LDExNy4zM1oiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzAwMjE0NyIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PHBhdGggZD0iTS01Mi44Miw0ODAuMzcgTDM3LjI5LDQ4MC4zNyBMNjUuMTQsNTY2LjA3IEwtMjQuOTcsNTY2LjA3WiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDAyMTQ3IiBzdHJva2Utb3BhY2l0eT0iMC42IiBzdHJva2Utd2lkdGg9IjEuOTgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvcGF0aD48cGF0aCBkPSJNMTQxLjc2LDE3My4wMCBMMjI2LjE5LDE3My4wMCBMMjUyLjI4LDI1My4zMCBMMTY3Ljg1LDI1My4zMFoiIGZpbGw9IiNiNzY0ZGMiIGZpbGwtb3BhY2l0eT0iMC43NiI+PC9wYXRoPjxwYXRoIGQ9Ik0yMTAuOTQsMzk0LjY3IEwzMDEuMDYsMzk0LjY3IEwzMjguOTAsNDgwLjM3IEwyMzguNzksNDgwLjM3WiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDAyMTQ3IiBzdHJva2Utb3BhY2l0eT0iMC42IiBzdHJva2Utd2lkdGg9IjEuOTgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvcGF0aD48cGF0aCBkPSJNMzc3LjY4LDE3My4wMCBMNDYyLjExLDE3My4wMCBMNDg4LjIwLDI1My4zMCBMNDAzLjc3LDI1My4zMFoiIGZpbGw9IiM5NTZhZjciIGZpbGwtb3BhY2l0eT0iMC43MSI+PC9wYXRoPjxwYXRoIGQ9Ik0zNzMuOTYsMzQxLjcwIEw0NjQuMDcsMzQxLjcwIEw0OTEuOTIsNDI3LjQwIEw0MDEuODAsNDI3LjQwWiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDAyMTQ3IiBzdHJva2Utb3BhY2l0eT0iMC42IiBzdHJva2Utd2lkdGg9IjEuOTgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvcGF0aD48cGF0aCBkPSJNLTI0Ljk3LDExNy4zMyBMNjUuMTQsMTE3LjMzIEwtNy43NiwxNzAuMzAgTC05Ny44NywxNzAuMzBaIiBmaWxsPSJub25lIiBzdHJva2U9IiMwMDIxNDciIHN0cm9rZS1vcGFjaXR5PSIwLjYiIHN0cm9rZS13aWR0aD0iMS45OCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PC9wYXRoPjxwYXRoIGQ9Ik0yMTEuODIsMTIwLjA0IEwyOTIuNzQsMTIwLjA0IEwyMjcuMjgsMTY3LjYwIEwxNDYuMzYsMTY3LjYwWiIgZmlsbD0iI2E2NjdlOSIgZmlsbC1vcGFjaXR5PSIwLjc0Ij48L3BhdGg+PHBhdGggZD0iTTIzOC43OSw0ODAuMzcgTDMyOC45MCw0ODAuMzcgTDI1Ni4wMCw1MzMuMzQgTDE2NS44OSw1MzMuMzRaIiBmaWxsPSJub25lIiBzdHJva2U9IiMwMDIxNDciIHN0cm9rZS1vcGFjaXR5PSIwLjYiIHN0cm9rZS13aWR0aD0iMS45OCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PC9wYXRoPjxwYXRoIGQ9Ik00MDEuODAsLTIxLjM0IEw0OTEuOTIsLTIxLjM0IEw0MTkuMDEsMzEuNjMgTDMyOC45MCwzMS42M1oiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzAwMjE0NyIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PHBhdGggZD0iTTQwMS44MCw0MjcuNDAgTDQ5MS45Miw0MjcuNDAgTDQxOS4wMSw0ODAuMzcgTDMyOC45MCw0ODAuMzdaIiBmaWxsPSJub25lIiBzdHJva2U9IiMwMDIxNDciIHN0cm9rZS1vcGFjaXR5PSIwLjYiIHN0cm9rZS13aWR0aD0iMS45OCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PC9wYXRoPjxwYXRoIGQ9Ik0tMjQuOTcsMzk0LjY3IEw2NS4xNCwzOTQuNjcgTC03Ljc2LDM0MS43MCBMLTk3Ljg3LDM0MS43MFoiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzAwMjE0NyIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PHBhdGggZD0iTTIxMC45NCwzOTQuNjcgTDMwMS4wNiwzOTQuNjcgTDIyOC4xNSwzNDEuNzAgTDEzOC4wNCwzNDEuNzBaIiBmaWxsPSJub25lIiBzdHJva2U9IiMwMDIxNDciIHN0cm9rZS1vcGFjaXR5PSIwLjYiIHN0cm9rZS13aWR0aD0iMS45OCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PC9wYXRoPjxwYXRoIGQ9Ik0yMzguNzksMzEuNjMgTDMyOC45MCwzMS42MyBMMjU2LjAwLC0yMS4zNCBMMTY1Ljg5LC0yMS4zNFoiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzAwMjE0NyIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PHBhdGggZD0iTTQwMS44MCw1MzMuMzQgTDQ5MS45Miw1MzMuMzQgTDQxOS4wMSw0ODAuMzcgTDMyOC45MCw0ODAuMzdaIiBmaWxsPSJub25lIiBzdHJva2U9IiMwMDIxNDciIHN0cm9rZS1vcGFjaXR5PSIwLjYiIHN0cm9rZS13aWR0aD0iMS45OCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PC9wYXRoPjxwYXRoIGQ9Ik00MDEuODAsODQuNjAgTDQ5MS45Miw4NC42MCBMNDE5LjAxLDMxLjYzIEwzMjguOTAsMzEuNjNaIiBmaWxsPSJub25lIiBzdHJva2U9IiMwMDIxNDciIHN0cm9rZS1vcGFjaXR5PSIwLjYiIHN0cm9rZS13aWR0aD0iMS45OCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PC9wYXRoPjxwYXRoIGQ9Ik0tNTIuODIsNDgwLjM3IEwzNy4yOSw0ODAuMzcgTDY1LjE0LDM5NC42NyBMLTI0Ljk3LDM5NC42N1oiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzAwMjE0NyIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PHBhdGggZD0iTS01Mi44MiwzMS42MyBMMzcuMjksMzEuNjMgTDY1LjE0LC01NC4wNyBMLTI0Ljk3LC01NC4wN1oiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzAwMjE0NyIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PHBhdGggZD0iTTE0MS43NiwzMzkuMDAgTDIyNi4xOSwzMzkuMDAgTDI1Mi4yOCwyNTguNzAgTDE2Ny44NSwyNTguNzBaIiBmaWxsPSIjOGY2YmZjIiBmaWxsLW9wYWNpdHk9IjAuNzEiPjwvcGF0aD48cGF0aCBkPSJNMjE0LjY2LDExNC42MyBMMjk5LjA5LDExNC42MyBMMzI1LjE4LDM0LjMzIEwyNDAuNzUsMzQuMzNaIiBmaWxsPSIjNzY3ZWZmIiBmaWxsLW9wYWNpdHk9IjAuNjYiPjwvcGF0aD48cGF0aCBkPSJNMzc3LjY4LDMzOS4wMCBMNDYyLjExLDMzOS4wMCBMNDg4LjIwLDI1OC43MCBMNDAzLjc3LDI1OC43MFoiIGZpbGw9IiM3Yzc4ZmYiIGZpbGwtb3BhY2l0eT0iMC42NyI+PC9wYXRoPjxwYXRoIGQ9Ik0zNzcuNjgsMTY3LjYwIEw0NjIuMTEsMTY3LjYwIEw0ODguMjAsODcuMzAgTDQwMy43Nyw4Ny4zMFoiIGZpbGw9IiM3MDgyZmYiIGZpbGwtb3BhY2l0eT0iMC42NiI+PC9wYXRoPjxwYXRoIGQ9Ik0zNzMuOTYsLTEwNy4wNCBMNDAxLjgwLC0yMS4zNCBMMzI4LjkwLDMxLjYzIEwzMDEuMDYsLTU0LjA3WiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDAyMTQ3IiBzdHJva2Utb3BhY2l0eT0iMC42IiBzdHJva2Utd2lkdGg9IjEuOTgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvcGF0aD48cGF0aCBkPSJNMTM4LjA0LC0xMDcuMDQgTDE2NS44OSwtMjEuMzQgTDkyLjk5LDMxLjYzIEw2NS4xNCwtNTQuMDdaIiBmaWxsPSJub25lIiBzdHJva2U9IiMwMDIxNDciIHN0cm9rZS1vcGFjaXR5PSIwLjYiIHN0cm9rZS13aWR0aD0iMS45OCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PC9wYXRoPjxwYXRoIGQ9Ik01NjQuODIsMzEuNjMgTDU5Mi42NiwxMTcuMzMgTDUxOS43NiwxNzAuMzAgTDQ5MS45Miw4NC42MFoiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzAwMjE0NyIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PHBhdGggZD0iTTI5OS42MywxMjEuNzEgTDMyNS43MiwyMDIuMDAgTDI1Ny40MiwyNTEuNjMgTDIzMS4zMywxNzEuMzNaIiBmaWxsPSIjZmZhMjU5IiBmaWxsLW9wYWNpdHk9IjAuOTQiPjwvcGF0aD48cGF0aCBkPSJNMTEwLjIwLDI1Ni4wMCBMMTM4LjA0LDM0MS43MCBMNjUuMTQsMzk0LjY3IEwzNy4yOSwzMDguOTdaIiBmaWxsPSJub25lIiBzdHJva2U9IiMwMDIxNDciIHN0cm9rZS1vcGFjaXR5PSIwLjYiIHN0cm9rZS13aWR0aD0iMS45OCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PC9wYXRoPjxwYXRoIGQ9Ik0zNzMuOTYsMzQxLjcwIEw0MDEuODAsNDI3LjQwIEwzMjguOTAsNDgwLjM3IEwzMDEuMDYsMzk0LjY3WiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDAyMTQ3IiBzdHJva2Utb3BhY2l0eT0iMC42IiBzdHJva2Utd2lkdGg9IjEuOTgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvcGF0aD48cGF0aCBkPSJNMjEwLjk0LDM5NC42NyBMMjM4Ljc5LDQ4MC4zNyBMMTY1Ljg5LDUzMy4zNCBMMTM4LjA0LDQ0Ny42M1oiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzAwMjE0NyIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PHBhdGggZD0iTTU2NC44Miw0ODAuMzcgTDU5Mi42Niw1NjYuMDcgTDUxOS43Niw2MTkuMDQgTDQ5MS45Miw1MzMuMzRaIiBmaWxsPSJub25lIiBzdHJva2U9IiMwMDIxNDciIHN0cm9rZS1vcGFjaXR5PSIwLjYiIHN0cm9rZS13aWR0aD0iMS45OCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PC9wYXRoPjxwYXRoIGQ9Ik0zMDEuMDYsLTU0LjA3IEwzMjguOTAsMzEuNjMgTDI1Ni4wMCwtMjEuMzQgTDIyOC4xNSwtMTA3LjA0WiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDAyMTQ3IiBzdHJva2Utb3BhY2l0eT0iMC42IiBzdHJva2Utd2lkdGg9IjEuOTgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvcGF0aD48cGF0aCBkPSJNMzcxLjY2LDE3MS45NyBMMzk2LjY2LDI0OC45MiBMMzMxLjIwLDIwMS4zNiBMMzA2LjIwLDEyNC40MVoiIGZpbGw9IiNmZjhkNWIiIGZpbGwtb3BhY2l0eT0iMC45MCI+PC9wYXRoPjxwYXRoIGQ9Ik0zNy4yOSwzMDguOTcgTDY1LjE0LDM5NC42NyBMLTcuNzYsMzQxLjcwIEwtMzUuNjEsMjU2LjAwWiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDAyMTQ3IiBzdHJva2Utb3BhY2l0eT0iMC42IiBzdHJva2Utd2lkdGg9IjEuOTgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvcGF0aD48cGF0aCBkPSJNNTY0LjgyLDMwOC45NyBMNTkyLjY2LDM5NC42NyBMNTE5Ljc2LDM0MS43MCBMNDkxLjkyLDI1Ni4wMFoiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzAwMjE0NyIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PHBhdGggZD0iTTEzOC4wNCw0NDcuNjMgTDE2NS44OSw1MzMuMzQgTDkyLjk5LDQ4MC4zNyBMNjUuMTQsMzk0LjY3WiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDAyMTQ3IiBzdHJva2Utb3BhY2l0eT0iMC42IiBzdHJva2Utd2lkdGg9IjEuOTgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvcGF0aD48cGF0aCBkPSJNMzcuMjksMzEuNjMgTDY1LjE0LDExNy4zMyBMOTIuOTksMzEuNjMgTDY1LjE0LC01NC4wN1oiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzAwMjE0NyIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PHBhdGggZD0iTTExMC4yMCwyNTYuMDAgTDEzOC4wNCwzNDEuNzAgTDE2NS44OSwyNTYuMDAgTDEzOC4wNCwxNzAuMzBaIiBmaWxsPSJub25lIiBzdHJva2U9IiMwMDIxNDciIHN0cm9rZS1vcGFjaXR5PSIwLjYiIHN0cm9rZS13aWR0aD0iMS45OCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PC9wYXRoPjxwYXRoIGQ9Ik00NjQuMDcsMTcwLjMwIEw0OTEuOTIsMjU2LjAwIEw1MTkuNzYsMTcwLjMwIEw0OTEuOTIsODQuNjBaIiBmaWxsPSJub25lIiBzdHJva2U9IiMwMDIxNDciIHN0cm9rZS1vcGFjaXR5PSIwLjYiIHN0cm9rZS13aWR0aD0iMS45OCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PC9wYXRoPjxwYXRoIGQ9Ik0zNy4yOSw0ODAuMzcgTDY1LjE0LDU2Ni4wNyBMOTIuOTksNDgwLjM3IEw2NS4xNCwzOTQuNjdaIiBmaWxsPSJub25lIiBzdHJva2U9IiMwMDIxNDciIHN0cm9rZS1vcGFjaXR5PSIwLjYiIHN0cm9rZS13aWR0aD0iMS45OCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PC9wYXRoPjxwYXRoIGQ9Ik00NjQuMDcsMzQxLjcwIEw0OTEuOTIsNDI3LjQwIEw1MTkuNzYsMzQxLjcwIEw0OTEuOTIsMjU2LjAwWiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDAyMTQ3IiBzdHJva2Utb3BhY2l0eT0iMC42IiBzdHJva2Utd2lkdGg9IjEuOTgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvcGF0aD48cGF0aCBkPSJNNjM3LjcyLDI1Ni4wMCBMNTY0LjgyLDMwOC45NyBMNDkxLjkyLDI1Ni4wMCBMNTY0LjgyLDIwMy4wM1oiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzAwMjE0NyIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PHBhdGggZD0iTTU2NC44MiwzMS42MyBMNDkxLjkyLDg0LjYwIEw0MTkuMDEsMzEuNjMgTDQ5MS45MiwtMjEuMzRaIiBmaWxsPSJub25lIiBzdHJva2U9IiMwMDIxNDciIHN0cm9rZS1vcGFjaXR5PSIwLjYiIHN0cm9rZS13aWR0aD0iMS45OCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PC9wYXRoPjxwYXRoIGQ9Ik01NjQuODIsNDgwLjM3IEw0OTEuOTIsNTMzLjM0IEw0MTkuMDEsNDgwLjM3IEw0OTEuOTIsNDI3LjQwWiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDAyMTQ3IiBzdHJva2Utb3BhY2l0eT0iMC42IiBzdHJva2Utd2lkdGg9IjEuOTgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvcGF0aD48cGF0aCBkPSJNMzk3LjIxLDI1Ni4wMCBMMzI4LjkwLDMwNS42MiBMMjYwLjYwLDI1Ni4wMCBMMzI4LjkwLDIwNi4zOFoiIGZpbGw9IiNmZmFjNTkiIGZpbGwtb3BhY2l0eT0iMC45NiI+PC9wYXRoPjxwYXRoIGQ9Ik0yMTAuOTQsMTE3LjMzIEwxMzguMDQsMTcwLjMwIEw2NS4xNCwxMTcuMzMgTDEzOC4wNCw2NC4zN1oiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzAwMjE0NyIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PHBhdGggZD0iTTIxMC45NCwzOTQuNjcgTDEzOC4wNCw0NDcuNjMgTDY1LjE0LDM5NC42NyBMMTM4LjA0LDM0MS43MFoiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzAwMjE0NyIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PHBhdGggZD0iTTExMC4yMCwyNTYuMDAgTDM3LjI5LDMwOC45NyBMLTM1LjYxLDI1Ni4wMCBMMzcuMjksMjAzLjAzWiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDAyMTQ3IiBzdHJva2Utb3BhY2l0eT0iMC42IiBzdHJva2Utd2lkdGg9IjEuOTgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvcGF0aD48cGF0aCBkPSJNNTY0LjgyLDIwMy4wMyBMNDkxLjkyLDI1Ni4wMCBMNTE5Ljc2LDE3MC4zMCBMNTkyLjY2LDExNy4zM1oiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzAwMjE0NyIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PHBhdGggZD0iTTM3MS42NiwzNDAuMDMgTDMwNi4yMCwzODcuNTkgTDMzMS4yMCwzMTAuNjQgTDM5Ni42NiwyNjMuMDhaIiBmaWxsPSIjYjM2NWRlIiBmaWxsLW9wYWNpdHk9IjAuNzYiPjwvcGF0aD48cGF0aCBkPSJNMTM4LjA0LDY0LjM3IEw2NS4xNCwxMTcuMzMgTDkyLjk5LDMxLjYzIEwxNjUuODksLTIxLjM0WiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDAyMTQ3IiBzdHJva2Utb3BhY2l0eT0iMC42IiBzdHJva2Utd2lkdGg9IjEuOTgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvcGF0aD48cGF0aCBkPSJNMzAxLjA2LDU2Ni4wNyBMMjI4LjE1LDYxOS4wNCBMMjU2LjAwLDUzMy4zNCBMMzI4LjkwLDQ4MC4zN1oiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzAwMjE0NyIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PHBhdGggZD0iTTM3LjI5LDIwMy4wMyBMLTM1LjYxLDI1Ni4wMCBMLTcuNzYsMTcwLjMwIEw2NS4xNCwxMTcuMzNaIiBmaWxsPSJub25lIiBzdHJva2U9IiMwMDIxNDciIHN0cm9rZS1vcGFjaXR5PSIwLjYiIHN0cm9rZS13aWR0aD0iMS45OCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PC9wYXRoPjxwYXRoIGQ9Ik0zNzMuOTYsNjE5LjA0IEwzMDEuMDYsNTY2LjA3IEwzMjguOTAsNDgwLjM3IEw0MDEuODAsNTMzLjM0WiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDAyMTQ3IiBzdHJva2Utb3BhY2l0eT0iMC42IiBzdHJva2Utd2lkdGg9IjEuOTgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvcGF0aD48cGF0aCBkPSJNNTY0LjgyLDQ4MC4zNyBMNDkxLjkyLDQyNy40MCBMNTE5Ljc2LDM0MS43MCBMNTkyLjY2LDM5NC42N1oiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzAwMjE0NyIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PHBhdGggZD0iTTEzOC4wNCw2MTkuMDQgTDY1LjE0LDU2Ni4wNyBMOTIuOTksNDgwLjM3IEwxNjUuODksNTMzLjM0WiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDAyMTQ3IiBzdHJva2Utb3BhY2l0eT0iMC42IiBzdHJva2Utd2lkdGg9IjEuOTgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvcGF0aD48cGF0aCBkPSJNMjk5LjYzLDM5MC4yOSBMMjMxLjMzLDM0MC42NyBMMjU3LjQyLDI2MC4zNyBMMzI1LjcyLDMxMC4wMFoiIGZpbGw9IiNjMDYzZDQiIGZpbGwtb3BhY2l0eT0iMC43NyI+PC9wYXRoPjxwYXRoIGQ9Ik0zNzIuNTQsMTY1LjkyIEwzMDQuMjMsMTE2LjMwIEwzMzAuMzIsMzYuMDAgTDM5OC42Myw4NS42M1oiIGZpbGw9IiM4ZjZiZmMiIGZpbGwtb3BhY2l0eT0iMC43MSI+PC9wYXRoPjxwYXRoIGQ9Ik01NjQuODIsMzEuNjMgTDQ5MS45MiwtMjEuMzQgTDUxOS43NiwtMTA3LjA0IEw1OTIuNjYsLTU0LjA3WiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDAyMTQ3IiBzdHJva2Utb3BhY2l0eT0iMC42IiBzdHJva2Utd2lkdGg9IjEuOTgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvcGF0aD48cGF0aCBkPSJNMTEwLjIwLDI1Ni4wMCBMMzcuMjksMjAzLjAzIEw2NS4xNCwxMTcuMzMgTDEzOC4wNCwxNzAuMzBaIiBmaWxsPSJub25lIiBzdHJva2U9IiMwMDIxNDciIHN0cm9rZS1vcGFjaXR5PSIwLjYiIHN0cm9rZS13aWR0aD0iMS45OCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PC9wYXRoPjxwYXRoIGQ9Ik0yMTAuOTQsMTE3LjMzIEwxMzguMDQsNjQuMzcgTDE2NS44OSwtMjEuMzQgTDIzOC43OSwzMS42M1oiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzAwMjE0NyIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PC9nPjxyZWN0IHg9IjMwLjciIHk9IjMwLjciIHdpZHRoPSI0NTAuNiIgaGVpZ2h0PSI0NTAuNiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDAyMTQ3IiBzdHJva2Utd2lkdGg9IjYuMTQiPjwvcmVjdD48L3N2Zz4=" alt="" aria-hidden="true">
+  <img class="mark mark-dark" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiI+PGRlZnM+PGNsaXBQYXRoIGlkPSJjYiI+PHJlY3QgeD0iMzAuNyIgeT0iMzAuNyIgd2lkdGg9IjQ1MC42IiBoZWlnaHQ9IjQ1MC42Ij48L3JlY3Q+PC9jbGlwUGF0aD48L2RlZnM+PGcgY2xpcC1wYXRoPSJ1cmwoI2NiKSI+PHBhdGggZD0iTS01Mi44MiwzMS42MyBMMzcuMjksMzEuNjMgTDY1LjE0LDExNy4zMyBMLTI0Ljk3LDExNy4zM1oiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PHBhdGggZD0iTS01Mi44Miw0ODAuMzcgTDM3LjI5LDQ4MC4zNyBMNjUuMTQsNTY2LjA3IEwtMjQuOTcsNTY2LjA3WiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utb3BhY2l0eT0iMC42IiBzdHJva2Utd2lkdGg9IjEuOTgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvcGF0aD48cGF0aCBkPSJNMTQxLjc2LDE3My4wMCBMMjI2LjE5LDE3My4wMCBMMjUyLjI4LDI1My4zMCBMMTY3Ljg1LDI1My4zMFoiIGZpbGw9IiNiNzY0ZGMiIGZpbGwtb3BhY2l0eT0iMC42MSI+PC9wYXRoPjxwYXRoIGQ9Ik0yMTAuOTQsMzk0LjY3IEwzMDEuMDYsMzk0LjY3IEwzMjguOTAsNDgwLjM3IEwyMzguNzksNDgwLjM3WiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utb3BhY2l0eT0iMC42IiBzdHJva2Utd2lkdGg9IjEuOTgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvcGF0aD48cGF0aCBkPSJNMzc3LjY4LDE3My4wMCBMNDYyLjExLDE3My4wMCBMNDg4LjIwLDI1My4zMCBMNDAzLjc3LDI1My4zMFoiIGZpbGw9IiM5NTZhZjciIGZpbGwtb3BhY2l0eT0iMC41MyI+PC9wYXRoPjxwYXRoIGQ9Ik0zNzMuOTYsMzQxLjcwIEw0NjQuMDcsMzQxLjcwIEw0OTEuOTIsNDI3LjQwIEw0MDEuODAsNDI3LjQwWiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utb3BhY2l0eT0iMC42IiBzdHJva2Utd2lkdGg9IjEuOTgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvcGF0aD48cGF0aCBkPSJNLTI0Ljk3LDExNy4zMyBMNjUuMTQsMTE3LjMzIEwtNy43NiwxNzAuMzAgTC05Ny44NywxNzAuMzBaIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS1vcGFjaXR5PSIwLjYiIHN0cm9rZS13aWR0aD0iMS45OCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PC9wYXRoPjxwYXRoIGQ9Ik0yMTEuODIsMTIwLjA0IEwyOTIuNzQsMTIwLjA0IEwyMjcuMjgsMTY3LjYwIEwxNDYuMzYsMTY3LjYwWiIgZmlsbD0iI2E2NjdlOSIgZmlsbC1vcGFjaXR5PSIwLjU3Ij48L3BhdGg+PHBhdGggZD0iTTIzOC43OSw0ODAuMzcgTDMyOC45MCw0ODAuMzcgTDI1Ni4wMCw1MzMuMzQgTDE2NS44OSw1MzMuMzRaIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS1vcGFjaXR5PSIwLjYiIHN0cm9rZS13aWR0aD0iMS45OCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PC9wYXRoPjxwYXRoIGQ9Ik00MDEuODAsLTIxLjM0IEw0OTEuOTIsLTIxLjM0IEw0MTkuMDEsMzEuNjMgTDMyOC45MCwzMS42M1oiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PHBhdGggZD0iTTQwMS44MCw0MjcuNDAgTDQ5MS45Miw0MjcuNDAgTDQxOS4wMSw0ODAuMzcgTDMyOC45MCw0ODAuMzdaIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS1vcGFjaXR5PSIwLjYiIHN0cm9rZS13aWR0aD0iMS45OCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PC9wYXRoPjxwYXRoIGQ9Ik0tMjQuOTcsMzk0LjY3IEw2NS4xNCwzOTQuNjcgTC03Ljc2LDM0MS43MCBMLTk3Ljg3LDM0MS43MFoiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PHBhdGggZD0iTTIxMC45NCwzOTQuNjcgTDMwMS4wNiwzOTQuNjcgTDIyOC4xNSwzNDEuNzAgTDEzOC4wNCwzNDEuNzBaIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS1vcGFjaXR5PSIwLjYiIHN0cm9rZS13aWR0aD0iMS45OCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PC9wYXRoPjxwYXRoIGQ9Ik0yMzguNzksMzEuNjMgTDMyOC45MCwzMS42MyBMMjU2LjAwLC0yMS4zNCBMMTY1Ljg5LC0yMS4zNFoiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PHBhdGggZD0iTTQwMS44MCw1MzMuMzQgTDQ5MS45Miw1MzMuMzQgTDQxOS4wMSw0ODAuMzcgTDMyOC45MCw0ODAuMzdaIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS1vcGFjaXR5PSIwLjYiIHN0cm9rZS13aWR0aD0iMS45OCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PC9wYXRoPjxwYXRoIGQ9Ik00MDEuODAsODQuNjAgTDQ5MS45Miw4NC42MCBMNDE5LjAxLDMxLjYzIEwzMjguOTAsMzEuNjNaIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS1vcGFjaXR5PSIwLjYiIHN0cm9rZS13aWR0aD0iMS45OCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PC9wYXRoPjxwYXRoIGQ9Ik0tNTIuODIsNDgwLjM3IEwzNy4yOSw0ODAuMzcgTDY1LjE0LDM5NC42NyBMLTI0Ljk3LDM5NC42N1oiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PHBhdGggZD0iTS01Mi44MiwzMS42MyBMMzcuMjksMzEuNjMgTDY1LjE0LC01NC4wNyBMLTI0Ljk3LC01NC4wN1oiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PHBhdGggZD0iTTE0MS43NiwzMzkuMDAgTDIyNi4xOSwzMzkuMDAgTDI1Mi4yOCwyNTguNzAgTDE2Ny44NSwyNTguNzBaIiBmaWxsPSIjOGY2YmZjIiBmaWxsLW9wYWNpdHk9IjAuNTIiPjwvcGF0aD48cGF0aCBkPSJNMjE0LjY2LDExNC42MyBMMjk5LjA5LDExNC42MyBMMzI1LjE4LDM0LjMzIEwyNDAuNzUsMzQuMzNaIiBmaWxsPSIjNzY3ZWZmIiBmaWxsLW9wYWNpdHk9IjAuNDUiPjwvcGF0aD48cGF0aCBkPSJNMzc3LjY4LDMzOS4wMCBMNDYyLjExLDMzOS4wMCBMNDg4LjIwLDI1OC43MCBMNDAzLjc3LDI1OC43MFoiIGZpbGw9IiM3Yzc4ZmYiIGZpbGwtb3BhY2l0eT0iMC40NyI+PC9wYXRoPjxwYXRoIGQ9Ik0zNzcuNjgsMTY3LjYwIEw0NjIuMTEsMTY3LjYwIEw0ODguMjAsODcuMzAgTDQwMy43Nyw4Ny4zMFoiIGZpbGw9IiM3MDgyZmYiIGZpbGwtb3BhY2l0eT0iMC40NCI+PC9wYXRoPjxwYXRoIGQ9Ik0zNzMuOTYsLTEwNy4wNCBMNDAxLjgwLC0yMS4zNCBMMzI4LjkwLDMxLjYzIEwzMDEuMDYsLTU0LjA3WiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utb3BhY2l0eT0iMC42IiBzdHJva2Utd2lkdGg9IjEuOTgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvcGF0aD48cGF0aCBkPSJNMTM4LjA0LC0xMDcuMDQgTDE2NS44OSwtMjEuMzQgTDkyLjk5LDMxLjYzIEw2NS4xNCwtNTQuMDdaIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS1vcGFjaXR5PSIwLjYiIHN0cm9rZS13aWR0aD0iMS45OCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PC9wYXRoPjxwYXRoIGQ9Ik01NjQuODIsMzEuNjMgTDU5Mi42NiwxMTcuMzMgTDUxOS43NiwxNzAuMzAgTDQ5MS45Miw4NC42MFoiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PHBhdGggZD0iTTI5OS42MywxMjEuNzEgTDMyNS43MiwyMDIuMDAgTDI1Ny40MiwyNTEuNjMgTDIzMS4zMywxNzEuMzNaIiBmaWxsPSIjZmZhMjU5IiBmaWxsLW9wYWNpdHk9IjAuOTAiPjwvcGF0aD48cGF0aCBkPSJNMTEwLjIwLDI1Ni4wMCBMMTM4LjA0LDM0MS43MCBMNjUuMTQsMzk0LjY3IEwzNy4yOSwzMDguOTdaIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS1vcGFjaXR5PSIwLjYiIHN0cm9rZS13aWR0aD0iMS45OCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PC9wYXRoPjxwYXRoIGQ9Ik0zNzMuOTYsMzQxLjcwIEw0MDEuODAsNDI3LjQwIEwzMjguOTAsNDgwLjM3IEwzMDEuMDYsMzk0LjY3WiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utb3BhY2l0eT0iMC42IiBzdHJva2Utd2lkdGg9IjEuOTgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvcGF0aD48cGF0aCBkPSJNMjEwLjk0LDM5NC42NyBMMjM4Ljc5LDQ4MC4zNyBMMTY1Ljg5LDUzMy4zNCBMMTM4LjA0LDQ0Ny42M1oiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PHBhdGggZD0iTTU2NC44Miw0ODAuMzcgTDU5Mi42Niw1NjYuMDcgTDUxOS43Niw2MTkuMDQgTDQ5MS45Miw1MzMuMzRaIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS1vcGFjaXR5PSIwLjYiIHN0cm9rZS13aWR0aD0iMS45OCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PC9wYXRoPjxwYXRoIGQ9Ik0zMDEuMDYsLTU0LjA3IEwzMjguOTAsMzEuNjMgTDI1Ni4wMCwtMjEuMzQgTDIyOC4xNSwtMTA3LjA0WiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utb3BhY2l0eT0iMC42IiBzdHJva2Utd2lkdGg9IjEuOTgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvcGF0aD48cGF0aCBkPSJNMzcxLjY2LDE3MS45NyBMMzk2LjY2LDI0OC45MiBMMzMxLjIwLDIwMS4zNiBMMzA2LjIwLDEyNC40MVoiIGZpbGw9IiNmZjhkNWIiIGZpbGwtb3BhY2l0eT0iMC44NSI+PC9wYXRoPjxwYXRoIGQ9Ik0zNy4yOSwzMDguOTcgTDY1LjE0LDM5NC42NyBMLTcuNzYsMzQxLjcwIEwtMzUuNjEsMjU2LjAwWiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utb3BhY2l0eT0iMC42IiBzdHJva2Utd2lkdGg9IjEuOTgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvcGF0aD48cGF0aCBkPSJNNTY0LjgyLDMwOC45NyBMNTkyLjY2LDM5NC42NyBMNTE5Ljc2LDM0MS43MCBMNDkxLjkyLDI1Ni4wMFoiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PHBhdGggZD0iTTEzOC4wNCw0NDcuNjMgTDE2NS44OSw1MzMuMzQgTDkyLjk5LDQ4MC4zNyBMNjUuMTQsMzk0LjY3WiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utb3BhY2l0eT0iMC42IiBzdHJva2Utd2lkdGg9IjEuOTgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvcGF0aD48cGF0aCBkPSJNMzcuMjksMzEuNjMgTDY1LjE0LDExNy4zMyBMOTIuOTksMzEuNjMgTDY1LjE0LC01NC4wN1oiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PHBhdGggZD0iTTExMC4yMCwyNTYuMDAgTDEzOC4wNCwzNDEuNzAgTDE2NS44OSwyNTYuMDAgTDEzOC4wNCwxNzAuMzBaIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS1vcGFjaXR5PSIwLjYiIHN0cm9rZS13aWR0aD0iMS45OCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PC9wYXRoPjxwYXRoIGQ9Ik00NjQuMDcsMTcwLjMwIEw0OTEuOTIsMjU2LjAwIEw1MTkuNzYsMTcwLjMwIEw0OTEuOTIsODQuNjBaIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS1vcGFjaXR5PSIwLjYiIHN0cm9rZS13aWR0aD0iMS45OCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PC9wYXRoPjxwYXRoIGQ9Ik0zNy4yOSw0ODAuMzcgTDY1LjE0LDU2Ni4wNyBMOTIuOTksNDgwLjM3IEw2NS4xNCwzOTQuNjdaIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS1vcGFjaXR5PSIwLjYiIHN0cm9rZS13aWR0aD0iMS45OCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PC9wYXRoPjxwYXRoIGQ9Ik00NjQuMDcsMzQxLjcwIEw0OTEuOTIsNDI3LjQwIEw1MTkuNzYsMzQxLjcwIEw0OTEuOTIsMjU2LjAwWiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utb3BhY2l0eT0iMC42IiBzdHJva2Utd2lkdGg9IjEuOTgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvcGF0aD48cGF0aCBkPSJNNjM3LjcyLDI1Ni4wMCBMNTY0LjgyLDMwOC45NyBMNDkxLjkyLDI1Ni4wMCBMNTY0LjgyLDIwMy4wM1oiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PHBhdGggZD0iTTU2NC44MiwzMS42MyBMNDkxLjkyLDg0LjYwIEw0MTkuMDEsMzEuNjMgTDQ5MS45MiwtMjEuMzRaIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS1vcGFjaXR5PSIwLjYiIHN0cm9rZS13aWR0aD0iMS45OCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PC9wYXRoPjxwYXRoIGQ9Ik01NjQuODIsNDgwLjM3IEw0OTEuOTIsNTMzLjM0IEw0MTkuMDEsNDgwLjM3IEw0OTEuOTIsNDI3LjQwWiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utb3BhY2l0eT0iMC42IiBzdHJva2Utd2lkdGg9IjEuOTgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvcGF0aD48cGF0aCBkPSJNMzk3LjIxLDI1Ni4wMCBMMzI4LjkwLDMwNS42MiBMMjYwLjYwLDI1Ni4wMCBMMzI4LjkwLDIwNi4zOFoiIGZpbGw9IiNmZmFjNTkiIGZpbGwtb3BhY2l0eT0iMC45MyI+PC9wYXRoPjxwYXRoIGQ9Ik0yMTAuOTQsMTE3LjMzIEwxMzguMDQsMTcwLjMwIEw2NS4xNCwxMTcuMzMgTDEzOC4wNCw2NC4zN1oiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PHBhdGggZD0iTTIxMC45NCwzOTQuNjcgTDEzOC4wNCw0NDcuNjMgTDY1LjE0LDM5NC42NyBMMTM4LjA0LDM0MS43MFoiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PHBhdGggZD0iTTExMC4yMCwyNTYuMDAgTDM3LjI5LDMwOC45NyBMLTM1LjYxLDI1Ni4wMCBMMzcuMjksMjAzLjAzWiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utb3BhY2l0eT0iMC42IiBzdHJva2Utd2lkdGg9IjEuOTgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvcGF0aD48cGF0aCBkPSJNNTY0LjgyLDIwMy4wMyBMNDkxLjkyLDI1Ni4wMCBMNTE5Ljc2LDE3MC4zMCBMNTkyLjY2LDExNy4zM1oiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PHBhdGggZD0iTTM3MS42NiwzNDAuMDMgTDMwNi4yMCwzODcuNTkgTDMzMS4yMCwzMTAuNjQgTDM5Ni42NiwyNjMuMDhaIiBmaWxsPSIjYjM2NWRlIiBmaWxsLW9wYWNpdHk9IjAuNjAiPjwvcGF0aD48cGF0aCBkPSJNMTM4LjA0LDY0LjM3IEw2NS4xNCwxMTcuMzMgTDkyLjk5LDMxLjYzIEwxNjUuODksLTIxLjM0WiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utb3BhY2l0eT0iMC42IiBzdHJva2Utd2lkdGg9IjEuOTgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvcGF0aD48cGF0aCBkPSJNMzAxLjA2LDU2Ni4wNyBMMjI4LjE1LDYxOS4wNCBMMjU2LjAwLDUzMy4zNCBMMzI4LjkwLDQ4MC4zN1oiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PHBhdGggZD0iTTM3LjI5LDIwMy4wMyBMLTM1LjYxLDI1Ni4wMCBMLTcuNzYsMTcwLjMwIEw2NS4xNCwxMTcuMzNaIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS1vcGFjaXR5PSIwLjYiIHN0cm9rZS13aWR0aD0iMS45OCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PC9wYXRoPjxwYXRoIGQ9Ik0zNzMuOTYsNjE5LjA0IEwzMDEuMDYsNTY2LjA3IEwzMjguOTAsNDgwLjM3IEw0MDEuODAsNTMzLjM0WiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utb3BhY2l0eT0iMC42IiBzdHJva2Utd2lkdGg9IjEuOTgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvcGF0aD48cGF0aCBkPSJNNTY0LjgyLDQ4MC4zNyBMNDkxLjkyLDQyNy40MCBMNTE5Ljc2LDM0MS43MCBMNTkyLjY2LDM5NC42N1oiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PHBhdGggZD0iTTEzOC4wNCw2MTkuMDQgTDY1LjE0LDU2Ni4wNyBMOTIuOTksNDgwLjM3IEwxNjUuODksNTMzLjM0WiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utb3BhY2l0eT0iMC42IiBzdHJva2Utd2lkdGg9IjEuOTgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvcGF0aD48cGF0aCBkPSJNMjk5LjYzLDM5MC4yOSBMMjMxLjMzLDM0MC42NyBMMjU3LjQyLDI2MC4zNyBMMzI1LjcyLDMxMC4wMFoiIGZpbGw9IiNjMDYzZDQiIGZpbGwtb3BhY2l0eT0iMC42MyI+PC9wYXRoPjxwYXRoIGQ9Ik0zNzIuNTQsMTY1LjkyIEwzMDQuMjMsMTE2LjMwIEwzMzAuMzIsMzYuMDAgTDM5OC42Myw4NS42M1oiIGZpbGw9IiM4ZjZiZmMiIGZpbGwtb3BhY2l0eT0iMC41MiI+PC9wYXRoPjxwYXRoIGQ9Ik01NjQuODIsMzEuNjMgTDQ5MS45MiwtMjEuMzQgTDUxOS43NiwtMTA3LjA0IEw1OTIuNjYsLTU0LjA3WiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utb3BhY2l0eT0iMC42IiBzdHJva2Utd2lkdGg9IjEuOTgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvcGF0aD48cGF0aCBkPSJNMTEwLjIwLDI1Ni4wMCBMMzcuMjksMjAzLjAzIEw2NS4xNCwxMTcuMzMgTDEzOC4wNCwxNzAuMzBaIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS1vcGFjaXR5PSIwLjYiIHN0cm9rZS13aWR0aD0iMS45OCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PC9wYXRoPjxwYXRoIGQ9Ik0yMTAuOTQsMTE3LjMzIEwxMzguMDQsNjQuMzcgTDE2NS44OSwtMjEuMzQgTDIzOC43OSwzMS42M1oiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIxLjk4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PC9nPjxyZWN0IHg9IjMwLjciIHk9IjMwLjciIHdpZHRoPSI0NTAuNiIgaGVpZ2h0PSI0NTAuNiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjYuMTQiPjwvcmVjdD48L3N2Zz4=" alt="" aria-hidden="true">
+  <span class="series"><b>Oxford Mathematics</b> <span class="s-rest">in conversation on AI</span></span>
+  <!--PROTO-->
+  <span class="owner"><span class="o-long">© <a href="https://www.maths.ox.ac.uk/people/jan.obloj" target="_blank" rel="noopener">Jan Obłój</a> · personal page, not an official University site</span><span class="o-short">© <a href="https://www.maths.ox.ac.uk/people/jan.obloj" target="_blank" rel="noopener">Jan Obłój</a><br>personal page</span></span>
+</header>
+
+<div class="wrap">
+  <div class="editbar" id="editbar" hidden role="region" aria-label="Page editing">
+    <p><strong>Editing the page.</strong> Click any outlined text to change it. Entries show Edit and Remove links. Nothing is saved until you press Save.</p>
+    <div class="ed-actions">
+      <button type="button" class="btn ghost" id="add">Add a resource</button>
+      <button type="button" class="btn ghost" id="edit-cancel">Cancel</button>
+      <button type="button" class="btn" id="edit-save">Save changes</button>
+    </div>
+    <p class="err" id="edit-err" role="alert"></p>
+  </div>
+</div>
+
+<section class="wrap mast" aria-labelledby="mast-h">
+  <h1 id="mast-h"><span class="t-long">Mathematics <em>and</em> AI</span><span class="t-short" aria-hidden="true">Maths <em>&amp;</em> AI</span></h1>
+  <p class="lede" data-edit="lede1">Mathematics made, and is making, modern AI possible. AI, in turn, is revolutionising mathematics. The two storylines are intertwined. The next chapters need critical judgement, conversation across communities and more mathematics.</p>
+  <div class="switch" role="group" aria-label="Choose a view">
+    <button type="button" id="sw-story" aria-pressed="true" aria-controls="view-story">Storylines <span class="n" id="n-ms"></span></button>
+    <button type="button" id="sw-room" aria-pressed="false" aria-controls="view-room">Reading room <span class="n" id="n-room"></span></button>
+  </div>
+  <div class="subs" id="sub-story">
+    <p class="sub"><b>Understanding the history:</b> 90 years. <span id="sub-ms-n">40</span> milestones. From Turing to today.</p>
+    <p class="pnote"><b>A personal perspective.</b> Have I missed something? <a href="https://forms.gle/HHT913Cqg3g2h9Bt9" target="_blank" rel="noopener">Propose a milestone</a>.</p>
+  </div>
+  <div class="subs" id="sub-room" hidden>
+    <p class="sub"><b>Hearing diverse views:</b> statements, letters, essays, films and more.</p>
+    <p class="pnote"><b>A personal reading list.</b> Know something that belongs here? <a href="#propose" id="go-propose">Propose a resource</a>.</p>
+  </div>
+</section>
+
+<!-- ===== Storylines ===== -->
+<div id="view-story">
+  <section class="stage" aria-label="Timeline">
+    <div class="wrap">
+      <div class="stage-head">
+        <ul class="legend" id="legend" aria-label="Key"></ul>
+      </div>
+      <div class="stage-head">
+        <div class="eras" id="eras" role="group" aria-label="Jump to a period"></div>
+        <div class="stepper">
+          <button type="button" class="step" id="prev" aria-label="Previous milestone"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3L5 8l5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <span id="count" aria-live="polite"></span>
+          <button type="button" class="step" id="next" aria-label="Next milestone"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <div class="track" id="track" tabindex="0" aria-label="Milestones, scroll sideways or use the arrow keys">
+      <div class="canvas" id="canvas"></div>
+    </div>
+    <div class="wrap overview">
+      <svg id="ov" role="img" aria-label="Overview of the whole timeline from 1936 to 2026, at true scale"></svg>
+      <p class="ov-hint">At true scale: ninety years of ideas, then 2026. Click to move along the timeline.</p>
+    </div>
+  </section>
+  <div class="gtip" id="gtip" aria-hidden="true"></div>
+  <div class="wrap">
+    <article class="detail" id="detail" aria-live="polite"></article>
+    <section class="more" id="more"></section>
+  </div>
+</div>
+
+<!-- ===== Reading room ===== -->
+<div id="view-room" class="wrap room" hidden>
+
+  <div class="controls">
+    <div class="search">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
+      <input id="q" type="search" placeholder="Search titles, people, notes" aria-label="Search the reading room">
+    </div>
+    <div class="toggle" role="group" aria-label="Arrange by">
+      <button type="button" id="by-cat" aria-pressed="true">By category</button>
+      <button type="button" id="by-date" aria-pressed="false">Newest first</button>
+      <button type="button" id="by-new" aria-pressed="false">Recently added</button>
+    </div>
+    <span id="topic-btns" style="display:contents"></span>
+    <button type="button" class="chipbtn" id="ox" aria-pressed="false">Oxford</button>
+    <button type="button" class="btn ghost" id="copy">Copy list</button>
+    <a class="btn ghost" href="#propose" style="text-decoration:none;display:inline-flex;align-items:center">Propose a resource</a>
+  </div>
+  <div id="topic-panel"></div>
+  <p class="status" id="status" role="status" aria-live="polite">Loading the reading room…</p>
+  <nav class="chips-nav" id="chips" aria-label="Jump to category"></nav>
+
+  <div class="layout">
+    <nav class="rail" id="rail" aria-label="Categories"></nav>
+    <main id="list">
+      <div class="empty"><strong>The reading room is loading.</strong> Declarations, statements, viewpoints, films and voices to follow will appear here.</div>
+    </main>
+  </div>
+
+  <section class="propose" id="propose" aria-labelledby="prop-h">
+    <div>
+      <h2 id="prop-h" data-edit="prop-title">Propose a resource</h2>
+      <p class="prop-intro" data-edit="prop-intro">A statement, essay, film, podcast or post that belongs here? Send the link with a line on why it matters.</p>
+      <div class="agent">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v5M12 16h.01"></path></svg>
+        <span><strong>Reviewed by an AI agent.</strong> <span data-edit="prop-agent">Because of time constraints, proposals are reviewed by Jan’s AI agent (Claude), normally within a day. It opens the link, checks what it says and looks for duplicates. Jan decides what is added.</span></span>
+      </div>
+      <form class="pf" id="pform" novalidate>
+        <div class="field"><label for="p-url">Link</label><input id="p-url" type="url" required placeholder="https://" maxlength="600"></div>
+        <div class="field"><label for="p-title">Title <span style="font-weight:400;color:var(--muted)">(optional)</span></label><input id="p-title" maxlength="300"></div>
+        <div class="field"><label for="p-cat">Where it might go <span style="font-weight:400;color:var(--muted)">(optional)</span></label><select id="p-cat"><option value="">Not sure</option></select></div>
+        <div class="field"><label for="p-why">Why it matters <span style="font-weight:400;color:var(--muted)">(optional)</span></label><textarea id="p-why" maxlength="600" placeholder="One or two sentences"></textarea></div>
+        <div class="hp" aria-hidden="true"><label for="p-web">Leave this empty</label><input id="p-web" tabindex="-1" autocomplete="off"></div>
+        <p class="err" id="p-err" role="alert"></p>
+        <div class="ed-actions" style="justify-content:flex-start"><button type="submit" class="btn" id="p-send">Send proposal</button></div>
+        <p class="ok" id="p-ok" role="status" aria-live="polite"></p>
+      </form>
+      <p class="prop-small" id="p-access" hidden></p>
+    </div>
+    <div id="mine-col">
+      <h3>Your proposals</h3>
+      <ul class="mine" id="mine"><li style="color:var(--muted)">Nothing sent yet.</li></ul>
+      <p class="prop-small">Only you and the page’s editors can see your proposals.</p>
+    </div>
+  </section>
+</div>
+
+<footer class="wrap">
+  <p class="credits">Created and curated by <a href="https://www.maths.ox.ac.uk/people/jan.obloj" target="_blank" rel="noopener">Jan Obłój</a>, using Claude AI (mainly Opus 5.5) and ChatGPT (mainly GPT-6.1 Sol). I pay for a Claude Pro subscription. I acknowledge OpenAI for providing access to ChatGPT through its ChatGPT for Academic Researchers programme. Fact-checking by myself and AI. Humans and AI make mistakes: if you think we got something egregiously wrong, please <a href="#" id="feedback">submit feedback</a>. Anonymous feedback will not be considered. These are personal pages: they do not represent the views of the Mathematical Institute or the University of Oxford.</p>
+  <span class="copy">© 2026 Jan Obłój. All rights reserved. You are welcome to link to this page and to quote short passages with credit.</span>
+  <span id="foot-edit"><button type="button" class="linkbtn" id="edit-start" hidden>Edit this page</button></span>
+</footer>
+
+<dialog id="dlg" aria-labelledby="dlg-title">
+  <form class="ed" id="form" method="dialog">
+    <h2 id="dlg-title">Add a resource</h2>
+    <div class="field"><label for="f-title">Title</label><input id="f-title" required maxlength="300"></div>
+    <div class="field"><label for="f-url">Link</label><input id="f-url" type="url" required placeholder="https://"></div>
+    <div class="row2">
+      <div class="field"><label for="f-cat">Category</label><select id="f-cat"></select></div>
+      <div class="field"><label for="f-kind">Kind</label><input id="f-kind" placeholder="Open letter, column, podcast…" maxlength="60"></div>
+    </div>
+    <div class="row2">
+      <div class="field"><label for="f-who">Who</label><input id="f-who" placeholder="Author, body or outlet" maxlength="200"></div>
+      <div class="field"><label for="f-date">Date</label><input id="f-date" type="date"></div>
+    </div>
+    <div class="field"><label for="f-note">Curator’s note</label><textarea id="f-note" maxlength="800" placeholder="One or two sentences"></textarea></div>
+    <div class="field"><label for="f-kw">Keywords <span style="font-weight:400;color:var(--muted)">(comma-separated: areas, problems, methods)</span></label><input id="f-kw" maxlength="300" placeholder="Number theory, Riemann hypothesis"></div>
+    <div class="checks" id="f-topics"></div>
+    <div class="checks">
+      <label><input type="checkbox" id="f-ox"> Oxford connection</label>
+      <label><input type="checkbox" id="f-checked" checked> Link opened and checked</label>
+    </div>
+    <p class="err" id="f-err" role="alert"></p>
+    <div class="ed-actions">
+      <button type="button" class="btn ghost" id="f-cancel">Cancel</button>
+      <button type="submit" class="btn" id="f-save">Save</button>
+    </div>
+  </form>
+</dialog>
+
+<script>window.READING_ROOM_PUBLIC = {"items": [{"added": "2026-10-21T22:50:00Z", "cat": "media", "checked": true, "date": "2026-07-04", "kind": "Documentary in production", "note": "The July 2026 outline of a planned five-part documentary: the IMO, benchmarks, the Erdős problems of 2026, the history of computers in maths, and Lean.", "oxford": false, "title": "A conversation on the AI in Math project", "url": "https://members.3blue1brown.com/posts/conversation-on-162841899", "who": "3Blue1Brown (Grant Sanderson)", "id": "3b1b-doc"}, {"added": "2026-10-22T15:30:00Z", "cat": "viewpoint", "checked": true, "date": "2026-10-07", "keywords": ["Quantum information", "Quantum complexity", "Complexity theory", "Unique Games"], "kind": "Blog post", "note": "A quantum complexity theorist reads the results in his own field: the Aaronson–Kuperberg unitary synthesis problem, parity outside QAC0, a near-quartic quantum query separation and a 2D area law, plus the Unique Games proof. Welcomes researchers rushing to pore over and explain the manuscripts, and insists that human understanding stay at the centre.", "oxford": false, "title": "The Mathocalypse", "topics": ["big-dump"], "url": "https://scottaaronson.blog/?p=10169", "who": "Scott Aaronson (UT Austin), Shtetl-Optimized", "id": "aaronson-mathocalypse"}, {"added": "2026-10-24T08:15:00Z", "cat": "institutional", "checked": true, "date": "2026-10-07", "keywords": ["Mathematical culture"], "kind": "Statement", "note": "The Academy’s response to OpenAI’s 722 manuscripts: as AI explores mathematics at scale, the scarce resource becomes human attention, judgement and understanding. Calls for new infrastructure for curating knowledge, new approaches to verification, provenance and attribution, broad access to tools, and training. With comments from James Maynard, Kevin Buzzard and Beatrice Pelloni.", "oxford": true, "title": "AI opens new possibilities for mathematics — and for mathematicians", "topics": ["big-dump"], "url": "https://www.acadmathsci.org.uk/ai-opens-new-possibilities-for-mathematics-and-for-mathematicians/", "who": "Academy for the Mathematical Sciences (UK)", "id": "acadmathsci-722"}, {"added": "2026-10-22T00:35:00Z", "cat": "institutional", "checked": true, "date": "2026-06-19", "kind": "Report (primer)", "note": "Launches the Academy’s primer “Mathematics in the age of artificial intelligence”: AI is fundamentally mathematical, mathematics underpins both AI capability and trustworthiness, and sustained UK investment in the mathematical sciences is essential. Case studies: Wayve, Quantexa and Isomorphic Labs. Quotes Oxford’s Ben Walker: he is more excited about what mathematics can do for AI than the reverse.", "oxford": true, "title": "Maths in the Age of AI: why the mathematical sciences matter more than ever", "url": "https://www.acadmathsci.org.uk/maths-in-the-age-of-ai-why-the-mathematical-sciences-matter-more-than-ever/", "who": "Academy for the Mathematical Sciences (UK)", "id": "acadmathsci-ai"}, {"added": "2026-10-21T22:50:00Z", "cat": "institutional", "checked": true, "date": "2026-10-06", "kind": "Advisory body", "note": "Nine mathematicians, including Oxford’s Ulrike Tillmann. Guidelines for responsible release of AI-generated mathematics (29 Sept, from 600+ survey responses) and a statement on OpenAI’s 6 October release.", "oxford": true, "title": "Advisory Group on Mathematics and AI: guidelines and statements", "topics": ["big-dump"], "url": "https://agmai.org/", "who": "AGMAI, hosted at the Institute for Advanced Study", "id": "agmai"}, {"added": "2026-10-21T22:50:00Z", "cat": "declaration", "checked": true, "date": "2026-10-07", "kind": "Statement", "note": "Calls the 722-manuscript release “a demonstration of power” rather than scholarship and urges mathematicians to stop working with OpenAI. Reposted as a guest post on Terence Tao’s blog.", "oxford": false, "title": "AHM statement on OpenAI’s October 6 release of mathematical documents", "topics": ["big-dump"], "url": "https://terrytao.wordpress.com/2026/10/07/ahm-statement-on-openais-october-6-release-of-mathematical-documents/", "who": "Association for Human Mathematics", "id": "ahm-statement"}, {"added": "2026-10-23T20:40:00Z", "cat": "voices", "checked": true, "date": "", "keywords": ["Formal verification", "Lean", "Erdős problems"], "kind": "Timeline", "note": "A detailed, evidence-graded timeline of AI and mathematics, from 1955 to now, with each event graded for significance and strength of evidence and linked to primary sources. Aimed at specialists: many entries are benchmarks and tools.", "oxford": false, "title": "AI4Math Chronicle: major milestones in AI for mathematics", "topics": [], "url": "https://charlie-wang-03.github.io/ai4math-chronicle/en/", "who": "Charlie Wang (independent; open source on GitHub)", "id": "ai4math-chronicle"}, {"added": "2026-10-22T00:20:00Z", "cat": "institutional", "checked": true, "date": "2026-09-28", "kind": "Report", "note": "Twelve concrete near-term actions for theoretical computer science, agreed by 32 participants and informed by a 134-response survey: AI methodology sections in papers, conference rules, hiring based on candidates’ three best works and in-depth interviews, more postdocs, AI-free training in PhD programmes, and encouraging grants to cover reasonable LLM costs. The report is linked from the working group page.", "oxford": false, "title": "AI and TCS: The Next Six Months (working group report)", "url": "https://simons.berkeley.edu/news/ai-tcs-next-six-months", "who": "Simons Institute working group; organisers Tony Feng, Zeph Landau, Amit Sahai, Nikhil Srivastava", "id": "aitcs-report"}, {"added": "2026-10-22T08:00:00Z", "cat": "socials", "checked": true, "date": "2026-09-09", "keywords": ["Navier–Stokes", "Credit and authorship"], "kind": "X post", "note": "Alpöge’s side of the timeline: he says he contacted OpenAI on the night of 2 September. Read with Bubeck’s post and Buckmaster’s statement.", "oxford": false, "title": "Levent Alpöge on contacting OpenAI", "topics": [], "url": "https://x.com/__alpoge__/status/2097548261666033993", "who": "Levent Alpöge (Anthropic)", "id": "alpoge-x"}, {"added": "2026-10-22T08:00:00Z", "cat": "institutional", "checked": true, "date": "2026-09-08", "keywords": ["PDE", "Navier–Stokes"], "kind": "Statement", "note": "Welcomes “a milestone advance in human knowledge”. Vakil also sits on the Advisory Group on Mathematics and AI.", "oxford": false, "title": "Statement by Ravi Vakil and John Meier on progress on the Navier–Stokes problem", "topics": [], "url": "https://www.ams.org/news?news_id=7686", "who": "American Mathematical Society (Ravi Vakil, President, and John Meier, CEO)", "id": "ams-navier-stokes"}, {"added": "2026-10-22T08:00:00Z", "cat": "announcements", "checked": true, "date": "2026-09-04", "keywords": ["Number theory", "Fermat’s Last Theorem", "Lean", "Formal verification"], "kind": "Company announcement", "note": "Claude produced a complete Lean proof of Fermat’s Last Theorem in 11 largely autonomous days, about 13 million lines, following the Darmon–Diamond–Taylor account. Read with Kevin Buzzard’s response.", "oxford": false, "title": "Formalizing Fermat’s Last Theorem", "url": "https://www.anthropic.com/news/formalizing-fermats-last-theorem", "who": "Anthropic", "id": "anthropic-flt"}, {"added": "2026-10-22T08:00:00Z", "cat": "announcements", "checked": true, "date": "2026-08-10", "keywords": ["Number theory", "Riemann hypothesis", "Zeta function", "Lean"], "kind": "Company announcement", "note": "An unreleased Claude model raised the proven lower bound for the proportion of nontrivial zeta zeros on the critical line from 41.6% to 67.2%, with a Lean proof. Checked by Anthropic mathematicians Levent Alpöge and Ralph Furman and examined by Brian Conrey and Dan Goldston. Anthropic says it does not expect the method to prove the Riemann hypothesis.", "oxford": false, "title": "Claude has improved on a longstanding lower bound for the fraction of zeros of the Riemann zeta function that satisfy the Riemann hypothesis", "url": "https://www.anthropic.com/research/riemann-zeta", "who": "Anthropic", "id": "anthropic-riemann-zeta"}, {"added": "2026-10-22T00:05:00Z", "cat": "viewpoint", "checked": true, "date": "2026-10-05", "kind": "Essay", "note": "Mathematics remains a culture of rigorous reasoning worth preserving. Avigad urges harder problems, ambitious questions and experiment with new tools, and asks mathematicians to stand with students facing uncertain careers.", "oxford": false, "title": "The Future of Mathematics", "url": "https://terrytao.wordpress.com/2026/10/05/the-future-of-mathematics/", "who": "Jeremy Avigad (guest post on Tao’s blog)", "id": "avigad-future"}, {"added": "2026-10-21T22:50:00Z", "cat": "news", "checked": true, "date": "2026-10-08", "kind": "Analysis", "note": "Frames the release as a sign that AI could reshape research fields well beyond mathematics.", "oxford": false, "title": "OpenAI’s math breakthrough points beyond math", "topics": ["big-dump"], "url": "https://www.axios.com/2026/10/08/openai-math-proofs-ai-model", "who": "Bradley Olson, Axios", "id": "axios"}, {"added": "2026-10-21T22:50:00Z", "cat": "initiative", "checked": true, "date": "2026-10-19", "kind": "Community project", "note": "A community effort to explain and connect every paper of Jean Bourgain: an example of the exposition work Math 2.0 calls for.", "oxford": false, "title": "The Bourgain Project", "url": "https://terrytao.wordpress.com/2026/10/19/the-bourgain-project/", "who": "Lukas Liehr, João Pedro Ramos, Mitchell Taylor", "id": "bourgain-project"}, {"added": "2026-10-22T08:00:00Z", "cat": "socials", "checked": true, "date": "2026-09-08", "keywords": ["Navier–Stokes", "Credit and authorship"], "kind": "X post", "note": "OpenAI’s mathematician-researcher gives his account of contacts with Buckmaster and Alpöge, denies seeking Alpöge’s removal from authorship and apologises for a remark. A follow-up post sets out technical differences between the proofs.", "oxford": false, "title": "“I would like to clarify a few things”", "topics": [], "url": "https://x.com/SebastienBubeck/status/2097379411691516310", "who": "Sébastien Bubeck (OpenAI)", "id": "bubeck-x"}, {"added": "2026-10-22T08:00:00Z", "cat": "socials", "checked": true, "date": "2026-09-08", "keywords": ["PDE", "Euler equations"], "kind": "Mastodon post", "note": "Announces finite-time blowup with smooth forcing for porous media, Boussinesq and 3D Euler, with papers, Lean code and his statement.", "oxford": false, "title": "“Today, Levent Alpöge and I have made public three results”", "url": "https://mastodon.social/@tristanbuckmaster/117233413705701198", "who": "Tristan Buckmaster (NYU)", "id": "buckmaster-mastodon"}, {"added": "2026-10-22T08:00:00Z", "cat": "viewpoint", "checked": true, "date": "2026-09-07", "keywords": ["PDE", "Euler equations", "Navier–Stokes", "Credit and authorship"], "kind": "Personal statement", "note": "Buckmaster’s account of the AI-assisted blowup results he and Alpöge obtained, and of the September exchange with OpenAI over how results would be released. OpenAI disputes parts of this account.", "oxford": false, "title": "Statement on the forced blowup results and OpenAI’s Navier–Stokes claim", "url": "https://cims.nyu.edu/~tristanb/statement.pdf", "who": "Tristan Buckmaster (NYU), on work with Levent Alpöge", "id": "buckmaster-statement"}, {"added": "2026-10-23T06:30:00Z", "cat": "viewpoint", "checked": true, "date": "2026-10-21", "keywords": ["Credit and authorship", "Early-career researchers", "Mathematical culture"], "kind": "Guest post", "note": "Buckmaster argues that even a machine-verified proof of a major conjecture leaves open why it is true, and calls for protecting researchers’ unpublished work from AI companies through data agreements, opt-in training and open-weight models. He also proposes credit systems that reward understanding and exposition rather than priority.", "oxford": false, "title": "Mathematics is a subject for the young", "topics": ["big-dump"], "url": "https://terrytao.wordpress.com/2026/10/21/mathematics-is-a-subject-for-the-young/", "who": "Tristan Buckmaster (NYU), guest post on Terence Tao’s blog", "id": "buckmaster-subject-young"}, {"added": "2026-10-22T08:00:00Z", "cat": "viewpoint", "checked": true, "date": "2026-09-04", "keywords": ["Number theory", "Fermat’s Last Theorem", "Lean", "Formal verification"], "kind": "Blog post", "note": "The leader of the community FLT formalisation congratulates Anthropic but finds the result mathematically uninformative, since it follows the 1995 route; he sees it as a sign of what autoformalisation can now do for checking research and peer review.", "oxford": false, "title": "FLT: Anthropic has beaten me to it", "url": "https://xenaproject.wordpress.com/2026/09/04/flt-anthropic-has-beaten-me-to-it/", "who": "Kevin Buzzard (Imperial College London)", "id": "buzzard-flt"}, {"added": "2026-10-22T00:05:00Z", "cat": "viewpoint", "checked": true, "date": "2026-10-08", "kind": "Essay", "note": "Calls the moment a historic turning point, suggests using AI to correct existing work, and argues for free, open-source models as shared research infrastructure, like arXiv. Translated from his September blog post.", "oxford": false, "title": "Free Thoughts on Artificial Intelligence", "topics": ["big-dump"], "url": "https://proofsandprompts.com/2026/10/08/free-thoughts-on-artificial-intelligence/", "who": "Djalil Chafaï (Paris Dauphine and ENS)", "id": "chafai-free-thoughts"}, {"added": "2026-10-21T22:50:00Z", "cat": "voices", "checked": true, "date": "", "kind": "Tracker", "note": "Ranks the human mathematicians cited in OpenAI’s manuscripts, counting bibliography mentions in the 6 October release: a reminder of the work the results stand on.", "oxford": false, "title": "Cited by AGI", "url": "https://citedbyagi.com/", "who": "Will DePue (independent)", "id": "citedbyagi"}, {"added": "2026-10-22T08:00:00Z", "cat": "institutional", "checked": true, "date": "2026-09-11", "keywords": ["PDE", "Navier–Stokes"], "kind": "Statement", "note": "The Institute says the problem “has apparently been settled” but that its review under the Millennium Prize rules will be careful and unhurried.", "oxford": false, "title": "Navier–Stokes announcement", "url": "https://www.claymath.org/news/navier-stokes-announcement", "who": "Clay Mathematics Institute", "id": "clay-navier-stokes"}, {"added": "2026-10-22T08:00:00Z", "cat": "announcements", "checked": true, "date": "2026-05-21", "keywords": ["Combinatorics", "Erdős problems", "Lean", "Formal verification"], "kind": "Paper", "note": "DeepMind’s agent writes Lean proofs for open problems: 9 of 353 open Erdős problems and 44 OEIS conjectures. Published in Science on 8 October 2026, with a Perspective by Jeremy Avigad and Matthew Ballard. The main link is the free preprint.", "oxford": false, "peer": {"date": "2026-10-08", "url": "https://doi.org/10.1126/science.aej2213", "venue": "Science"}, "title": "Advancing Mathematics Research with AI-Driven Formal Proof Search (AlphaProof Nexus)", "url": "https://arxiv.org/abs/2605.22763", "who": "Google DeepMind (Tsoukalas, Kovsharov, Shirobokov et al.)", "id": "deepmind-alphaproof-nexus"}, {"added": "2026-10-22T15:30:00Z", "cat": "media", "checked": true, "date": "2026-10-08", "keywords": ["Mathematical culture", "Early-career researchers"], "kind": "Talk, video (French)", "note": "Two days after the release, a Fields medallist’s frank and emotional response: fears for young researchers and for the culture of sharing open problems, and a resolve to give more time to teaching and outreach. The first talk in the SMF’s “Math & IA à Midi” series; widely quoted since, including by The Economist.", "oxford": false, "title": "Un grave défaut d’alignement de l’IA en mathématiques, 28 jours plus tard", "topics": ["big-dump"], "url": "https://www.youtube.com/watch?v=iRjasLnigsU", "who": "Hugo Duminil-Copin (IHES, Geneva), Société Mathématique de France", "id": "duminil-copin-smf"}, {"added": "2026-10-22T14:30:00Z", "cat": "media", "checked": true, "date": "2026-10-21", "keywords": [], "kind": "Podcast, 37 min", "note": "The first of a four-part series on how scientists are grappling with AI starts with mathematics and OpenAI's October release, asking whether it is a warning for other sciences or the start of a new revolution. Oxford's James Maynard is a guest.", "oxford": true, "title": "AI eats science 1: the mathpocalypse", "topics": [], "url": "https://www.economist.com/podcasts/2026/10/21/ai-eats-science-1-the-mathpocalypse", "who": "The Economist, Babbage podcast (host Alok Jha; guests James Maynard and Yang-Hui He)", "id": "economist-babbage-mathpocalypse"}, {"added": "2026-10-22T15:30:00Z", "cat": "voices", "checked": true, "date": "", "keywords": [], "kind": "Searchable tracker", "note": "An independent, searchable map of the 372 result families across 17 areas, from theoretical computer science and combinatorics to operator algebras, with links to each PDF, its Lean status and public reactions. Its classifications are AI-generated and may contain errors: a way in, not a verification.", "oxford": false, "title": "OpenAI Math Explorer", "topics": ["big-dump"], "url": "https://www.emergentmind.com/openai-math-explorer", "who": "Emergent Mind (independent)", "id": "emergentmind-explorer"}, {"added": "2026-10-22T00:35:00Z", "cat": "institutional", "checked": true, "date": "2026-08-05", "kind": "Statement", "note": "The EMS calls the Declaration a valuable contribution but decided not to formally endorse it, urging the community to weigh AI’s opportunities alongside its risks.", "oxford": false, "title": "EMS on the Leiden Declaration", "url": "https://euromathsoc.org/news/leiden-declaration-on-artificial-intelligence-and-mathematics-224", "who": "European Mathematical Society Executive Committee", "id": "ems-leiden"}, {"added": "2026-10-21T22:50:00Z", "cat": "declaration", "checked": true, "date": "2026-09-30", "kind": "Open letter", "note": "Asks the EMS to create a publicly owned structure for AI-enhanced mathematical research, so the field can build or partner on tools under European law.", "oxford": false, "title": "Open letter to the European Mathematical Society", "url": "https://proofsandprompts.com/2026/09/30/open-letter-to-the-european-mathematical-society/", "who": "Snorre H. Christiansen (Oslo)", "id": "ems-letter"}, {"added": "2026-10-22T00:20:00Z", "cat": "institutional", "checked": true, "date": "2026-09-10", "keywords": ["PDE", "Navier–Stokes"], "kind": "Statement", "note": "Welcomes the claimed Navier–Stokes result while raising concerns about authorship, credit and access to the internal AI model used.", "oxford": false, "title": "EMS statement on recent Navier–Stokes announcement", "url": "https://euromathsoc.org/news/ems-statement-on-recent-navier-stokes-announcement-225", "who": "European Mathematical Society", "id": "ems-navier-stokes"}, {"added": "2026-10-21T22:50:00Z", "cat": "voices", "checked": true, "date": "2026-06-30", "keywords": ["Erdős problems", "Combinatorics"], "kind": "Tracker", "note": "Catalogue of AI contributions to Erdős problems by level of human involvement. No longer updated.", "oxford": false, "title": "AI contributions to Erdős problems", "url": "https://github.com/teorth/erdosproblems/wiki/AI-contributions-to-Erd%C5%91s-problems", "who": "Community wiki (teorth/erdosproblems)", "id": "erdos-wiki"}, {"added": "2026-10-21T22:50:00Z", "cat": "voices", "checked": true, "date": "", "keywords": [], "kind": "Research hub", "note": "Hub grouping 6 universities, including Oxford, closely linked to the mathematics behind AI: events, talks and researchers for the “mathematics making AI” strand.", "oxford": true, "title": "Erlangen AI Hub: Mathematical Foundations of Intelligence", "topics": [], "url": "https://erlangenhub.ox.ac.uk/", "who": "Oxford-led EPSRC AI hub", "id": "erlangen-hub"}, {"added": "2026-10-21T22:50:00Z", "cat": "viewpoint", "checked": true, "date": "2026-10-14", "keywords": [], "kind": "Column", "note": "Fry’s first New Scientist column, framing the October release as an existential crisis for mathematics. An opinion piece. May be paywalled.", "oxford": false, "title": "How OpenAI has caused an existential crisis in mathematics", "topics": ["big-dump"], "url": "https://www.newscientist.com/article/2593249-hannah-fry-how-openai-has-caused-an-existential-crisis-in-mathematics/", "who": "Hannah Fry, New Scientist", "id": "fry-ns"}, {"added": "2026-10-21T22:50:00Z", "cat": "news", "checked": true, "date": "2026-10-09", "kind": "News", "note": "Coverage of the Association for Human Mathematics statement and the advisory group row.", "oxford": false, "title": "Mathematicians react with fury as OpenAI releases hundreds of new AI-generated proofs", "topics": ["big-dump"], "url": "https://futurism.com/artificial-intelligence/mathematicians-openai-furious", "who": "Frank Landymore, Futurism", "id": "futurism"}, {"added": "2026-10-21T22:50:00Z", "cat": "viewpoint", "checked": true, "date": "2026-10-15", "kind": "Satirical essay", "note": "A satire on research reduced to unread AI-generated results, defending understanding, curiosity and beauty as the point of science.", "oxford": false, "title": "Why are we even doing all this?", "topics": ["big-dump"], "url": "https://terrytao.wordpress.com/2026/10/15/why-are-we-even-doing-all-this/", "who": "Rikab Gambhir (guest post on Tao’s blog)", "id": "gambhir"}, {"added": "2026-10-22T08:00:00Z", "cat": "socials", "checked": true, "date": "2026-09-29", "keywords": [], "kind": "X post", "note": "A thread introducing the advisory group’s recommendations on responsible release of AI-generated mathematics by AI companies.", "oxford": false, "title": "Gowers on the advisory group’s release recommendations", "topics": [], "url": "https://x.com/wtgowers/status/2105068672385507712", "who": "Timothy Gowers (Collège de France, Cambridge)", "id": "gowers-x-agmai"}, {"added": "2026-10-22T08:00:00Z", "cat": "socials", "checked": true, "date": "2026-09-16", "keywords": [], "kind": "X post", "note": "Gowers announces he has signed the letter from 42 Fellows and Foreign Members of the Royal Society to its president, Sir Paul Nurse, urging that the serious risks of AI be treated as an emergency.", "oxford": false, "title": "Gowers on signing the Royal Society Fellows’ letter", "topics": [], "url": "https://x.com/wtgowers/status/2100347454986072332", "who": "Timothy Gowers (Collège de France, Cambridge)", "id": "gowers-x-rs-letter"}, {"added": "2026-10-22T08:00:00Z", "cat": "socials", "checked": true, "date": "2026-05-20", "keywords": ["Discrete geometry", "Erdős problems"], "kind": "X post", "note": "Gowers (later a member of the Advisory Group on Mathematics and AI) points to the companion paper in which he and other mathematicians reflect on what the result means for mathematics.", "oxford": false, "title": "Gowers on reflecting on OpenAI’s unit distance result", "topics": [], "url": "https://x.com/wtgowers/status/2057175734922207327", "who": "Timothy Gowers (Collège de France, Cambridge)", "id": "gowers-x-unit-distance"}, {"added": "2026-10-22T00:05:00Z", "cat": "viewpoint", "checked": true, "date": "2026-10-08", "keywords": ["Number theory", "Siegel zeros", "Dirichlet L-functions", "Additive combinatorics"], "kind": "Personal reaction", "note": "Green found the claimed zero-free region for Dirichlet L-functions, and a short proof ruling out Siegel zeros, shocking. Many central problems in additive combinatorics fell, including about three quarters of the aims of an ERC Advanced Grant awarded in June. He judges the work of understanding the solutions to be significant and worthwhile. Scroll to his entry on the page.", "oxford": true, "title": "Ben Green’s reaction to the October release (in “100+ reactions to 100+ solutions”)", "topics": ["big-dump"], "url": "https://proofsandprompts.com/2026/10/08/100-reactions-to-100-solutions/", "who": "Ben Green", "id": "green-reaction"}, {"added": "2026-10-22T00:05:00Z", "cat": "viewpoint", "checked": true, "date": "2026-09-16", "kind": "Guest post", "note": "Green’s own case for the letter: mathematicians see the speed of AI progress up close, should not dismiss the risk as hype, and should make the point loudly. Tao’s editor’s note adds that he supports the letter but was not eligible to sign because of his industry collaborations.", "oxford": true, "title": "Open letter from Fellows of the Royal Society on AI existential risk", "url": "https://terrytao.wordpress.com/2026/09/16/open-letter-from-fellows-of-the-royal-society-on-ai-existential-risk/", "who": "Ben Green (guest post on Terence Tao’s blog)", "id": "green-rs-guest-post"}, {"added": "2026-10-21T22:50:00Z", "cat": "viewpoint", "checked": true, "date": "2026-10-09", "keywords": ["Lean", "Formal verification"], "kind": "Essay", "note": "What formal verification does and does not guarantee, including recent Lean soundness bugs and the need for human audit of AI-produced formal work.", "oxford": false, "title": "What mathematicians should know about the Lean Theorem Prover: questions of reliability and AI", "topics": ["big-dump"], "url": "https://terrytao.wordpress.com/2026/10/09/what-mathematicians-should-know-about-the-lean-theorem-proverquestions-of-reliability-and-ai/", "who": "Thomas Hales (guest post on Tao’s blog)", "id": "hales-lean"}, {"added": "2026-10-21T22:50:00Z", "cat": "institutional", "checked": true, "date": "2026-09-18", "keywords": ["PhD training", "Early-career researchers"], "kind": "Report", "note": "Twenty-four mathematicians met at Harvard to address how PhD programmes should change, producing recommendations for departments; graduate students and postdocs joined a panel. The page links the report PDF.", "oxford": false, "title": "Summit on PhD Math Education in the Age of AI: report", "topics": [], "url": "https://cmsa.fas.harvard.edu/aimathphd_summit/", "who": "Harvard CMSA; organisers Dan Freed, Joe Harris, Mark Kisin, Melanie Matchett Wood", "id": "harvard-phd-summit"}, {"added": "2026-10-21T22:50:00Z", "cat": "viewpoint", "checked": true, "date": "2026-10-18", "kind": "Essay", "note": "Argues mathematicians must lead mathematical AI rather than withdraw; otherwise companies, engineers and government agencies will set the agenda and leave mathematicians to check and formalise.", "oxford": false, "title": "Who Will Lead Mathematical AI?", "topics": ["big-dump"], "url": "https://proofsandprompts.com/2026/10/18/who-will-lead-mathematical-ai/", "who": "Helmut Hofer (IAS)", "id": "hofer"}, {"added": "2026-10-22T00:20:00Z", "cat": "institutional", "checked": true, "date": "2026-09-24", "kind": "Statement", "note": "Calls for active engagement rather than resistance or uncritical enthusiasm. Argues that mathematics is what makes AI trustworthy (stability, error control, uncertainty), that AI creates more need for applied mathematics, not less, and that failures should be reported alongside successes. Links the full statement as a PDF.", "oxford": false, "title": "Mathematics and Artificial Intelligence: Discovery, Understanding and Trust", "url": "https://iciam.org/news/26/9/24/iciam-statement-mathematics-and-artificial-intelligence", "who": "International Council for Industrial and Applied Mathematics (ICIAM)", "id": "iciam-statement"}, {"added": "2026-10-22T00:35:00Z", "cat": "viewpoint", "checked": true, "date": "2025-11-15", "keywords": [], "kind": "Address", "note": "Adapted from Cai’s August 2025 presidential address at JSM: statistics is central to AI, and the field must lead on inference, uncertainty and the validation of AI-assisted science rather than be left behind.", "oxford": false, "title": "IMS Presidential Address: Statistics at the Crossroads, Challenges and Opportunities in the Age of AI", "topics": [], "url": "https://imstat.org/2025/11/15/ims-presidential-address-statistics-at-the-crossroads-challenges-and-opportunities-in-the-age-of-ai/", "who": "Tony Cai, IMS Past President (Institute of Mathematical Statistics)", "id": "ims-presidential"}, {"added": "2026-10-22T00:35:00Z", "cat": "institutional", "checked": true, "date": "2026-06-02", "kind": "Endorsement", "note": "The IMU endorses the Leiden Declaration as a timely, serious and balanced contribution, stressing proof, attribution, peer review and disclosure of automated tools.", "oxford": false, "title": "IMU News 137: endorsement of the Leiden Declaration", "url": "https://www.mathunion.org/imu-news/archive/2026/imu-news-137-may-2026", "who": "International Mathematical Union (Secretary General Christoph Sorger)", "id": "imu-leiden"}, {"added": "2026-10-24T07:00:00Z", "cat": "viewpoint", "checked": true, "date": "2026-09-24", "keywords": ["Credit and authorship", "Mathematical culture", "Navier–Stokes"], "kind": "Opinion (paywall)", "note": "Keating weighs credit, value and exposition after OpenAI's Navier–Stokes claim, and calls on learned societies and universities to lead a careful debate; updated on 8 October.", "oxford": true, "title": "Mathematics needs a sober reckoning with AI", "topics": [], "url": "https://www.timeshighereducation.com/opinion/mathematics-needs-sober-reckoning-ai", "who": "Jon Keating (University of Oxford)", "id": "keating-the-sober-reckoning"}, {"added": "2026-10-22T08:00:00Z", "cat": "socials", "checked": true, "date": "2026-05-25", "keywords": [], "kind": "X post", "note": "Google DeepMind’s VP of Science announces AlphaProof Nexus and its solutions to open Erdős problems.", "oxford": false, "title": "“AI agents are advancing research-level math”: launching AlphaProof Nexus", "topics": [], "url": "https://x.com/pushmeet/status/2058936037754224998", "who": "Pushmeet Kohli (Google DeepMind)", "id": "kohli-x"}, {"added": "2026-10-22T00:35:00Z", "cat": "viewpoint", "checked": true, "date": "2026-03-23", "kind": "Essay", "note": "Kolda argues that AI will be a powerful tool but cannot replace mathematicians, who supply judgement, creative insight and reliable sourcing. Written before the autumn releases: first posted on 21 February, republished by SIAM News on 23 March.", "oxford": false, "title": "Essay: The Future of Math Research in the Age of AI", "url": "https://www.siam.org/publications/siam-news/articles/essay-the-future-of-math-research-in-the-age-of-ai/", "who": "Tamara G. Kolda, SIAM News", "id": "kolda-siam-essay"}, {"added": "2026-10-21T22:50:00Z", "cat": "declaration", "checked": true, "date": "2026-06-02", "kind": "Declaration", "note": "Sets out principles for AI in mathematical research: asks researchers to disclose AI use and take responsibility for correctness, societies to keep standards of scrutiny, and policymakers to consider regulation and public infrastructure. Oxford’s Ursula Martin is among its 16 authors.", "oxford": true, "title": "Leiden Declaration on Artificial Intelligence and Mathematics", "url": "https://www.lms.ac.uk/news/leiden-declaration-on-ai-and-mathematics", "who": "16 authors; endorsed by the IMU", "id": "leiden-declaration"}, {"added": "2026-10-22T00:35:00Z", "cat": "institutional", "checked": true, "date": "2026-10", "kind": "Publication policy", "note": "The LMS position for its journals: authors must include an AI declaration; reviewers must not use AI to carry out a review or upload the manuscript, but may use it to polish the wording of their own report, with disclosure. The LMS has also posted news of the Leiden Declaration; no standalone LMS statement on the October release had been found as of 24 October.", "oxford": false, "title": "Artificial Intelligence: LMS journals policy", "url": "https://www.lms.ac.uk/publications/policies/AI", "who": "London Mathematical Society", "id": "lms-ai-policy"}, {"added": "2026-10-21T22:50:00Z", "cat": "viewpoint", "checked": true, "date": "2026-10-18", "kind": "Essay", "note": "The outcome depends on whether researchers keep control of the tools, keep training mathematicians and keep science open and independent.", "oxford": false, "title": "Will it be a golden age or a dark age for mathematics (and science)?", "topics": ["big-dump"], "url": "https://terrytao.wordpress.com/2026/10/18/will-it-be-a-golden-age-or-a-dark-age-for-mathematics-and-science/", "who": "Francesco Maggi (guest post on Tao’s blog)", "id": "maggi"}, {"added": "2026-10-21T22:50:00Z", "cat": "declaration", "checked": true, "date": "2026-09-10", "kind": "Open letter", "note": "Urged the organisers to suspend an AI-lab-sponsored event on open research problems, citing risks of low-quality mathematics and burdens on early-career researchers. Since then: a joint statement in late September redesigned the event around new proofs of known results; OpenAI dropped its sponsorship and Anthropic and the organisers parted ways; Tao’s Society for Artificial Intelligence Research and XTX Markets stepped in. The revamped event is planned for mid-November (Quanta, 22 October).", "oxford": false, "title": "Open Letter about the Mathathon", "url": "https://proofsandprompts.com/2026/09/10/open-letter-about-the-mathathon/", "who": "Members of the Caltech community and research mathematicians (771 signatories at publication)", "id": "mathathon-letter"}, {"added": "2026-10-22T15:30:00Z", "cat": "news", "checked": true, "date": "2026-10-07", "keywords": ["Number theory"], "kind": "Blog post", "note": "An accessible list of headline claims: quasi-Riemann, irrationality of Catalan’s constant, Hilbert’s tenth problem over the rationals, modularity of elliptic curves over imaginary quadratic fields and more. Updated 21 October. Check counts against the repository.", "oxford": false, "title": "OpenAI stuns mathematicians with 722 new papers", "topics": ["big-dump"], "url": "https://mathscholar.org/2026/10/openai-stuns-mathematicians-with-722-new-papers/", "who": "David H. Bailey, Math Scholar", "id": "mathscholar-722"}, {"added": "2026-10-21T22:50:00Z", "cat": "media", "checked": true, "date": "2026-09-11", "keywords": [], "kind": "Short film", "note": "Fields Medallist James Maynard on whether AI solving famous problems is more than “a problem about problems”. Points viewers to the Fields Medallists’ declaration.", "oxford": true, "title": "AI does the math", "topics": [], "url": "https://www.youtube.com/shorts/R9VQnNv5SoI", "who": "Oxford Mathematics, with James Maynard", "id": "maynard-short"}, {"added": "2026-10-21T22:50:00Z", "cat": "viewpoint", "checked": true, "date": "2026-10-07", "kind": "Essay", "note": "Argues that unexamined beliefs about what is out of reach stop mathematicians attempting hard problems, and that AI tools sharpen the point.", "oxford": false, "title": "The barriers of perception", "topics": ["big-dump"], "url": "https://terrytao.wordpress.com/2026/10/07/the-barriers-of-perception/", "who": "Raghu Meka (guest post on Tao’s blog)", "id": "meka"}, {"added": "2026-10-21T22:50:00Z", "cat": "viewpoint", "checked": true, "date": "2026-10-19", "keywords": ["Credit and authorship"], "kind": "Essay", "note": "Proposes moving credit away from being first and towards clear explanation and larger research groups.", "oxford": false, "title": "Contribution, Credit, and Community", "topics": ["big-dump"], "url": "https://proofsandprompts.com/2026/10/19/contribution-credit-and-community/", "who": "Tommaso Moraschini (Barcelona)", "id": "moraschini"}, {"added": "2026-10-21T22:50:00Z", "cat": "news", "checked": true, "date": "2026-10-07", "kind": "News", "note": "The main news account of the release and reactions, including Ursula Martin’s comment. Updated 9 and 12 October; paywalled.", "oxford": true, "title": "OpenAI posts 700 maths preprints online: mathematicians are up in arms", "topics": ["big-dump"], "url": "https://www.nature.com/articles/d41586-026-03196-8", "who": "Davide Castelvecchi, Nature", "id": "nature-700"}, {"added": "2026-10-21T22:50:00Z", "cat": "initiative", "checked": true, "date": "2026-10-17", "keywords": ["Lean", "Exposition"], "kind": "New journal", "note": "An open-access journal in preparation that puts understanding before priority and requires Lean verification of proofs.", "oxford": false, "title": "Starting a new journal", "topics": ["big-dump"], "url": "https://terrytao.wordpress.com/2026/10/17/starting-a-new-journal/", "who": "Shaoming Guo and colleagues", "id": "new-journal"}, {"added": "2026-10-22T00:20:00Z", "cat": "media", "checked": true, "date": "2026-09-22", "keywords": ["PDE", "Navier–Stokes"], "kind": "Radio report (3:50) and article", "note": "On the Navier–Stokes claim: a proof mathematicians think is probably correct but find hard to learn from. Quotes Oxford’s James Maynard, with Javier Gómez-Serrano, Tristan Buckmaster and Martin Hairer.", "oxford": true, "title": "AI solved one of math’s hardest problems. Humanity learned nothing (so far)", "url": "https://www.stlpr.org/npr/2026-09-22/ai-solved-one-of-maths-hardest-problems-humanity-learned-nothing-so-far", "who": "Geoff Brumfiel, NPR (via St. Louis Public Radio)", "id": "npr-navier-stokes"}, {"added": "2026-10-21T22:50:00Z", "cat": "media", "checked": true, "date": "2026-09-29", "keywords": ["PDE", "Navier–Stokes"], "kind": "Video interview", "note": "Tristan Buckmaster on the Navier–Stokes episode and credit for AI-assisted results.", "oxford": false, "title": "The Buckmaster Interview", "url": "https://www.numberphile.com/videos/the-buckmaster-interview", "who": "Numberphile", "id": "numberphile-buckmaster"}, {"added": "2026-10-24T07:00:00Z", "cat": "media", "checked": true, "date": "2026-10-14", "keywords": ["Mathematical culture"], "kind": "Podcast", "note": "The Fields Medallist describes his reaction to some of the proofs in OpenAI's October release and what he thinks comes next for mathematics; about 34 minutes.", "oxford": false, "title": "The Strip Mining of Mathematical Proofs – with Hugo Duminil-Copin", "topics": ["big-dump"], "url": "https://www.numberphile.com/podcast/hugo-ai", "who": "Numberphile Podcast, with Hugo Duminil-Copin (IHÉS / Geneva)", "id": "numberphile-duminil-copin"}, {"added": "2026-10-21T22:50:00Z", "cat": "media", "checked": true, "date": "2026-10-15", "kind": "Video interview", "note": "Long interview with Tao on the move from proof scarcity to abundance and what it means for the human side of mathematics.", "oxford": false, "title": "No More Heroes: Terence Tao on AI", "topics": ["big-dump"], "url": "https://www.numberphile.com/videos/tao-ai", "who": "Numberphile", "id": "numberphile-tao"}, {"added": "2026-10-21T22:50:00Z", "cat": "news", "checked": true, "date": "2026-10-08", "keywords": [], "kind": "News (paywall)", "note": "Reactions to OpenAI’s 6 October release. Oxford’s Martin Bridson, president of the Clay Mathematics Institute, calls it “breathtaking” and adds: “We should embrace the power that the machines offer, but we should not be indentured to follow their lead.”", "oxford": true, "title": "‘Breathtaking,’ ‘Devastating’: Mathematics Reels After New OpenAI Release", "topics": ["big-dump"], "url": "https://www.nytimes.com/2026/10/08/science/mathematicians-respond-openai-release.html", "who": "Siobhan Roberts, The New York Times", "id": "nyt-respond"}, {"added": "2026-10-24T07:55:00Z", "cat": "news", "checked": true, "date": "2026-10-16", "keywords": ["Mathematical culture"], "kind": "Feature (paywall)", "note": "A profile of Tao as the field’s unofficial spokesman after OpenAI’s releases: why he no longer sees a way to engage constructively with the lab, a U.C.L.A. workshop on PDEs in the age of AI, and the uncertainty facing his PhD students.", "oxford": false, "title": "Why One of the World’s Greatest Mathematicians Is on a ‘War Footing’", "topics": ["big-dump"], "url": "https://www.nytimes.com/2026/10/16/us/math-ai-terence-tao.html", "who": "Elisabeth Bumiller, The New York Times", "id": "nyt-tao-war-footing"}, {"added": "2026-10-21T22:50:00Z", "cat": "announcements", "checked": true, "date": "2026-09-21", "kind": "Company announcement", "note": "OpenAI’s announcement that it is working with the independent advisory group, listing its nine members.", "oxford": true, "title": "Advisory Group on Mathematics and Artificial Intelligence (OpenAI announcement)", "url": "https://openai.com/index/advisory-group-on-mathematics-and-ai/", "who": "OpenAI", "id": "openai-agmai"}, {"added": "2026-10-22T08:00:00Z", "cat": "announcements", "checked": true, "date": "2026-09-08", "keywords": ["PDE", "Navier–Stokes", "Fluid dynamics", "Credit and authorship"], "kind": "Company announcement", "note": "OpenAI’s claim of finite-time blow-up for the three-dimensional incompressible Navier–Stokes equations with a smooth external force, from an 88-hour run of about 10,000 agents, with a 166-page paper and Lean files; it says it will not seek the Clay prize. Priority and credit are disputed: see Buckmaster’s statement, the posts under Social posts and the Clay Institute’s response.", "oxford": false, "title": "On the Navier–Stokes Millennium Prize Problem (OpenAI announcement and paper)", "topics": [], "url": "https://openai.com/index/navier-stokes-solution/", "who": "OpenAI", "id": "openai-navier-stokes"}, {"added": "2026-10-21T22:50:00Z", "cat": "announcements", "checked": true, "date": "2026-10-06", "keywords": ["Lean"], "kind": "Company announcement", "note": "OpenAI’s announcement of the 722 manuscripts from an unnamed internal model, with partial Lean formalisations. Updated 15 October.", "oxford": false, "title": "Sharing AI progress in mathematics", "topics": ["big-dump"], "url": "https://openai.com/index/sharing-ai-progress-in-mathematics/", "who": "OpenAI", "id": "openai-release"}, {"added": "2026-10-21T22:50:00Z", "cat": "announcements", "checked": true, "date": "2026-10-06", "kind": "Repository", "note": "The manuscripts themselves, grouped into 372 result families (a family is a group of related claims, not a count of accepted theorems); 719 listed after three withdrawals. The history file also records repairs to 14 other manuscripts.", "oxford": false, "title": "openai/math repository", "topics": ["big-dump"], "url": "https://github.com/openai/math", "who": "OpenAI", "id": "openai-repo"}, {"added": "2026-10-22T08:00:00Z", "cat": "announcements", "checked": true, "date": "2026-08-01", "keywords": ["Operator algebras", "Group theory", "Sphere packing", "Erdős problems", "Lean"], "kind": "Company announcement", "note": "Ten results on long-open problems from an internal model codenamed Astra, formalised in Lean, including a disproof of Connes’s rigidity conjecture and new sphere-packing bounds. Humans prepared the manuscripts and take responsibility for correctness.", "oxford": false, "title": "Ten advances in mathematics and theoretical computer science", "url": "https://openai.com/index/ten-advances-in-mathematics/", "who": "OpenAI", "id": "openai-ten-advances"}, {"added": "2026-10-22T08:00:00Z", "cat": "announcements", "checked": true, "date": "2026-05-20", "keywords": ["Combinatorics", "Discrete geometry", "Erdős problems"], "kind": "Company announcement", "note": "An internal reasoning model disproved the conjectured upper bound in Erdős’s 1946 unit distance problem with a stronger construction; the proof was checked by external mathematicians, with comment from Noga Alon and Tim Gowers. The same day Will Sawin posted an explicit lower bound (arXiv:2605.20579). The exact maximum remains open.", "oxford": false, "title": "An OpenAI model has disproved a central conjecture in discrete geometry", "url": "https://openai.com/index/model-disproves-discrete-geometry-conjecture/", "who": "OpenAI", "id": "openai-unit-distance"}, {"added": "2026-10-21T22:50:00Z", "cat": "media", "checked": true, "date": "", "kind": "Public lecture", "note": "Du Sautoy’s Oxford Mathematics public lecture on creativity and AI.", "oxford": true, "title": "The Creativity Code: How AI is learning to write, paint and think", "url": "https://www.youtube.com/watch?v=k89sS6fsZvI", "who": "Marcus du Sautoy, Oxford Mathematics Public Lecture", "id": "oxford-creativity-code"}, {"added": "2026-10-21T22:50:00Z", "cat": "media", "checked": true, "date": "", "kind": "Public lecture", "note": "Oxford Mathematics public panel on machine learning as a research tool.", "oxford": true, "title": "Deep Maths: machine learning and mathematics", "url": "https://www.youtube.com/watch?v=wbJQTtjlM_w", "who": "Alex Davies, András Juhász, Marc Lackenby, Geordie Williamson, Jon Keating", "id": "oxford-deep-maths"}, {"added": "2026-10-21T22:50:00Z", "cat": "institutional", "checked": true, "date": "2026-06-04", "kind": "Department news", "note": "The department’s note on the Declaration, naming Ursula Martin among its 16 signatories.", "oxford": true, "title": "Leiden Declaration on Artificial Intelligence and Mathematics (Oxford Mathematics news)", "url": "https://www.maths.ox.ac.uk/node/81506", "who": "Oxford Mathematics", "id": "oxford-leiden"}, {"added": "2026-10-21T22:50:00Z", "cat": "media", "checked": true, "date": "2024-08-07", "kind": "Public lecture", "note": "Tao’s Oxford Mathematics London Public Lecture on what AI can and cannot do for science and mathematics, given on 17 July 2024 and released online on 7 August 2024.", "oxford": true, "title": "The Potential for AI in Science and Mathematics", "url": "https://www.youtube.com/watch?v=_sTDSO74D8Q", "who": "Terence Tao, Oxford Mathematics London Public Lecture", "id": "oxford-tao-lecture"}, {"added": "2026-10-21T22:50:00Z", "cat": "viewpoint", "checked": true, "date": "2026-10-19", "keywords": ["PhD training", "Early-career researchers", "Credit and authorship", "Mathematical culture"], "kind": "Series", "note": "Proofs and Prompts published a series of posts between 19 and 23 October for people considering a PhD, doing one or looking for a postdoc: guidelines, discussions and speculation about what to do and what careers in mathematics will look like.", "oxford": false, "title": "Application season (Proofs and Prompts series)", "topics": ["big-dump"], "url": "https://proofsandprompts.com/tag/application-season/", "who": "various", "id": "phd-anon"}, {"added": "2026-10-21T22:50:00Z", "cat": "viewpoint", "checked": true, "date": "2026-10-08", "keywords": ["Number theory", "Operator algebras", "Quantum complexity"], "kind": "Collected reactions", "note": "About a hundred short reactions, mostly signed, to the October release, from delight to grief. Includes Oxford’s Martin Bridson and Ben Green.", "oxford": true, "title": "100+ reactions to 100+ solutions", "topics": ["big-dump"], "url": "https://proofsandprompts.com/2026/10/08/100-reactions-to-100-solutions/", "who": "Proofs and Prompts (many contributors)", "id": "pnp-reactions"}, {"added": "2026-10-21T22:50:00Z", "cat": "voices", "checked": true, "date": "", "keywords": ["Mathematical culture", "Credit and authorship", "Early-career researchers"], "kind": "Blog", "note": "“Notes from the common room”: essays, letters and reactions from mathematicians across the spectrum of views, with a forum. Browse by tag, for example Reflection, AI companies, Norms or Labour; the posts for PhD students and postdocs are listed separately as the Application season series.", "oxford": false, "title": "Proofs and Prompts", "topics": ["big-dump"], "url": "https://proofsandprompts.com/", "who": "Mathematicians’ community blog", "id": "pnp-site"}, {"added": "2026-10-22T00:35:00Z", "cat": "news", "checked": true, "date": "2026-10-05", "kind": "Essay", "note": "Quanta’s maths editor on how AI-produced proofs threaten the incentives, training and culture of mathematics, and the case for redefining the field around understanding and communication.", "oxford": false, "title": "Is AI the End of Math As We Know It?", "url": "https://www.quantamagazine.org/is-ai-the-end-of-math-as-we-know-it-20261005/", "who": "Jordana Cepelewicz, Quanta Magazine", "id": "quanta-end-of-math"}, {"added": "2026-10-22T15:30:00Z", "cat": "news", "checked": true, "date": "2026-10-19", "keywords": ["Number theory", "Riemann hypothesis", "Zeta function"], "kind": "Feature", "note": "The best account of the release’s headline result: what the quasi-Riemann hypothesis says, why it matters for the primes, and how number theorists (Radziwiłł, Dunn, Sarnak, Lichtman, Bloom, Sawin) judge the proof and its poor write-up. Sarnak is teaching a course on it before calling it a theorem.", "oxford": false, "title": "AI Proved the Quasi-Riemann Hypothesis. What Happens Now?", "topics": ["big-dump"], "url": "https://www.quantamagazine.org/ai-proved-the-quasi-riemann-hypothesis-what-happens-now-20261019/", "who": "Konstantin Kakaes, Quanta Magazine", "id": "quanta-quasi-rh"}, {"added": "2026-10-23T20:40:00Z", "cat": "voices", "checked": true, "date": "", "keywords": ["Mathematical culture"], "kind": "Running log", "note": "A weekly, carefully reported log of what is happening where mathematics meets AI, newest first, from late August 2026 to now. The best single place to keep up.", "oxford": false, "title": "Transformation: Quanta’s weekly dispatch on mathematics and AI", "topics": ["big-dump"], "url": "https://www.quantamagazine.org/updates/transformation/", "who": "Konstantin Kakaes, Quanta Magazine", "id": "quanta-transformation"}, {"added": "2026-10-22T15:30:00Z", "cat": "news", "checked": true, "date": "2026-10-07", "keywords": ["Complexity theory", "Unique Games"], "kind": "Feature", "note": "How Dor Minzer and his students rushed out a major related result as rumours of an AI proof spread: the human side of the release, with comment from Ryan O’Donnell and Mark Braverman.", "oxford": false, "title": "As AI Closed In on ‘Unique Games’ Proof, Researchers Raced to Beat the Machines", "topics": ["big-dump"], "url": "https://www.quantamagazine.org/as-ai-closed-in-on-unique-games-proof-researchers-raced-to-beat-the-machines-20261007/", "who": "Ben Brubaker, Quanta Magazine", "id": "quanta-unique-games"}, {"added": "2026-10-23T06:30:00Z", "cat": "news", "checked": true, "date": "2026-10-08", "keywords": ["Algebraic geometry", "Hodge conjecture"], "kind": "News", "note": "Reports OpenAI’s withdrawal of three linked manuscripts on Hodge-type questions for abelian varieties and K3 surfaces after errors (a sign error and a flawed construction used by two dependent papers) that, according to OpenAI, were found during an audit. Includes comment from mathematicians at Cornell and MIT on how the release was handled.", "oxford": false, "title": "OpenAI withdraws three preprints a day after releasing 722 manuscripts on unsolved math problems", "topics": ["big-dump"], "url": "https://retractionwatch.com/2026/10/08/openai-withdraws-preprints-722-manuscripts-unsolved-math-problems/", "who": "Alicia Gallegos, Retraction Watch", "id": "retractionwatch-withdrawals"}, {"added": "2026-10-21T22:50:00Z", "cat": "declaration", "checked": true, "date": "2026-09-17", "kind": "Open letter", "note": "Calls on the Royal Society to treat serious AI risk as an emergency and say so to government and the media. Posted by Ben Green on Proofs and Prompts (17 Sept) and, with his own introduction, on Tao’s blog (16 Sept). Signatories include Ben Green, James Maynard, Ulrike Tillmann and Marcus du Sautoy.", "oxford": true, "title": "Open letter to Sir Paul Nurse, President of the Royal Society", "url": "https://proofsandprompts.com/2026/09/17/open-letter-to-sir-paul-nurse-president-of-the-royal-society/", "who": "42 mathematician Fellows and Foreign Members of the Royal Society; posted by Ben Green", "id": "rs-letter"}, {"added": "2026-10-21T22:50:00Z", "cat": "declaration", "checked": true, "date": "2026-09-11", "kind": "Declaration", "note": "Argues that AI labs using famous open problems as benchmarks conflicts with mathematics’ aim of understanding, and calls for urgent action by mathematicians, AI companies and society. Open for further signatures.", "oxford": false, "title": "A Severe Misalignment of AI in Mathematics", "url": "https://mathandai.org/", "who": "Fields Medallists (25 at launch; 28 as of 24 October), including Terence Tao", "id": "severe-misalignment"}, {"added": "2026-10-22T00:35:00Z", "cat": "institutional", "checked": true, "date": "2026-02", "kind": "Report", "note": "Argues AI will stay opaque, inefficient or unreliable in high-stakes uses without sustained investment in its mathematical foundations, with recommendations for federal agencies, universities and industry. Predates the autumn releases.", "oxford": false, "title": "The Role of Applied Mathematics in a New Era of Artificial Intelligence", "url": "https://www.siam.org/media/b03hwuwe/siam-report-ai-task-force.pdf", "who": "SIAM AI Task Force (incl. Karen Willcox, Carol Woodward)", "id": "siam-ai-task-force"}, {"added": "2026-10-22T08:00:00Z", "cat": "announcements", "checked": true, "date": "2026-10-15", "kind": "Funding announcement", "note": "Funding and resources from the Simons Foundation, Anthropic and OpenAI to help mathematicians evaluate AI-assisted results, adopt tools and set shared standards. Open call; Math+AI institute proposals due 1 December 2026.", "oxford": false, "title": "Simons Foundation launches $15M effort to help mathematicians navigate AI era", "url": "https://www.simonsfoundation.org/news/simons-foundation-launches-15m-effort-to-help-mathematicians-navigate-ai-era/", "who": "Simons Foundation, with Anthropic and OpenAI", "id": "simons-15m"}, {"added": "2026-10-21T22:50:00Z", "cat": "voices", "checked": true, "date": "", "kind": "Blog", "note": "The most active hub: Tao’s posts, guest posts from the community and digests of AI-produced results.", "oxford": false, "title": "What’s new (Terence Tao’s blog)", "url": "https://terrytao.wordpress.com/", "who": "Terence Tao", "id": "tao-blog"}, {"added": "2026-10-21T22:50:00Z", "cat": "initiative", "checked": true, "date": "2026-10-20", "keywords": ["Number theory", "Siegel zeros"], "kind": "Challenge", "note": "Invites readers to use AI tools collaboratively to test and compare arguments that rule out Siegel zeroes: Math 2.0 in practice.", "oxford": false, "title": "An experimental AI-math challenge: using tenth discriminant bounds to explore arguments ruling out Siegel zeroes", "topics": ["big-dump"], "url": "https://terrytao.wordpress.com/2026/10/20/an-experimental-ai-math-challenge-using-tenth-discriminant-bounds-to-explore-arguments-ruling-out-siegel-zeroes/", "who": "Terence Tao", "id": "tao-challenge"}, {"added": "2026-10-21T22:50:00Z", "cat": "media", "checked": true, "date": "2026-03-04", "keywords": [], "kind": "Recorded conversation", "note": "Tao and OpenAI’s chief research officer on challenge sets, workflows and amateurs in research, from before the October release.", "oxford": false, "title": "Terence Tao and Mark Chen on AI and mathematical discovery", "topics": [], "url": "https://forum.openai.com/public/videos/event-replay-terence-tao-and-mark-chen-on-ai-and-mathatical-discovery-2026-03-11", "who": "OpenAI Forum", "id": "tao-chen"}, {"added": "2026-10-21T22:50:00Z", "cat": "socials", "checked": true, "date": "", "keywords": [], "kind": "Social feed", "note": "Tao’s public feed, often with long threads on current developments.", "oxford": false, "title": "Terence Tao on Mastodon", "topics": [], "url": "https://mathstodon.xyz/@tao", "who": "Terence Tao", "id": "tao-mastodon"}, {"added": "2026-10-21T22:50:00Z", "cat": "viewpoint", "checked": true, "date": "2026-10-10", "keywords": ["Mathematical culture", "Exposition"], "kind": "Lecture slides and blog post", "note": "Slides from Tao’s Caltech lecture (given 9 October, posted 10 October): from proof scarcity to proof abundance, and a vision that values exposition, formal libraries, experimentation and community over raw problem-solving.", "oxford": false, "title": "Math 2.0", "topics": ["big-dump"], "url": "https://terrytao.wordpress.com/2026/10/10/math-2-0/", "who": "Terence Tao", "id": "tao-math2"}, {"added": "2026-10-22T00:05:00Z", "cat": "initiative", "checked": true, "date": "2026-10-19", "keywords": ["Number theory", "Siegel zeros", "Dirichlet L-functions"], "kind": "Expository sketch", "note": "Tao explains the claimed AI-produced proof that rules out Siegel zeroes, following Ben Green’s simpler formulation and his key bound. A model of mathematicians digesting an AI result.", "oxford": true, "title": "A sketch of the proof of non-existence of Siegel zeroes", "topics": ["big-dump"], "url": "https://terrytao.wordpress.com/2026/10/19/a-sketch-of-the-proof-of-non-existence-of-siegel-zeroes/", "who": "Terence Tao, building on Ben Green’s write-up", "id": "tao-siegel-sketch"}, {"added": "2026-10-21T22:50:00Z", "cat": "voices", "checked": true, "date": "", "kind": "Living summary", "note": "A living summary of Tao’s views on AI, drafted by an AI assistant from his public writing and talks and reviewed by Tao; now includes Math 2.0.", "oxford": false, "title": "Terence Tao on AI in mathematics (and beyond)", "url": "https://teorth.github.io/tao-web/ai-views.html", "who": "Terence Tao", "id": "tao-views"}, {"added": "2026-10-22T00:35:00Z", "cat": "news", "checked": true, "date": "2026-09-17", "kind": "News", "note": "Report on the 42-Fellow letter. No response from the Royal Society is reported, and none had been found as of 24 October.", "oxford": true, "title": "Royal Society urged to declare AI ‘emergency’", "url": "https://www.timeshighereducation.com/news/royal-society-urged-declare-ai-emergency", "who": "Frances Jones, Times Higher Education", "id": "the-rs-letter"}, {"added": "2026-10-21T22:50:00Z", "cat": "news", "checked": true, "date": "2026-08-11", "keywords": [], "kind": "Feature", "note": "Features James Maynard on months of “soul searching” about the future of mathematics.", "oxford": true, "title": "The AI takeover of mathematics has begun", "topics": [], "url": "https://www.theverge.com/ai-artificial-intelligence/977273/the-ai-takeover-of-mathematics-has-begun", "who": "The Verge", "id": "verge-takeover"}, {"added": "2026-10-22T15:30:00Z", "cat": "news", "checked": true, "date": "", "keywords": [], "kind": "Encyclopedia entry", "note": "A living overview of the release: headline claims by area, withdrawals and reactions, with links to the papers. Check claims against its sources.", "oxford": false, "title": "OpenAI bulk release of mathematical papers", "topics": ["big-dump"], "url": "https://en.wikipedia.org/wiki/OpenAI_bulk_release_of_mathematical_papers", "who": "Wikipedia", "id": "wiki-bulk-release"}, {"added": "2026-10-22T08:00:00Z", "cat": "news", "checked": true, "date": "", "keywords": ["PDE", "Navier–Stokes", "Credit and authorship"], "kind": "Encyclopedia entry", "note": "A dated timeline of the dispute between OpenAI and Buckmaster and Alpöge, linking to the primary posts and statements. A living page: check claims against its sources.", "oxford": false, "title": "Navier–Stokes priority controversy", "url": "https://en.wikipedia.org/wiki/Navier%E2%80%93Stokes_priority_controversy", "who": "Wikipedia", "id": "wiki-ns-controversy"}], "text": {"about1": "This is Jan Obłój’s personal page. The selection and the curator’s notes are his own, or his AI agent that built and updates these pages. They do not represent the views of the Mathematical Institute or the University of Oxford. Linked items speak for their authors.", "about2": "Dates are publication dates. Know something that belongs here?"}, "form": {"action": "https://docs.google.com/forms/d/e/1FAIpQLSdmDf6X3KgcEZeusAFPHA-s3ynIIHQYqqalgTLZSjxB3_nzpw/formResponse", "fields": {"url": "entry.944989428", "title": "entry.1578102679", "cat": "entry.1764001722", "why": "entry.1621418129"}, "catMap": {"": "Not sure", "declaration": "Declarations & open letters", "institutional": "Institutional statements & reports", "announcements": "AI lab announcements", "initiative": "Community initiatives", "viewpoint": "Personal viewpoints", "socials": "Social media", "media": "Films, interviews and podcasts", "news": "News & analysis", "voices": "Blogs & live resources"}}, "generated": "2026-10-24T11:31:20+00:00"};</script>
+<script>
+const CATS = [
+  {id:"declaration", name:"Declarations & open letters", desc:"Collective, signed texts: declarations, open letters and petitions."},
+  {id:"institutional", name:"Institutional statements & reports", desc:"Official outputs from learned societies, advisory bodies, institutes, funders and universities."},
+  {id:"announcements", name:"AI lab announcements", desc:"What the frontier labs themselves have announced: results, releases and commitments. Best read alongside the reactions."},
+  {id:"initiative", name:"Community initiatives", desc:"Things mathematicians are building in response: journals, projects, challenges."},
+  {id:"viewpoint", name:"Personal viewpoints", desc:"Essays, columns, guest posts, personal statements and collected reactions from individuals."},
+  {id:"socials", name:"Social posts", desc:"Posts on X, Mastodon, LinkedIn and elsewhere, including from mathematicians at the AI labs and members of the Advisory Group on Mathematics and AI that advises OpenAI."},
+  {id:"media", name:"Films, interviews & podcasts", desc:"Watch or listen: interviews, lectures, documentaries and podcasts."},
+  {id:"news", name:"News & analysis", desc:"Press coverage and analysis."},
+  {id:"voices", name:"Blogs & live resources", desc:"Ongoing blogs, feeds and continually updated records worth checking regularly."}
+];
+const TOPICS = [
+  {id:"big-dump", name:"The Big Dump", title:"The Big Dump: OpenAI’s 6 October release",
+   desc:"On 6 October 2026 OpenAI posted 722 manuscripts from an internal model, grouped into 372 families of results across mathematics and theoretical computer science. This view gathers what responds to it: the headline papers, the human work that checks and builds on them, expert readings of the mathematics, and the statements and reactions."}
+];
+const TL_DATA = {"milestones": [{"id": "turing-1936", "date": "1936", "lane": "maths", "short": "Computation defined", "title": "Turing defines what a machine can compute", "story": "Alan Turing's paper “On Computable Numbers” describes an imaginary machine that can carry out any calculation that can be written as a step-by-step procedure, and proves that some well-posed problems, such as deciding whether a given statement of first-order logic is provable, cannot be solved by any such procedure. His machines, including a universal one that can imitate all the others, became a foundation of theoretical computer science and remain the standard account of what any computer, or any AI system, can in principle compute.", "start": [{"title": "Turing machine", "url": "https://en.wikipedia.org/wiki/Turing_machine", "who": "Wikipedia", "kind": "Explainer"}]}, {"id": "neuron-1943", "date": "1943", "lane": "maths", "short": "A mathematical neuron", "title": "A neuron, written as mathematics", "story": "Warren McCulloch and Walter Pitts model a brain cell as a simple logical unit that fires when its inputs pass a threshold, and show that networks of such units can carry out any logical operation. Their idealised neuron is the ancestor of the units in today's neural networks.", "start": [{"title": "Artificial neuron", "url": "https://en.wikipedia.org/wiki/Artificial_neuron", "who": "Wikipedia", "kind": "Explainer"}]}, {"id": "shannon-1948", "date": "1948", "lane": "maths", "short": "Information theory", "title": "Shannon turns information into mathematics", "story": "Claude Shannon's “A Mathematical Theory of Communication” measures information in bits and treats language as a source of probabilities. In one experiment he generates English-like text by choosing each word according to how often it follows the previous one: an early precursor of the next-token prediction on which today's chatbots are built, though they condition on far longer context.", "start": [{"title": "A Mathematical Theory of Communication", "url": "https://en.wikipedia.org/wiki/A_Mathematical_Theory_of_Communication", "who": "Wikipedia", "kind": "Explainer"}]}, {"id": "turing-1950", "date": "1950", "lane": "moments", "short": "“Can machines think?”", "title": "Turing asks: can machines think?", "story": "In “Computing Machinery and Intelligence” Turing replaces the question with a test, the imitation game: can a machine hold a typed conversation that a person cannot tell apart from a human's? The paper anticipates many of the questions and objections that will occupy the field about to be named.", "start": [{"title": "Computing Machinery and Intelligence", "url": "https://en.wikipedia.org/wiki/Computing_Machinery_and_Intelligence", "who": "Wikipedia", "kind": "Explainer"}]}, {"id": "dartmouth-1956", "date": "1956", "lane": "moments", "short": "AI gets its name", "title": "Artificial intelligence gets its name", "story": "A summer workshop at Dartmouth College launches “artificial intelligence” as a field. John McCarthy coined the name in the 1955 proposal he wrote with Marvin Minsky, Nathaniel Rochester and Claude Shannon. The proposal rests on the conjecture that “every aspect of learning or any other feature of intelligence can in principle be so precisely described that a machine can be made to simulate it”.", "start": [{"title": "Dartmouth workshop", "url": "https://en.wikipedia.org/wiki/Dartmouth_workshop", "who": "Wikipedia", "kind": "Explainer"}]}, {"id": "logic-1956", "date": "1956", "lane": "ai", "short": "A machine proves theorems", "title": "A program proves theorems from Principia", "story": "The Logic Theorist, by Allen Newell, Herbert Simon and Cliff Shaw, proves 38 of the first 52 theorems in chapter 2 of Whitehead and Russell's Principia Mathematica, one of them more elegantly than the original. Often described as the first artificial intelligence program, it made mathematics one of AI's first proving grounds.", "start": [{"title": "Logic Theorist", "url": "https://en.wikipedia.org/wiki/Logic_Theorist", "who": "Wikipedia", "kind": "Explainer"}]}, {"id": "perceptron-1958", "date": "1958", "lane": "maths", "short": "The perceptron", "title": "The perceptron learns from examples", "story": "Frank Rosenblatt's perceptron learns to sort simple images by adjusting numerical weights after each mistake, making it one of the first neural networks trained from examples. Minsky and Papert's 1969 mathematical analysis of its limits is often blamed for a decline in neural-network research in the 1970s, although historians debate how large its role was.", "start": [{"title": "Perceptron", "url": "https://en.wikipedia.org/wiki/Perceptron", "who": "Wikipedia", "kind": "Explainer"}]}, {"id": "automath-1967", "date": "1967", "lane": "ai", "short": "Automath", "title": "A computer checks mathematical proofs", "story": "Nicolaas de Bruijn begins Automath, a formal language in which mathematics can be written precisely enough for a computer to check every step. His doctoral student Bert van Benthem Jutting translates the whole of Landau's textbook Foundations of Analysis into Automath; the computer finishes checking it in 1975. Automath is a forerunner of today's proof assistants, such as Lean.", "start": [{"title": "Automath", "url": "https://en.wikipedia.org/wiki/Automath", "who": "Wikipedia", "kind": "Explainer"}]}, {"id": "autodiff-1970", "date": "1970", "lane": "maths", "short": "Automatic differentiation", "title": "Differentiating a computation", "story": "In his master's thesis at the University of Helsinki, written to study rounding errors, Seppo Linnainmaa describes what is now called reverse-mode automatic differentiation. For a program with a single numerical output, it computes the derivatives of that output with respect to all of its inputs at a small constant multiple of the cost of running the program once. Backpropagation, later applied to neural networks by Paul Werbos and by David Rumelhart, Geoffrey Hinton and Ronald Williams, is a special case.", "start": [{"title": "Automatic differentiation", "url": "https://en.wikipedia.org/wiki/Automatic_differentiation", "who": "Wikipedia", "kind": "Explainer"}]}, {"id": "fourcolour-1976", "date": "1976", "lane": "ai", "short": "Four colour theorem", "title": "A proof too long to check by hand", "story": "Kenneth Appel and Wolfgang Haken prove the four colour theorem by reducing it to nearly two thousand configurations, each checked by computer, with programming by John Koch. Mathematicians argue for years about whether a proof too long for any person to check in full by hand should count. This is exhaustive computation, not AI.", "start": [{"title": "Four color theorem", "url": "https://en.wikipedia.org/wiki/Four_color_theorem", "who": "Wikipedia", "kind": "Explainer"}]}, {"id": "hopfield-1982", "date": "1982", "lane": "maths", "short": "Hopfield networks", "title": "Memory as physics", "story": "John Hopfield shows that a network of simple units can store memories as low-energy states, borrowing mathematics from the physics of magnetic materials: a partial or noisy pattern can settle into a stored pattern. In 1985 David Ackley, Geoffrey Hinton and Terrence Sejnowski extend the idea to the Boltzmann machine, which learns from data. Hopfield and Hinton share the 2024 Nobel Prize in Physics.", "start": [{"title": "Hopfield network", "url": "https://en.wikipedia.org/wiki/Hopfield_network", "who": "Wikipedia", "kind": "Explainer"}, {"title": "The Nobel Prize in Physics 2024: popular science background", "url": "https://www.nobelprize.org/prizes/physics/2024/popular-information/", "who": "Nobel Prize", "kind": "Explainer"}]}, {"id": "pac-1984", "date": "1984", "lane": "maths", "short": "What can be learned?", "title": "A theory of what can be learned", "story": "Leslie Valiant's “A Theory of the Learnable” defines probably approximately correct (PAC) learning: a precise mathematical account of what it means for a machine to learn a concept from examples, and of how many examples and how much computation it needs. It gives rise to the field of computational learning theory and is among the contributions cited in Valiant's 2010 Turing Award.", "start": [{"title": "Probably approximately correct learning", "url": "https://en.wikipedia.org/wiki/Probably_approximately_correct_learning", "who": "Wikipedia", "kind": "Explainer"}]}, {"id": "backprop-1986", "date": "1986", "lane": "maths", "short": "Backpropagation", "title": "Learning with the chain rule", "story": "David Rumelhart, Geoffrey Hinton and Ronald Williams show in Nature how networks with hidden layers can learn useful internal representations by backpropagation: the chain rule of calculus applied layer by layer to work out how each weight should change. The method had earlier roots, but this paper made it widely known, and it remains at the heart of how neural networks are trained.", "start": [{"title": "Backpropagation", "url": "https://en.wikipedia.org/wiki/Backpropagation", "who": "Wikipedia", "kind": "Explainer"}]}, {"id": "uat-1989", "date": "1989", "lane": "maths", "short": "Universal approximation", "title": "Neural networks can approximate any continuous function", "story": "George Cybenko, Ken-Ichi Funahashi, and Kurt Hornik with Maxwell Stinchcombe and Halbert White, prove at about the same time versions of the universal approximation theorem: a network with a single hidden layer of suitable nonlinear units, given enough of them, can approximate any continuous function on a closed, bounded region as closely as you like. It shows that neural networks are expressive enough in principle, though not how large they must be or how to train them.", "start": [{"title": "Universal approximation theorem", "url": "https://en.wikipedia.org/wiki/Universal_approximation_theorem", "who": "Wikipedia", "kind": "Explainer"}]}, {"id": "deepblue-1997", "date": "1997-05", "lane": "moments", "short": "Deep Blue beats Kasparov", "title": "Deep Blue beats the world chess champion", "story": "IBM's Deep Blue beats Garry Kasparov 3½–2½ in a six-game match in New York. It searches typically 100 to 200 million positions a second, guided by an evaluation function largely tuned by hand rather than learned. It is the first time a reigning world champion loses a match to a computer under standard time controls.", "start": [{"title": "Deep Blue versus Garry Kasparov", "url": "https://en.wikipedia.org/wiki/Deep_Blue_versus_Garry_Kasparov", "who": "Wikipedia", "kind": "Explainer"}]}, {"id": "kepler-1998", "date": "1998", "lane": "ai", "short": "Kepler conjecture", "title": "Kepler's conjecture, settled by computer", "story": "Thomas Hales, with his student Samuel Ferguson, announces a computer-assisted proof that no packing of equal spheres is denser than the greengrocer's way of stacking oranges. Referees could not verify all the computer calculations, so Hales led the Flyspeck project, which completed a fully machine-checked proof in 2014.", "start": [{"title": "Kepler conjecture", "url": "https://en.wikipedia.org/wiki/Kepler_conjecture", "who": "Wikipedia", "kind": "Explainer"}]}, {"id": "cs-2006", "date": "2006", "lane": "maths", "short": "Compressed sensing", "title": "Recovering more from less", "story": "Emmanuel Candès, Justin Romberg and Terence Tao, and independently David Donoho, show that a sparse signal can be recovered exactly, with high probability, from far fewer measurements than generic reconstruction would require, by solving a convex optimisation problem. Compressed sensing is now used to shorten some MRI scans, and its ideas on sparsity and random measurement have become part of the mathematics of high-dimensional data.", "start": [{"title": "Compressed sensing", "url": "https://en.wikipedia.org/wiki/Compressed_sensing", "who": "Wikipedia", "kind": "Explainer"}]}, {"id": "dbn-2006", "date": "2006-07", "lane": "maths", "short": "Deep networks revived", "title": "Layer-by-layer pretraining revives deep networks", "story": "Geoffrey Hinton, Simon Osindero and Yee-Whye Teh show how to train a deep “belief net” one layer at a time, each layer learning to model the activity of the layer below. With Hinton and Ruslan Salakhutdinov's paper in Science the same year, the work revives interest in deep neural networks after a period in which many researchers had favoured other methods, and helps popularise the term “deep learning”.", "start": [{"title": "Deep belief network", "url": "https://en.wikipedia.org/wiki/Deep_belief_network", "who": "Wikipedia", "kind": "Explainer"}]}, {"id": "alexnet-2012", "date": "2012", "lane": "moments", "short": "Deep learning takes off", "title": "Deep learning takes off", "story": "AlexNet, a deep neural network built by Alex Krizhevsky, Ilya Sutskever and Geoffrey Hinton and trained on graphics chips, wins the ImageNet image-recognition contest by a wide margin. Following early successes in speech recognition, it persuades much of the computer-vision community, and within a few years deep learning is in wide use, from image search to machine translation.", "start": [{"title": "AlexNet", "url": "https://en.wikipedia.org/wiki/AlexNet", "who": "Wikipedia", "kind": "Explainer"}]}, {"id": "alphago-2016", "date": "2016-03", "lane": "moments", "short": "AlphaGo beats Lee Sedol", "title": "AlphaGo beats Lee Sedol", "story": "DeepMind's AlphaGo, which learned from human games and then from playing itself, beats Lee Sedol, one of the strongest Go players of his era, 4–1 in Seoul. Its 37th move in game two, which AlphaGo estimated a human would play only once in ten thousand times, became a symbol of machine creativity.", "start": [{"title": "AlphaGo versus Lee Sedol", "url": "https://en.wikipedia.org/wiki/AlphaGo_versus_Lee_Sedol", "who": "Wikipedia", "kind": "Explainer"}]}, {"id": "transformer-2017", "date": "2017-06", "lane": "maths", "short": "Attention Is All You Need", "title": "“Attention Is All You Need”", "story": "Eight researchers working at Google introduce the transformer. Its core, attention, is built from linear algebra: each token (a word or piece of a word) is mapped to query, key and value vectors; queries are compared with keys by dot products, a softmax turns the scores into weights, and the token's new representation is the weighted average of the values. It is the architecture behind most of today's leading large language models.", "start": [{"title": "Attention Is All You Need", "url": "https://arxiv.org/abs/1706.03762", "who": "Vaswani et al.", "kind": "Paper"}, {"title": "Transformer (deep learning architecture)", "url": "https://en.wikipedia.org/wiki/Transformer_(deep_learning_architecture)", "who": "Wikipedia", "kind": "Explainer"}]}, {"id": "intuition-2021", "date": "2021-12", "lane": "ai", "short": "AI guides intuition", "title": "Machine learning guides mathematicians' intuition", "story": "DeepMind works with mathematicians, including Oxford's Marc Lackenby and András Juhász in knot theory and Geordie Williamson of the University of Sydney in representation theory, using machine learning to spot patterns that guide human intuition. The collaboration, published in Nature, leads to a new theorem in knot theory, proved by people, and a new conjecture in representation theory.", "start": [{"title": "Machine Learning Becomes a Mathematical Collaborator", "url": "https://www.quantamagazine.org/deepmind-machine-learning-becomes-a-mathematical-collaborator-20220215/", "who": "Kelsey Houston-Edwards, Quanta Magazine", "kind": "Feature"}, {"title": "Advancing mathematics by guiding human intuition with AI", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8636249", "who": "Davies et al., Nature", "kind": "Paper"}]}, {"id": "chatgpt-2022", "date": "2022-11", "lane": "moments", "short": "ChatGPT", "title": "ChatGPT brings language models to everyone", "story": "OpenAI releases ChatGPT, which, by OpenAI's count, passes a million users in five days; analysts estimated 100 million monthly users within two months. Conversations with a large language model become an everyday experience for millions, and questions about what these systems understand, including mathematics, move from labs to classrooms.", "start": [{"title": "ChatGPT", "url": "https://en.wikipedia.org/wiki/ChatGPT", "who": "Wikipedia", "kind": "Explainer"}]}, {"id": "funsearch-2023", "date": "2023-12", "lane": "ai", "short": "FunSearch", "title": "A language model makes a discovery", "story": "Google DeepMind's FunSearch pairs a language model with an automatic evaluator that scores the programs it writes. It finds a cap set of 512 points in eight dimensions over the field with three elements (points of F₃⁸, no three on a line), beating the previous best of 496, and improves the lower bound on how fast the largest cap sets grow with the dimension. These are among the first new results on an open problem from a system built on a language model.", "start": [{"title": "Mathematical discoveries from program search with large language models", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10794145", "who": "Romera-Paredes et al., Nature", "kind": "Paper"}]}, {"id": "imo-2024", "date": "2024-07", "lane": "ai", "short": "Olympiad silver", "title": "Silver at the International Mathematical Olympiad", "story": "Google DeepMind's AlphaProof and AlphaGeometry 2 solve four of the six problems at the International Mathematical Olympiad, scoring 28 of 42, a silver-medal standard. The problems were first translated by hand into formal language (Lean, for AlphaProof), and some took up to three days, far beyond the contest's time limits. AlphaProof's proofs, written in Lean, can be checked by computer.", "start": [{"title": "AI achieves silver-medal standard solving International Mathematical Olympiad problems", "url": "https://deepmind.google/discover/blog/ai-solves-imo-problems-at-silver-medal-level/", "who": "Google DeepMind", "kind": "Announcement"}, {"title": "AI Reaches Silver-Medal Level at This Year’s Math Olympiad", "url": "https://www.scientificamerican.com/article/ai-reaches-silver-medal-level-at-this-years-math-olympiad/", "who": "Scientific American", "kind": "News"}]}, {"id": "imo-2025", "date": "2025-07", "lane": "ai", "short": "Olympiad gold", "title": "Gold at the International Mathematical Olympiad", "story": "A year later, experimental models from Google DeepMind and OpenAI each solve five of the six problems, a gold-medal standard, writing their proofs in ordinary language within the competition's time limits. Google DeepMind's result was certified by the Olympiad's coordinators; OpenAI's was graded by former medallists.", "start": [{"title": "Advanced version of Gemini with Deep Think officially achieves gold-medal standard at the International Mathematical Olympiad", "url": "https://deepmind.google/discover/blog/advanced-version-of-gemini-with-deep-think-officially-achieves-gold-medal-standard-at-the-international-mathematical-olympiad/", "who": "Google DeepMind", "kind": "Announcement"}]}, {"id": "tdgammon-1992", "date": "1992", "lane": "maths", "short": "Learning from reward", "title": "Learning from reward", "story": "Gerald Tesauro's TD-Gammon, at IBM, teaches itself backgammon by playing against itself. It uses Richard Sutton's temporal-difference learning, which nudges its evaluation of each position towards its evaluation of the next, a method grounded in Richard Bellman's dynamic programming. By 1993 it plays close to the level of the world's best players. Self-play reinforcement learning, combined with deep networks and tree search, later becomes central to DeepMind's AlphaGo and its successors.", "start": [{"title": "TD-Gammon", "url": "https://en.wikipedia.org/wiki/TD-Gammon", "who": "Wikipedia", "kind": "Explainer"}, {"title": "Temporal Difference Learning and TD-Gammon", "url": "https://bkgm.com/articles/tesauro/tdl.html", "who": "Gerald Tesauro, Communications of the ACM (1995)", "kind": "Article"}]}, {"id": "svm-1995", "date": "1995", "lane": "maths", "short": "Support vector machines", "title": "Learning with the widest margin", "story": "Corinna Cortes and Vladimir Vapnik publish “Support-vector networks”, extending to overlapping classes a maximum-margin method Vapnik had developed with Bernhard Boser and Isabelle Guyon. It rests on the statistical learning theory Vapnik and Alexey Chervonenkis developed from the 1960s, which bounds how well a rule learned from examples carries over to new data. The “kernel trick” lets it find a flat boundary in a very high-dimensional feature space, which can act as a curved one in the original data, without computing in that space directly. Support vector machines become one of the most widely used learning methods of the late 1990s and 2000s.", "start": [{"title": "Support vector machine", "url": "https://en.wikipedia.org/wiki/Support_vector_machine", "who": "Wikipedia", "kind": "Explainer"}, {"title": "Support-vector networks", "url": "https://link.springer.com/doi/10.1007/BF00994018", "who": "Cortes and Vapnik, Machine Learning (1995)", "kind": "Paper"}]}, {"id": "diffusion-2020", "date": "2020", "lane": "maths", "short": "Diffusion models", "title": "Generating images by reversing noise", "story": "Jonathan Ho, Ajay Jain and Pieter Abbeel, building on work by Jascha Sohl-Dickstein and colleagues in 2015, show that diffusion models can generate high-quality images by learning to undo the gradual addition of noise. Later that year Yang Song and colleagues recast the method as a stochastic differential equation run backwards in time, drawing on a 1982 result of Brian Anderson. Diffusion now underlies many of today's AI image and video generators.", "start": [{"title": "Diffusion model", "url": "https://en.wikipedia.org/wiki/Diffusion_model", "who": "Wikipedia", "kind": "Explainer"}, {"title": "Score-Based Generative Modeling through Stochastic Differential Equations", "url": "https://arxiv.org/abs/2011.13456", "who": "Song et al., ICLR 2021", "kind": "Paper"}]}, {"id": "growth-2025", "date": "2025-12", "lane": "maths", "short": "A field of 26,000", "chart": "neurips", "title": "Thousands keep building AI", "story": "Behind every headline is a vast and growing research community. NeurIPS, the largest conference on machine learning, accepted about 90 papers at its first meeting in 1987. In December 2025 it accepted 5,290 of 21,575 submissions, and about 26,000 people registered, most of them in San Diego, with a smaller second venue in Mexico City. Together with ICML and ICLR, the three leading machine-learning conferences accepted more than 12,000 papers in 2025, from about 45,000 submissions. Much of the work rests on mathematics: optimisation, probability and statistics, linear algebra and the theory of learning.", "start": [{"title": "NeurIPS 2025 fact sheet", "url": "https://media.neurips.cc/Conferences/NeurIPS2025/press/NeurIPS2025-Fact_Sheet.pdf", "who": "NeurIPS", "kind": "Data"}, {"title": "NeurIPS statistics", "url": "https://papercopilot.com/statistics/nips-statistics/", "who": "Paper Copilot", "kind": "Data"}]}, {"id": "gan-2014", "date": "2014-06", "lane": "maths", "short": "GANs", "title": "Two networks play a game", "story": "Ian Goodfellow and colleagues introduce generative adversarial networks: a generator produces samples while a discriminator tries to tell them from real data, and the two are trained against each other in a minimax game. The paper proves that, if both players could be arbitrary functions, the game's unique solution is the one in which the generator reproduces the data distribution exactly. Over the next few years GANs produce increasingly realistic images, including convincing synthetic faces.", "start": [{"title": "Generative adversarial network", "url": "https://en.wikipedia.org/wiki/Generative_adversarial_network", "who": "Wikipedia", "kind": "Explainer"}, {"title": "Generative Adversarial Networks", "url": "https://arxiv.org/abs/1406.2661", "who": "Goodfellow et al., arXiv (2014)", "kind": "Paper"}]}, {"id": "unit-distance", "date": "2026-05-20", "lane": "ai", "short": "Erdős conjecture falls", "title": "An AI disproves a famous Erdős conjecture", "story": "An internal OpenAI model disproves Paul Erdős's 1946 conjecture on how many pairs of points in the plane can be exactly one unit apart, with a construction giving more pairs than the conjectured bound; the exact maximum remains open. Outside mathematicians check it, and OpenAI presents it as the first prominent open problem solved autonomously by AI. A day later Google DeepMind reports AlphaProof Nexus solving open Erdős problems in Lean.", "start": [{"entry": "openai-unit-distance"}, {"title": "OpenAI announces AI’s biggest math breakthrough yet", "url": "https://www.scientificamerican.com/article/ai-just-solved-an-80-year-old-erdos-problem-and-mathematicians-are-amazed/", "who": "Scientific American", "kind": "News"}], "tag": {"ids": ["gowers-x-unit-distance", "deepmind-alphaproof-nexus", "kohli-x", "erdos-wiki"], "keywords": ["Erdős problems"]}}, {"id": "leiden", "date": "2026-06-02", "lane": "respond", "short": "Leiden Declaration", "title": "Researchers set out principles", "story": "Sixteen researchers publish the Leiden Declaration on AI and mathematics: AI use should be disclosed, authors stay responsible for their results, and the community should avoid dependence on proprietary AI. The International Mathematical Union endorses it.", "start": [{"entry": "leiden-declaration"}], "tag": {"ids": ["imu-leiden", "ems-leiden", "oxford-leiden"]}}, {"id": "summer-results", "date": "2026-08", "lane": "ai", "short": "Labs race for results", "title": "The labs race for results", "story": "OpenAI announces ten advances on long-open problems from an internal version of its next model, Astra (1 August). Anthropic reports that an unreleased Claude model raised the proven lower bound for the proportion of nontrivial zeta zeros on the critical line from 41.6% to 67.2% (10 August). Mathematics has become a showcase for the frontier labs.", "start": [{"entry": "openai-ten-advances"}, {"entry": "anthropic-riemann-zeta"}], "tag": {"ids": ["verge-takeover"]}}, {"id": "fermat", "date": "2026-09-04", "lane": "ai", "short": "Fermat, checked by computer", "title": "Fermat's Last Theorem, checked by computer", "story": "Anthropic's Claude produces a complete proof of Fermat's Last Theorem in the Lean proof assistant in eleven largely autonomous days. Kevin Buzzard, who leads the human formalisation project, treats it as a demonstration of what machines can now check, while noting that mathematically it “tells us essentially nothing” new.", "start": [{"entry": "anthropic-flt"}, {"entry": "buzzard-flt"}], "tag": {"keywords": ["Fermat’s Last Theorem"]}}, {"id": "navier-stokes", "date": "2026-09-08", "lane": "ai", "short": "Navier–Stokes claim", "title": "A Millennium Prize problem, and a race for credit", "story": "OpenAI claims a solution to the Navier–Stokes problem, finite-time blow-up with a smooth external force, one of the seven Millennium Prize problems, after an 88-hour run of AI agents. About twelve hours earlier, Tristan Buckmaster and Levent Alpöge had made public related blow-up results for the Euler and Boussinesq equations, obtained with AI tools in August. On 11 September the Clay Institute says the problem has “apparently been settled”, with a deliberately unhurried evaluation to follow; emotional statements on all sides testify to the strain of humans racing AI agents.", "start": [{"entry": "clay-navier-stokes"}, {"entry": "wiki-ns-controversy"}], "tag": {"keywords": ["Navier–Stokes"]}}, {"id": "pushback", "date": "2026-09-11", "lane": "respond", "short": "Fields Medallists object", "title": "Fields Medallists and Fellows push back", "story": "Twenty-five Fields Medallists (28 by late October) warn that the goals of AI companies and of mathematicians are “severely misaligned” (11 September). Five days later, 42 mathematician Fellows and Foreign Members of the Royal Society urge its President to treat the wider risks of AI as an emergency. Other open letters concern a student-run AI “Mathathon” at Caltech (10 September) and are addressed to the European Mathematical Society (30 September).", "start": [{"entry": "severe-misalignment"}, {"entry": "rs-letter"}], "tag": {"ids": ["green-rs-guest-post", "the-rs-letter", "gowers-x-rs-letter", "mathathon-letter", "ems-letter", "duminil-copin-smf"]}}, {"id": "agmai", "date": "2026-09-21", "lane": "respond", "short": "Advisory group formed", "title": "An advisory group for responsible release", "story": "Nine mathematicians, including Oxford's Ulrike Tillmann, form an independent Advisory Group on Mathematics and AI, hosted by the Institute for Advanced Study, after OpenAI approached some of them; its first task is advising OpenAI. On 29 September they publish norms for how AI labs should release mathematical results.", "start": [{"entry": "agmai"}], "tag": {"ids": ["openai-agmai", "gowers-x-agmai"]}}, {"id": "big-dump", "date": "2026-10-06", "lane": "ai", "short": "The Big Dump", "title": "The Big Dump", "story": "OpenAI posts 722 manuscripts from an internal model claiming results, grouped into 372 families, from the quasi-Riemann hypothesis to the Unique Games Conjecture. Three are withdrawn the next day after errors are found, and 14 others have since been repaired. Mathematicians are still working out which results hold and what they mean.", "start": [{"entry": "nature-700"}, {"entry": "quanta-quasi-rh"}], "tag": {"topics": ["big-dump"]}}, {"id": "simons", "date": "2026-10-15", "lane": "respond", "short": "$15M for the community", "title": "Significant resources for the community response", "story": "The Simons Foundation, Anthropic and OpenAI commit $15 million in funding and resources to help mathematicians evaluate AI-assisted results, adopt the tools and set shared standards, including targeted grants to Math+AI institutes.", "start": [{"entry": "simons-15m"}]}], "lanes": [{"id": "maths", "name": "Mathematics builds AI", "desc": "The mathematical ideas that made AI possible"}, {"id": "moments", "name": "AI milestones", "desc": "Moments when AI changed what people thought machines could do"}, {"id": "ai", "name": "AI does Mathematics", "desc": "Machines proving, checking and discovering results"}, {"id": "respond", "name": "Community response", "desc": "Statements, principles and new institutions"}], "eras": [{"id": "foundations", "name": "Foundations", "range": "1936–1958", "first": "turing-1936"}, {"id": "machines", "name": "Machines and proofs", "range": "1967–1998", "first": "automath-1967"}, {"id": "deep", "name": "Deep learning", "range": "2006–2025", "first": "cs-2006"}, {"id": "y2026", "name": "2026", "range": "", "first": "unit-distance"}], "neurips": {"1987": 90, "1988": 94, "1989": 101, "1990": 143, "1991": 144, "1992": 127, "1993": 158, "1994": 140, "1995": 152, "1996": 152, "1997": 150, "1998": 151, "1999": 150, "2000": 152, "2001": 197, "2002": 207, "2003": 198, "2004": 207, "2005": 207, "2006": 204, "2007": 217, "2008": 250, "2009": 262, "2010": 292, "2011": 306, "2012": 370, "2013": 360, "2014": 411, "2015": 403, "2016": 568, "2017": 679, "2018": 1009, "2019": 1427, "2020": 1899, "2021": 2334, "2022": 2671, "2023": 3218, "2024": 4035, "2025": 5290}};   // the storylines: milestones, lanes, periods, and the rules that link reading-room entries to them
+const topicById = Object.fromEntries(TOPICS.map(t=>[t.id,t]));
+const catName = Object.fromEntries(CATS.map(c=>[c.id,c.name]));
+const $ = s => document.querySelector(s);
+const state = {items:[], q:"", byDate:false, byNew:false, ox:false, topic:null, milestone:null, canEdit:false, editing:null, confirmId:null, editMode:false, draft:{}, saved:{}, view:"story"};
+const PUBLIC = window.READING_ROOM_PUBLIC || null;   // set only in the exported public copy
+const DEFAULTS = {};
+document.querySelectorAll("[data-edit]").forEach(n=>{ DEFAULTS[n.dataset.edit] = n.textContent; });
+function txt(key, def){ const v = state.draft[key] ?? state.saved[key]; return (typeof v==="string" && v.trim()) ? v : def; }
+function editableAttrs(key){ return state.editMode ? {"data-edit":key, contenteditable:"plaintext-only", spellcheck:"true"} : {"data-edit":key}; }
+const catLabel = id => { const c = CATS.find(c=>c.id===id); return c ? txt("cat."+id+".name", c.name) : "Other"; };
+const OWNER_NAME = "Jan Obłój", OWNER_HOME = "https://www.maths.ox.ac.uk/people/jan.obloj";
+function setLinked(n, text){
+  n.replaceChildren();
+  text.split(OWNER_NAME).forEach((part,i)=>{
+    if(i) n.append(el("a",{href:OWNER_HOME,target:"_blank",rel:"noopener",text:OWNER_NAME}));
+    if(part) n.append(document.createTextNode(part));
+  });
+}
+function applyStatic(){
+  document.querySelectorAll("[data-edit]").forEach(n=>{
+    const k = n.dataset.edit; if(!(k in DEFAULTS)) return;
+    if(document.activeElement!==n){ const v = txt(k, DEFAULTS[k]); if(state.editMode) n.textContent = v; else setLinked(n, v); }
+    if(state.editMode) n.setAttribute("contenteditable","plaintext-only"); else n.removeAttribute("contenteditable");
+  });
+}
+document.addEventListener("input", e=>{ const n=e.target.closest && e.target.closest("[data-edit]"); if(state.editMode && n) state.draft[n.dataset.edit] = n.textContent.replace(/\s+/g," ").trim().slice(0,1500); });
+document.addEventListener("keydown", e=>{ if(state.editMode && e.key==="Enter" && e.target.closest && e.target.closest("[data-edit]")){ e.preventDefault(); e.target.blur(); } });
+const kwOf = it => Array.isArray(it.keywords) ? it.keywords.filter(k=>typeof k==="string" && k.trim()) : [];
+const topicsOf = it => Array.isArray(it.topics) ? it.topics.filter(t=>topicById[t]) : [];
+function setQuery(q){ state.q = q; $("#q").value = q; render(); updateStatus(); $("#q").scrollIntoView({block:"center"}); }
+let db = null;
+
+function fmtDate(d){
+  if(!d) return "Undated";
+  const m = /^(\d{4})-(\d{2})(?:-(\d{2}))?$/.exec(d); if(!m) return d;
+  const mon = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][+m[2]-1];
+  return (m[3] ? (+m[3])+" " : "") + mon + " " + m[1];
+}
+function el(tag, attrs={}, ...kids){
+  const n = document.createElement(tag);
+  for(const [k,v] of Object.entries(attrs)){ if(v==null||v===false) continue;
+    if(k==="class") n.className=v; else if(k==="text") n.textContent=v; else n.setAttribute(k, v===true?"":v); }
+  for(const k of kids){ if(k!=null) n.append(k); }
+  return n;
+}
+function safeUrl(u){ try{ const x=new URL(u); return (x.protocol==="https:"||x.protocol==="http:")?x.href:null; }catch{ return null; } }
+
+// ---------- links between the two views: which reading-room entries belong to which milestone ----------
+const MILESTONES = [...TL_DATA.milestones].sort((a,b)=>a.date.localeCompare(b.date));
+const msById = Object.fromEntries(MILESTONES.map(m=>[m.id,m]));
+let TAGS = {}, BY_ENTRY = {};
+function computeTags(){
+  TAGS = {}; BY_ENTRY = {};
+  const ids = new Set(state.items.map(i=>i.id));
+  MILESTONES.forEach(m=>{
+    const t = m.tag || {}, set = new Set((t.ids||[]).filter(id=>ids.has(id)));
+    (m.start||[]).forEach(s=>{ if(s.entry && ids.has(s.entry)) set.add(s.entry); });
+    state.items.forEach(it=>{
+      if((t.keywords||[]).some(k=>kwOf(it).includes(k))) set.add(it.id);
+      if((t.topics||[]).some(k=>topicsOf(it).includes(k))) set.add(it.id);
+    });
+    TAGS[m.id] = set;
+    set.forEach(id=>{ (BY_ENTRY[id] = BY_ENTRY[id] || []).push(m.id); });
+  });
+}
+
+// ---------- Reading room ----------
+function filtered(){
+  const q = state.q.trim().toLowerCase();
+  return state.items.filter(it=>{
+    if(state.ox && !it.oxford) return false;
+    if(state.topic && !topicsOf(it).includes(state.topic)) return false;
+    if(state.milestone && !(TAGS[state.milestone] && TAGS[state.milestone].has(it.id))) return false;
+    if(!q) return true;
+    return [it.title,it.who,it.kind,it.note,it.peer&&it.peer.venue?"peer-reviewed peer reviewed "+it.peer.venue:"",catName[it.cat],...kwOf(it),...topicsOf(it).map(t=>topicById[t].name)].join(" ").toLowerCase().includes(q);
+  });
+}
+const byDateDesc = (a,b)=> (b.date||"").localeCompare(a.date||"") || (a.title||"").localeCompare(b.title||"");
+
+// "Peer-reviewed" is shown only when the curator has seen the published version (it.peer = {venue, url, date}).
+// No tag claims nothing either way.
+function peerNode(it){
+  const p = it.peer; if(!p || !p.venue) return null;
+  const u = safeUrl(p.url||""), t = "✓ Peer-reviewed · " + p.venue;
+  const title = "Published in " + p.venue + (p.date ? " on " + fmtDate(p.date) : "") + " after peer review";
+  return u ? el("a",{class:"peer",href:u,target:"_blank",rel:"noopener",title,text:t}) : el("span",{class:"peer",title,text:t});
+}
+function itemNode(it, showCat){
+  const url = safeUrl(it.url);
+  const h = el("h3", {}, url ? el("a",{href:url,target:"_blank",rel:"noopener",text:it.title}) : document.createTextNode(it.title||"Untitled"));
+  const meta = [it.who, it.kind].filter(Boolean).join(" · ");
+  const tags = el("div",{class:"tags"});
+  if(showCat) tags.append(el("span",{class:"tag cat",text:catLabel(it.cat)}));
+  topicsOf(it).forEach(t=>tags.append(el("span",{class:"tag topic",text:topicById[t].name})));
+  if(it.oxford) tags.append(el("span",{class:"tag ox",text:"Oxford"}));
+  if(it.checked===false) tags.append(el("span",{class:"tag warn",text:"Link to check"}));
+  (BY_ENTRY[it.id]||[]).slice(0,2).forEach(mid=>{ const m=msById[mid]; if(!m) return;
+    const b=el("button",{type:"button",class:"tlchip",title:"Open this milestone in the storylines",text:"On the timeline: "+m.short}); b.onclick=()=>openMilestone(mid); tags.append(b); });
+  const kws = kwOf(it);
+  const kwRow = kws.length ? el("div",{class:"kws","aria-label":"Keywords"}) : null;
+  kws.forEach(k=>{ const b=el("button",{type:"button",class:"kw",text:k,title:"Show entries about "+k}); b.onclick=()=>setQuery(k); kwRow.append(b); });
+  const body = el("div",{}, h, (meta || it.peer) ? el("div",{class:"meta"}, document.createTextNode(meta), peerNode(it)) : null, it.note ? el("p",{class:"note"}, el("span",{class:"nl",text:"Curator’s note"}), document.createTextNode(it.note)) : null, kwRow, tags.childElementCount ? tags : null);
+  if(state.canEdit && state.editMode){
+    if(state.confirmId===it.id){
+      const yes = el("button",{type:"button",class:"linkbtn danger",text:"Yes, remove it"}); yes.onclick=()=>removeItem(it.id);
+      const no = el("button",{type:"button",class:"linkbtn",text:"Keep it"}); no.onclick=()=>{state.confirmId=null;render();};
+      body.append(el("div",{class:"confirm"}, document.createTextNode("Remove this entry for everyone?"), yes, no));
+    } else {
+      const e = el("button",{type:"button",class:"linkbtn",text:"Edit"}); e.onclick=()=>openEditor(it);
+      const d = el("button",{type:"button",class:"linkbtn danger",text:"Remove"}); d.onclick=()=>{state.confirmId=it.id;render();};
+      body.append(el("div",{class:"edit-row"}, e, d));
+    }
+  }
+  return el("li",{class:"item"}, el("div",{class:"date",text:fmtDate(it.date)}), body);
+}
+
+function render(){
+  const items = filtered();
+  const list = $("#list"); list.replaceChildren();
+  const rail = $("#rail"); rail.replaceChildren();
+  const chips = $("#chips"); chips.replaceChildren();
+  if(!state.items.length){ return; }
+  if(!items.length){
+    list.append(el("div",{class:"empty"}, el("strong",{text:"Nothing matches."}), document.createTextNode(" Try another word, or turn off the filters.")));
+  }
+  if(state.byNew){
+    const withAdded = items.filter(i=>i.added).sort((a,b)=>(b.added||"").localeCompare(a.added||"") || byDateDesc(a,b));
+    const days = []; withAdded.forEach(it=>{ const d = it.added.slice(0,10); let g = days.find(x=>x.d===d); if(!g){ g={d,its:[]}; days.push(g); } g.its.push(it); });
+    days.slice(0,30).forEach((g,ix)=>{
+      const ol = el("ol",{class:"items"}); g.its.forEach(it=>ol.append(itemNode(it,true)));
+      list.append(el("section",{class:"cat"}, el("div",{class:"cat-head"}, el("h2",{text:(ix===0?"Latest additions · ":"Added ")+fmtDate(g.d)}), el("span",{class:"count",text:g.its.length+(g.its.length===1?" entry":" entries")})), ol));
+    });
+    if(!withAdded.length) list.append(el("div",{class:"empty"}, el("strong",{text:"Nothing to show."})));
+  } else if(state.byDate){
+    const ol = el("ol",{class:"items"}); [...items].sort(byDateDesc).forEach(it=>ol.append(itemNode(it,true)));
+    if(items.length) list.append(el("section",{class:"cat"}, el("div",{class:"cat-head"}, el("h2",{text:"Newest first"}), el("span",{class:"count",text:items.length+" entries"})), ol));
+  } else {
+    for(const c of CATS){
+      const its = items.filter(i=>i.cat===c.id).sort(byDateDesc);
+      const nm = catLabel(c.id), ds = txt("cat."+c.id+".desc", c.desc);
+      if(!its.length && (PUBLIC || !state.editMode)) { if(!PUBLIC) rail.append(el("a",{href:"#"+c.id}, document.createTextNode(nm), el("span",{text:"0"}))); continue; }
+      rail.append(el("a",{href:"#"+c.id}, document.createTextNode(nm), el("span",{text:String(its.length)})));
+      chips.append(el("a",{href:"#"+c.id,text:nm}));
+      const ol = el("ol",{class:"items"}); its.forEach(it=>ol.append(itemNode(it,false)));
+      list.append(el("section",{class:"cat",id:c.id}, el("div",{class:"cat-head"}, el("h2",{...editableAttrs("cat."+c.id+".name"),text:nm}), el("span",{class:"count",text:its.length+(its.length===1?" entry":" entries")})), el("p",{class:"cat-desc",...editableAttrs("cat."+c.id+".desc"),text:ds}), ol));
+    }
+    const other = items.filter(i=>!catName[i.cat]);
+    if(other.length){ const ol=el("ol",{class:"items"}); other.sort(byDateDesc).forEach(it=>ol.append(itemNode(it,true))); list.append(el("section",{class:"cat",id:"other"}, el("div",{class:"cat-head"}, el("h2",{text:"Uncategorised"})), ol)); }
+  }
+  const pool = state.items.filter(it=>(!state.ox||it.oxford) && (!state.topic||topicsOf(it).includes(state.topic)));
+  const counts = {}; pool.forEach(it=>kwOf(it).forEach(k=>{ counts[k]=(counts[k]||0)+1; }));
+  const top = Object.entries(counts).sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0])).slice(0,30);
+  if(top.length){
+    const box = el("div",{});
+    top.forEach(([k,n])=>{ const b=el("button",{type:"button",class:"kw",text:k+" · "+n,"aria-pressed":String(state.q.toLowerCase()===k.toLowerCase())}); b.onclick=()=>setQuery(state.q.toLowerCase()===k.toLowerCase()?"":k); box.append(b); });
+    rail.append(el("div",{class:"kw-index"}, el("h3",{text:"Maths keywords"}), box));
+  }
+  rail.append(el("p",{class:"rail-note",text: "Something missing? Propose it at the foot of the page."}));
+}
+
+function renderTopic(){
+  const p = $("#topic-panel"); p.replaceChildren();
+  TOPICS.forEach(t=>{ const b=document.getElementById("tb-"+t.id); if(b) b.setAttribute("aria-pressed", String(state.topic===t.id)); });
+  if(state.milestone && msById[state.milestone]){
+    const m = msById[state.milestone], n = (TAGS[m.id]||new Set()).size;
+    const back = el("button",{type:"button",class:"linkbtn",text:"Back to this milestone"}); back.onclick=()=>openMilestone(m.id);
+    const clear = el("button",{type:"button",class:"linkbtn",text:"Show everything"}); clear.onclick=()=>{ state.milestone=null; renderTopic(); render(); updateStatus(); };
+    p.append(el("section",{class:"topic-panel tl","aria-live":"polite"}, el("h2",{text:"On the timeline · "+fmtDate(m.date.length===4?m.date+"-01":m.date).replace(/^Jan (\d{4})$/,"$1")+": "+m.title}),
+      el("p",{text:n+(n===1?" entry is":" entries are")+" linked to this milestone of the storylines."}),
+      el("div",{class:"sub2"}, back, clear)));
+    return;
+  }
+  if(!state.topic) return;
+  const t = topicById[state.topic];
+  const n = state.items.filter(it=>topicsOf(it).includes(t.id)).length;
+  const clear = el("button",{type:"button",class:"linkbtn",text:"Show everything"}); clear.onclick=()=>{ state.topic=null; renderTopic(); render(); updateStatus(); };
+  p.append(el("section",{class:"topic-panel","aria-live":"polite"}, el("h2",{...editableAttrs("topic."+t.id+".title"),text:txt("topic."+t.id+".title",t.title)}), el("p",{...editableAttrs("topic."+t.id+".desc"),text:txt("topic."+t.id+".desc",t.desc)}),
+    el("p",{class:"sub2"}, document.createTextNode(n+" entries in this topic. Try a keyword in the side bar to follow one area of mathematics. "), clear)));
+}
+TOPICS.forEach(t=>{
+  const b = el("button",{type:"button",class:"chipbtn",id:"tb-"+t.id,"aria-pressed":"false",text:t.name,title:t.title});
+  b.onclick=()=>{ state.topic = state.topic===t.id ? null : t.id; state.milestone=null; renderTopic(); render(); updateStatus(); };
+  $("#topic-btns").append(b);
+});
+function setStatus(t){ $("#status").textContent = t; }
+function updateStatus(){
+  const n = state.items.length, f = filtered().length;
+  const latest = state.items.map(i=>i.added||"").sort().pop();
+  setStatus(n ? `${f===n ? n : f+" of "+n} entries${latest ? " · last addition "+fmtDate(latest.slice(0,10)) : ""}` : "No entries yet.");
+  $("#n-room").textContent = n ? n+" entries" : "";
+}
+
+$("#q").addEventListener("input", e=>{ state.q=e.target.value; render(); updateStatus(); });
+function setArrange(v){ state.byDate = v==="date"; state.byNew = v==="new";
+  [["by-cat","cat"],["by-date","date"],["by-new","new"]].forEach(([id,k])=>$("#"+id).setAttribute("aria-pressed",String(v===k))); render(); }
+$("#by-cat").onclick=()=>setArrange("cat");
+$("#by-date").onclick=()=>setArrange("date");
+$("#by-new").onclick=()=>setArrange("new");
+$("#ox").onclick=()=>{ state.ox=!state.ox; $("#ox").setAttribute("aria-pressed",String(state.ox)); render(); updateStatus(); };
+$("#copy").onclick=async()=>{
+  const items = filtered();
+  const lines = [];
+  for(const c of CATS){ const its=items.filter(i=>i.cat===c.id).sort(byDateDesc); if(!its.length) continue;
+    lines.push("## "+c.name); its.forEach(i=>lines.push(`- ${i.title} (${[i.who,fmtDate(i.date)].filter(Boolean).join(", ")}): ${i.url}`)); lines.push(""); }
+  const text = lines.join("\n");
+  try{ await navigator.clipboard.writeText(text); setStatus("Copied "+items.length+" entries as a list."); }
+  catch{ setStatus("Copying isn’t available here. Select the entries on the page instead."); }
+};
+
+// editor
+const CAT_SELECT = $("#f-cat"); CATS.forEach(c=>CAT_SELECT.append(el("option",{value:c.id,text:c.name})));
+TOPICS.forEach(t=>$("#f-topics").append(el("label",{}, el("input",{type:"checkbox",id:"ft-"+t.id}), document.createTextNode(" Topic: "+t.title))));
+function openEditor(it){
+  state.editing = it ? it.id : null;
+  $("#dlg-title").textContent = it ? "Edit resource" : "Add a resource";
+  $("#f-title").value = it?.title||""; $("#f-url").value = it?.url||""; $("#f-cat").value = it?.cat||"viewpoint";
+  $("#f-kind").value = it?.kind||""; $("#f-who").value = it?.who||""; $("#f-date").value = /^\d{4}-\d{2}-\d{2}$/.test(it?.date||"") ? it.date : "";
+  $("#f-note").value = it?.note||""; $("#f-kw").value = it ? kwOf(it).join(", ") : "";
+  TOPICS.forEach(t=>{ $("#ft-"+t.id).checked = it ? topicsOf(it).includes(t.id) : state.topic===t.id; });
+  $("#f-ox").checked = !!it?.oxford; $("#f-checked").checked = it ? it.checked!==false : true;
+  $("#f-err").textContent = ""; $("#dlg").showModal(); $("#f-title").focus();
+}
+$("#add").onclick=()=>{ showView("room"); openEditor(null); };
+$("#f-cancel").onclick=()=>$("#dlg").close();
+$("#form").addEventListener("submit", async e=>{
+  e.preventDefault();
+  if(!db){ $("#f-err").textContent="Saving isn’t available in this view."; return; }
+  const url = safeUrl($("#f-url").value.trim());
+  if(!url){ $("#f-err").textContent="Enter a full link starting with https://"; return; }
+  const title = $("#f-title").value.trim(); if(!title){ $("#f-err").textContent="Add a title."; return; }
+  const prev = state.items.find(i=>i.id===state.editing);
+  const doc = { title, url, cat:$("#f-cat").value, kind:$("#f-kind").value.trim(), who:$("#f-who").value.trim(),
+    date:$("#f-date").value || (prev?.date && !/^\d{4}-\d{2}-\d{2}$/.test(prev.date) ? prev.date : ""),
+    note:$("#f-note").value.trim(), oxford:$("#f-ox").checked, checked:$("#f-checked").checked,
+    keywords: [...new Set($("#f-kw").value.split(",").map(s=>s.trim()).filter(Boolean))].slice(0,12),
+    topics: TOPICS.filter(t=>$("#ft-"+t.id).checked).map(t=>t.id),
+    ...(prev?.peer ? {peer: prev.peer} : {}),
+    added: prev?.added || new Date().toISOString() };
+  $("#f-save").disabled = true;
+  try{
+    if(state.editing) await db.collection("resources").doc(state.editing).set(doc);
+    else await db.collection("resources").add(doc);
+    $("#dlg").close(); setStatus(state.editing ? "Saved your changes." : "Added “"+title+"”.");
+  }catch(err){
+    $("#f-err").textContent = err && err.code==="quota_exceeded" ? "The reading room is full. Remove old entries first." : "Couldn’t save. Check your connection and try again.";
+  }finally{ $("#f-save").disabled = false; }
+});
+async function removeItem(id){
+  try{ await db.collection("resources").doc(id).delete(); state.confirmId=null; setStatus("Removed."); }
+  catch{ setStatus("Couldn’t remove it. Try again."); }
+}
+
+// proposals: each viewer writes only proposals/<their id>; editors read all (see capabilities rules)
+const prop = {uid:null, items:[], busy:false, ready:false};
+const P_CAT = $("#p-cat"); CATS.forEach(c=>P_CAT.append(el("option",{value:c.id,text:c.name})));
+const ST = {pending:["Pending review",""], added:["Added","added"], declined:["Not added","declined"]};
+function renderMine(){
+  const ul = $("#mine"); ul.replaceChildren();
+  if(!prop.items.length){ ul.append(el("li",{style:"color:var(--muted)",text: prop.uid ? "Nothing sent yet." : "Your proposals will appear here once you can send them."})); return; }
+  [...prop.items].sort((a,b)=>(b.submittedAt||"").localeCompare(a.submittedAt||"")).forEach(p=>{
+    const st = ST[p.status] || ST.pending;
+    const url = safeUrl(p.url);
+    const t = el("div",{class:"t"}, url ? el("a",{href:url,target:"_blank",rel:"noopener",text:p.title||p.url}) : document.createTextNode(p.title||p.url||""));
+    const s = el("div",{class:"s"}, el("span",{class:"st "+st[1],text:st[0]}), document.createTextNode("Sent "+fmtDate((p.submittedAt||"").slice(0,10))));
+    ul.append(el("li",{}, t, s, p.reviewNote ? el("p",{class:"rn",text:p.reviewNote}) : null));
+  });
+}
+function noAccess(msg){
+  $("#pform").hidden = true;
+  const a = $("#p-access"); a.hidden = false; a.textContent = msg;
+}
+async function sendPublic(item){
+  const f = PUBLIC.form; const fd = new FormData();
+  fd.append(f.fields.url, item.url); fd.append(f.fields.title, item.title);
+  fd.append(f.fields.cat, (f.catMap && f.catMap[item.cat||""]) || (item.cat ? catLabel(item.cat) : "Not sure")); fd.append(f.fields.why, item.why);
+  await fetch(f.action, {method:"POST", mode:"no-cors", body:new URLSearchParams(fd)});
+}
+$("#pform").addEventListener("submit", async e=>{
+  e.preventDefault();
+  $("#p-err").textContent = ""; $("#p-ok").textContent = "";
+  if($("#p-web").value) return;   // spam trap
+  if(prop.busy) return;
+  const url = safeUrl($("#p-url").value.trim());
+  if(!url){ $("#p-err").textContent = "Enter a full link starting with https://"; $("#p-url").focus(); return; }
+  if(prop.items.some(p=>p.url===url)){ $("#p-err").textContent = "You’ve already proposed this link."; return; }
+  const live = state.items.find(i=>i.url===url);
+  if(live){ $("#p-err").textContent = "That link is already in the reading room: “"+live.title+"”."; return; }
+  if(prop.items.length >= 40){ $("#p-err").textContent = "You’ve reached the limit of 40 proposals. Thank you!"; return; }
+  const item = { id: "p"+Date.now().toString(36)+Math.random().toString(36).slice(2,6), url,
+    title:$("#p-title").value.trim(), why:$("#p-why").value.trim(), cat:$("#p-cat").value,
+    submittedAt:new Date().toISOString(), status:"pending", reviewNote:"" };
+  prop.busy = true; $("#p-send").disabled = true;
+  try{
+    if(PUBLIC){
+      if(!PUBLIC.form){ $("#p-err").textContent = "Proposals are not open yet."; return; }
+      await sendPublic(item); prop.items.push(item);
+    } else {
+      if(!db || !prop.uid || !prop.ready){ $("#p-err").textContent = "Proposals aren’t available in this view."; return; }
+      await db.doc("proposals/"+prop.uid).set({ items:[...prop.items, item], updated:item.submittedAt });
+    }
+    $("#pform").reset(); $("#p-ok").textContent = PUBLIC ? "Thank you. Your proposal is in the queue; accepted items appear on this page, usually within a day." : "Thank you. Your proposal is in the queue for review.";
+  }catch(err){
+    if(!PUBLIC && err && err.code==="invalid_argument") noAccess("Your access to this page doesn’t include sending proposals. Ask Jan for Contributor access, then reload the page.");
+    else $("#p-err").textContent = "Couldn’t send it. Check your connection and try again.";
+  }finally{ prop.busy = false; $("#p-send").disabled = false; }
+});
+
+// page editing (owner and editors)
+function setEditMode(on){
+  state.editMode = on; document.body.classList.toggle("editmode", on);
+  $("#editbar").hidden = !on; $("#edit-start").hidden = on || !state.canEdit; $("#edit-err").textContent = "";
+  if(!on){ state.draft = {}; state.confirmId = null; }
+  applyStatic(); render(); renderTopic();
+  if(on) $("#editbar").scrollIntoView({block:"nearest"});
+}
+$("#edit-start").onclick = ()=>setEditMode(true);
+$("#edit-cancel").onclick = ()=>setEditMode(false);
+$("#edit-save").onclick = async ()=>{
+  if(!db){ $("#edit-err").textContent = "Saving isn’t available in this view."; return; }
+  if(document.activeElement && document.activeElement.blur) document.activeElement.blur();
+  const keys = Object.keys(state.draft);
+  if(!keys.length){ setEditMode(false); return; }
+  const next = {...state.saved};
+  keys.forEach(k=>{ const v = state.draft[k]; const def = k in DEFAULTS ? DEFAULTS[k] : null; if(!v || v===def) delete next[k]; else next[k] = v; });
+  $("#edit-save").disabled = true;
+  try{ await db.doc("site/text").set({...next, _updated:new Date().toISOString()}); state.saved = next; setEditMode(false); setStatus("Page text saved."); }
+  catch{ $("#edit-err").textContent = "Couldn’t save. Check your connection and try again."; }
+  finally{ $("#edit-save").disabled = false; }
+};
+
+// ---------- Storylines ----------
+const TL = (()=>{
+  const NS = "http://www.w3.org/2000/svg";
+  const sv = (tag, attrs={}) => { const n=document.createElementNS(NS,tag); for(const [k,v] of Object.entries(attrs)) n.setAttribute(k,v); return n; };
+  const LANES = TL_DATA.lanes, ERAS = TL_DATA.eras, MS = MILESTONES;
+  const NEU = Object.entries(TL_DATA.neurips).map(([y,n])=>[+y,n]).sort((a,b)=>a[0]-b[0]);
+  const NMAX = NEU[NEU.length-1][1];
+  const laneIx = Object.fromEntries(LANES.map((l,i)=>[l.id,i]));
+  const MON = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  const yearOf = d => { const m=/^(\d{4})(?:-(\d{2}))?(?:-(\d{2}))?/.exec(d); return +m[1] + (m[2]? (+m[2]-1)/12 : .5) + (m[3]? (+m[3]-1)/365 : 0); };
+  const fmt = d => { const m=/^(\d{4})(?:-(\d{2}))?(?:-(\d{2}))?/.exec(d); if(!m) return d; return (m[3]? (+m[3])+" ":"") + (m[2]? MON[+m[2]-1]+" ":"") + m[1]; };
+  const shortDate = d => { const m=/^(\d{4})(?:-(\d{2}))?(?:-(\d{2}))?/.exec(d); if(m[1]==="2026" && m[2]) return (m[3]? (+m[3])+" ":"") + MON[+m[2]-1]; return m[1]; };
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const THREADS = ["maths","ai"], isThread = id => THREADS.includes(id);
+  const entry = id => state.items.find(i=>i.id===id);
+
+  // one shape per role: diamonds on the two storylines, dots on the bridges; colour tells them apart
+  function shape(lane, size=1){
+    const s = sv("svg",{width:30,height:30,viewBox:"-15 -15 30 30","aria-hidden":"true"});
+    const col = `var(--l-${lane})`;
+    s.append(isThread(lane) ? sv("polygon",{points:`0,${-10.5*size} ${7.6*size},0 0,${10.5*size} ${-7.6*size},0`,fill:col}) : sv("circle",{r:6.5*size,fill:col}));
+    return s;
+  }
+  function legendIcon(lane){
+    const s = sv("svg",{width:30,height:22,viewBox:"-15 -11 30 22","aria-hidden":"true"});
+    if(isThread(lane)) s.append(sv("line",{x1:-14,y1:0,x2:14,y2:0,stroke:`var(--l-${lane})`,"stroke-width":2.5,"stroke-opacity":.7}));
+    else s.append(sv("line",{x1:0,y1:-10,x2:0,y2:10,stroke:`var(--l-${lane})`,"stroke-width":2.5}));
+    const sh = shape(lane,.62); sh.setAttribute("x",-15); sh.setAttribute("y",-15); sh.setAttribute("width",30); sh.setAttribute("height",30); s.append(sh); return s;
+  }
+  [["Storylines",THREADS],["Bridges",["moments","respond"]]].forEach(([g,ids])=>{
+    $("#legend").append(el("li",{class:"lg-h",text:g}));
+    ids.forEach(id=>{ const l=LANES[laneIx[id]]; $("#legend").append(el("li",{title:l.desc}, legendIcon(id), document.createTextNode(l.name))); });
+  });
+  ERAS.forEach(e=>{ const b=el("button",{type:"button",class:"era","data-first":e.first,"aria-pressed":"false"}, document.createTextNode(e.name+(e.range?" ":"")), e.range ? el("small",{text:e.range}) : null); b.onclick=()=>select(e.first,true); $("#eras").append(b); });
+
+  // geometry: two parallel storylines, joined by bridges
+  let COL, GAP, W, xs=[], H, TX, drawn=false;
+  const TOP_Y = 70, BOT_Y = 190;
+  const nodeY = lane => lane==="maths" ? TOP_Y : lane==="ai" ? BOT_Y : (TOP_Y+BOT_Y)/2;
+  function layout(){
+    const narrow = innerWidth < 820;
+    COL = narrow ? 112 : 136; GAP = narrow ? 56 : 84; H = narrow ? 300 : 330;
+    xs = []; let x = narrow ? 40 : 90; let prev = null; const gaps=[];
+    MS.forEach(m=>{
+      const y = yearOf(m.date);
+      if(prev!==null && y - prev >= 8){ gaps.push({x:x - COL/2 + GAP/2, years:Math.round(y-prev)}); x += GAP; }
+      xs.push(x); x += COL; prev = y;
+    });
+    TX = xs[xs.length-1] + COL/2 + 44;
+    W = TX + (narrow ? 110 : 230);
+    return gaps;
+  }
+  function draw(animate){
+    const gaps = layout(); drawn = true;
+    const c = $("#canvas"); c.replaceChildren(); c.style.width = W+"px"; c.style.height = H+"px";
+    const svg = sv("svg",{class:"threads",width:W,height:H,viewBox:`0 0 ${W} ${H}`});
+    const i26 = MS.findIndex(m=>m.date.startsWith("2026"));
+    if(i26>=0){ const bx = xs[i26]-COL/2-10; svg.append(sv("rect",{class:"yearband",x:bx,y:0,width:W-bx,height:H})); const t=sv("text",{class:"bandlabel",x:bx+14,y:22}); t.textContent="2026"; svg.append(t); }
+    gaps.forEach(g=>{ svg.append(sv("line",{class:"gapline",x1:g.x,y1:30,x2:g.x,y2:H-80})); const t=sv("text",{class:"gaplabel",x:g.x,y:22,"text-anchor":"middle"}); t.textContent=g.years+" years"; svg.append(t); });
+    MS.forEach((m,i)=>{ if(isThread(m.lane)) return;
+      svg.append(sv("line",{class:"bridge",id:"br-"+m.id,x1:xs[i],y1:TOP_Y,x2:xs[i],y2:BOT_Y,stroke:`var(--l-${m.lane})`})); });
+    THREADS.forEach((id,k)=>{
+      const y = id==="maths" ? TOP_Y : BOT_Y;
+      const p = sv("path",{class:"thread",d:`M0,${y}L${TX},${y}`,stroke:`var(--l-${id})`,"stroke-opacity":.7});
+      svg.append(p);
+      svg.append(sv("path",{class:"thread future",d:`M${TX+8},${y}L${W-16},${y}`,stroke:`var(--l-${id})`,"stroke-opacity":.7}));
+      if(animate && !reduce){ const len = Math.ceil(W*1.05); p.style.setProperty("--len",len); p.classList.add("anim"); p.style.animationDelay = (k*0.15)+"s"; }
+    });
+    // today: the story so far ends here; both storylines carry on, dotted
+    svg.append(sv("line",{class:"today",x1:TX,y1:34,x2:TX,y2:H-100}));
+    const tt=sv("text",{class:"todaylabel",x:TX,y:22,"text-anchor":"middle"}); tt.textContent="TODAY"; svg.append(tt);
+    const td=sv("text",{class:"todaydate",x:TX,y:H-80,"text-anchor":"middle"}); td.textContent=new Date().toLocaleDateString("en-GB",{day:"numeric",month:"short"}); svg.append(td);
+    c.append(svg);
+    MS.forEach((m,i)=>{
+      const node = shape(m.lane); node.classList.add("node"); node.style.top = nodeY(m.lane)+"px";
+      const lab = el("span",{class:"lab"}, el("span",{class:"yr",text:shortDate(m.date)}), el("span",{class:"sh",text:m.short}));
+      const b = el("button",{type:"button",class:"ms",id:"ms-"+m.id,"aria-label":`${fmt(m.date)}: ${m.title}`,"aria-current":"false"}, node, lab);
+      b.style.left = (xs[i]-COL/2+4)+"px"; b.style.width = (COL-8)+"px";
+      b.onclick = ()=>{ if(!dragMoved) select(m.id,true); };
+      c.append(b);
+    });
+    drawOverview();
+    markSelected();
+  }
+  const Y0 = 1932, Y1 = 2027.2;
+  function drawOverview(){
+    const o = $("#ov"); o.replaceChildren();
+    const w = o.clientWidth || 800, h = 46, pad = 8;
+    o.setAttribute("viewBox",`0 0 ${w} ${h}`);
+    const X = y => pad + (y-Y0)/(Y1-Y0)*(w-2*pad);
+    o.append(sv("rect",{class:"ov-win",id:"ov-win",x:0,y:3,width:0,height:26,rx:6}));
+    o.append(sv("line",{class:"ov-axis",x1:pad,y1:16,x2:w-pad,y2:16}));
+    for(let y=1940;y<=2020;y+=10){ const t=sv("text",{class:"ov-tick",x:X(y),y:43,"text-anchor":"middle"}); t.textContent = (w<500 && y%20) ? "" : y; o.append(t); o.append(sv("line",{class:"ov-axis",x1:X(y),y1:12,x2:X(y),y2:20})); }
+    MS.forEach(m=>{ const row = {maths:7,moments:13,respond:13,ai:19}[m.lane]; o.append(sv("circle",{cx:X(yearOf(m.date)),cy:row-3,r:2.6,fill:`var(--l-${m.lane})`})); });
+    o.onclick = e=>{ const r=o.getBoundingClientRect(); const yr = Y0 + ((e.clientX-r.left)/r.width*w - pad)/(w-2*pad)*(Y1-Y0); let best=0,bd=1e9; MS.forEach((m,i)=>{ const d=Math.abs(yearOf(m.date)-yr); if(d<bd){bd=d;best=i;} }); select(MS[best].id,true); };
+    o._X = X;
+    syncOverview();
+  }
+  function syncOverview(){
+    const o=$("#ov"), win=$("#ov-win"); if(!o||!win||!o._X) return;
+    const t=$("#track"); const left=t.scrollLeft, right=left+t.clientWidth;
+    const vis = MS.map((m,i)=>[i,xs[i]]).filter(([,x])=>x>=left && x<=right).map(([i])=>yearOf(MS[i].date));
+    if(!vis.length) return;
+    const a = o._X(Math.min(...vis)), b = o._X(Math.max(...vis));
+    win.setAttribute("x", a-6); win.setAttribute("width", Math.max(12, b-a+12));
+  }
+
+  let cur = -1;
+  function select(id, scroll){
+    const i = MS.findIndex(m=>m.id===id); if(i<0) return;
+    cur = i; markSelected(); renderDetail(MS[i]);
+    if(scroll && drawn) centre(i, true);
+    if(state.view==="story"){ try{ history.replaceState(null,"","#"+MS[i].id); }catch{} }
+  }
+  function markSelected(){
+    document.querySelectorAll(".ms").forEach(b=>b.setAttribute("aria-current", String(b.id==="ms-"+(MS[cur]||{}).id)));
+    document.querySelectorAll(".bridge").forEach(l=>l.classList.toggle("on", l.id==="br-"+(MS[cur]||{}).id));
+    $("#count").textContent = cur>=0 ? `${cur+1} of ${MS.length}` : "";
+    $("#prev").disabled = cur<=0; $("#next").disabled = cur>=MS.length-1;
+    const era = [...ERAS].reverse().find(e=> MS.findIndex(m=>m.id===e.first) <= cur);
+    document.querySelectorAll(".era").forEach(b=>b.setAttribute("aria-pressed", String(era && b.dataset.first===era.first)));
+  }
+  function centre(i, smooth){
+    const t=$("#track"); const target = xs[i] - t.clientWidth/2;
+    t.scrollTo({left:Math.max(0,target), behavior: (smooth && !reduce) ? "smooth" : "auto"});
+  }
+  function cardFor(s){
+    const e = s.entry ? entry(s.entry) : s; if(!e) return null;
+    const url = safeUrl(e.url); if(!url) return null;
+    const pay = /paywall/i.test((e.kind||"")+" "+(e.note||""));
+    return el("a",{class:"card",href:url,target:"_blank",rel:"noopener"},
+      el("span",{class:"go",text:"Open ↗"}),
+      el("span",{class:"k",text:[e.kind, e.date? fmt(e.date):null, e.peer&&e.peer.venue? "✓ peer-reviewed, "+e.peer.venue : null, pay?"may be paywalled":null].filter(Boolean).join(" · ")}),
+      el("span",{class:"t",text:e.title}),
+      el("span",{class:"w",text:e.who||""}));
+  }
+  function growthChart(){
+    const w=560, h=190, padL=8, padR=8, padT=24, padB=24, y0=1987, y1=2025, n=y1-y0+1;
+    const bw=(w-padL-padR)/n, Y = v => padT + (h-padT-padB)*(1 - v/NMAX);
+    const s = sv("svg",{viewBox:`0 0 ${w} ${h}`,role:"img","aria-label":"Bar chart: papers accepted at NeurIPS rose from 90 in 1987 to 5,290 in 2025."});
+    s.append(sv("line",{class:"gaxis",x1:padL,y1:h-padB,x2:w-padR,y2:h-padB}));
+    const tip=$("#gtip");
+    NEU.forEach(([yy,v])=>{
+      const x=padL+(yy-y0)*bw, top=Y(v), r=Math.min(2,bw/2-1);
+      const hit=sv("rect",{class:"gbar-hit",x:x,y:padT,width:bw,height:h-padB-padT});
+      const bar=sv("path",{class:"gbar",d:`M${x+1},${h-padB} V${top+r} q0,-${r} ${r},-${r} H${x+bw-1-r} q${r},0 ${r},${r} V${h-padB} Z`});
+      hit.addEventListener("pointerenter",()=>{ bar.classList.add("on"); tip.textContent=`${yy}: ${v.toLocaleString("en-GB")} papers`; tip.classList.add("on"); });
+      hit.addEventListener("pointermove",e=>{ tip.style.left=e.clientX+"px"; tip.style.top=e.clientY+"px"; });
+      hit.addEventListener("pointerleave",()=>{ bar.classList.remove("on"); tip.classList.remove("on"); });
+      s.append(hit,bar);
+    });
+    [[1987,"1987"],[2000,"2000"],[2010,"2010"],[2025,"2025"]].forEach(([yy,t])=>{ const tx=sv("text",{class:"gtick",x:padL+(yy-y0+.5)*bw,y:h-6,"text-anchor":"middle"}); tx.textContent=t; s.append(tx); });
+    const a=sv("text",{class:"gval",x:padL+.5*bw,y:Y(90)-6,"text-anchor":"start"}); a.textContent="90"; s.append(a);
+    const b=sv("text",{class:"gval",x:padL+(n-.5)*bw,y:Y(NMAX)-6,"text-anchor":"end"}); b.textContent=NMAX.toLocaleString("en-GB"); s.append(b);
+    return el("figure",{class:"gchart"}, el("h3",{text:"Papers accepted at NeurIPS, 1987–2025"}), s,
+      el("p",{class:"gnote",text:"Main-track papers. Sources: Paper Copilot and the official proceedings (1987–2024), and the NeurIPS 2025 fact sheet. Counts can differ slightly between sources."}));
+  }
+  function renderDetail(m){
+    const lane = LANES[laneIx[m.lane]];
+    const d = $("#detail"); d.replaceChildren();
+    const left = el("div",{},
+      el("div",{class:"eyebrow"}, shape(m.lane,.7), el("span",{text:lane.name}), el("span",{text:"·"}), el("span",{class:"when",text:fmt(m.date)})),
+      el("h2",{text:m.title}),
+      el("p",{class:"story",text:m.story}),
+      m.chart==="neurips" ? growthChart() : null);
+    const cards = el("div",{class:"cards"}); (m.start||[]).map(cardFor).filter(Boolean).forEach(c=>cards.append(c));
+    d.append(left, el("div",{class:"start"}, el("h3",{text:"Start here"}), cards));
+    renderMore(m);
+  }
+  function renderMore(m){
+    const sec = $("#more"); sec.replaceChildren();
+    const startIds = new Set((m.start||[]).filter(s=>s.entry).map(s=>s.entry));
+    const all = [...(TAGS[m.id]||[])].map(entry).filter(Boolean);
+    const ids = all.filter(e=>!startIds.has(e.id)).sort(byDateDesc);
+    if(!ids.length){
+      if(m.date < "2026") sec.append(el("h3",{text:"In the reading room"}), el("p",{class:"more-empty",text:"The reading room covers what has happened since AI arrived in research mathematics. For this part of the story, start with the pieces above."}));
+      return;
+    }
+    const list = el("ul",{class:"more-list"});
+    ids.slice(0,8).forEach(e=>{ const u=safeUrl(e.url); list.append(el("li",{}, u? el("a",{href:u,target:"_blank",rel:"noopener",text:e.title}) : document.createTextNode(e.title), el("span",{class:"m",text:[e.who, e.kind, e.date?fmt(e.date):null].filter(Boolean).join(" · ")}))); });
+    sec.append(el("h3",{text:`In the reading room · ${all.length} ${all.length===1?"entry":"entries"}`}), list);
+    const go = el("button",{type:"button",class:"linkbtn to-room",text: all.length>ids.slice(0,8).length ? `See all ${all.length} in the reading room →` : "Open these in the reading room →"});
+    go.onclick = ()=>{ state.milestone = m.id; state.topic = null; state.q = ""; $("#q").value = ""; showView("room", true); renderTopic(); render(); updateStatus(); window.scrollTo({top: $("#view-room").offsetTop - 8, behavior: reduce ? "auto" : "smooth"}); };
+    sec.append(go);
+  }
+  // controls
+  $("#prev").onclick = ()=> cur>0 && select(MS[cur-1].id,true);
+  $("#next").onclick = ()=> cur<MS.length-1 && select(MS[cur+1].id,true);
+  $("#track").addEventListener("keydown", e=>{
+    if(e.key==="ArrowRight"){ e.preventDefault(); $("#next").click(); }
+    else if(e.key==="ArrowLeft"){ e.preventDefault(); $("#prev").click(); }
+    else if(e.key==="Home"){ e.preventDefault(); select(MS[0].id,true); }
+    else if(e.key==="End"){ e.preventDefault(); select(MS[MS.length-1].id,true); }
+  });
+  $("#track").addEventListener("scroll", ()=>requestAnimationFrame(syncOverview), {passive:true});
+  let dragX=null, dragLeft=0, dragMoved=false;
+  $("#track").addEventListener("pointerdown", e=>{ if(e.pointerType!=="mouse") return; dragX=e.clientX; dragLeft=$("#track").scrollLeft; dragMoved=false; });
+  addEventListener("pointermove", e=>{ if(dragX===null) return; const dx=e.clientX-dragX; if(Math.abs(dx)>4){ dragMoved=true; $("#track").classList.add("dragging"); } $("#track").scrollLeft = dragLeft - dx; });
+  addEventListener("pointerup", ()=>{ dragX=null; $("#track").classList.remove("dragging"); setTimeout(()=>dragMoved=false,0); });
+  let rt; addEventListener("resize", ()=>{ clearTimeout(rt); rt=setTimeout(()=>{ if(state.view!=="story") { drawn=false; return; } draw(false); if(cur>=0) centre(cur,false); },120); });
+  $("#n-ms").textContent = MS.length+" milestones"; $("#sub-ms-n").textContent = MS.length;
+  return {
+    MS,
+    show(){ const first = !drawn; draw(first); if(cur<0) select("big-dump", false); requestAnimationFrame(()=>{ centre(cur,false); syncOverview(); }); },
+    select, refresh(){ if(cur>=0) renderDetail(MS[cur]); },
+    current(){ return MS[cur] ? MS[cur].id : null; }
+  };
+})();
+
+// ---------- switching views ----------
+const ROOM_HASHES = new Set(["reading-room","propose","other",...CATS.map(c=>c.id)]);
+function showView(v, push){
+  state.view = v;
+  $("#view-story").hidden = v!=="story"; $("#view-room").hidden = v!=="room";
+  $("#sub-story").hidden = v!=="story"; $("#sub-room").hidden = v!=="room";
+  $("#sw-story").setAttribute("aria-pressed", String(v==="story")); $("#sw-room").setAttribute("aria-pressed", String(v==="room"));
+  const h = v==="story" ? "#"+(TL.current()||"storylines") : "#reading-room";
+  try{ if(push) history.pushState(null,"",h); else if(location.hash!==h && !(v==="room" && ROOM_HASHES.has(location.hash.slice(1)))) history.replaceState(null,"",h); }catch{}
+  if(v==="story") TL.show();
+}
+function openMilestone(id){ showView("story", true); TL.select(id, true); requestAnimationFrame(()=>document.querySelector(".stage").scrollIntoView({behavior:"smooth", block:"start"})); }
+$("#sw-story").onclick = ()=>{ if(state.view!=="story") showView("story", true); };
+$("#sw-room").onclick = ()=>{ if(state.view!=="room") showView("room", true); };
+function route(){
+  const h = decodeURIComponent((location.hash||"").slice(1));
+  if(msById[h]){ if(state.view!=="story") showView("story"); TL.select(h, true); }
+  else if(ROOM_HASHES.has(h)){ if(state.view!=="room") showView("room"); if(h!=="reading-room") requestAnimationFrame(()=>{ const t=document.getElementById(h); if(t) t.scrollIntoView(); }); }
+  else if(h==="storylines" && state.view!=="story") showView("story");
+}
+addEventListener("hashchange", route);
+addEventListener("popstate", route);
+
+// feedback: the address is put together only when someone clicks, so it is not in the page for harvesters to read
+$("#feedback").addEventListener("click", e=>{ e.preventDefault(); const u=["mathsai","readingroom"].join("."), d=["gmail","com"].join("."); location.href = "mailto:"+u+"\u0040"+d+"?subject="+encodeURIComponent("Feedback on Maths and AI"); });
+$("#go-propose").addEventListener("click", e=>{ e.preventDefault(); document.getElementById("propose").scrollIntoView({behavior:"smooth"}); });
+// ---------- boot ----------
+function itemsChanged(){ computeTags(); render(); renderTopic(); updateStatus(); TL.refresh(); }
+(async()=>{
+  const h0 = decodeURIComponent((location.hash||"").slice(1));
+  if(ROOM_HASHES.has(h0)) showView("room"); else { showView("story"); TL.select(msById[h0] ? h0 : "big-dump", false); }
+  if(ROOM_HASHES.has(h0) && h0!=="reading-room") setTimeout(()=>{ const t=document.getElementById(h0); if(t) t.scrollIntoView(); }, 50);
+  if(PUBLIC){
+    state.saved = PUBLIC.text || {};
+    state.items = (PUBLIC.items||[]).map(d=>({...d}));
+    $("#mine-col").hidden = true;
+    if(!PUBLIC.form) noAccess("Proposals open soon.");
+    applyStatic(); itemsChanged();
+    if(PUBLIC.generated) setStatus($("#status").textContent + " · page updated " + fmtDate(PUBLIC.generated.slice(0,10)));
+    return;
+  }
+  const claude = window.claude;
+  if(!claude || !claude.use){ setStatus("Open this page in Claude to see the reading room."); noAccess("Open this page in Claude, signed in, to send a proposal."); return; }
+  const userP = claude.use("user");
+  userP.then(async u=>{
+    const can = u ? await u.canEdit() : false;
+    state.canEdit = !!can; $("#edit-start").hidden = !can || state.editMode;
+    render();
+  });
+  db = await claude.use("db");
+  const u = await userP;
+  prop.uid = u ? await u.id() : null;
+  if(!db || !prop.uid){ noAccess("Sign in to Claude to send a proposal. If you are signed in and still see this, ask Jan for Contributor access."); renderMine(); }
+  else {
+    db.doc("proposals/"+prop.uid).onSnapshot(snap=>{
+      prop.items = snap.exists ? (snap.data().items||[]) : [];
+      prop.ready = true; renderMine();
+    }, ()=>{ prop.ready = true; renderMine(); });
+  }
+  if(!db){ setStatus("The reading room couldn’t load in this view."); $("#list").replaceChildren(el("div",{class:"empty"}, el("strong",{text:"Entries aren’t available here."}), document.createTextNode(" Open the page in Claude, signed in to your organisation."))); return; }
+  db.doc("site/text").onSnapshot(snap=>{
+    const d = snap.exists ? {...snap.data()} : {}; delete d._updated; state.saved = d;
+    applyStatic(); if(state.items.length) render(); renderTopic();
+  }, ()=>{});
+  db.collection("resources").onSnapshot(snap=>{
+    state.items = snap.docs.filter(d=>d.exists).map(d=>({id:d.id, ...d.data()}));
+    if(!state.items.length){
+      $("#list").replaceChildren(el("div",{class:"empty"}, el("strong",{text:"No entries yet."}), document.createTextNode(" Entries will appear here once they are added.")));
+      updateStatus();
+    } else itemsChanged();
+  }, err=>{ setStatus("Lost connection to the reading room. Reload the page to reconnect."); });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "added": "2026-10-21T22:50:00Z",
+  "cat": "voices",
+  "checked": true,
+  "date": "",
+  "kind": "Tracker",
+  "note": "Ranks the human mathematicians cited in OpenAI’s manuscripts, counting bibliography mentions in the 6 October release: a reminder of the work the results stand on.",
+  "oxford": false,
+  "title": "Cited by AGI",
+  "url": "https://citedbyagi.com/",
+  "who": "Will DePue (independent)"
+}

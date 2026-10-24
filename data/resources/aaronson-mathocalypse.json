@@ -1,0 +1,21 @@
+{
+  "added": "2026-10-22T15:30:00Z",
+  "cat": "viewpoint",
+  "checked": true,
+  "date": "2026-10-07",
+  "keywords": [
+    "Quantum information",
+    "Quantum complexity",
+    "Complexity theory",
+    "Unique Games"
+  ],
+  "kind": "Blog post",
+  "note": "A quantum complexity theorist reads the results in his own field: the Aaronson–Kuperberg unitary synthesis problem, parity outside QAC0, a near-quartic quantum query separation and a 2D area law, plus the Unique Games proof. Welcomes researchers rushing to pore over and explain the manuscripts, and insists that human understanding stay at the centre.",
+  "oxford": false,
+  "title": "The Mathocalypse",
+  "topics": [
+    "big-dump"
+  ],
+  "url": "https://scottaaronson.blog/?p=10169",
+  "who": "Scott Aaronson (UT Austin), Shtetl-Optimized"
+}

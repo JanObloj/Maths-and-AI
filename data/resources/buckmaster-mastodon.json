@@ -1,0 +1,16 @@
+{
+  "added": "2026-10-22T08:00:00Z",
+  "cat": "socials",
+  "checked": true,
+  "date": "2026-09-08",
+  "keywords": [
+    "PDE",
+    "Euler equations"
+  ],
+  "kind": "Mastodon post",
+  "note": "Announces finite-time blowup with smooth forcing for porous media, Boussinesq and 3D Euler, with papers, Lean code and his statement.",
+  "oxford": false,
+  "title": "“Today, Levent Alpöge and I have made public three results”",
+  "url": "https://mastodon.social/@tristanbuckmaster/117233413705701198",
+  "who": "Tristan Buckmaster (NYU)"
+}

@@ -1,0 +1,16 @@
+{
+  "added": "2026-10-22T15:30:00Z",
+  "cat": "news",
+  "checked": true,
+  "date": "",
+  "keywords": [],
+  "kind": "Encyclopedia entry",
+  "note": "A living overview of the release: headline claims by area, withdrawals and reactions, with links to the papers. Check claims against its sources.",
+  "oxford": false,
+  "title": "OpenAI bulk release of mathematical papers",
+  "topics": [
+    "big-dump"
+  ],
+  "url": "https://en.wikipedia.org/wiki/OpenAI_bulk_release_of_mathematical_papers",
+  "who": "Wikipedia"
+}

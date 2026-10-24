@@ -1,0 +1,16 @@
+{
+  "added": "2026-10-21T22:50:00Z",
+  "cat": "news",
+  "checked": true,
+  "date": "2026-10-08",
+  "keywords": [],
+  "kind": "News (paywall)",
+  "note": "Reactions to OpenAI’s 6 October release. Oxford’s Martin Bridson, president of the Clay Mathematics Institute, calls it “breathtaking” and adds: “We should embrace the power that the machines offer, but we should not be indentured to follow their lead.”",
+  "oxford": true,
+  "title": "‘Breathtaking,’ ‘Devastating’: Mathematics Reels After New OpenAI Release",
+  "topics": [
+    "big-dump"
+  ],
+  "url": "https://www.nytimes.com/2026/10/08/science/mathematicians-respond-openai-release.html",
+  "who": "Siobhan Roberts, The New York Times"
+}

@@ -1,0 +1,19 @@
+{
+  "added": "2026-10-23T06:30:00Z",
+  "cat": "news",
+  "checked": true,
+  "date": "2026-10-08",
+  "keywords": [
+    "Algebraic geometry",
+    "Hodge conjecture"
+  ],
+  "kind": "News",
+  "note": "Reports OpenAI’s withdrawal of three linked manuscripts on Hodge-type questions for abelian varieties and K3 surfaces after errors (a sign error and a flawed construction used by two dependent papers) that, according to OpenAI, were found during an audit. Includes comment from mathematicians at Cornell and MIT on how the release was handled.",
+  "oxford": false,
+  "title": "OpenAI withdraws three preprints a day after releasing 722 manuscripts on unsolved math problems",
+  "topics": [
+    "big-dump"
+  ],
+  "url": "https://retractionwatch.com/2026/10/08/openai-withdraws-preprints-722-manuscripts-unsolved-math-problems/",
+  "who": "Alicia Gallegos, Retraction Watch"
+}

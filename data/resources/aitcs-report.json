@@ -1,0 +1,12 @@
+{
+  "added": "2026-10-22T00:20:00Z",
+  "cat": "institutional",
+  "checked": true,
+  "date": "2026-09-28",
+  "kind": "Report",
+  "note": "Twelve concrete near-term actions for theoretical computer science, agreed by 32 participants and informed by a 134-response survey: AI methodology sections in papers, conference rules, hiring based on candidates’ three best works and in-depth interviews, more postdocs, AI-free training in PhD programmes, and encouraging grants to cover reasonable LLM costs. The report is linked from the working group page.",
+  "oxford": false,
+  "title": "AI and TCS: The Next Six Months (working group report)",
+  "url": "https://simons.berkeley.edu/news/ai-tcs-next-six-months",
+  "who": "Simons Institute working group; organisers Tony Feng, Zeph Landau, Amit Sahai, Nikhil Srivastava"
+}

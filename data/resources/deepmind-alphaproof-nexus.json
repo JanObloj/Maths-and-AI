@@ -1,0 +1,23 @@
+{
+  "added": "2026-10-22T08:00:00Z",
+  "cat": "announcements",
+  "checked": true,
+  "date": "2026-05-21",
+  "keywords": [
+    "Combinatorics",
+    "Erdős problems",
+    "Lean",
+    "Formal verification"
+  ],
+  "kind": "Paper",
+  "note": "DeepMind’s agent writes Lean proofs for open problems: 9 of 353 open Erdős problems and 44 OEIS conjectures. Published in Science on 8 October 2026, with a Perspective by Jeremy Avigad and Matthew Ballard. The main link is the free preprint.",
+  "oxford": false,
+  "peer": {
+    "date": "2026-10-08",
+    "url": "https://doi.org/10.1126/science.aej2213",
+    "venue": "Science"
+  },
+  "title": "Advancing Mathematics Research with AI-Driven Formal Proof Search (AlphaProof Nexus)",
+  "url": "https://arxiv.org/abs/2605.22763",
+  "who": "Google DeepMind (Tsoukalas, Kovsharov, Shirobokov et al.)"
+}
