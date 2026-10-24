@@ -49,7 +49,8 @@ button{font:inherit;color:inherit}
 .mast h1{font:400 clamp(48px,7.4vw,92px)/.95 var(--display);letter-spacing:-.02em;margin:0;text-wrap:balance}
 .mast h1 em{font-style:italic;color:var(--l-ai)}
 .t-short{display:none}
-.mast .lede{margin:0;max-width:62ch;font-size:19px;line-height:1.6}
+.mast .lede{margin:0;max-width:40ch;font-family:var(--display);font-size:25px;line-height:1.35;text-wrap:balance}
+.mast .lede2{margin:-8px 0 0;max-width:58ch;font-size:16px;line-height:1.55;color:var(--muted);text-wrap:balance}
 .switch{display:inline-flex;gap:4px;padding:5px;margin-top:8px;border-radius:999px;background:var(--surface);border:1px solid var(--line);box-shadow:0 1px 2px rgba(15,29,51,.06)}
 .switch button{border:0;border-radius:999px;padding:11px 24px;min-height:48px;background:transparent;font-weight:600;font-size:16px;display:flex;align-items:baseline;gap:8px;cursor:pointer}
 .switch button .n{font-weight:500;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
@@ -279,7 +280,8 @@ form.ed h2{margin:0;font:600 20px/1.2 var(--display);color:var(--navy)}
   .mast{padding-block:32px 0;gap:16px}
   .t-long{display:none}.t-short{display:inline}
   .mast h1{font-size:56px}
-  .mast .lede{font-size:16px;line-height:1.55}
+  .mast .lede{font-size:21px;line-height:1.35}
+  .mast .lede2{font-size:15px}
   .switch{display:grid;grid-template-columns:1fr 1fr;width:100%;padding:4px}
   .switch button{justify-content:center;padding:10px 8px;min-height:46px;font-size:15px}
   .switch button .n{display:none}
@@ -311,7 +313,8 @@ form.ed h2{margin:0;font:600 20px/1.2 var(--display);color:var(--navy)}
 
 <section class="wrap mast" aria-labelledby="mast-h">
   <h1 id="mast-h"><span class="t-long">Mathematics <em>and</em> AI</span><span class="t-short" aria-hidden="true">Maths <em>&amp;</em> AI</span></h1>
-  <p class="lede" data-edit="lede1">Mathematics made, and is making, modern AI possible. AI, in turn, is revolutionising mathematics. The two storylines are intertwined. The next chapters need critical judgement, conversation across communities and more mathematics.</p>
+  <p class="lede" data-edit="lede1">Mathematics makes modern AI possible. AI is revolutionising mathematics.</p>
+  <p class="lede2" data-edit="lede2">The two storylines are intertwined. The next chapters need critical judgement, conversation across communities and more mathematics.</p>
   <div class="switch" role="group" aria-label="Choose a view">
     <button type="button" id="sw-story" aria-pressed="true" aria-controls="view-story">Storylines <span class="n" id="n-ms"></span></button>
     <button type="button" id="sw-room" aria-pressed="false" aria-controls="view-room">Reading room <span class="n" id="n-room"></span></button>
