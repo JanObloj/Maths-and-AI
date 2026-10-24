@@ -1044,7 +1044,16 @@ addEventListener("popstate", route);
 
 // Anonymous counts for Jan (public page only): the GoatCounter script is added by the public build.
 // Every link that leaves the page is counted as an event, named after where it goes.
-function track(path, title){ try{ if(window.goatcounter && window.goatcounter.count) window.goatcounter.count({path:String(path).slice(0,500), title:String(title||"").slice(0,200), event:true}); }catch{} }
+const TRACK_Q = [];
+function track(path, title){
+  TRACK_Q.push({path:String(path).slice(0,500), title:String(title||"").slice(0,200), event:true}); flushTrack();
+}
+function flushTrack(tries=0){   // the counter script loads asynchronously, so wait for it (up to ~15 s)
+  try{
+    if(window.goatcounter && window.goatcounter.count){ while(TRACK_Q.length) window.goatcounter.count(TRACK_Q.shift()); }
+    else if(tries < 30 && TRACK_Q.length && window.READING_ROOM_PUBLIC) setTimeout(()=>flushTrack(tries+1), 500);
+  }catch{}
+}
 if(window.READING_ROOM_PUBLIC){ const sn=$("#stats-note"); if(sn) sn.hidden=false; }
 function countOutbound(e){
   const a = e.target.closest && e.target.closest("a[href]"); if(!a) return;
@@ -1062,6 +1071,7 @@ function itemsChanged(){ computeTags(); render(); renderTopic(); updateStatus();
 (async()=>{
   const h0 = decodeURIComponent((location.hash||"").slice(1));
   if(ROOM_HASHES.has(h0)) showView("room"); else { showView("story"); TL.select(msById[h0] ? h0 : "big-dump", false); }
+  track("view/"+(state.view==="room"?"reading-room":"storylines"), state.view==="room"?"Opened Reading room":"Opened Storylines");
   if(ROOM_HASHES.has(h0) && h0!=="reading-room") setTimeout(()=>{ const t=document.getElementById(h0); if(t) t.scrollIntoView(); }, 50);
   if(PUBLIC){
     state.saved = PUBLIC.text || {};
