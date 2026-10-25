@@ -1,0 +1,18 @@
+{
+  "added": "2026-10-25T08:00:00Z",
+  "cat": "viewpoint",
+  "checked": true,
+  "date": "2026-10-22",
+  "keywords": [
+    "Riemann hypothesis",
+    "Zeta function",
+    "Number theory"
+  ],
+  "kind": "Guest post",
+  "note": "Surveys results on the proportion of zeta zeros that are both simple and on the critical line, up to the unconditional 67.25% bound that Anthropic reported an unreleased Claude model obtained by linking a pair-correlation approach to a 2000 paper of Bombieri, and Lamzouri's conceptually simpler proof. It explains why such proportions would not settle the Riemann hypothesis.",
+  "oxford": false,
+  "title": "Simple and critical zeros of the Riemann zeta-function",
+  "topics": [],
+  "url": "https://terrytao.wordpress.com/2026/10/22/simple-and-critical-zeros-of-the-riemann-zeta-function/",
+  "who": "Caroline Turnage-Butterbaugh (Carleton College); guest post on Terence Tao's blog"
+}

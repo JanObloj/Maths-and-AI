@@ -1,0 +1,19 @@
+{
+  "added": "2026-10-25T08:00:00Z",
+  "cat": "initiative",
+  "checked": true,
+  "date": "2026-10-24",
+  "keywords": [
+    "Mathematical culture",
+    "Exposition"
+  ],
+  "kind": "Guest post",
+  "note": "Announces a community effort to produce clearer, better-cited revisions of the write-ups in OpenAI's openai/math repository, which the authors say can be hard to follow and have incomplete citations. The wider mathematical community, from students to professors, is invited to contribute or to serve as admins and reviewers.",
+  "oxford": false,
+  "title": "oai-math-revised: a community hub for revising OpenAI's math write-ups",
+  "topics": [
+    "big-dump"
+  ],
+  "url": "https://terrytao.wordpress.com/2026/10/24/oai-math-revised-a-community-hub-for-revising-openais-math-write-ups/",
+  "who": "Abhinav Nellore (OHSU), Johannes Schmitt (ETH Zürich), Soledad Villar (JHU), Rachel Ward (UT Austin); guest post on Terence Tao's blog"
+}

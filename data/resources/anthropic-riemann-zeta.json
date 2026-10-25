@@ -10,7 +10,7 @@
     "Lean"
   ],
   "kind": "Company announcement",
-  "note": "An unreleased Claude model raised the proven lower bound for the proportion of nontrivial zeta zeros on the critical line from 41.6% to 67.2%, with a Lean proof. Checked by Anthropic mathematicians Levent Alpöge and Ralph Furman and examined by Brian Conrey and Dan Goldston. Anthropic says it does not expect the method to prove the Riemann hypothesis.",
+  "note": "An unreleased Claude model raised the proven lower bound for the proportion of nontrivial zeta zeros on the critical line from 41.6% to 67.2%, counting only zeros that are also simple, with a Lean proof. Checked by Anthropic mathematicians Levent Alpöge and Ralph Furman and examined by Brian Conrey and Dan Goldston. Anthropic says it does not expect the method to prove the Riemann hypothesis.",
   "oxford": false,
   "title": "Claude has improved on a longstanding lower bound for the fraction of zeros of the Riemann zeta function that satisfy the Riemann hypothesis",
   "url": "https://www.anthropic.com/research/riemann-zeta",
