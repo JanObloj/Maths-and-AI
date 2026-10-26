@@ -63,6 +63,11 @@ button{font:inherit;color:inherit}
 footer .credits{margin:0;flex-basis:100%;max-width:90ch;line-height:1.6}
 
 /* ---------- Storylines view ---------- */
+.tlsearch{position:relative;margin-left:auto;align-self:center;width:min(340px,100%)}
+.tlsearch input{width:100%;box-sizing:border-box;font:inherit;font-size:14px;padding:9px 14px;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--fg)}
+.tlsearch input:focus{outline:none;border-color:var(--l-ai);box-shadow:0 0 0 3px color-mix(in srgb,var(--l-ai) 25%,transparent)}
+.tlhint{position:absolute;top:calc(100% + 3px);left:14px;right:0;font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .legend{display:grid;grid-template-columns:max-content max-content max-content;gap:8px 24px;align-items:center;margin:0;padding:0;list-style:none;font-size:13px;color:var(--muted)}
 .legend li{display:flex;align-items:center;gap:8px}
 .legend svg{flex-shrink:0}
@@ -267,6 +272,7 @@ form.ed h2{margin:0;font:600 20px/1.2 var(--display);color:var(--navy)}
   .canvas{height:300px}
   .ms .lab{top:calc(100% - 86px)}
   .legend{grid-template-columns:auto 1fr 1fr;gap:6px 10px;font-size:12px}
+  .tlsearch{margin-left:0;width:100%;margin-bottom:14px}
   .eras{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-inline:-4px;padding-inline:4px}
   .era{flex-shrink:0}
   .stage-head{padding-block:10px 4px}
@@ -340,6 +346,11 @@ form.ed h2{margin:0;font:600 20px/1.2 var(--display);color:var(--navy)}
     <div class="wrap">
       <div class="stage-head">
         <ul class="legend" id="legend" aria-label="Key"></ul>
+        <form class="tlsearch" id="tlsearch" role="search" autocomplete="off">
+          <label class="vh" for="tlq">Find on the timeline</label>
+          <input type="search" id="tlq" placeholder="Find a year or a word, e.g. FunSearch" enterkeyhint="search">
+          <span class="tlhint" id="tlhint" aria-live="polite"></span>
+        </form>
       </div>
       <div class="stage-head">
         <div class="eras" id="eras" role="group" aria-label="Jump to a period"></div>
@@ -1032,6 +1043,37 @@ function showView(v, push){
   if(v==="story") TL.show();
   if(push) track("view/"+(v==="story"?"storylines":"reading-room"), v==="story"?"Opened Storylines":"Opened Reading room");
 }
+// Find on the timeline: a year slides to the nearest milestone; a word finds milestones whose
+// title, label or text contain it (Enter again moves to the next match).
+const TLS = {q:"", hits:[], i:0};
+function tlFind(advance){
+  const raw = $("#tlq").value.trim(), hint = $("#tlhint");
+  if(!raw){ TLS.q=""; hint.textContent=""; return; }
+  const yr = /^(1[89]\d\d|20\d\d)$/.test(raw) ? +raw : null;
+  if(raw!==TLS.q){
+    TLS.q = raw; TLS.i = 0;
+    if(yr){
+      const y = d => +d.slice(0,4) + (d.length>4 ? (+(d.slice(5,7)||6)-1)/12 : .5);
+      const best = MILESTONES.reduce((a,m)=> Math.abs(y(m.date)-yr-.5) < Math.abs(y(a.date)-yr-.5) ? m : a);
+      const same = MILESTONES.filter(m=>m.date.slice(0,4)===best.date.slice(0,4));
+      TLS.hits = same.length ? same : [best];
+    } else {
+      const k = raw.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
+      const norm = t => (t||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
+      const score = m => norm(m.title).includes(k)||norm(m.short).includes(k) ? 2 : norm(m.story).includes(k) ? 1 : 0;
+      TLS.hits = MILESTONES.map(m=>[m,score(m)]).filter(x=>x[1]).sort((a,b)=>b[1]-a[1] || a[0].date.localeCompare(b[0].date)).map(x=>x[0]);
+    }
+  } else if(advance && TLS.hits.length) TLS.i = (TLS.i+1) % TLS.hits.length;
+  if(!TLS.hits.length){ hint.textContent = "No milestone mentions “"+raw+"”"; return; }
+  const m = TLS.hits[TLS.i];
+  if(state.view!=="story") showView("story", true);
+  TL.select(m.id, true);
+  const yrNote = yr && m.date.slice(0,4)!==String(yr) ? "Nearest milestone: "+m.date.slice(0,4)+". " : "";
+  hint.textContent = yrNote + (TLS.hits.length>1 ? (TLS.i+1)+" of "+TLS.hits.length+" · press Enter for the next" : "");
+}
+let tlLast=""; function tlTrack(){ const q=$("#tlq").value.trim().toLowerCase().slice(0,60); if(q && q!==tlLast){ tlLast=q; track("find/"+q, "Timeline search"); } }
+$("#tlsearch").addEventListener("submit", e=>{ e.preventDefault(); tlFind(true); tlTrack(); });
+let tlT, tlT2; $("#tlq").addEventListener("input", ()=>{ clearTimeout(tlT); clearTimeout(tlT2); tlT = setTimeout(()=>tlFind(false), 450); tlT2 = setTimeout(tlTrack, 2500); });
 function openMilestone(id){ showView("story", true); TL.select(id, true); requestAnimationFrame(()=>document.querySelector(".stage").scrollIntoView({behavior:"smooth", block:"start"})); }
 $("#sw-story").onclick = ()=>{ if(state.view!=="story") showView("story", true); };
 $("#sw-room").onclick = ()=>{ if(state.view!=="room") showView("room", true); };
