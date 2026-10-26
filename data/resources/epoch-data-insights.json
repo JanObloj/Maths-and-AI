@@ -1,0 +1,14 @@
+{
+  "added": "2026-10-26T09:52:00Z",
+  "cat": "voices",
+  "checked": true,
+  "date": "",
+  "keywords": [],
+  "kind": "Data tracker",
+  "note": "Short, chart-led analyses of AI trends from the research organisation Epoch AI, posted several times a month and mostly about compute, spending and adoption. Some are about mathematics: one counts arXiv maths preprints acknowledging AI use, rising from 4% in April 2026 to 25% in August; another compares models on maths benchmarks.",
+  "oxford": false,
+  "title": "Data Insights",
+  "topics": [],
+  "url": "https://epoch.ai/data-insights",
+  "who": "Epoch AI"
+}
