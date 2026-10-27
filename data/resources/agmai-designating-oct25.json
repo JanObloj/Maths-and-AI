@@ -1,0 +1,17 @@
+{
+  "added": "2026-10-27T09:35:00Z",
+  "cat": "institutional",
+  "checked": true,
+  "date": "2026-10-25",
+  "keywords": [
+    "Credit and authorship",
+    "Mathematical culture"
+  ],
+  "kind": "Statement",
+  "note": "The advisory group concludes that AI labs should not designate mathematicians to receive and interpret AI output first: it gives them a head start, makes a consequential choice on the community's behalf, reflects the company's networks, and lends their reputations to the release. It recommends the release pathways in its September guidelines instead. Posted the day before OpenAI announced its \"shepherds\" approach.",
+  "oxford": true,
+  "title": "Disadvantages of Designating Mathematicians for AI Output Releases",
+  "topics": [],
+  "url": "https://agmai.org/#disadvantages-designating-mathematicians",
+  "who": "Advisory Group on Mathematics and AI (advises OpenAI)"
+}

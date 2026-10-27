@@ -1,0 +1,20 @@
+{
+  "added": "2026-10-27T07:00:00Z",
+  "cat": "announcements",
+  "checked": true,
+  "date": "2026-10-26",
+  "keywords": [
+    "Kakeya",
+    "Complexity theory",
+    "Exponential Time Hypothesis",
+    "Yang–Mills",
+    "Lean"
+  ],
+  "kind": "Company announcement",
+  "note": "OpenAI says its models proved the local smoothing conjecture in every dimension (implying the Kakeya and restriction conjectures), disproved the Exponential Time Hypothesis, and gave a rigorous existence proof for four-dimensional QCD, including pure Yang–Mills theory. It also tries a new way of working with academics: unpaid outside \"shepherds\" chose a different release route for each result, from a straight public release with Lean proofs (maths) to expert groups led by Impagliazzo, Paturi and Williams (ETH, all material public) and by David Gross (physics, AI material held back for now). OpenAI says it seeks no academic credit. None of the claims has yet been independently verified.",
+  "oxford": false,
+  "title": "Working with academic communities to build scientific understanding",
+  "topics": [],
+  "url": "https://openai.com/index/building-scientific-understanding-with-academic-communities/",
+  "who": "OpenAI"
+}
