@@ -7,8 +7,7 @@
     "Operator algebras",
     "Group theory",
     "Sphere packing",
-    "Erdős problems",
-    "Lean"
+    "Erdős problems"
   ],
   "kind": "Company announcement",
   "note": "Ten results on long-open problems from an internal model codenamed Astra, formalised in Lean, including a disproof of Connes’s rigidity conjecture and new sphere-packing bounds. Humans prepared the manuscripts and take responsibility for correctness.",

@@ -166,7 +166,7 @@ footer .credits{margin:0;flex-basis:100%;max-width:90ch;line-height:1.6}
 .toggle button{font:inherit;font-size:13px;border:0;background:none;color:var(--muted);padding:9px 12px;cursor:pointer;min-height:40px}
 .toggle button[aria-pressed="true"]{background:var(--navy);color:var(--bg)}
 .chipbtn{font:inherit;font-size:13px;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--fg);padding:8px 14px;cursor:pointer;min-height:40px}
-.chipbtn[aria-pressed="true"]{border-color:var(--rust);color:var(--rust);font-weight:600}
+.chipbtn[aria-pressed="true"]{border-color:var(--navy);background:var(--navy);color:var(--bg);font-weight:600}
 .btn{font:inherit;font-size:14px;font-weight:600;border:1px solid var(--navy);background:var(--navy);color:var(--bg);border-radius:8px;padding:9px 14px;cursor:pointer;min-height:40px}
 .btn.ghost{background:none;color:var(--navy)}
 .status{font-size:13px;color:var(--muted);margin:8px 0 0;min-height:20px}
@@ -230,6 +230,7 @@ body.editmode [data-edit]:focus{outline:2px solid var(--accent)}
 .kws{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
 .kw{font:inherit;font-size:12.5px;border:1px dashed var(--line);border-radius:999px;background:none;color:var(--chip-fg);padding:2px 10px;cursor:pointer;min-height:26px}
 .kw:hover{border-color:var(--accent);color:var(--fg)}
+.kw[aria-pressed="true"]{border-style:solid;border-color:var(--navy);background:var(--navy);color:var(--bg)}
 .topic-panel{margin:18px 0 0;border-left:4px solid var(--navy);background:var(--surface);border-radius:0 10px 10px 0;padding:14px 16px;max-width:90ch}
 .topic-panel.tl{border-left-color:var(--l-ai)}
 .topic-panel h2{font:600 20px/1.2 var(--display);margin:0 0 6px;color:var(--navy)}
@@ -395,7 +396,6 @@ form.ed h2{margin:0;font:600 20px/1.2 var(--display);color:var(--navy)}
     <span id="topic-btns" style="display:contents"></span>
     <button type="button" class="chipbtn" id="ox" aria-pressed="false">Oxford</button>
     <button type="button" class="btn ghost" id="copy">Copy list</button>
-    <a class="btn ghost" href="#propose" style="text-decoration:none;display:inline-flex;align-items:center">Propose a resource</a>
   </div>
   <div id="topic-panel"></div>
   <p class="status" id="status" role="status" aria-live="polite">Loading the reading room…</p>
@@ -491,7 +491,7 @@ const TL_DATA = {"milestones": [{"id": "turing-1936", "date": "1936", "lane": "m
 const topicById = Object.fromEntries(TOPICS.map(t=>[t.id,t]));
 const catName = Object.fromEntries(CATS.map(c=>[c.id,c.name]));
 const $ = s => document.querySelector(s);
-const state = {items:[], q:"", byDate:false, byNew:false, ox:false, topic:null, milestone:null, canEdit:false, editing:null, confirmId:null, editMode:false, draft:{}, saved:{}, view:"story"};
+const state = {items:[], q:"", kw:null, byDate:false, byNew:false, ox:false, topic:null, milestone:null, canEdit:false, editing:null, confirmId:null, editMode:false, draft:{}, saved:{}, view:"story"};
 const PUBLIC = window.READING_ROOM_PUBLIC || null;   // set only in the exported public copy
 const DEFAULTS = {};
 document.querySelectorAll("[data-edit]").forEach(n=>{ DEFAULTS[n.dataset.edit] = n.textContent; });
@@ -517,6 +517,10 @@ document.addEventListener("input", e=>{ const n=e.target.closest && e.target.clo
 document.addEventListener("keydown", e=>{ if(state.editMode && e.key==="Enter" && e.target.closest && e.target.closest("[data-edit]")){ e.preventDefault(); e.target.blur(); } });
 const kwOf = it => Array.isArray(it.keywords) ? it.keywords.filter(k=>typeof k==="string" && k.trim()) : [];
 const topicsOf = it => Array.isArray(it.topics) ? it.topics.filter(t=>topicById[t]) : [];
+const sameKw = (a,b) => !!a && !!b && a.toLowerCase()===b.toLowerCase();
+// A keyword chip filters to the entries tagged with exactly that keyword (the number on the chip);
+// clicking the same keyword again clears it. Free-text search stays separate.
+function setKw(k){ state.kw = sameKw(state.kw,k) ? null : k; render(); updateStatus(); const l=$("#list"); if(l) l.scrollIntoView({block:"start", behavior:"smooth"}); }
 function setQuery(q){ state.q = q; $("#q").value = q; render(); updateStatus(); $("#q").scrollIntoView({block:"center"}); }
 let db = null;
 
@@ -561,6 +565,7 @@ function filtered(){
     if(state.ox && !it.oxford) return false;
     if(state.topic && !topicsOf(it).includes(state.topic)) return false;
     if(state.milestone && !(TAGS[state.milestone] && TAGS[state.milestone].has(it.id))) return false;
+    if(state.kw && !kwOf(it).some(k=>sameKw(k,state.kw))) return false;
     if(!q) return true;
     return [it.title,it.who,it.kind,it.note,it.peer&&it.peer.venue?"peer-reviewed peer reviewed "+it.peer.venue:"",catName[it.cat],...kwOf(it),...topicsOf(it).map(t=>topicById[t].name)].join(" ").toLowerCase().includes(q);
   });
@@ -588,7 +593,7 @@ function itemNode(it, showCat){
     const b=el("button",{type:"button",class:"tlchip",title:"Open this milestone in the storylines",text:"On the timeline: "+m.short}); b.onclick=()=>openMilestone(mid); tags.append(b); });
   const kws = kwOf(it);
   const kwRow = kws.length ? el("div",{class:"kws","aria-label":"Keywords"}) : null;
-  kws.forEach(k=>{ const b=el("button",{type:"button",class:"kw",text:k,title:"Show entries about "+k}); b.onclick=()=>setQuery(k); kwRow.append(b); });
+  kws.forEach(k=>{ const b=el("button",{type:"button",class:"kw",text:k,title:"Show entries tagged "+k,"aria-pressed":String(sameKw(state.kw,k))}); b.onclick=()=>setKw(k); kwRow.append(b); });
   const body = el("div",{}, h, (meta || it.peer) ? el("div",{class:"meta"}, document.createTextNode(meta), peerNode(it)) : null, it.note ? el("p",{class:"note"}, el("span",{class:"nl",text:"Curator’s note"}), document.createTextNode(it.note)) : null, kwRow, tags.childElementCount ? tags : null);
   if(state.canEdit && state.editMode){
     if(state.confirmId===it.id){
@@ -637,12 +642,12 @@ function render(){
     const other = items.filter(i=>!catName[i.cat]);
     if(other.length){ const ol=el("ol",{class:"items"}); other.sort(byDateDesc).forEach(it=>ol.append(itemNode(it,true))); list.append(el("section",{class:"cat",id:"other"}, el("div",{class:"cat-head"}, el("h2",{text:"Uncategorised"})), ol)); }
   }
-  const pool = state.items.filter(it=>(!state.ox||it.oxford) && (!state.topic||topicsOf(it).includes(state.topic)));
+  const pool = state.items.filter(it=>(!state.ox||it.oxford) && (!state.topic||topicsOf(it).includes(state.topic)) && (!state.milestone||(TAGS[state.milestone]&&TAGS[state.milestone].has(it.id))));
   const counts = {}; pool.forEach(it=>kwOf(it).forEach(k=>{ counts[k]=(counts[k]||0)+1; }));
-  const top = Object.entries(counts).sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0])).slice(0,30);
+  const top = Object.entries(counts).sort((a,b)=>a[0].localeCompare(b[0],"en",{sensitivity:"base"})).slice(0,80);   // alphabetical, all keywords
   if(top.length){
     const box = el("div",{});
-    top.forEach(([k,n])=>{ const b=el("button",{type:"button",class:"kw",text:k+" · "+n,"aria-pressed":String(state.q.toLowerCase()===k.toLowerCase())}); b.onclick=()=>setQuery(state.q.toLowerCase()===k.toLowerCase()?"":k); box.append(b); });
+    top.forEach(([k,n])=>{ const b=el("button",{type:"button",class:"kw",text:k+" · "+n,title:"Show the "+n+" entries tagged "+k,"aria-pressed":String(sameKw(state.kw,k))}); b.onclick=()=>setKw(k); box.append(b); });
     rail.append(el("div",{class:"kw-index"}, el("h3",{text:"Maths keywords"}), box));
   }
   rail.append(el("p",{class:"rail-note",text: "Something missing? Propose it at the foot of the page."}));
@@ -677,6 +682,9 @@ function updateStatus(){
   const n = state.items.length, f = filtered().length;
   const latest = state.items.map(i=>i.added||"").sort().pop();
   setStatus(n ? `${f===n ? n : f+" of "+n} entries${latest ? " · last addition "+fmtDate(latest.slice(0,10)) : ""}` : "No entries yet.");
+  // active filters, each with a one-click clear
+  if(state.ox){ const c=el("button",{type:"button",class:"kw","aria-pressed":"true",title:"Show all entries again",text:"Oxford only ✕"}); c.onclick=()=>setOx(false); $("#status").append(" ", c); }
+  if(state.kw){ const c=el("button",{type:"button",class:"kw","aria-pressed":"true",title:"Clear the keyword filter",text:"Keyword: "+state.kw+" ✕"}); c.onclick=()=>setKw(state.kw); $("#status").append(" ", c); }
   $("#n-room").textContent = n ? n+" entries" : "";
 }
 
@@ -686,7 +694,8 @@ function setArrange(v){ state.byDate = v==="date"; state.byNew = v==="new";
 $("#by-cat").onclick=()=>setArrange("cat");
 $("#by-date").onclick=()=>setArrange("date");
 $("#by-new").onclick=()=>setArrange("new");
-$("#ox").onclick=()=>{ state.ox=!state.ox; $("#ox").setAttribute("aria-pressed",String(state.ox)); render(); updateStatus(); };
+function setOx(v){ state.ox=v; $("#ox").setAttribute("aria-pressed",String(state.ox)); render(); updateStatus(); }
+$("#ox").onclick=()=>setOx(!state.ox);
 $("#copy").onclick=async()=>{
   const items = filtered();
   const lines = [];
