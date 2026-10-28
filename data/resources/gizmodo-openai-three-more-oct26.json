@@ -1,0 +1,18 @@
+{
+  "added": "2026-10-28T07:00:00Z",
+  "cat": "news",
+  "checked": true,
+  "date": "2026-10-26",
+  "keywords": [
+    "Harmonic analysis",
+    "Complexity theory",
+    "Quantum field theory"
+  ],
+  "kind": "News",
+  "note": "Summarises OpenAI's three new claims and its 'shepherds' publication plan, quoting OpenAI's acknowledgement that the approach creates an asymmetry of information. Also reports concerns that the Lean-verified version of OpenAI's earlier Navier–Stokes result checked a weaker statement than the one first published.",
+  "oxford": false,
+  "title": "OpenAI Trumpets 3 More Math and Science Results, Along With a New Plan for Publishing Them",
+  "topics": [],
+  "url": "https://gizmodo.com/openai-trumpets-3-more-math-and-science-results-along-with-a-new-plan-for-publishing-them-2000830956",
+  "who": "Mike Pearl (Gizmodo)"
+}

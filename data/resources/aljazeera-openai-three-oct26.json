@@ -1,0 +1,18 @@
+{
+  "added": "2026-10-28T07:00:00Z",
+  "cat": "news",
+  "checked": true,
+  "date": "2026-10-27",
+  "keywords": [
+    "Harmonic analysis",
+    "Complexity theory",
+    "Quantum field theory"
+  ],
+  "kind": "News",
+  "note": "Reports OpenAI's 26 October claims on the local smoothing conjecture, the Exponential Time Hypothesis and quantum chromodynamics, and its use of expert 'shepherd' groups to decide how the outputs are released. Quotes Alex Iosevich (Rochester) and Ryan Williams (MIT), the latter saying verification is under way.",
+  "oxford": false,
+  "title": "AI makes discoveries in mathematics, computer science, physics, OpenAI says",
+  "topics": [],
+  "url": "https://www.aljazeera.com/economy/2026/10/27/ai-makes-discoveries-in-mathematics-computer-science-physics-openai-says",
+  "who": "John Power (Al Jazeera)"
+}
