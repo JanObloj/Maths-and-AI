@@ -1,0 +1,19 @@
+{
+  "added": "2026-10-29T12:45:00Z",
+  "cat": "viewpoint",
+  "checked": true,
+  "date": "2026-10-08",
+  "keywords": [
+    "Credit and authorship",
+    "Mathematical culture"
+  ],
+  "kind": "Essay",
+  "note": "Written at the conference 'Mathematical Proof in the Age of AI', two days after OpenAI's 6 October release. Harris argues that OpenAI expects mathematicians to verify and explain its papers, casting them as Mechanical Turks, and that using arXiv papers posted under non-commercial licences violated their authors' rights. He quotes reactions from Proofs and Prompts by Alexandre Martin and Enrico Fatighenti. Ignoring the papers is a viable individual strategy, he says, but many call for a collective response.",
+  "oxford": false,
+  "title": "Now all mathematicians can be Mechanical Turks",
+  "topics": [
+    "big-dump"
+  ],
+  "url": "https://siliconreckoner.substack.com/p/now-all-mathematicians-can-be-mechanical",
+  "who": "Michael Harris (Columbia), Silicon Reckoner"
+}

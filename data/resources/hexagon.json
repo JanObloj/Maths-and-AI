@@ -1,0 +1,17 @@
+{
+  "added": "2026-10-29T14:40:00Z",
+  "cat": "initiative",
+  "checked": true,
+  "date": "2026-10-06",
+  "keywords": [
+    "Mathematical culture",
+    "Credit and authorship"
+  ],
+  "kind": "Repository",
+  "note": "Ben Antieau announces Hexagon, a citable repository for mathematics and theoretical computer science that, unlike arXiv, accepts papers generated entirely by AI, even where no human claims to understand them, labelled by how much is AI-written and humanly understood. It does no peer review: acceptance is not a judgement of correctness. It is run by the Hexagon Mathematics Foundation, a Delaware non-profit seeking 501(c)(3) status and so far funded by the people involved, with a board of Mohammed Abouzaid, François Charles, Bryna Kra, David Savitt and Lauren Williams and an advisory board that includes Kevin Buzzard, Nikhil Srivastava, Ravi Vakil and Rachel Ward.",
+  "oxford": false,
+  "title": "Hexagon",
+  "topics": [],
+  "url": "https://terrytao.wordpress.com/2026/10/06/hexagon/",
+  "who": "Ben Antieau (Northwestern; Hexagon Mathematics Foundation), guest post on Tao’s blog"
+}

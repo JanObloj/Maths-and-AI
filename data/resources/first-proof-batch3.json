@@ -1,0 +1,17 @@
+{
+  "added": "2026-10-29T12:30:00Z",
+  "cat": "institutional",
+  "checked": true,
+  "date": "2026-10-14",
+  "keywords": [
+    "Benchmarks",
+    "Exposition"
+  ],
+  "kind": "Report",
+  "note": "Five systems, one attempt and 24 hours per problem, graded by about 30 referees for correctness, exposition and attribution. Every problem was solved by at least one system: the ProofCouncil harness solved 9 of 10 ($1,888) and GPT-6 Astra used directly 7 ($36), while an open-weight system built on Kimi K3 solved none. Exposition and citations remain weak, and the best results take far more compute, raising concern about access for ordinary researchers.",
+  "oxford": false,
+  "title": "First Proof, Third Batch: results",
+  "topics": [],
+  "url": "https://1stproof.org/third-batch-press-release.html",
+  "who": "First Proof Foundation"
+}

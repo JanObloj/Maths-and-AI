@@ -1,0 +1,16 @@
+{
+  "added": "2026-10-29T12:35:00Z",
+  "cat": "news",
+  "checked": true,
+  "date": "2026-10-14",
+  "keywords": [
+    "Benchmarks"
+  ],
+  "kind": "News",
+  "note": "On the third batch: ProofCouncil solved nine of ten problems to a standard judges deemed acceptable with minor revisions, while the best open-weight system, built on Kimi K3, solved none. Abouzaid says the gap between open-weight and frontier models is much larger in research mathematics than in other domains, and that proving well-defined statements may soon not be worth testing on frontier models. First Proof only tests publicly available systems, so OpenAI's newest internal model was excluded.",
+  "oxford": false,
+  "title": "New ‘First Proof’ exam reveals how AI-powered math is a pay-to-play sport",
+  "topics": [],
+  "url": "https://www.scientificamerican.com/article/new-first-proof-exam-reveals-how-ai-powered-math-is-a-pay-for-play-sport/",
+  "who": "Joseph Howlett (Scientific American)"
+}

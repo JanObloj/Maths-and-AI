@@ -1,0 +1,17 @@
+{
+  "added": "2026-10-29T12:30:00Z",
+  "cat": "news",
+  "checked": true,
+  "date": "2026-10-19",
+  "keywords": [
+    "Benchmarks",
+    "Exposition"
+  ],
+  "kind": "News",
+  "note": "Reports the third batch: all ten problems solved by at least one system, ProofCouncil nine and GPT-6 Astra seven, and every open-weight submission with major errors. Referees found answers wordy and poorly cited, in one case amounting to plagiarism. Lauren Williams voices concern that power is concentrated in two private AI companies.",
+  "oxford": false,
+  "title": "Top mathematicians grade AI’s ability to solve toughest problems",
+  "topics": [],
+  "url": "https://current.fas.harvard.edu/stories/top-mathematicians-grade-ais-ability-solve-toughest-problems",
+  "who": "Kermit Pattison (Harvard FAS Current)"
+}

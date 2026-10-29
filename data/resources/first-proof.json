@@ -1,0 +1,16 @@
+{
+  "added": "2026-10-29T12:30:00Z",
+  "cat": "initiative",
+  "checked": true,
+  "date": "2026-02-05",
+  "keywords": [
+    "Benchmarks"
+  ],
+  "kind": "Benchmark",
+  "note": "Mathematicians test AI on unpublished research-level problems from their own work. Answers are refereed double blind, and the problems, AI answers and referee reports are all published. Launched in February 2026 with ten problems, it is now run by the First Proof Foundation, a non-profit with an editorial board and a separate board of directors (Andrew Blumberg, Martin Hairer, Tamara Kolda, Daniel Spielman, Shmuel Weinberger). Board and editorial members take no paid work from AI companies while serving. Industry donations (Anthropic, OpenAI, Google.org) are unrestricted, never pay board members, support the graduate students and postdocs who grade, and are reported annually.",
+  "oxford": false,
+  "title": "First Proof",
+  "topics": [],
+  "url": "https://1stproof.org/",
+  "who": "First Proof Foundation (editors Mohammed Abouzaid, Nikhil Srivastava, Rachel Ward, Lauren Williams)"
+}
