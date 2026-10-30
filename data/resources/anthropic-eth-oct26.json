@@ -1,0 +1,18 @@
+{
+  "added": "2026-10-30T09:45:00Z",
+  "cat": "announcements",
+  "checked": true,
+  "date": "2026-10-26",
+  "keywords": [
+    "Complexity theory",
+    "Exponential Time Hypothesis",
+    "Lean"
+  ],
+  "kind": "Repository",
+  "note": "Anthropic's own claimed refutation of the Exponential Time Hypothesis, posted hours after OpenAI's: a paper credited to Claude giving a 2^o(n)-time algorithm for 3-SAT, found by an internal research model, with a Lean formalisation checked against separately stated theorems. The repository notes that no machine checks that the Lean statements say what the paper says.",
+  "oxford": false,
+  "title": "A 2^o(n) Time Algorithm for 3-SAT (paper and Lean formalisation)",
+  "topics": [],
+  "url": "https://github.com/anthropics/formal-math/blob/main/eth/README.md",
+  "who": "Anthropic"
+}

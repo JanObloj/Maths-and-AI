@@ -1,0 +1,17 @@
+{
+  "added": "2026-10-30T09:35:00Z",
+  "cat": "news",
+  "checked": true,
+  "date": "2026-10-29",
+  "keywords": [
+    "Complexity theory",
+    "Exponential Time Hypothesis"
+  ],
+  "kind": "Feature",
+  "note": "How theoretical computer scientists are taking OpenAI's and Anthropic's claimed refutations of the Exponential Time Hypothesis, a 27-year-old conjecture much of their field builds on. Peter Jonsson (Linköping), Daniel Lokshtanov (UC Santa Barbara) and Thore Husfeldt (IT University of Copenhagen) describe years of work made obsolete, mixed with excitement at the questions it opens, and the strain of results arriving every week or two. Neither proof has yet been independently verified.",
+  "oxford": false,
+  "title": "An AI Breakthrough Has Made Decades of Computer Science Research ‘Irrelevant’",
+  "topics": [],
+  "url": "https://www.wired.com/story/ai-made-decades-of-computer-science-research-irrelevant/",
+  "who": "Isabella Ward (Wired)"
+}
