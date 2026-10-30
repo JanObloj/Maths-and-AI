@@ -4,11 +4,11 @@
   "checked": true,
   "date": "2026-10-21",
   "keywords": [],
-  "kind": "Podcast, 37 min",
-  "note": "The first of a four-part series on how scientists are grappling with AI starts with mathematics and OpenAI's October release, asking whether it is a warning for other sciences or the start of a new revolution. Oxford's James Maynard is a guest.",
+  "kind": "Podcast series",
+  "note": "A four-part Babbage series, hosted by Alok Jha, on how AI is changing science. Episode 1 covers mathematics and OpenAI's 6 October release with Oxford's James Maynard and Yang-Hui He, and episode 2 covers generative biology with Brian Hie.",
   "oxford": true,
-  "title": "AI eats science 1: the mathpocalypse",
+  "title": "Babbage: AI eats science (four-part series)",
   "topics": [],
-  "url": "https://www.economist.com/podcasts/2026/10/21/ai-eats-science-1-the-mathpocalypse",
-  "who": "The Economist, Babbage podcast (host Alok Jha; guests James Maynard and Yang-Hui He)"
+  "url": "https://shows.acast.com/theeconomistbabbage/episodes",
+  "who": "The Economist, Babbage podcast"
 }

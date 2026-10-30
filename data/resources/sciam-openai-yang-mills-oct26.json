@@ -1,0 +1,16 @@
+{
+  "added": "2026-10-29T08:00:00Z",
+  "cat": "news",
+  "checked": false,
+  "date": "2026-10-27",
+  "keywords": [
+    "Yang–Mills"
+  ],
+  "kind": "News story (paywall)",
+  "note": "Reports OpenAI's 26 October claim to have proved the existence part of the Yang–Mills problem, without the mass gap and with the proof not yet public. It also covers a rival Claude-assisted effort by Levent Alpöge and Ethan Sussman, and disputes over OpenAI's timeline and secrecy.",
+  "oxford": false,
+  "title": "OpenAI just scooped human researchers on a million-dollar quantum math problem",
+  "topics": [],
+  "url": "https://www.scientificamerican.com/article/openai-just-scooped-human-researchers-on-a-million-dollar-quantum-math-problem/",
+  "who": "Joseph Howlett, Scientific American"
+}
