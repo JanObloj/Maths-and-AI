@@ -1,0 +1,18 @@
+{
+  "added": "2026-10-31T15:00:00Z",
+  "cat": "viewpoint",
+  "checked": true,
+  "date": "2026-10-08",
+  "keywords": [
+    "Lean",
+    "Formal verification",
+    "Erdős problems"
+  ],
+  "kind": "Perspective",
+  "note": "A Science Perspective on DeepMind's AlphaProof Nexus paper: AI agents now settle open problems with Lean-checked proofs, and even a basic agent using a commercial model and Lean reproduced its Erdős results. The authors praise the paper for disclosing enough of its methods for academics to reproduce and audit the results, unlike most corporate announcements.",
+  "oxford": false,
+  "title": "AI for research mathematics has arrived",
+  "topics": [],
+  "url": "https://www.science.org/doi/10.1126/science.ael6628",
+  "who": "Jeremy Avigad and Matthew Ballard (Science)"
+}
