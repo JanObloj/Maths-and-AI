@@ -1,0 +1,18 @@
+{
+  "added": "2026-11-01T12:25:00Z",
+  "cat": "news",
+  "checked": true,
+  "date": "2026-10-29",
+  "keywords": [
+    "Lean",
+    "Formal verification",
+    "Navier–Stokes"
+  ],
+  "kind": "News",
+  "note": "Whether Lean certificates can be trusted for AI-generated mathematics: a team at Cambridge and King's College London found the Lean version of OpenAI's Navier–Stokes proof proving weaker claims than the written text, and this summer's kernel soundness bugs showed how an AI agent could game the checker. Leonardo de Moura says such bugs will 'keep happening'; others question Lean's logical foundations.",
+  "oxford": false,
+  "title": "AI is shaking up math. But can its proofs be trusted?",
+  "topics": [],
+  "url": "https://www.science.org/doi/10.1126/science.aen6353",
+  "who": "Celina Zhao (Science)"
+}
