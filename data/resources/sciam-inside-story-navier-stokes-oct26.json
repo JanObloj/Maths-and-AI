@@ -1,0 +1,18 @@
+{
+  "added": "2026-11-02T09:10:00Z",
+  "cat": "news",
+  "checked": true,
+  "date": "2026-10-22",
+  "keywords": [
+    "Navier–Stokes",
+    "Euler equations",
+    "Credit and authorship"
+  ],
+  "kind": "Feature (paywall)",
+  "note": "Reconstructs the August–September Navier–Stokes episode from Tristan Buckmaster’s NYU lecture, public statements and documents he supplied, with OpenAI’s Sébastien Bubeck corroborating basic facts off the record. It sets out Buckmaster’s view that OpenAI’s Euler proof built on his work with Anthropic’s Levent Alpöge, though he accepts its Navier–Stokes proof added new ideas, alongside OpenAI’s emphatic denial that his post-July 2026 usage could have influenced its model. One expert agrees the Euler proof follows the earlier Spanish programme; others see the Navier–Stokes proof as an essentially new path.",
+  "oxford": false,
+  "title": "The inside story behind OpenAI’s million-dollar math proof",
+  "topics": [],
+  "url": "https://www.scientificamerican.com/article/the-inside-story-behind-openais-million-dollar-math-proof/",
+  "who": "Joseph Howlett (Scientific American)"
+}

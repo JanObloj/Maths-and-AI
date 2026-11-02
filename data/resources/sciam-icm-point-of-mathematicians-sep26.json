@@ -1,0 +1,18 @@
+{
+  "added": "2026-11-02T09:30:00Z",
+  "cat": "news",
+  "checked": true,
+  "date": "2026-09-10",
+  "keywords": [
+    "Mathematical culture",
+    "PhD training",
+    "Early-career researchers"
+  ],
+  "kind": "Feature (paywall)",
+  "note": "Reports from the International Congress of Mathematicians in Philadelphia on how mathematicians are reacting to AI, centred on Terence Tao's lecture on a crisis in mathematical values and practices. It includes views from Ravi Vakil, Jacob Tsimerman, Michael Harris, early-career researchers and critics of AI use in mathematics.",
+  "oxford": false,
+  "title": "If AI can do math, what’s the point of mathematicians? (also headed “AI has finally come for math—mathematicians might never recover”)",
+  "topics": [],
+  "url": "https://www.scientificamerican.com/article/mathematicians-confront-the-ai-apocalypse/",
+  "who": "Joseph Howlett (Scientific American)"
+}
