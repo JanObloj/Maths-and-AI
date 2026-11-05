@@ -1,0 +1,16 @@
+{
+  "added": "2026-11-04T21:10:00Z",
+  "cat": "initiative",
+  "checked": true,
+  "date": "2026-11-04",
+  "keywords": [
+    "Mathematical culture"
+  ],
+  "kind": "Consortium",
+  "note": "An academic consortium for open infrastructure for AI and mathematics. It holds that AI should serve human thought and creativity, be governed by the values of openness and public science, and that open infrastructure is needed for continued human understanding of mathematics and science. Its founding members are NYU's Center for Mathematics and AI at Courant (MAIC), the NSF AI Institute for Foundations of Machine Learning (IFML) at UT Austin, and UT Austin's Math & AI Group. Website checked. Launch date unconfirmed.",
+  "oxford": false,
+  "title": "Open Mathematics Consortium",
+  "topics": [],
+  "url": "https://openmathconsortium.org/index.html",
+  "who": "NYU Courant (MAIC) and UT Austin (IFML; Math & AI Group)"
+}

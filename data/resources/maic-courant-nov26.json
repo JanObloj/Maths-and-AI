@@ -1,0 +1,16 @@
+{
+  "added": "2026-11-04T21:10:00Z",
+  "cat": "initiative",
+  "checked": true,
+  "date": "2026-11-04",
+  "keywords": [
+    "Mathematical culture"
+  ],
+  "kind": "Research centre",
+  "note": "A new centre that aims to advance mathematical discovery with AI while studying AI systems openly as objects of science. With UT Austin it is founding an academic consortium (the Open Mathematics Consortium) to generate mathematical data and training environments at scale, post-train open-weight models with their providers, and eventually build its own open model. Its research areas include formalisation, pure and applied mathematics, the mathematics of AI, AI safety, and training. Website checked. Launch date unconfirmed.",
+  "oxford": false,
+  "title": "Center for Mathematics and AI at Courant (MAIC)",
+  "topics": [],
+  "url": "https://mathaicourant.github.io",
+  "who": "NYU Courant Institute; co-directors Joan Bruna and Vlad Vicol, consortium lead Tristan Buckmaster"
+}
