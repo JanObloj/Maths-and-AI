@@ -1,0 +1,14 @@
+{
+  "added": "2026-11-05T23:00:00Z",
+  "cat": "initiative",
+  "checked": true,
+  "date": "2026-11-05",
+  "keywords": [],
+  "kind": "Policy tracker",
+  "note": "A quarterly scorecard that rates UK government progress against the 25 policy recommendations of Brown's book Making AI Work for Britain (London Publishing Partnership, 2026), in six themes from governance and procurement to skills and international positioning, each marked green (on track), amber (partial) or red (not started). The ratings are the author's own assessment and the tracker is not government-endorsed. Its baseline is the book's publication in April 2026 and it was last reviewed in September 2026. It covers UK AI policy in general, not mathematics or research specifically.",
+  "oxford": false,
+  "title": "UK AI Watch",
+  "topics": [],
+  "url": "https://futureofai.uk/uk-ai-watch.html",
+  "who": "Alan W. Brown (author of Making AI Work for Britain)"
+}

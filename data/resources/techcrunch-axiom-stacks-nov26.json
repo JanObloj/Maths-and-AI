@@ -1,0 +1,20 @@
+{
+  "added": "2026-11-06T06:30:00Z",
+  "cat": "news",
+  "checked": true,
+  "date": "2026-11-05",
+  "keywords": [
+    "Algebraic geometry",
+    "Lean",
+    "Formal verification"
+  ],
+  "kind": "News",
+  "note": "Reports that the start-up Axiom Math says its agents formally verified the Stacks Project, a large algebraic geometry reference, by translating it into roughly 16 million lines of Lean, and presents verification rather than slowing down as the answer to a flood of AI-generated mathematical claims; the figures are Axiom's own.",
+  "oxford": false,
+  "title": "Axiom Math wants to keep AI slop out of mathematics",
+  "topics": [
+    "big-dump"
+  ],
+  "url": "https://techcrunch.com/2026/11/05/axiom-math-wants-to-keep-ai-slop-out-of-mathematics/",
+  "who": "Aditya Mehta (TechCrunch)"
+}
