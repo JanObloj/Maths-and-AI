@@ -1,0 +1,18 @@
+{
+  "added": "2026-11-06T12:10:00Z",
+  "cat": "announcements",
+  "checked": true,
+  "date": "2026-10-27",
+  "keywords": [
+    "Lean",
+    "PhD training",
+    "Number theory"
+  ],
+  "kind": "Funding announcement",
+  "note": "A £5 million grant from XTX Markets sets up the Langlands Lab in Imperial's Department of Mathematics, led by Kevin Buzzard. Over four years from 2027 it funds five PhD students and three postdocs to produce new results in the Langlands programme verified in Lean, build free interactive tools for working through complex proofs, rethink doctoral training so students use AI well while understanding and defending their own work, and test team-based ways of producing and publishing research.",
+  "oxford": false,
+  "title": "£5 million grant to establish new laboratory for AI-assisted mathematics at Imperial",
+  "topics": [],
+  "url": "https://www.imperial.ac.uk/news/articles/admin-services/giving/2026/5-million-grant-to-establish-new-laboratory-for-ai-assisted-mathematics-at-imperial/",
+  "who": "Imperial College London; Kevin Buzzard; funded by XTX Markets"
+}
