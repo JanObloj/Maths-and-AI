@@ -1,0 +1,20 @@
+{
+  "added": "2026-11-08T11:20:00Z",
+  "cat": "viewpoint",
+  "checked": true,
+  "date": "2026-10-28",
+  "keywords": [
+    "Formal verification",
+    "Lean",
+    "Mathematical culture"
+  ],
+  "kind": "Essay (Substack)",
+  "note": "Gilbert argues that mathematics needs a more formal culture of criticism as LLMs produce large numbers of proofs, and that Lean checks a proof only against the formal statement it is given. She proposes Lean-checked 'proofs of error' and describes an LLM-agent workflow, Co-PEER, and a database, BugBank, for building and storing them.",
+  "oxford": false,
+  "title": "Mathematical criticism",
+  "topics": [
+    "big-dump"
+  ],
+  "url": "https://annagilbert.substack.com/p/mathematical-criticism",
+  "who": "Anna C. Gilbert (Yale University)"
+}

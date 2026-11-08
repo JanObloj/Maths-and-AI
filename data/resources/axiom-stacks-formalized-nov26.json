@@ -1,0 +1,18 @@
+{
+  "added": "2026-11-08T11:20:00Z",
+  "cat": "announcements",
+  "checked": true,
+  "date": "2026-11-04",
+  "keywords": [
+    "Algebraic geometry",
+    "Lean",
+    "Formal verification"
+  ],
+  "kind": "Company announcement",
+  "note": "Axiom says its AI agents formalised the whole Stacks Project, an algebraic geometry reference of about 7,500 pages, as roughly 16 million lines of Lean, and reports finding dozens of statements that needed refinement. The claims are Axiom's own; the post notes that Johan de Jong has asked, for now, that AI-generated comments and pull requests not be sent directly to the upstream Stacks repository.",
+  "oxford": false,
+  "title": "The Stacks Project, formalized in Lean",
+  "topics": [],
+  "url": "https://axiommath.ai/research/the-stacks-project-formalized/",
+  "who": "Axiom Math"
+}

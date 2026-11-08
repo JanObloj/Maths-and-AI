@@ -1,0 +1,17 @@
+{
+  "added": "2026-11-08T11:20:00Z",
+  "cat": "viewpoint",
+  "checked": true,
+  "date": "2026-09-14",
+  "keywords": [
+    "PhD training",
+    "Mathematical culture"
+  ],
+  "kind": "Guide",
+  "note": "A guide for students and early-career mathematicians whose central principle is to understand the mathematics behind any AI output used. It covers learning, research, writing, formal verification and a checklist for responsible use, and the September update says models have become much more capable and are useful for refereeing drafts.",
+  "oxford": false,
+  "title": "Use of AI in mathematical research: A guide for young mathematicians",
+  "topics": [],
+  "url": "https://math.mit.edu/~etingof/aiuse.pdf",
+  "who": "Pavel Etingof (MIT)"
+}

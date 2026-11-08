@@ -1,0 +1,17 @@
+{
+  "added": "2026-11-08T11:20:00Z",
+  "cat": "viewpoint",
+  "checked": true,
+  "date": "2026-11-02",
+  "keywords": [
+    "Mathematical culture",
+    "Credit and authorship"
+  ],
+  "kind": "Essay (Substack)",
+  "note": "Gilbert argues that maths-specific AI efforts inside AI companies may be dropped, leaving mathematical ability in closed general-purpose models, and compares AI infrastructure spending with the early-2000s telecoms boom. She notes that she still uses frontier models herself and urges mathematicians to contribute to open projects such as Mathlib and to open models rather than give their work to companies for free.",
+  "oxford": false,
+  "title": "Math qua math",
+  "topics": [],
+  "url": "https://annagilbert.substack.com/p/math-qua-math",
+  "who": "Anna C. Gilbert (Yale University)"
+}
