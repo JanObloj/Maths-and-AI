@@ -1,0 +1,17 @@
+{
+  "added": "2026-11-10T07:00:00Z",
+  "cat": "viewpoint",
+  "checked": true,
+  "date": "2026-11-08",
+  "keywords": [
+    "Quantum complexity",
+    "Complexity theory"
+  ],
+  "kind": "Blog post",
+  "note": "A quantum complexity theorist responds to Physical Superintelligence's claimed proof, produced with a proprietary harness on an internal Claude model, of the conjecture he posed with Ambainis. He says he has not yet understood it himself but accepts it on the strength of a Lean certificate and expert checking, and argues it rules out only a class of quantum speedups few expected, not quantum supremacy or Shor's algorithm.",
+  "oxford": false,
+  "title": "Aaronson-Ambainis Conjecture proved! (By AI, of course)",
+  "topics": [],
+  "url": "https://scottaaronson.blog/?p=10295",
+  "who": "Scott Aaronson (UT Austin), Shtetl-Optimized"
+}

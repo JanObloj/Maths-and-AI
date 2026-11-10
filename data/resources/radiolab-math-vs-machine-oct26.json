@@ -1,0 +1,17 @@
+{
+  "added": "2026-11-09T22:00:00Z",
+  "cat": "media",
+  "checked": true,
+  "date": "2026-10-09",
+  "keywords": [
+    "Navier–Stokes",
+    "Mathematical culture"
+  ],
+  "kind": "Podcast episode (31 min)",
+  "note": "Steven Strogatz reflects on how fast AI has moved in under four years, from struggling with basic arithmetic to tackling problems that stump leading mathematicians, and on OpenAI's September 2026 claim to have solved a Millennium Prize Problem. The episode presents mathematics as being on the cusp of a reckoning and asks whether the window for humans to understand the world through mathematics may be closing. With thanks to Ravi Vakil and Alex Kontorovich.",
+  "oxford": false,
+  "title": "Math Vs Machine",
+  "topics": [],
+  "url": "https://radiolab.org/podcast/math-vs-machine",
+  "who": "Radiolab, with Steven Strogatz; reported by Maria Paz Gutierrez and Soren Wheeler"
+}

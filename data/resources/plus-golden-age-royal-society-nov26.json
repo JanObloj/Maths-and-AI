@@ -1,0 +1,18 @@
+{
+  "added": "2026-11-09T09:30:00Z",
+  "cat": "news",
+  "checked": true,
+  "date": "2026-11-04",
+  "keywords": [
+    "Mathematical culture",
+    "PhD training",
+    "Credit and authorship"
+  ],
+  "kind": "Event report",
+  "note": "Plus magazine's report on the Royal Society meeting 'Mathematics in the Age of AI', convened by Ben Green and Jon Keating (Oxford). It sets out the concerns raised about early-career researchers, peer review and credit, and corporate control of AI, and the debate on whether human mathematics keeps its purpose.",
+  "oxford": true,
+  "title": "The end of human mathematics or AI golden age?",
+  "topics": [],
+  "url": "https://plus.maths.org/golden-age-mathematics",
+  "who": "Marianne Freiberger and Rachel Thomas (Plus magazine)"
+}
