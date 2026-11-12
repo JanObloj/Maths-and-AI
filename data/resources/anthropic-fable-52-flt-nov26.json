@@ -1,0 +1,17 @@
+{
+  "added": "2026-11-11T07:00:00Z",
+  "cat": "announcements",
+  "checked": true,
+  "date": "2026-11-09",
+  "keywords": [
+    "Lean",
+    "Formal verification"
+  ],
+  "kind": "Company announcement",
+  "note": "Anthropic reports that about 1,000 Fable 5.2 agents formalised a proof of Fermat's Last Theorem in Lean in 30 hours during prerelease testing, against 11 days for its earlier effort. This formalises an existing proof and is not a new proof; the page was amended on 11 November to clarify what the model was given.",
+  "oxford": false,
+  "title": "Introducing Claude Fable 5.2 and Claude Mythos 5.2",
+  "topics": [],
+  "url": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+  "who": "Anthropic"
+}

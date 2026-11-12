@@ -1,0 +1,17 @@
+{
+  "added": "2026-11-12T07:00:00Z",
+  "cat": "institutional",
+  "checked": true,
+  "date": "2026-11-08",
+  "keywords": [
+    "Statistics",
+    "Mathematical culture"
+  ],
+  "kind": "Policy",
+  "note": "The IMS sets a policy for its journals, effective 8 November 2026, built on transparency and responsibility: authors must include a statement on AI use before the bibliography (even if none was used), only humans may be authors, and reviewers may use AI only under confidentiality safeguards and must disclose it.",
+  "oxford": false,
+  "title": "Policy on Use of AI",
+  "topics": [],
+  "url": "https://imstat.org/journals-and-publications/policy-on-use-of-ai/",
+  "who": "Institute of Mathematical Statistics"
+}
