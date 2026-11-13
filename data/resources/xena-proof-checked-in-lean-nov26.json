@@ -1,0 +1,19 @@
+{
+  "added": "2026-11-13T07:00:00Z",
+  "cat": "viewpoint",
+  "checked": true,
+  "date": "2026-11-12",
+  "keywords": [
+    "Lean",
+    "Formal verification"
+  ],
+  "kind": "Blog post",
+  "note": "Explains four questions to ask before accepting that AI-generated Lean code establishes a theorem: does the formal statement match the informal one, does it compile, does it prove the stated theorem without hidden tricks, and could it exploit a kernel bug. Written in response to the Lean code accompanying OpenAI's October release, where the author says that of the 290 theorems with Lean code, around 38 have Lean code that does not state, let alone prove, the paper's main theorem.",
+  "oxford": false,
+  "title": "…and the proof is checked in Lean",
+  "topics": [
+    "big-dump"
+  ],
+  "url": "https://xenaproject.wordpress.com/2026/11/12/and-the-proof-is-checked-in-lean/",
+  "who": "Kevin Buzzard (Imperial College London), Xena Project blog"
+}
