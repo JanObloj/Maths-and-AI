@@ -1,0 +1,20 @@
+{
+  "added": "2026-11-09T22:00:00Z",
+  "cat": "viewpoint",
+  "checked": true,
+  "date": "2026-11-06",
+  "keywords": [
+    "Mathematical culture",
+    "Credit and authorship",
+    "PhD training"
+  ],
+  "kind": "World View (Nature; print headline: 'How maths can survive the AI-driven disruption')",
+  "note": "Martin, an emeritus professor at Oxford and an author of the Leiden Declaration, argues that after OpenAI's October release mathematicians must build rules and institutions that keep humans at the centre: support for colleagues whose research has been upended, clearer norms on citation, credit and IP, leadership from both grassroots efforts and bodies such as the IMU, and PhD training that teaches responsible use of AI.",
+  "oxford": true,
+  "title": "‘Mathematics is more than a mechanical process’ — why I think the field will survive OpenAI’s disruption",
+  "topics": [
+    "big-dump"
+  ],
+  "url": "https://www.nature.com/articles/d41586-026-03622-x",
+  "who": "Ursula Martin (University of Oxford)"
+}
