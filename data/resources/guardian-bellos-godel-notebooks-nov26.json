@@ -9,7 +9,7 @@
     "History of mathematics"
   ],
   "kind": "Feature",
-  "note": "Logician Jan von Plato, who has led a Helsinki project on Kurt Gödel's 16 notebooks from the early 1940s (1,009 pages, much of it in obsolete Gabelsberger shorthand) since 2017, gave Claude his transcriptions in September; within days it produced a 650-page digest that he checked page by page. Claude reconstructed a proof of the independence of the axiom of choice from the notebooks, which von Plato checked in the Coq proof assistant; of the results it listed that were put into Coq, about 400 were verified as stated, others needed repair and some were false. Joel David Hamkins, who has not seen the reconstruction, cautions that how much is Gödel and how much is AI is for historians to judge.",
+  "note": "Logician Jan von Plato, who has led a Helsinki project on Kurt Gödel's 16 notebooks from the early 1940s (1,009 pages, much of it in obsolete Gabelsberger shorthand) since 2017, gave Claude his transcriptions in September; within days it produced a 650-page digest that he checked page by page. Claude reconstructed a proof of the independence of the axiom of choice from the notebooks, which von Plato checked in the Coq proof assistant; asked to extract every theorem for which Gödel had a proof, a sketch or an idea, it found 663; put into Coq, about 400 were verified as stated, about 200 needed repair and about 50 were false. Joel David Hamkins, who has not seen the reconstruction, cautions that how much is Gödel and how much is AI is for historians to judge.",
   "oxford": false,
   "title": "'Ahead of his time': AI helps unlock discoveries hidden in notebooks of man who transformed maths",
   "topics": [],
