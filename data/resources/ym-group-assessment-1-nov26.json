@@ -1,0 +1,21 @@
+{
+  "added": "2026-11-15T22:45:00Z",
+  "cat": "institutional",
+  "checked": true,
+  "date": "2026-11-10",
+  "keywords": [
+    "Yang–Mills",
+    "Quantum field theory",
+    "Lean",
+    "Formal verification"
+  ],
+  "kind": "Assessment (PDF and repository)",
+  "note": "The shepherding committee's assessment of OpenAI's Lean submission of 28 October. In its judgment the submission proves that a quantum field theory satisfying the Wightman axioms can be constructed as a scaling limit of four-dimensional Wilson lattice gauge theory, for any simple compact gauge group. It does not prove that the infinite-volume limit is unique, or that there is a mass gap, so it does not settle the Jaffe–Witten Millennium Prize problem. A clean rebuild, axiom audit and Comparator check passed. The group used OpenAI's Astra to help digest the code and says it does not yet fully understand the proof. The repository also holds the original submission, the group's own Lean checks and rerun instructions, and lists a second OpenAI submission (4 November) and one from Alpöge and Sussman (15 November) as under review.",
+  "oxford": false,
+  "title": "Validation of the OpenAI Yang–Mills construction",
+  "topics": [
+    "shepherds"
+  ],
+  "url": "https://github.com/yang-mills-group/YM",
+  "who": "Yang–Mills group (the shepherding committee chaired by David Gross)"
+}

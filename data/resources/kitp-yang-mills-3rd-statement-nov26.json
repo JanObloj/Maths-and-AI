@@ -9,7 +9,7 @@
     "Lean"
   ],
   "kind": "Statement",
-  "note": "The committee shepherding OpenAI's claimed construction of quantum Yang–Mills theory announces that it will publish, on 10 November, the full Lean code OpenAI submitted on 28 October and a validation document summarising its checks. That document concludes that the submission “proves the existence of pure Yang–Mills theory according to the problem statements” standard in physics and mathematics. The statement thanks Ron Nissim and Fred Rajasekaran for help with the assessment.",
+  "note": "The committee shepherding OpenAI's claimed construction of quantum Yang–Mills theory announces that it will publish, on 10 November, the full Lean code OpenAI submitted on 28 October and a validation document summarising its checks, which concludes that the submission “proves the existence of pure Yang–Mills theory according to the problem statements” standard in physics and mathematics. The validation document itself adds that no mass gap is proved (see the separate entry). The statement thanks Ron Nissim and Fred Rajasekaran for help with the assessment.",
   "oxford": false,
   "title": "3rd Statement About Quantum Yang–Mills Theory",
   "topics": [
