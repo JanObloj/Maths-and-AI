@@ -1,0 +1,18 @@
+{
+  "added": "2026-11-14T07:00:00Z",
+  "cat": "initiative",
+  "checked": true,
+  "date": "2026-11-13",
+  "keywords": [
+    "Mathematical culture"
+  ],
+  "kind": "Guest post",
+  "note": "A guest post announcing MathHelm, a non-profit forum where researchers, registered under real names, can comment on AI-generated mathematical papers, including the 722 manuscripts OpenAI released in October. The committee, chaired by Xinyi Yuan (Peking University), says the forum takes no position for or against AI and that mathematicians have no obligation to check such papers.",
+  "oxford": false,
+  "title": "Introducing MathHelm: A Place to discuss AI-generated papers",
+  "topics": [
+    "big-dump"
+  ],
+  "url": "https://terrytao.wordpress.com/2026/11/13/introducing-mathhelm-a-place-to-discuss-ai-generated-papers/",
+  "who": "MathHelm scientific committee (guest post on Terence Tao's blog)"
+}
