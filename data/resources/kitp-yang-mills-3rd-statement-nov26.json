@@ -1,0 +1,20 @@
+{
+  "added": "2026-11-15T22:30:00Z",
+  "cat": "institutional",
+  "checked": true,
+  "date": "2026-11-09",
+  "keywords": [
+    "Yang–Mills",
+    "Quantum field theory",
+    "Lean"
+  ],
+  "kind": "Statement",
+  "note": "The committee shepherding OpenAI's claimed construction of quantum Yang–Mills theory announces that it will publish, on 10 November, the full Lean code OpenAI submitted on 28 October and a validation document summarising its checks. That document concludes that the submission “proves the existence of pure Yang–Mills theory according to the problem statements” standard in physics and mathematics. The statement thanks Ron Nissim and Fred Rajasekaran for help with the assessment.",
+  "oxford": false,
+  "title": "3rd Statement About Quantum Yang–Mills Theory",
+  "topics": [
+    "shepherds"
+  ],
+  "url": "https://www.kitp.ucsb.edu/sites/default/files/3rd-Statement-About-Quantum-YangMills-Theory_Nov-9.pdf",
+  "who": "Shepherding committee: Michael R. Douglas, David J. Gross (chair), Arthur Jaffe, Igor R. Klebanov and Nikita Nekrasov (via KITP)"
+}
