@@ -6,11 +6,11 @@
   "keywords": [
     "Mathematical culture"
   ],
-  "kind": "Meeting",
-  "note": "A one-day meeting at the Royal Society in London, organised by Ben Green and Jon Keating, that brought together leading mathematicians, early-career researchers and representatives of relevant organisations to explore the implications of AI for mathematics, with talks and panel discussions. It was free to attend, in person and online, and was livestreamed.",
+  "kind": "Meeting (recordings and summary note)",
+  "note": "A one-day meeting at the Royal Society, organised by Ben Green and Jon Keating, attended by more than 300 people with over 700 more registered for the livestream; recordings are on the Royal Society's YouTube channel. The Society's summary note (November 2026) records talks by Ben Green, James Maynard, Martin Hairer, Kevin Buzzard, Miranda Cheng, Ana Caraiani, Michael Wemyss and Timothy Gowers, and panels on culture and ethics, publishing and recognition, and early-career researchers. Themes included checking AI-generated proofs with Lean, the Association for Human Mathematics, how credit and publishing may change, PhD training, and Gowers's call for a contingency plan for mathematics as a profession; several speakers called OpenAI's mass release of AI proofs a “PR stunt”.",
   "oxford": true,
   "title": "Mathematics in the age of AI",
   "topics": [],
-  "url": "https://portal.royalsociety.org/events/details/?id=baa5caea-28ff-491f-b747-7b9fea66d759",
+  "url": "https://www.youtube.com/playlist?list=PLa8v5z7ONrRE",
   "who": "The Royal Society; organised by Ben Green (Oxford) and Jon Keating (Oxford)"
 }
