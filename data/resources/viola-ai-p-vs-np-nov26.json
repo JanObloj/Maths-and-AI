@@ -1,0 +1,20 @@
+{
+  "added": "2026-11-18T06:30:00Z",
+  "cat": "viewpoint",
+  "checked": true,
+  "date": "2026-11-17",
+  "keywords": [
+    "Complexity theory",
+    "P vs NP",
+    "Exponential Time Hypothesis"
+  ],
+  "kind": "Blog post (reproduced from BLOG@CACM)",
+  "note": "A complexity theorist's account of the autumn's AI-assisted results in theoretical computer science, including an Anthropic-model-found algorithm refuting the 3SUM conjecture and OpenAI's claimed refutation of the Exponential Time Hypothesis and faster integer-multiplication algorithm. He says they do not prove P = NP but support his long-held belief that it holds, and calls for open, publicly accessible AI tools. The claims are the author's account.",
+  "oxford": false,
+  "title": "What happened in fall 2026: AI and P vs NP",
+  "topics": [
+    "big-dump"
+  ],
+  "url": "https://emanueleviola.wordpress.com/2026/11/17/what-happened-in-fall-2026-ai-and-p-vs-np",
+  "who": "Emanuele Viola (Northeastern University)"
+}
