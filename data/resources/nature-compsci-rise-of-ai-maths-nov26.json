@@ -1,0 +1,18 @@
+{
+  "added": "2026-11-19T06:30:00Z",
+  "cat": "viewpoint",
+  "checked": true,
+  "date": "2026-11-17",
+  "keywords": [
+    "Mathematical culture",
+    "Credit and authorship",
+    "Navier–Stokes"
+  ],
+  "kind": "Editorial",
+  "note": "An editorial arguing that researchers should stay at the centre of discovery, keeping credit and responsibility for correctness, with AI as a tool that speeds up exploration. It calls for transparent disclosure of AI use in manuscripts and notes that OpenAI's September Navier–Stokes claim remains controversial.",
+  "oxford": false,
+  "title": "The rise of AI in mathematics — and science",
+  "topics": [],
+  "url": "https://www.nature.com/articles/s43588-026-01112-8",
+  "who": "Nature Computational Science (editorial)"
+}
