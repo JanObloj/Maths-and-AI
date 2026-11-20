@@ -1,0 +1,18 @@
+{
+  "added": "2026-11-20T18:21:00Z",
+  "cat": "viewpoint",
+  "checked": true,
+  "date": "2026-11-20",
+  "keywords": [
+    "Riemann hypothesis",
+    "Number theory",
+    "Lean"
+  ],
+  "kind": "Personal statement",
+  "note": "Alpöge's own four-page statement saying he believes he has proved the Riemann hypothesis with Claude, that the method extends to the generalised Riemann hypothesis, and that the argument is fully formalised in Lean. He releases the Lean files with a short outline and timeline but no written proof, says he plans a full write-up, and the note reports no independent check of the Lean code or of the formal statement.",
+  "oxford": false,
+  "title": "Levent Alpöge: statement announcing a claimed proof of the Riemann hypothesis with Claude",
+  "topics": [],
+  "url": "https://alpo.ge/remark.pdf",
+  "who": "Levent Alpöge (Anthropic)"
+}

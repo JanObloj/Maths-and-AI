@@ -1,0 +1,18 @@
+{
+  "added": "2026-11-20T18:21:00Z",
+  "cat": "news",
+  "checked": true,
+  "date": "2026-11-20",
+  "keywords": [
+    "Riemann hypothesis",
+    "Number theory",
+    "Lean"
+  ],
+  "kind": "News",
+  "note": "Breaking-news report of Levent Alpöge's claim, made on 20 November, to have proved the Riemann hypothesis with Claude, with the proof posted in Lean. Andrew Sutherland (MIT) says he has independently compiled the Lean code; the article says experts still need to check that the statement is coded properly and that the proof is correct, and that the story will be updated.",
+  "oxford": false,
+  "title": "Anthropic mathematician claims to prove Riemann hypothesis, most famous problem in all of math",
+  "topics": [],
+  "url": "https://www.scientificamerican.com/article/anthropic-mathematician-claims-to-prove-riemann-hypothesis-most-famous-problem-in-all-of-math/",
+  "who": "Joseph Howlett (Scientific American)"
+}
