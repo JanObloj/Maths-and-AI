@@ -1,0 +1,18 @@
+{
+  "added": "2026-11-21T08:00:00Z",
+  "cat": "news",
+  "checked": true,
+  "date": "2026-11-21",
+  "keywords": [
+    "Riemann hypothesis",
+    "Number theory",
+    "Formal verification"
+  ],
+  "kind": "News",
+  "note": "Wire report on Levent Alpöge's claim, posted on his website on 20 November, of a Riemann hypothesis proof made with Claude. It notes that the Clay Institute still listed the problem as unsolved, and quotes Rutgers' Alex Kontorovich on the Lean check and Clay president Martin Bridson, who called the announcement historic but said real understanding would take a long time.",
+  "oxford": true,
+  "title": "Anthropic worker claims to have cracked unsolved math problem with the help of AI",
+  "topics": [],
+  "url": "https://www.bostonglobe.com/2026/11/21/nation/anthropic-worker-solve-math-problems-ai-riemann-hypothesis/",
+  "who": "AP via The Boston Globe"
+}

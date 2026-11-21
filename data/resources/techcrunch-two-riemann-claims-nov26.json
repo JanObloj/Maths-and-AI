@@ -1,0 +1,18 @@
+{
+  "added": "2026-11-21T08:10:00Z",
+  "cat": "news",
+  "checked": true,
+  "date": "2026-11-20",
+  "keywords": [
+    "Riemann hypothesis",
+    "Number theory",
+    "Formal verification"
+  ],
+  "kind": "News",
+  "note": "TechCrunch reports Levent Alpöge's claim, made with Anthropic's Claude, of a Lean-checked proof of the Riemann hypothesis, together with Ravi Vakil's release of a human-written proposed proof of the generalized Riemann hypothesis by Alessandro Masullo. It says the Lean proof has been checked to compile but that it is too early to judge either proof.",
+  "oxford": false,
+  "title": "AI claimed a solution to the 167-year-old Riemann hypothesis — and a human did, too",
+  "topics": [],
+  "url": "https://techcrunch.com/2026/11/20/ai-claimed-a-solution-to-the-167-year-old-riemann-hypothesis-and-a-human-did-too/",
+  "who": "Tim Fernholz, TechCrunch"
+}

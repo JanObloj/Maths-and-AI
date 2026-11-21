@@ -1,0 +1,17 @@
+{
+  "added": "2026-11-21T08:45:00Z",
+  "cat": "viewpoint",
+  "checked": true,
+  "date": "2026-11-20",
+  "keywords": [
+    "Generalized Riemann hypothesis",
+    "Number theory"
+  ],
+  "kind": "Blog post",
+  "note": "Vakil releases a draft of Alessandro Masullo's proposed proof of the generalized Riemann hypothesis, which he says is entirely human-written, and says Brian Conrad has examined it for months. He asks others to check it, formalise it and fill any small gaps; it was posted the same day as Alpöge's AI-assisted claim.",
+  "oxford": false,
+  "title": "Hurried Announcement: Alessandro Masullo GRH",
+  "topics": [],
+  "url": "https://math216.wordpress.com/2026/11/20/hurried-announcement-alessandro-masullo-grh/",
+  "who": "Ravi Vakil (Stanford; AMS President)"
+}

@@ -1,0 +1,19 @@
+{
+  "added": "2026-11-21T08:30:00Z",
+  "cat": "news",
+  "checked": true,
+  "date": "2026-11-20",
+  "keywords": [
+    "Riemann hypothesis",
+    "Number theory",
+    "Formal verification",
+    "Mathematical culture"
+  ],
+  "kind": "News",
+  "note": "Science reports Levent Alpöge's claim, made with Claude, of a Riemann hypothesis proof, with 17 million lines of Lean code verifying the generalized version. Reactions include James Maynard on its significance and how hard it will be to understand, concerns about reliance on AI companies, and the early release of an unfinished, human-written draft proof of the generalized Riemann hypothesis by Alessandro Masullo, which Brian Conrad has been examining.",
+  "oxford": true,
+  "title": "AI may have solved math's greatest mystery. Can humans understand the answer?",
+  "topics": [],
+  "url": "https://www.science.org/content/article/ai-may-have-solved-math-s-greatest-mystery-can-humans-understand-answer",
+  "who": "Zack Savitsky, Science"
+}
