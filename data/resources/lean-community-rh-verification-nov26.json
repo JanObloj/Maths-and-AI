@@ -1,0 +1,19 @@
+{
+  "added": "2026-11-21T21:06:00Z",
+  "cat": "institutional",
+  "checked": true,
+  "date": "2026-11-21",
+  "keywords": [
+    "Riemann hypothesis",
+    "Number theory",
+    "Lean",
+    "Formal verification"
+  ],
+  "kind": "Joint statement",
+  "note": "The Lean and Mathlib communities certify that Alpöge's Lean library of about 17 million lines proves Mathlib's statement of the Riemann hypothesis, after independent builds, two statement-comparison tools and checks by several independent proof checkers. The certificate covers formal correctness; explaining the proof's new ideas is left to the wider mathematical community.",
+  "oxford": false,
+  "title": "Lean verification of the Riemann Hypothesis",
+  "topics": [],
+  "url": "https://leanprover-community.github.io/blog/posts/riemann-hypothesis/",
+  "who": "Lean and Mathlib communities (endorsed by the Lean FRO and the Mathlib Initiative)"
+}
