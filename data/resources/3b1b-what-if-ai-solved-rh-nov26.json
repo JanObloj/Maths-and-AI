@@ -1,0 +1,18 @@
+{
+  "added": "2026-11-22T19:40:00Z",
+  "cat": "media",
+  "checked": true,
+  "date": "2026-11-21",
+  "keywords": [
+    "Riemann hypothesis",
+    "Lean",
+    "Mathematical culture"
+  ],
+  "kind": "Video (14 min)",
+  "note": "Answers collected since June 2025 to one question: how would you feel if AI produced a Lean-verified proof of the Riemann hypothesis that humans could not understand? Speakers include Kevin Buzzard, Terence Tao, Jordan Ellenberg, Ken Ono, Daniel Litt, Leo de Moura and Alex Kontorovich; released the day after Alpöge's announcement made the question real.",
+  "oxford": false,
+  "title": "Since last year, we asked: “What if AI solved the Riemann Hypothesis?”",
+  "topics": [],
+  "url": "https://www.youtube.com/watch?v=zqzk43bSdDI",
+  "who": "3Blue1Brown"
+}

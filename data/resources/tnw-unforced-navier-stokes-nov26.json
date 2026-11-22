@@ -1,0 +1,18 @@
+{
+  "added": "2026-11-22T13:10:00Z",
+  "cat": "news",
+  "checked": true,
+  "date": "2026-11-21",
+  "keywords": [
+    "Navier–Stokes",
+    "PDE",
+    "Formal verification"
+  ],
+  "kind": "News",
+  "note": "Reports the claim by Tristan Buckmaster (NYU) and Levent Alpöge (Anthropic) that the Navier–Stokes equations can blow up in finite time with no external force, posted with a 79-page paper and a Lean formalisation of about 600,000 lines written with Claude and Codex. It notes the work is not peer-reviewed and that a numerical certificate the proof relies on, checked outside Lean, had not yet been released.",
+  "oxford": false,
+  "title": "Navier-Stokes can blow up with no outside force, Buckmaster and Alpöge say",
+  "topics": [],
+  "url": "https://thenextweb.com/news/navier-stokes-blow-up-without-force-buckmaster-alpoge",
+  "who": "Ana Maria Constantin (The Next Web)"
+}
