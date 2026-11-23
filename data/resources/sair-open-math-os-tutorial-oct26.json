@@ -1,0 +1,16 @@
+{
+  "added": "2026-11-23T09:05:00Z",
+  "cat": "media",
+  "checked": true,
+  "date": "2026-10-16",
+  "keywords": [
+    "Lean"
+  ],
+  "kind": "Video (3 min)",
+  "note": "A short walkthrough of Open Math OS, the SAIR Foundation's browser-based workspace for collaborative mathematical research, released on its launch day: open frontier models working alongside Lean, computer algebra and shared project files.",
+  "oxford": false,
+  "title": "Tutorial for Open Math OS: The infrastructure for Math 2.0",
+  "topics": [],
+  "url": "https://www.youtube.com/watch?v=HprXJxQN5bc",
+  "who": "SAIR Foundation"
+}

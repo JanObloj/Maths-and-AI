@@ -1,0 +1,19 @@
+{
+  "added": "2026-11-23T09:05:00Z",
+  "cat": "media",
+  "checked": true,
+  "date": "2026-10-19",
+  "keywords": [
+    "Credit and authorship",
+    "Mathematical culture"
+  ],
+  "kind": "Interview, video (23 min)",
+  "note": "Tao and Deng discuss how mathematics should respond as AI produces proofs at scale: preserving understanding, tracing credit for ideas, and rewarding explanation and community building as well as problem-solving. They make the case for open science and introduce SAIR's Open Math OS.",
+  "oxford": false,
+  "title": "Terence Tao & Yu Deng: Why We Build Open Math Model",
+  "topics": [
+    "big-dump"
+  ],
+  "url": "https://www.youtube.com/watch?v=TjeCcDkuyao",
+  "who": "Terence Tao (UCLA) and Yu Deng (University of Chicago), SAIR Foundation"
+}
