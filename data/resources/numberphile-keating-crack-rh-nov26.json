@@ -1,0 +1,17 @@
+{
+  "added": "2026-11-24T17:25:00Z",
+  "cat": "media",
+  "checked": true,
+  "date": "2026-11-23",
+  "keywords": [
+    "Riemann hypothesis",
+    "Number theory"
+  ],
+  "kind": "Video",
+  "note": "Jon Keating talks Numberphile through the recent claimed proofs of the Riemann hypothesis: Levent Alpöge's AI-assisted proof and Alessandro Masullo's human-written paper, both linked from the video page.",
+  "oxford": true,
+  "title": "How did they crack the Riemann Hypothesis?",
+  "topics": [],
+  "url": "https://www.youtube.com/watch?v=PjGlt3y-Nco",
+  "who": "Numberphile, with Jon Keating (Oxford)"
+}
