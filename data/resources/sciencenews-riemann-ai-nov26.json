@@ -1,0 +1,17 @@
+{
+  "added": "2026-11-24T12:00:00Z",
+  "cat": "news",
+  "checked": true,
+  "date": "2026-11-23",
+  "keywords": [
+    "Riemann hypothesis",
+    "Number theory"
+  ],
+  "kind": "News",
+  "note": "Reports Levent Alpöge's Claude-assisted Riemann hypothesis proof, checked in Lean and said to be confirmed by independent mathematicians the next day, and that the 250,000-page proof is still being made human-readable. Sets out reservations from sceptics and the Association for Human Mathematics.",
+  "oxford": false,
+  "title": "Math's holy grail, the Riemann hypothesis, appears solved with AI's help",
+  "topics": [],
+  "url": "https://www.sciencenews.org/article/riemann-hypothesis-solved-math-ai",
+  "who": "Emily Conover and Kathryn Hulick (Science News)"
+}
