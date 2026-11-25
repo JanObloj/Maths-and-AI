@@ -1,0 +1,18 @@
+{
+  "added": "2026-11-25T08:10:00Z",
+  "cat": "news",
+  "checked": true,
+  "date": "2026-11-20",
+  "keywords": [
+    "Riemann hypothesis",
+    "Number theory",
+    "Credit and authorship"
+  ],
+  "kind": "News (paywall)",
+  "note": "Nature's report on Alpöge's claimed proof with Claude and, hours later, Alessandro Masullo's all-human preprint posted by Ravi Vakil, both needing rigorous checking. James Maynard (Oxford) calls it a historic milestone if it checks out and suspects the AI-assisted proof is correct; Andrew Granville criticises the garbled write-up and its timing after Anthropic's IPO, and Tristan Buckmaster credits Alpöge's set-up. Updated 23 November.",
+  "oxford": true,
+  "title": "Mathematicians astounded by AI and human-written proofs of iconic Riemann hypothesis",
+  "topics": [],
+  "url": "https://www.nature.com/articles/d41586-026-03812-7",
+  "who": "Davide Castelvecchi (Nature)"
+}

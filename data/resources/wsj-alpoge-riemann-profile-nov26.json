@@ -1,0 +1,17 @@
+{
+  "added": "2026-11-25T08:05:00Z",
+  "cat": "news",
+  "checked": true,
+  "date": "2026-11-23",
+  "keywords": [
+    "Riemann hypothesis",
+    "Credit and authorship"
+  ],
+  "kind": "Feature (paywall)",
+  "note": "A profile of Levent Alpöge and the year of AI mathematics that led to his claimed Riemann proof with Claude, from the Jacobian counterexample and the Navier–Stokes credit dispute to the October release. It notes that Alpöge has not revealed his prompts or compute, says he does not yet understand all of the proof, and that Claude's attempt to write it up ran to 250,000 unreadable pages.",
+  "oxford": false,
+  "title": "The Most Famous Problem in Math Was Just Solved by AI—and This Human",
+  "topics": [],
+  "url": "https://www.wsj.com/tech/ai/riemann-hypothesis-anthropic-math-levent-alpoge-75351bcb",
+  "who": "Ben Cohen and Joshua Robinson (The Wall Street Journal)"
+}
