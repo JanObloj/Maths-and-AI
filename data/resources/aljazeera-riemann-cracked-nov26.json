@@ -1,0 +1,17 @@
+{
+  "added": "2026-11-24T21:35:00Z",
+  "cat": "news",
+  "checked": true,
+  "date": "2026-11-21",
+  "keywords": [
+    "Riemann hypothesis",
+    "Credit and authorship"
+  ],
+  "kind": "Explainer",
+  "note": "A general-audience explainer of Levent Alpöge's claimed proof with Claude, released as Lean code with a four-page outline. Abhishek Saha (Queen Mary) argues the credit belongs to Alpöge rather than the AI, and Kevin Buzzard (Imperial) says nobody yet understands what the proof shows.",
+  "oxford": false,
+  "title": "Riemann hypothesis: Has the world’s most famous maths problem been cracked?",
+  "topics": [],
+  "url": "https://www.aljazeera.com/news/2026/11/21/riemann-hypothesis-has-the-worlds-most-famous-maths-problem-been-cracked",
+  "who": "Heba Habib (Al Jazeera)"
+}

@@ -1,0 +1,17 @@
+{
+  "added": "2026-11-25T07:00:00Z",
+  "cat": "viewpoint",
+  "checked": true,
+  "date": "2026-11-22",
+  "keywords": [
+    "Riemann hypothesis",
+    "Lean"
+  ],
+  "kind": "Essay",
+  "note": "Sceptic's reading of the claim: Marcus calls the apparent proof 'genuinely amazing' but argues it is overread as 'AI alone'. In his account it took months of human guidance and relied on Lean and mathlib, resources most other fields lack, so it does not mean AGI has arrived. Useful as one pole of the public debate on what the result means.",
+  "oxford": false,
+  "title": "Levent Alpöge has solved the Riemann Hypothesis with help of Claude! What does it mean?",
+  "topics": [],
+  "url": "https://garymarcus.substack.com/p/levent-alpoge-has-solved-the-riemann",
+  "who": "Gary Marcus (Marcus on AI)"
+}

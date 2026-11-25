@@ -1,0 +1,18 @@
+{
+  "added": "2026-11-25T07:00:00Z",
+  "cat": "news",
+  "checked": true,
+  "date": "2026-11-24",
+  "keywords": [
+    "Riemann hypothesis",
+    "Lean",
+    "Formal verification"
+  ],
+  "kind": "News",
+  "note": "Critical report on the Lean-based Riemann hypothesis claim by Levent Alpöge (Anthropic) with Claude. It says the supporting material is some 240 MB of Lean code, while the written proof is about 250,000 pages that Alpöge himself calls unreadable 'slop'. It reports that Clay has so far only moved the problem to 'active' status, and notes the Lean FRO and Mathlib Initiative's statement of full confidence in the proof. It also repeats Kevin Buzzard's remark to Al Jazeera that 'we don't even know why the theorem is true'.",
+  "oxford": false,
+  "title": "Anthropic says Claude solved an age-old math problem, but the written proof is 250,000 pages of slop",
+  "topics": [],
+  "url": "https://www.theregister.com/ai-and-ml/2026/11/24/anthropic-says-claude-solved-an-age-old-math-problem-but-the-written-proof-is-250000-pages-of-slop/5311775",
+  "who": "Tobias Mann (The Register)"
+}
