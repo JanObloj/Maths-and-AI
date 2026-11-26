@@ -1,0 +1,17 @@
+{
+  "added": "2026-11-26T06:50:36Z",
+  "cat": "viewpoint",
+  "checked": true,
+  "date": "2026-11-24",
+  "keywords": [
+    "Complexity theory",
+    "P vs NP"
+  ],
+  "kind": "Blog post",
+  "note": "A complexity theorist outlines the method of Anthropic's claimed Lean-verified proof that VP differs from VNP, the algebraic analogue of P versus NP. He stresses it does not settle P versus NP; the post does not discuss independent human checking of the proof.",
+  "oxford": false,
+  "title": "VP ≠ VNP",
+  "topics": [],
+  "url": "https://blog.computationalcomplexity.org/2026/11/vp-vnp.html",
+  "who": "Lance Fortnow, Computational Complexity blog"
+}

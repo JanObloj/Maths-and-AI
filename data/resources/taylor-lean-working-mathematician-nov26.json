@@ -1,0 +1,18 @@
+{
+  "added": "2026-11-26T06:50:36Z",
+  "cat": "viewpoint",
+  "checked": true,
+  "date": "2026-11-21",
+  "keywords": [
+    "Lean",
+    "Formal verification",
+    "Mathematical culture"
+  ],
+  "kind": "Guest post",
+  "note": "An Oxford mathematician describes learning Lean and using frontier models to formalise his own research, for checking proofs, generalising results, refereeing and entering new fields. He urges mathematicians to learn Lean now, while warning that verification without understanding has costs.",
+  "oxford": true,
+  "title": "Lean for the working mathematician",
+  "topics": [],
+  "url": "https://xenaproject.wordpress.com/2026/11/21/lean-for-the-working-mathematician/",
+  "who": "Mitchell Taylor (University of Oxford), guest post on the Xena Project blog"
+}

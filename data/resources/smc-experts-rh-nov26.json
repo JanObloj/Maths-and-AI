@@ -1,0 +1,18 @@
+{
+  "added": "2026-11-26T06:50:36Z",
+  "cat": "viewpoint",
+  "checked": true,
+  "date": "2026-11-24",
+  "keywords": [
+    "Riemann hypothesis",
+    "Number theory",
+    "Formal verification"
+  ],
+  "kind": "Expert reaction",
+  "note": "Five UK mathematicians react to the claimed proof, from cautious optimism to stressing that humans must still confirm the Lean statement really is the Riemann hypothesis. James Maynard suspects it is correct and would be historic, but says checking will take time and the proof is not yet readable.",
+  "oxford": true,
+  "title": "Experts comment on announcement from Levant Alpöge that he has solved the Riemann Hypothesis with the help of Claude",
+  "topics": [],
+  "url": "https://www.sciencemediacentre.org/experts-comment-on-announcement-from-levant-alpoge-that-he-has-solved-the-riemann-hypothesis-with-the-help-of-claude/",
+  "who": "Science Media Centre, with James Maynard (University of Oxford), Bill Oxbury (Lancaster University), Thomas Prellberg (Queen Mary University of London), James Davenport (University of Bath) and Kit Yates (University of Bath)"
+}

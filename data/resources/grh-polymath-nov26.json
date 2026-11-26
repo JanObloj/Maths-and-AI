@@ -1,0 +1,19 @@
+{
+  "added": "2026-11-26T06:50:36Z",
+  "cat": "initiative",
+  "checked": true,
+  "date": "2026-11-24",
+  "keywords": [
+    "Generalized Riemann hypothesis",
+    "Riemann hypothesis",
+    "Number theory",
+    "Exposition"
+  ],
+  "kind": "Guest post",
+  "note": "Proposes an open Polymath-style collaboration to turn the Lean certificate announced by Levent Alpöge into a human-readable proof of the Riemann and generalised Riemann hypotheses. It aims to pool efforts worldwide, avoid duplication and explore the new mathematics inside the computer proof.",
+  "oxford": false,
+  "title": "G.R.H. Polymath",
+  "topics": [],
+  "url": "https://terrytao.wordpress.com/2026/11/24/g-r-h-polymath/",
+  "who": "Anurag Sahay (Duke University), Will Sawin and Lior Silberman (University of British Columbia), guest post on Terence Tao's blog"
+}
