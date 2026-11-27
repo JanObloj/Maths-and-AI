@@ -1,0 +1,18 @@
+{
+  "added": "2026-11-27T06:53:27Z",
+  "cat": "declaration",
+  "checked": true,
+  "date": "2026-11-20",
+  "keywords": [
+    "Riemann hypothesis",
+    "Mathematical culture",
+    "Credit and authorship"
+  ],
+  "kind": "Statement",
+  "note": "Responding to an AI-generated Lean proof of the Riemann hypothesis announced by a mathematician at Anthropic, the Association argues that no one can reasonably claim responsibility for or understanding of such a document, so it puts technical validity above accountability and understanding. It calls for democratic oversight of AI companies and for research free from dependence on their models.",
+  "oxford": false,
+  "title": "AHM Statement on the Announced Proof of the Riemann Hypothesis",
+  "topics": [],
+  "url": "https://proofsandprompts.com/2026/11/21/ahm-statement-on-the-announced-proof-of-the-riemann-hypothesis/",
+  "who": "Association for Human Mathematics"
+}

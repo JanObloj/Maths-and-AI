@@ -1,0 +1,19 @@
+{
+  "added": "2026-11-26T09:12:01Z",
+  "cat": "voices",
+  "checked": true,
+  "date": "2026-11",
+  "keywords": [
+    "Riemann hypothesis",
+    "Generalized Riemann hypothesis",
+    "Number theory",
+    "Lean"
+  ],
+  "kind": "Tracker",
+  "note": "A mathematician's running list of links on the two claimed proofs announced on 20 November, by Levent Alpöge with Claude and by Alessandro Maria Masullo, covering documents, formal checks and readers' guides. It treats both as claims and gives no verdict.",
+  "oxford": false,
+  "title": "Updates on the claims about the Riemann Hypothesis",
+  "topics": [],
+  "url": "https://mathandcobb.org/rh-claims/",
+  "who": "Álvaro Lozano-Robledo (University of Connecticut)"
+}
